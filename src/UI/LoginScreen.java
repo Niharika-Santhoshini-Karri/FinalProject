@@ -5,6 +5,7 @@
 package UI;
 
 import DBUTIL.DBUTIL;
+import UI.Admin.AdminWorkArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -175,16 +176,20 @@ System.out.println("Connected to database !!");
                 System.out.println("here1");
                 if(resultSet1.getString(1).equals(username) && resultSet1.getString(2).equals(password))
                 {
-                     System.out.println("here1");
+                     System.out.println("here2");
                    flag = true; 
                    int x = Integer.valueOf(resultSet1.getString(3));
                    if(x==1)
                    {
-                       JOptionPane.showMessageDialog(this , "NOW OPEN THE ADMIN PAGE");
+                        //JOptionPane.showMessageDialog(this , "NOW OPEN THE ADMIN PAGE");
+                        AdminWorkArea AWA= new AdminWorkArea();
+                        
+                        this.dispose();
+                        AWA.setVisible(true);
            }
-                if(x==2)
+                   if(x==2)
                 {
-                      JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
                  }
                 }
             }
