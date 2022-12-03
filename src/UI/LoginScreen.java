@@ -5,6 +5,8 @@
 package UI;
 
 import DBUTIL.DBUTIL;
+import SOURCE.CreateDefaultData;
+import SOURCE.HospitalDirectory;
 import UI.Admin.AdminWorkArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,8 +24,17 @@ public class LoginScreen extends javax.swing.JFrame {
     /**
      * Creates new form LoginScreen
      */
+    public static HospitalDirectory HospitalDirectory = new HospitalDirectory();
+    private static boolean create = true;
+    
     public LoginScreen() {
         initComponents();
+        CreateDefaultData.createData();
+        setLocationRelativeTo(null);
+        if (create) {
+            CreateDefaultData.createData();
+            create = false; 
+        }
     }
 
     /**
@@ -103,7 +114,7 @@ public class LoginScreen extends javax.swing.JFrame {
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("PASSWORD :");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(462, 160, 80, 25);
+        lblPassword.setBounds(462, 160, 80, 17);
 
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUser.setText("USERNAME :");
@@ -122,7 +133,10 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(580, 210, 84, 31);
+        btnLogin.setBounds(580, 210, 72, 23);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/rishikagurram/Downloads/plasma login (1).jpeg")); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 599));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 

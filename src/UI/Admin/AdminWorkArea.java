@@ -32,6 +32,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
         btnPlasmaCenter = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnEmployees = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -43,7 +44,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnStock);
-        btnStock.setBounds(540, 300, 170, 40);
+        btnStock.setBounds(540, 280, 170, 40);
 
         btnUsers.setText("USERS");
         btnUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +53,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUsers);
-        btnUsers.setBounds(540, 140, 160, 40);
+        btnUsers.setBounds(540, 120, 160, 40);
 
         btnHospital.setText("HOSPITALS");
         btnHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +62,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHospital);
-        btnHospital.setBounds(160, 300, 180, 40);
+        btnHospital.setBounds(160, 270, 180, 40);
 
         btnPlasmaCenter.setText("PLASMA CENTERS");
         btnPlasmaCenter.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +71,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPlasmaCenter);
-        btnPlasmaCenter.setBounds(150, 140, 190, 40);
+        btnPlasmaCenter.setBounds(160, 130, 190, 40);
 
         lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 36)); // NOI18N
         lblTitle.setText("ADMIN PORTAL");
@@ -84,7 +85,11 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEmployees);
-        btnEmployees.setBounds(160, 450, 180, 40);
+        btnEmployees.setBounds(160, 420, 180, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/rishikagurram/Downloads/Add a heading (1).png")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(2, 0, 800, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,7 +99,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStockActionPerformed
 
     private void btnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsersActionPerformed
-
+       AdminUsers AU= new AdminUsers();
+      AU.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_btnUsersActionPerformed
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
@@ -111,7 +118,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPlasmaCenterActionPerformed
 
     private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
-
+      AdminEmployee AE= new AdminEmployee();
+      AE.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
     /**
@@ -155,6 +164,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnPlasmaCenter;
     private javax.swing.JButton btnStock;
     private javax.swing.JButton btnUsers;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

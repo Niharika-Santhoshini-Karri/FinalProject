@@ -41,7 +41,6 @@ public class AdminPC extends javax.swing.JFrame {
         btnedit = new javax.swing.JButton();
         txthos = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnmod = new javax.swing.JButton();
         txtname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
@@ -55,9 +54,9 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 31);
+        btnBack.setBounds(570, 30, 100, 23);
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(130, 440, 74, 31);
+        txtmobile.setBounds(130, 440, 74, 23);
 
         txtid.setEditable(false);
         txtid.addActionListener(new java.awt.event.ActionListener() {
@@ -66,11 +65,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(130, 280, 74, 31);
+        txtid.setBounds(130, 280, 74, 23);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 320, 70, 25);
+        jLabel1.setBounds(40, 320, 70, 17);
 
         jLabel5.setText("Mobile");
         getContentPane().add(jLabel5);
@@ -115,11 +114,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(50, 230, 87, 31);
+        btnAdd.setBounds(160, 230, 87, 23);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(70, 280, 60, 25);
+        lblSelectOrgType.setBounds(70, 280, 60, 17);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -128,14 +127,14 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(390, 230, 100, 31);
+        btndel.setBounds(390, 230, 100, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(190, 30, 220, 29);
         getContentPane().add(txtaddress);
-        txtaddress.setBounds(130, 360, 74, 31);
+        txtaddress.setBounds(130, 360, 74, 23);
 
         btnedit.setText("UPDATE");
         btnedit.addActionListener(new java.awt.event.ActionListener() {
@@ -144,28 +143,19 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnedit);
-        btnedit.setBounds(270, 230, 100, 31);
+        btnedit.setBounds(270, 230, 100, 23);
         getContentPane().add(txthos);
-        txthos.setBounds(130, 400, 74, 31);
+        txthos.setBounds(130, 400, 74, 23);
 
         jLabel4.setText("Hospital");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 400, 90, 25);
-
-        btnmod.setText("MODIFY");
-        btnmod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmodActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnmod);
-        btnmod.setBounds(160, 230, 100, 31);
+        jLabel4.setBounds(30, 400, 90, 17);
         getContentPane().add(txtname);
-        txtname.setBounds(130, 320, 74, 31);
+        txtname.setBounds(130, 320, 74, 23);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 360, 80, 25);
+        jLabel2.setBounds(30, 360, 80, 17);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,10 +183,6 @@ public class AdminPC extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btneditActionPerformed
-
-    private void btnmodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodActionPerformed
-
-    }//GEN-LAST:event_btnmodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,7 +224,6 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btndel;
     private javax.swing.JButton btnedit;
-    private javax.swing.JButton btnmod;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
