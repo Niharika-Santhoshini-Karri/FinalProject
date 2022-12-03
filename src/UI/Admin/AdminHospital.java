@@ -5,8 +5,6 @@
 package UI.Admin;
 
 import DBUTIL.DBUTIL;
-import SOURCE.Hospital;
-import SOURCE.HospitalDirectory;
 import UI.LoginScreen;
 import java.sql.Connection;
 import java.util.logging.Level;
@@ -15,7 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,13 +25,13 @@ public class AdminHospital extends javax.swing.JFrame {
     /**
      * Creates new form AdminHospital
      */
-    Hospital Hospital;
+   
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-    HospitalDirectory HospitalDirectory;
+    
     public AdminHospital() {
         initComponents();
-        this.HospitalDirectory = LoginScreen.HospitalDirectory;
+        
         populateTable();
     
         
@@ -46,7 +43,9 @@ public class AdminHospital extends javax.swing.JFrame {
          Connection conn = dbconn.getConnection();
         model.setRowCount(0);
         
-         String selectSql = "SELECT hos_id,hospital_name,address,zipcode,mobile from hospital";
+         
+                  String selectSql = "SELECT hos_id,hospital_name,address,zipcode,mobile from hospital";
+
       Statement stmt;
        try {
             stmt = conn.createStatement();
@@ -54,7 +53,7 @@ public class AdminHospital extends javax.swing.JFrame {
             resultSet = stmt.executeQuery(selectSql);
 
              while (resultSet.next()) {
-            for (Hospital h  : HospitalDirectory.gethospitalList()) {
+            
             Object[] row = new Object[5];
             row[0]=resultSet.getInt(1);
             row[1] = resultSet.getString(2);
@@ -64,7 +63,7 @@ public class AdminHospital extends javax.swing.JFrame {
             
             model.addRow(row);
              }
-             }
+             
             
              conn.close();
              
@@ -213,20 +212,19 @@ public class AdminHospital extends javax.swing.JFrame {
         getContentPane().add(txtZipCode);
         txtZipCode.setBounds(350, 420, 74, 23);
 
-        txthos_id.setEditable(false);
         txthos_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txthos_idActionPerformed(evt);
             }
         });
         getContentPane().add(txthos_id);
-        txthos_id.setBounds(330, 280, 140, 30);
+        txthos_id.setBounds(350, 290, 64, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       //int hos_id = Integer.valueOf(txthos_id.getText());
+       int hos_id = Integer.valueOf(txthos_id.getText());
        String hospital_name = txtHospital_name.getText();
        String address = txtAddress.getText();
        Integer zipcode = Integer.valueOf(txtZipCode.getText());
@@ -235,15 +233,15 @@ public class AdminHospital extends javax.swing.JFrame {
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-        String INSERTHOSSQL = "insert into hospital(hos_id,hospital_name,address,zipcode,mobile) values (?,?,?,?,?) ";
-        
+                String INSERTHOSSQL = "insert into hospital(hos_id,hospital_name,address,zipcode,mobile) values (?,?,?,?,?) ";
+
         PreparedStatement stmt; 
         try
         {
             stmt = conn.prepareStatement(INSERTHOSSQL);
        
              
-            //stmt.setInt(1,hos_id); 
+            stmt.setInt(1,hos_id); 
             stmt.setString(2,hospital_name);
             stmt.setString(3,address);
             stmt.setInt(4,zipcode);
@@ -254,7 +252,6 @@ public class AdminHospital extends javax.swing.JFrame {
         {
             Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        LoginScreen.HospitalDirectory.newHospital(txtHospital_name.getText(), txtAddress.getText(),Integer.parseInt(txtZipCode.getText()),txtmobile.getText()) ;
 
            JOptionPane.showMessageDialog(this,"Hospital Added");
 
