@@ -5,8 +5,6 @@
 package UI;
 
 import DBUTIL.DBUTIL;
-import SOURCE.CreateDefaultData;
-import SOURCE.HospitalDirectory;
 import UI.Admin.AdminWorkArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,17 +22,12 @@ public class LoginScreen extends javax.swing.JFrame {
     /**
      * Creates new form LoginScreen
      */
-    public static HospitalDirectory HospitalDirectory = new HospitalDirectory();
-    private static boolean create = true;
+    
+    
     
     public LoginScreen() {
         initComponents();
-        CreateDefaultData.createData();
-        setLocationRelativeTo(null);
-        if (create) {
-            CreateDefaultData.createData();
-            create = false; 
-        }
+       
     }
 
     /**
