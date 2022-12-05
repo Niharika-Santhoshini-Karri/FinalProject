@@ -12,6 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import UI.Hospital.HospitalWorkArea;
+import UI.NGO.NGOWorkArea;
+import UI.DOC.DoctorWorkArea;
 
 /**
  *
@@ -196,7 +199,27 @@ System.out.println("Connected to database !!");
            }
                    if(x==2)
                 {
-                    JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    HospitalWorkArea HWA=new HospitalWorkArea();
+                    
+                    this.dispose();
+                    HWA.setVisible(true);
+                 }
+                   if(x==5)
+                {
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    NGOWorkArea NGO=new NGOWorkArea();
+                    
+                    this.dispose();
+                    NGO.setVisible(true);
+                 }
+                   if(x==4)
+                {
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    DoctorWorkArea NGO=new DoctorWorkArea();
+                    
+                    this.dispose();
+                    NGO.setVisible(true);
                  }
                 }
             }
