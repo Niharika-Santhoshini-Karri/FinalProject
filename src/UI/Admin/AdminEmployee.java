@@ -4,6 +4,15 @@
  */
 package UI.Admin;
 
+import DBUTIL.DBUTIL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rishikagurram
@@ -13,8 +22,13 @@ public class AdminEmployee extends javax.swing.JFrame {
     /**
      * Creates new form AdminEmployee
      */
+    ResultSet resultSet1, resultSet2 = null;
+    DBUTIL dbconn= new DBUTIL();
     public AdminEmployee() {
         initComponents();
+        UpdateComboxes();
+        
+        
     }
 
     /**
@@ -33,43 +47,49 @@ public class AdminEmployee extends javax.swing.JFrame {
         lblEmployeeName = new javax.swing.JLabel();
         ComboHospital = new javax.swing.JComboBox<>();
         lblbank = new javax.swing.JLabel();
-        txtEmployeeName = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         lblOrganizationPicker = new javax.swing.JLabel();
         lblhos = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btndel = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        lblEmployeeName1 = new javax.swing.JLabel();
+        txtEmpID = new javax.swing.JTextField();
+        lblEmployeeName2 = new javax.swing.JLabel();
+        lblEmployeeName3 = new javax.swing.JLabel();
+        txtEmpName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        ComboOrganizationList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboOrganizationList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "Plasma Center" }));
         ComboOrganizationList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboOrganizationListActionPerformed(evt);
             }
         });
         getContentPane().add(ComboOrganizationList);
-        ComboOrganizationList.setBounds(140, 80, 163, 23);
+        ComboOrganizationList.setBounds(350, 80, 163, 31);
 
         tblEmployees.setBackground(new java.awt.Color(204, 255, 204));
         tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ID", "Name", "Organization"
+                "Name", "Organization"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -83,33 +103,36 @@ public class AdminEmployee extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblEmployees);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 130, 346, 140);
+        jScrollPane1.setBounds(90, 130, 680, 140);
 
-        ComboPlasmaCenter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(380, 400, 72, 23);
+        ComboPlasmaCenter.setBounds(520, 430, 72, 31);
 
-        lblEmployeeName.setText("Name:");
+        lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(110, 370, 38, 17);
+        lblEmployeeName.setBounds(220, 480, 110, 25);
 
-        ComboHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboHospitalActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboHospital);
-        ComboHospital.setBounds(160, 400, 72, 23);
+        ComboHospital.setBounds(200, 430, 72, 31);
 
         lblbank.setText("Plasma Center");
         getContentPane().add(lblbank);
-        lblbank.setBounds(280, 400, 85, 17);
-        getContentPane().add(txtEmployeeName);
-        txtEmployeeName.setBounds(160, 370, 201, 23);
+        lblbank.setBounds(320, 430, 150, 25);
+        getContentPane().add(txtUsername);
+        txtUsername.setBounds(400, 480, 360, 31);
 
         lblOrganizationPicker.setText(" Organization:");
         getContentPane().add(lblOrganizationPicker);
-        lblOrganizationPicker.setBounds(40, 80, 80, 17);
+        lblOrganizationPicker.setBounds(160, 80, 130, 25);
 
         lblhos.setText("Hospital");
         getContentPane().add(lblhos);
-        lblhos.setBounds(100, 400, 48, 17);
+        lblhos.setBounds(70, 430, 110, 25);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +141,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(500, 20, 100, 23);
+        btnBack.setBounds(790, 50, 100, 31);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +150,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(280, 300, 100, 23);
+        btndel.setBounds(670, 280, 100, 31);
 
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -136,12 +159,30 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(100, 480, 210, 23);
+        btnAdd.setBounds(240, 580, 210, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitle.setText("EMPLOYEE ");
+        lblTitle.setText("EMPLOYEES ");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(170, 20, 220, 29);
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(400, 520, 360, 31);
+
+        lblEmployeeName1.setText("Password :");
+        getContentPane().add(lblEmployeeName1);
+        lblEmployeeName1.setBounds(220, 520, 100, 25);
+        getContentPane().add(txtEmpID);
+        txtEmpID.setBounds(280, 330, 360, 31);
+
+        lblEmployeeName2.setText("Employee ID: ");
+        getContentPane().add(lblEmployeeName2);
+        lblEmployeeName2.setBounds(90, 330, 150, 25);
+
+        lblEmployeeName3.setText("Name:");
+        getContentPane().add(lblEmployeeName3);
+        lblEmployeeName3.setBounds(90, 370, 110, 25);
+        getContentPane().add(txtEmpName);
+        txtEmpName.setBounds(280, 370, 360, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,8 +203,70 @@ public class AdminEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_btndelActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+            String emp_name = txtEmpID.getText(); 
+            int user_id = Integer.valueOf(txtUsername.getText()); 
+            String password = txtPassword.getText(); 
+            
+            int emp_id = Integer.valueOf(txtEmpID.getText());
+            
+            
+            
+            String shos_id = (String) ComboHospital.getSelectedItem();
+            int hos_id = Integer.valueOf(shos_id);
+            
+            String spc_id = (String) ComboPlasmaCenter.getSelectedItem();
+            int pc_id = Integer.valueOf(spc_id);
+            
+            
+            int x = 2; 
+            //validate username and password
+            Connection conn = dbconn.getConnection();
+        //do validation here.
+        //check if the id already exists
+     String INSERLOGINSSQL = "insert into logins(user_id, pass_word,role_id) values(?,?,?) ";
+     String INSERTEMPLOYEESQL = "insert into employee(emp_id, hos_id, pc_id,emp_name, user_id) values(?,?,?,?,?)";
 
+        PreparedStatement stmt1, stmt2; 
+        try
+        {
+            stmt1 = conn.prepareStatement(INSERLOGINSSQL);
+            stmt2 = conn.prepareStatement(INSERTEMPLOYEESQL);
+            
+            stmt1.setInt(1,user_id); 
+            stmt1.setString(2,password); 
+            stmt1.setInt(3,x);//role_id is set to =2// hospital_admin
+            
+            stmt2.setInt(1,emp_id); 
+            // get hos_id or pc_id from combo box
+            stmt2.setInt(2,hos_id); 
+            stmt2.setInt(3, pc_id);
+            stmt2.setString(4, emp_name);
+            stmt2.setInt(5,user_id);
+            
+            stmt1.executeUpdate(); 
+            stmt2.executeUpdate(); 
+            
+          }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+           JOptionPane.showMessageDialog(this,"Hospital Added");
+
+       
+            
+            
+            
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void ComboHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboHospitalActionPerformed
+        // TODO add your handling code here:
+        
+       // ComboHospital.addItem("abcd");
+        //ComboHospital.addItem("efgh");
+            
+    }//GEN-LAST:event_ComboHospitalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +302,41 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
     }
+    private void UpdateComboxes()
+{
+    
+    Connection conn = dbconn.getConnection();
+        String SELECTSQL1 = "SELECT HOS_ID FROM HOSPITAL";
+        String SELECTSQL2 = "SELECT PC_ID FROM PLASMAC";
+
+        PreparedStatement stmt1,stmt2; 
+        try
+        {
+            stmt1 = conn.prepareStatement(SELECTSQL1);
+            stmt2 = conn.prepareStatement(SELECTSQL2);
+            resultSet1 = stmt1.executeQuery();
+            resultSet2 = stmt2.executeQuery(); 
+            
+            
+            while(resultSet1.next())
+            {
+                ComboHospital.addItem(resultSet1.getString(1));
+            }
+            while(resultSet2.next())
+            {
+                ComboPlasmaCenter.addItem(resultSet2.getString(1));
+            }
+       
+             
+            
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboHospital;
@@ -209,11 +347,17 @@ public class AdminEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btndel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmployeeName;
+    private javax.swing.JLabel lblEmployeeName1;
+    private javax.swing.JLabel lblEmployeeName2;
+    private javax.swing.JLabel lblEmployeeName3;
     private javax.swing.JLabel lblOrganizationPicker;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblbank;
     private javax.swing.JLabel lblhos;
     private javax.swing.JTable tblEmployees;
-    private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JTextField txtEmpID;
+    private javax.swing.JTextField txtEmpName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

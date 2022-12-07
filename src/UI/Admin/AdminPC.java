@@ -4,6 +4,18 @@
  */
 package UI.Admin;
 
+import DBUTIL.DBUTIL;
+import UI.LoginScreen;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Aish
@@ -13,8 +25,11 @@ public class AdminPC extends javax.swing.JFrame {
     /**
      * Creates new form AdminPC
      */
+    ResultSet resultSet = null;
+    DBUTIL dbconn= new DBUTIL();
     public AdminPC() {
         initComponents();
+        populateTable();
     }
 
     /**
@@ -28,21 +43,21 @@ public class AdminPC extends javax.swing.JFrame {
 
         btnBack = new javax.swing.JButton();
         txtmobile = new javax.swing.JTextField();
-        txtid = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrganizations = new javax.swing.JTable();
+        tblPlasma = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         lblSelectOrgType = new javax.swing.JLabel();
-        btndel = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         txtaddress = new javax.swing.JTextField();
-        btnedit = new javax.swing.JButton();
-        txthos = new javax.swing.JTextField();
+        btnUpdate = new javax.swing.JButton();
+        txthos_id = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtname = new javax.swing.JTextField();
+        txtid = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        txtpcname = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -54,29 +69,26 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 23);
-        getContentPane().add(txtmobile);
-        txtmobile.setBounds(130, 440, 74, 23);
+        btnBack.setBounds(570, 30, 100, 31);
 
-        txtid.setEditable(false);
-        txtid.addActionListener(new java.awt.event.ActionListener() {
+        txtmobile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
+                txtmobileActionPerformed(evt);
             }
         });
-        getContentPane().add(txtid);
-        txtid.setBounds(130, 280, 74, 23);
+        getContentPane().add(txtmobile);
+        txtmobile.setBounds(170, 440, 74, 31);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 320, 70, 17);
+        jLabel1.setBounds(40, 320, 70, 25);
 
         jLabel5.setText("Mobile");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(30, 440, 90, 30);
 
-        tblOrganizations.setBackground(new java.awt.Color(204, 255, 204));
-        tblOrganizations.setModel(new javax.swing.table.DefaultTableModel(
+        tblPlasma.setBackground(new java.awt.Color(204, 255, 204));
+        tblPlasma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -84,14 +96,14 @@ public class AdminPC extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Hospital", "Address", "Mobile"
+                "ID", "Name", "Hospital_ID", "Address", "Mobile"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -102,10 +114,15 @@ public class AdminPC extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblOrganizations);
+        tblPlasma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPlasmaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblPlasma);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(42, 89, 480, 120);
+        jScrollPane1.setBounds(42, 89, 680, 130);
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -114,48 +131,56 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(160, 230, 87, 23);
+        btnAdd.setBounds(150, 520, 87, 31);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(70, 280, 60, 17);
+        lblSelectOrgType.setBounds(70, 280, 60, 25);
 
-        btndel.setText("DELETE");
-        btndel.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndelActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btndel);
-        btndel.setBounds(390, 230, 100, 23);
+        getContentPane().add(btnDelete);
+        btnDelete.setBounds(390, 230, 100, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(190, 30, 220, 29);
         getContentPane().add(txtaddress);
-        txtaddress.setBounds(130, 360, 74, 23);
+        txtaddress.setBounds(170, 360, 74, 31);
 
-        btnedit.setText("UPDATE");
-        btnedit.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btneditActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnedit);
-        btnedit.setBounds(270, 230, 100, 23);
-        getContentPane().add(txthos);
-        txthos.setBounds(130, 400, 74, 23);
+        getContentPane().add(btnUpdate);
+        btnUpdate.setBounds(270, 230, 100, 31);
+        getContentPane().add(txthos_id);
+        txthos_id.setBounds(170, 400, 74, 31);
 
-        jLabel4.setText("Hospital");
+        jLabel4.setText("Hospital_ID");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 400, 90, 17);
-        getContentPane().add(txtname);
-        txtname.setBounds(130, 320, 74, 23);
+        jLabel4.setBounds(30, 400, 110, 25);
+
+        txtid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtid);
+        txtid.setBounds(170, 270, 74, 31);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 360, 80, 17);
+        jLabel2.setBounds(30, 360, 80, 25);
+        getContentPane().add(txtpcname);
+        txtpcname.setBounds(170, 320, 74, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,23 +191,181 @@ public class AdminPC extends javax.swing.JFrame {
      frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        int pc_id = Integer.valueOf(txtid.getText());
+       String pc_name = txtid.getText();
+       int hos_id = Integer.valueOf(txthos_id.getText());
+       String address = txtaddress.getText();
+      
+       String mobile = txtmobile.getText();
+       
+        Connection conn = dbconn.getConnection();
+        //do validation here.
+        //check if the id already exists and a valid hospital id laready exists
+                String INSERTPCSQL = "insert into plasmaC(pc_id,pc_name,hospital_id,address,mobile) values (?,?,?,?,?) ";
+
+        PreparedStatement stmt; 
+        try
+        {
+            stmt = conn.prepareStatement(INSERTPCSQL);
+       
+             
+            stmt.setInt(1,pc_id); 
+            stmt.setString(2,pc_name);
+            stmt.setInt(3,hos_id);
+            stmt.setString(4,address);
+            stmt.setString(5,mobile);
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+           JOptionPane.showMessageDialog(this,"New Plasma Center Added");
+
+       populateTable(); 
+   
+  //stop
+        txtid.setText("");
+        txtpcname.setText("");
+         txtaddress.setText("");
+         txthos_id.setText("");
+          txtmobile.setText("");
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+         Connection conn = dbconn.getConnection();
+         int SelectedRowIndex=tblPlasma.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
+        DefaultTableModel model =(DefaultTableModel) tblPlasma.getModel();
+         int hos_id=(int) model.getValueAt(SelectedRowIndex, 0);
+       
+         conn = dbconn.getConnection();
+          String selectSql = "Delete from plasmaC where pc_id=?";
+     PreparedStatement stmt;
+      try {
+             
+             stmt=conn.prepareStatement(selectSql);
+             
+                 stmt.setInt(1, hos_id);
+                                   
+              stmt.executeUpdate();
+          conn.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    
+         
+        JOptionPane.showMessageDialog(this, "Hospital Deleted");
+        populateTable();
+
+    
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        int pc_id = Integer.valueOf(txtid.getText());
+       String pc_name = txtid.getText();
+       int hos_id = Integer.valueOf(txthos_id.getText());
+       String address = txtaddress.getText();
+      
+       String mobile = txtmobile.getText();
+       
+    
+       
+            // validate the text from text boxes 
+       //DBUTIL dbconn= new DBUTIL();
+        Connection conn = dbconn.getConnection();
+        //do validation here.
+        //check if the id already exists
+                String SELECTHOSSQL = "update plasmaC set pc_name=? ,hospital_id =?,address=?,mobile=? where pc_id=? ";
+                PreparedStatement stmt; 
+        try
+        {
+            stmt = conn.prepareStatement(SELECTHOSSQL);
+       
+             
+            stmt.setString(1,pc_name); 
+            stmt.setInt(2,hos_id);
+            stmt.setString(3,address);
+            stmt.setString(4,mobile);
+            stmt.setInt(5,pc_id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int SelectedRowIndex=tblPlasma.getSelectedRow();
+       System.out.println("SelectedRowIndex "+SelectedRowIndex);
+                  if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to Update");
+            
+        return;
+        }
+        // to display in the text boxes          
+        DefaultTableModel tblModel = (DefaultTableModel) tblPlasma.getModel();
+              
+       tblModel.setValueAt(pc_id,tblPlasma.getSelectedRow(), 0);
+       tblModel.setValueAt(pc_name,tblPlasma.getSelectedRow(), 1);
+       tblModel.setValueAt(hos_id,tblPlasma.getSelectedRow(), 2);
+       tblModel.setValueAt(address,tblPlasma.getSelectedRow(), 3);
+       tblModel.setValueAt(mobile,tblPlasma.getSelectedRow(), 4);
+       
+        
+
+  JOptionPane.showMessageDialog(this,"Plasma Center Details updated!!");
+
+       populateTable(); 
+   
+  //stop
+        txtid.setText("");
+        txtpcname.setText("");
+         txtaddress.setText("");
+         txthos_id.setText("");
+          txtmobile.setText("");
+        
+        
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtmobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmobileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmobileActionPerformed
+
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtidActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
+    private void tblPlasmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPlasmaMouseClicked
         // TODO add your handling code here:
+        DefaultTableModel tblModel = (DefaultTableModel) tblPlasma.getModel();
 
-    }//GEN-LAST:event_btndelActionPerformed
+        // set data to textfield when raw is selected
 
-    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
-        // TODO add your handling code here:
+        String id = tblModel.getValueAt(tblPlasma.getSelectedRow(),0).toString();
+        String pc_name = tblModel.getValueAt(tblPlasma.getSelectedRow(),1).toString();
+        String hos_id = tblModel.getValueAt(tblPlasma.getSelectedRow(),2).toString();
+        String address = tblModel.getValueAt(tblPlasma.getSelectedRow(),3).toString();
+        String mobile = tblModel.getValueAt(tblPlasma.getSelectedRow(),4).toString();
+      
+        
 
-    }//GEN-LAST:event_btneditActionPerformed
+        txtid.setText(String.valueOf(id));
+        txtpcname.setText(pc_name);
+        txthos_id.setText(hos_id);
+        txtaddress.setText(address);
+        txtmobile.setText(mobile);
+    }//GEN-LAST:event_tblPlasmaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -222,8 +405,8 @@ public class AdminPC extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btndel;
-    private javax.swing.JButton btnedit;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -231,11 +414,46 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblOrganizations;
+    private javax.swing.JTable tblPlasma;
     private javax.swing.JTextField txtaddress;
-    private javax.swing.JTextField txthos;
+    private javax.swing.JTextField txthos_id;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtmobile;
-    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txtpcname;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblPlasma.getModel();
+         Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+        
+         
+                  String selectSql = "SELECT * from plasmaC";
+
+      Statement stmt;
+       try {
+            stmt = conn.createStatement();
+       
+            resultSet = stmt.executeQuery(selectSql);
+
+             while (resultSet.next()) {
+            
+            Object[] row = new Object[5];
+            row[0]=resultSet.getInt(1);
+            row[1] = resultSet.getString(2);
+            row[2] = resultSet.getInt(3);
+            row[3]=resultSet.getString(4);
+            row[4]=resultSet.getString(5);  
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

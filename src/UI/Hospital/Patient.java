@@ -5,6 +5,7 @@
 package UI.Hospital;
 
 import DBUTIL.DBUTIL;
+import UI.Admin.AdminHospital;
 import UI.LoginScreen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,12 +26,12 @@ public class Patient extends javax.swing.JFrame {
     /**
      * Creates new form Patient
      */
-    ResultSet resultSet = null;
+    ResultSet resultSet, resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
     
     public Patient() {
         initComponents();
-        
+        UpdateComboxdoc_id();
         populateTable();
     }
     
@@ -40,7 +41,8 @@ public class Patient extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-                  String selectSql = "SELECT pat_id,pat_name,bloodgroup,plasmaQtyReq";
+       String selectSql = "SELECT patient_id,patient_name,age, gender, doc_id,address from patients ";
+        
 
       Statement stmt;
        try {
@@ -50,11 +52,13 @@ public class Patient extends javax.swing.JFrame {
 
              while (resultSet.next()) {
             
-            Object[] row = new Object[4];
+            Object[] row = new Object[6];
             row[0]=resultSet.getInt(1);
             row[1] = resultSet.getString(2);
-            row[2] = resultSet.getString(3);
-            row[3]=resultSet.getInt(4);
+            row[2] = resultSet.getInt(3);
+            row[3]=resultSet.getString(4);
+            row[4]=resultSet.getInt(5);
+            row[5]=resultSet.getString(6);
             
             
             model.addRow(row);
@@ -84,15 +88,19 @@ public class Patient extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtpat_name = new javax.swing.JTextField();
         txtpat_id = new javax.swing.JTextField();
-        txtblood = new javax.swing.JTextField();
-        txtplasmareq = new javax.swing.JTextField();
+        txtpat_name = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        Gender = new javax.swing.JLabel();
+        comboxgender = new javax.swing.JComboBox<>();
+        comboxdoc_id = new javax.swing.JComboBox<>();
+        txtage = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        Gender1 = new javax.swing.JLabel();
+        txtaddress = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,15 +109,30 @@ public class Patient extends javax.swing.JFrame {
 
         tblPatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Name", "Blood Group", "Plasma quantity request"
+                "Patient ID", "Name", "Age", "Gender", "Doctor ID", "Address"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblPatient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblPatientMouseClicked(evt);
@@ -121,25 +144,11 @@ public class Patient extends javax.swing.JFrame {
 
         jLabel3.setText("Patient ID");
 
-        jLabel4.setText("Blood group");
+        jLabel4.setText("Age ");
 
-        jLabel5.setText("Plasma Quantity request");
-
-        txtpat_id.addActionListener(new java.awt.event.ActionListener() {
+        txtpat_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpat_idActionPerformed(evt);
-            }
-        });
-
-        txtblood.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbloodActionPerformed(evt);
-            }
-        });
-
-        txtplasmareq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtplasmareqActionPerformed(evt);
+                txtpat_nameActionPerformed(evt);
             }
         });
 
@@ -171,6 +180,26 @@ public class Patient extends javax.swing.JFrame {
             }
         });
 
+        Gender.setText("Address");
+
+        comboxgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", " " }));
+
+        txtage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtageActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Gender");
+
+        Gender1.setText("Doctor");
+
+        txtaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtaddressActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,37 +207,45 @@ public class Patient extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtpat_name, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                    .addComponent(txtpat_id)
-                                    .addComponent(txtblood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtplasmareq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(63, 63, 63)
-                                .addComponent(btnUpdate)
-                                .addGap(43, 43, 43)
-                                .addComponent(btnDelete))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addComponent(btnAdd))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnBack)
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnUpdate)
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addGap(98, 98, 98)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(255, 255, 255))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(Gender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(btnAdd)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(Gender1))
+                                .addGap(52, 52, 52)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtpat_id, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtpat_name, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(comboxgender, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(comboxdoc_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(206, 206, 206)
+                        .addComponent(btnDelete)))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,114 +254,122 @@ public class Patient extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBack))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDelete)
+                            .addComponent(btnUpdate)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtpat_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(txtpat_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(comboxgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(comboxdoc_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Gender1)))
+                            .addComponent(txtage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtpat_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtpat_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtblood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtplasmareq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(Gender)
+                    .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addComponent(btnAdd)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtpat_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpat_idActionPerformed
+    private void txtpat_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpat_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtpat_idActionPerformed
-
-    private void txtbloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbloodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbloodActionPerformed
+    }//GEN-LAST:event_txtpat_nameActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-       int pat_id = Integer.valueOf(txtpat_id.getText());
-       String pat_name = txtpat_name.getText();
-       String bloodgroup = txtblood.getText();
-       int plasmaQtyReq = Integer.valueOf(txtplasmareq.getText());
-    
-       
-            // validate the text from text boxes 
+       //int pat_id = Integer.valueOf(txtpat_name.getText());
+       int SelectedRowIndex=tblPatient.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
+        DefaultTableModel model =(DefaultTableModel) tblPatient.getModel();
+         int pat_id=(int) model.getValueAt(SelectedRowIndex, 0);
+         
+         
+       txtpat_id.setVisible(false);
+       String patient_name = txtpat_name.getText();
+       int age = Integer.valueOf(txtage.getText()); 
+       String gender = (String) comboxgender.getSelectedItem();
+       int doc_id = Integer.valueOf((String)comboxdoc_id.getSelectedItem());
+       String address = txtaddress.getText();
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String SELECTHOSSQL = "update patient set pat_name=? ,bloodgroup =?,plasmaQtyReq=? where pat_id=? ";
-                PreparedStatement stmt; 
+                String UPDATEPATIENTSQL = "update patients set patient_name=?, "
+                        + "age=?, gender=?, doc_id=?, address=? where patient_id =?";
+
+        PreparedStatement stmt; 
+         
         try
         {
-            stmt = conn.prepareStatement(SELECTHOSSQL);
+            stmt = conn.prepareStatement(UPDATEPATIENTSQL);
        
              
-            stmt.setInt(1,pat_id); 
-            stmt.setString(2,pat_name);
-            stmt.setString(3,bloodgroup);
-            stmt.setInt(4,plasmaQtyReq);
+            stmt.setString(1,patient_name); 
+            stmt.setInt(2,age);
+            stmt.setString(3,gender);
+            stmt.setInt(4,doc_id);
+            stmt.setString(5,address); 
+            stmt.setInt(6,pat_id);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
         {
             Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int SelectedRowIndex=tblPatient.getSelectedRow();
-       System.out.println("SelectedRowIndex "+SelectedRowIndex);
-                  if(SelectedRowIndex<0)
-        {
-         JOptionPane.showMessageDialog(this, "Please select a row to Update");
-            
-        return;
-        }
-        // to display in the text boxes          
-        DefaultTableModel tblModel = (DefaultTableModel) tblPatient.getModel();
-              
-       tblModel.setValueAt(pat_id,tblPatient.getSelectedRow(), 0);
-       tblModel.setValueAt(pat_name,tblPatient.getSelectedRow(), 1);
-       tblModel.setValueAt(bloodgroup,tblPatient.getSelectedRow(), 2);
-       tblModel.setValueAt(plasmaQtyReq,tblPatient.getSelectedRow(), 3);
-       
-       
-       
+        
       JOptionPane.showMessageDialog(this,"Patient data Updated");
 
-  txtpat_id.setText("");
   txtpat_name.setText("");
-  txtblood.setText("");
-  txtplasmareq.setText("");
+  txtpat_id.setText("");
+  txtage.setText("");
+  txtaddress.setText("");
+  populateTable();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void txtplasmareqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtplasmareqActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtplasmareqActionPerformed
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-      int pat_id = Integer.valueOf(txtpat_id.getText());
-       String pat_name = txtpat_name.getText();
-       String bloodgroup = txtblood.getText();
-       int plasmaQtyReq = Integer.valueOf(txtplasmareq.getText());
+      int patinet_id = Integer.valueOf(txtpat_id.getText());
+       String patient_name = txtpat_name.getText();
+       int age = Integer.valueOf(txtage.getText()); 
+       String gender = (String) comboxgender.getSelectedItem();
+        
+       int doc_id = Integer.valueOf((String) comboxdoc_id.getSelectedItem());
+       String address = txtaddress.getText();
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String INSERTHOSSQL = "insert into patient(pat_id,pat_name,bloodgroup,plasmaQtyReq) values (?,?,?,?) ";
+                String INSERTHOSSQL = "insert into patients(patient_id,patient_name,"
+                        + "age,gender, doc_id, address) values (?,?,?,?,?,?) ";
 
         PreparedStatement stmt; 
         try
@@ -332,10 +377,13 @@ public class Patient extends javax.swing.JFrame {
             stmt = conn.prepareStatement(INSERTHOSSQL);
        
              
-            stmt.setInt(1,pat_id); 
-            stmt.setString(2,pat_name);
-            stmt.setString(3,bloodgroup);
-            stmt.setInt(4,plasmaQtyReq);
+            stmt.setInt(1,patinet_id); 
+            stmt.setString(2,patient_name);
+            stmt.setInt(3,age);
+            stmt.setString(4,gender);
+            stmt.setInt(5,doc_id);
+            stmt.setString(6,address);
+            
             
             stmt.executeUpdate();
         }
@@ -349,10 +397,11 @@ public class Patient extends javax.swing.JFrame {
        populateTable(); 
    
   //stop
-  txtpat_id.setText("");
   txtpat_name.setText("");
-  txtblood.setText("");
-  txtplasmareq.setText("");
+  txtpat_id.setText("");
+  txtage.setText("");
+  txtaddress.setText("");
+  //populateTable();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
@@ -367,11 +416,11 @@ public class Patient extends javax.swing.JFrame {
         return;
         }
         DefaultTableModel model =(DefaultTableModel) tblPatient.getModel();
-         int id=(int) model.getValueAt(SelectedRowIndex, 0);
+         int pat_id=(int) model.getValueAt(SelectedRowIndex, 0);
        
          conn = dbconn.getConnection();
-         int pat_id = Integer.valueOf(txtpat_id.getText());
-          String selectSql = "Delete from patient where pat_id=?";
+         //int pat_id = Integer.valueOf(txtpat_id.getText());
+          String selectSql = "Delete from patients where patient_id=?";
      PreparedStatement stmt;
       try {
              
@@ -403,21 +452,32 @@ public class Patient extends javax.swing.JFrame {
 
         // set data to textfield when raw is selected
 
-        String pat_id = tblModel.getValueAt(tblPatient.getSelectedRow(),0).toString();
-        String pat_name = tblModel.getValueAt(tblPatient.getSelectedRow(),1).toString();
-        String bloodgroup = tblModel.getValueAt(tblPatient.getSelectedRow(),2).toString();
-        String plasmaQtyReq = tblModel.getValueAt(tblPatient.getSelectedRow(),3).toString();
-        
+        String patient_id = tblModel.getValueAt(tblPatient.getSelectedRow(),0).toString();
+        String patient_name = tblModel.getValueAt(tblPatient.getSelectedRow(),1).toString();
+        String age = tblModel.getValueAt(tblPatient.getSelectedRow(),2).toString();
+        String gender = tblModel.getValueAt(tblPatient.getSelectedRow(),3).toString();
+        String doc_id = tblModel.getValueAt(tblPatient.getSelectedRow(),4).toString();
+        String address = tblModel.getValueAt(tblPatient.getSelectedRow(),5).toString();
       
         
 
-        txtpat_id.setText(String.valueOf(pat_id));
-        txtpat_name.setText(pat_name);
-        txtblood.setText(bloodgroup);
-        txtplasmareq.setText(String.valueOf(plasmaQtyReq));
+        txtpat_id.setText(String.valueOf(patient_id));
+        txtpat_name.setText(patient_name);
+        txtage.setText(age);
+        //comboxgender.
+        //comboxdoc_id.
+        txtaddress.setText(address);
         
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientMouseClicked
+
+    private void txtageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtageActionPerformed
+
+    private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtaddressActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,10 +515,14 @@ public class Patient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Gender;
+    private javax.swing.JLabel Gender1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> comboxdoc_id;
+    private javax.swing.JComboBox<String> comboxgender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -466,9 +530,41 @@ public class Patient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPatient;
-    private javax.swing.JTextField txtblood;
+    private javax.swing.JTextField txtaddress;
+    private javax.swing.JTextField txtage;
     private javax.swing.JTextField txtpat_id;
     private javax.swing.JTextField txtpat_name;
-    private javax.swing.JTextField txtplasmareq;
     // End of variables declaration//GEN-END:variables
+
+    private void UpdateComboxdoc_id() {
+        Connection conn = dbconn.getConnection();
+        String SELECTSQL1 = "select doc_id from doctors where hos_id =?";
+        //String SELECTSQL2 = "SELECT PC_ID FROM PLASMAC";
+        // int hos_id = this.hos_id ; 
+
+        PreparedStatement stmt1,stmt2; 
+        try
+        {
+            stmt1 = conn.prepareStatement(SELECTSQL1);
+            
+            stmt1.setInt(1,1);// later change it to stmt1.setInt(1,hos_id); 
+            
+            resultSet1 = stmt1.executeQuery();
+            
+            
+            
+            while(resultSet1.next())
+            {
+                comboxdoc_id.addItem(resultSet1.getString(1));
+            }
+            
+       
+             
+            
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

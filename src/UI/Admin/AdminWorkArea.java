@@ -27,7 +27,6 @@ public class AdminWorkArea extends javax.swing.JFrame {
     private void initComponents() {
 
         btnStock = new javax.swing.JButton();
-        btnUsers = new javax.swing.JButton();
         btnHospital = new javax.swing.JButton();
         btnPlasmaCenter = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
@@ -44,16 +43,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnStock);
-        btnStock.setBounds(540, 280, 170, 40);
-
-        btnUsers.setText("USERS");
-        btnUsers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsersActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnUsers);
-        btnUsers.setBounds(540, 120, 160, 40);
+        btnStock.setBounds(500, 370, 170, 40);
 
         btnHospital.setText("HOSPITALS");
         btnHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +52,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHospital);
-        btnHospital.setBounds(160, 270, 180, 40);
+        btnHospital.setBounds(170, 370, 180, 40);
 
         btnPlasmaCenter.setText("PLASMA CENTERS");
         btnPlasmaCenter.addActionListener(new java.awt.event.ActionListener() {
@@ -85,9 +75,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEmployees);
-        btnEmployees.setBounds(160, 420, 180, 40);
+        btnEmployees.setBounds(500, 130, 180, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/rishikagurram/Downloads/Add a heading (1).png")); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(2, 0, 800, 550);
 
@@ -97,12 +87,6 @@ public class AdminWorkArea extends javax.swing.JFrame {
     private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
 
     }//GEN-LAST:event_btnStockActionPerformed
-
-    private void btnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsersActionPerformed
-       AdminUsers AU= new AdminUsers();
-      AU.setVisible(true);
-      this.dispose();
-    }//GEN-LAST:event_btnUsersActionPerformed
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
       AdminHospital AH= new AdminHospital();
@@ -163,7 +147,6 @@ public class AdminWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnPlasmaCenter;
     private javax.swing.JButton btnStock;
-    private javax.swing.JButton btnUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables

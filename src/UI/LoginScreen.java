@@ -6,6 +6,7 @@ package UI;
 
 import DBUTIL.DBUTIL;
 import UI.Admin.AdminWorkArea;
+import UI.Hospital.HospitalWorkArea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +26,21 @@ public class LoginScreen extends javax.swing.JFrame {
     /**
      * Creates new form LoginScreen
      */
+    
+    public static int hos_id ; 
+
+    public static int getHos_id() {
+        return hos_id;
+    }
+
+    public static void setHos_id(int hos_id) {
+        LoginScreen.hos_id = hos_id;
+    }
+    public static int pc_id; 
+    public static int doc_id; 
+    public static int ngo_id; 
+    public static int vdon_id; 
+    
     
     
     
@@ -140,7 +156,10 @@ public class LoginScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btndonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndonarActionPerformed
-        // TODO add your handling code here:
+        VDonorRegForm VDR= new VDonorRegForm();
+        this.dispose();
+        VDR.setVisible(true);
+// TODO add your handling code here:
 
     }//GEN-LAST:event_btndonarActionPerformed
 
@@ -171,11 +190,12 @@ public class LoginScreen extends javax.swing.JFrame {
        boolean flag = false; 
        DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
-       ResultSet resultSet1 = null;
+        ResultSet resultSet1, resultSethos = null;
        
 System.out.println("Connected to database !!");
   String selectSql = "SELECT * from logins";
       Statement stmt;
+      PreparedStatement stmthos_id;
         try {
             stmt = conn.createStatement();
        
@@ -200,8 +220,15 @@ System.out.println("Connected to database !!");
                    if(x==2)
                 {
                     //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    String findhos_id = "select hos_id from employee where user_id=?";
+                    int user_id = Integer.valueOf(username);
+                    stmthos_id = conn.prepareStatement(findhos_id); 
+                    stmthos_id.setInt(1, user_id);
+                    resultSethos = stmthos_id.executeQuery();
+                    resultSethos.next();
+                    int thishos_id = Integer.valueOf(resultSethos.getInt(1));
+                    setHos_id(thishos_id);
                     HospitalWorkArea HWA=new HospitalWorkArea();
-                    
                     this.dispose();
                     HWA.setVisible(true);
                  }
@@ -220,6 +247,13 @@ System.out.println("Connected to database !!");
                     
                     this.dispose();
                     NGO.setVisible(true);
+                 }
+                    if(x==7)
+                 {
+                     // now open the vdonor personal page.
+                     JOptionPane.showMessageDialog(this , "NOW OPEN THE VDONOR PAGE");
+                     
+                     
                  }
                 }
             }

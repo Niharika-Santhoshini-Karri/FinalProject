@@ -48,7 +48,7 @@ public class AdminUsers extends javax.swing.JFrame {
 
         lblOrganization.setText("Organization:");
         getContentPane().add(lblOrganization);
-        lblOrganization.setBounds(50, 290, 76, 17);
+        lblOrganization.setBounds(50, 290, 110, 25);
 
         ComboOrganization.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboOrganization.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +57,7 @@ public class AdminUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboOrganization);
-        ComboOrganization.setBounds(150, 290, 146, 23);
+        ComboOrganization.setBounds(150, 290, 146, 31);
 
         tblUsers.setBackground(new java.awt.Color(204, 255, 204));
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
@@ -95,31 +95,31 @@ public class AdminUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboEmployee);
-        ComboEmployee.setBounds(150, 330, 146, 23);
+        ComboEmployee.setBounds(150, 330, 146, 31);
 
         lblEmployee.setText("Employee:");
         getContentPane().add(lblEmployee);
-        lblEmployee.setBounds(60, 330, 62, 17);
+        lblEmployee.setBounds(60, 330, 84, 25);
 
         lblRole.setText("Role:");
         getContentPane().add(lblRole);
-        lblRole.setBounds(90, 370, 30, 17);
+        lblRole.setBounds(90, 370, 40, 25);
 
         txtrole.setEditable(false);
         getContentPane().add(txtrole);
-        txtrole.setBounds(150, 370, 146, 23);
+        txtrole.setBounds(150, 370, 146, 31);
 
         lblUserName.setText("User Name:");
         getContentPane().add(lblUserName);
-        lblUserName.setBounds(50, 410, 69, 17);
+        lblUserName.setBounds(50, 410, 94, 25);
         getContentPane().add(txtUserName);
-        txtUserName.setBounds(150, 410, 146, 23);
+        txtUserName.setBounds(150, 410, 146, 31);
 
         lblPassword.setText("Password:");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(60, 460, 62, 17);
+        lblPassword.setBounds(60, 460, 82, 25);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(150, 460, 146, 23);
+        txtPassword.setBounds(150, 460, 146, 31);
 
         btnAdd.setText("CREATE USER");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +128,7 @@ public class AdminUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(100, 510, 210, 23);
+        btnAdd.setBounds(100, 510, 210, 31);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ public class AdminUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(290, 220, 100, 23);
+        btndel.setBounds(290, 220, 100, 31);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class AdminUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(500, 30, 100, 23);
+        btnBack.setBounds(500, 30, 100, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("USER ");
