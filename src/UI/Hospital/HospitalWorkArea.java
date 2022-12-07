@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+ 
 package UI.Hospital;
+
+import UI.LoginScreen;
 
 /**
  *
@@ -15,6 +18,8 @@ public class HospitalWorkArea extends javax.swing.JFrame {
      */
     public HospitalWorkArea() {
         initComponents();
+        int hos_id = LoginScreen.getHos_id();
+        System.out.println("hos_id="+hos_id);
     }
 
     /**

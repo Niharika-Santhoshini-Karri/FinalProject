@@ -41,7 +41,7 @@ public class Doctor extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-                  String selectSql = "SELECT doc_name,doc_id,contact_doc";
+                  String selectSql = "SELECT doc_id, doc_name, spec, pager_id from doctors";
 
       Statement stmt;
        try {
@@ -51,10 +51,11 @@ public class Doctor extends javax.swing.JFrame {
 
              while (resultSet.next()) {
             
-            Object[] row = new Object[3];
-            row[0]=resultSet.getString(1);
-            row[1] = resultSet.getInt(2);
+            Object[] row = new Object[4];
+            row[0]=resultSet.getInt(1);
+            row[1] = resultSet.getString(2);
             row[2] = resultSet.getString(3);
+            row[3]= resultSet.getInt(4);
         
             
             model.addRow(row);
@@ -81,30 +82,47 @@ public class Doctor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDoctor = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        txtdoc_name = new javax.swing.JTextField();
+        txtdoc_id = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtpager_id = new javax.swing.JTextField();
+        specCombox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Name", "Doctor ID", "Contact"
+                "Doctor ID", "Name", "Specialization", "Pager ID"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblDoctor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDoctorMouseClicked(evt);
@@ -115,24 +133,24 @@ public class Doctor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("ADD DOCTOR");
 
-        jButton1.setText("ADD");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
 
-        jButton2.setText("UPDATE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
-        jButton3.setText("DELETE");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -140,20 +158,30 @@ public class Doctor extends javax.swing.JFrame {
 
         jLabel3.setText("Doctor ID");
 
-        jLabel4.setText("Contact");
+        jLabel4.setText("Specialization");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtdoc_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtdoc_nameActionPerformed(evt);
             }
         });
 
-        jButton4.setText("BACK");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        txtdoc_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                txtdoc_idActionPerformed(evt);
             }
         });
+
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Pager ID ");
+
+        specCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cardiologist", "General Surgeon", "Orthopedician" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,35 +189,37 @@ public class Doctor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(37, 37, 37)
-                .addComponent(jButton3)
+                .addComponent(btnUpdate)
+                .addGap(18, 18, 18)
+                .addComponent(btnDelete)
                 .addGap(205, 205, 205))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jButton4)
-                        .addGap(124, 124, 124)
+                        .addGap(74, 74, 74)
+                        .addComponent(btnBack)
+                        .addGap(136, 136, 136)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
+                        .addGap(173, 173, 173)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtdoc_name)
+                            .addComponent(txtdoc_id)
+                            .addComponent(txtpager_id)
+                            .addComponent(specCombox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jButton1)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                        .addGap(259, 259, 259)
+                        .addComponent(btnAdd))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,45 +227,59 @@ public class Doctor extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(btnBack))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(btnDelete)
+                    .addComponent(btnUpdate))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdoc_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(txtdoc_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addComponent(jButton1)
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(specCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtpager_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdd)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       String doc_name = jTextField1.getText();
-       int doc_id = Integer.valueOf(jTextField2.getText());
-       String contact_doc = jTextField3.getText();
-    
-       
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+       int SelectedRowIndex=tblDoctor.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
+        DefaultTableModel model =(DefaultTableModel) tblDoctor.getModel();
+         int doc_id=(int) model.getValueAt(SelectedRowIndex, 0);
+        String doc_name = txtdoc_name.getText();
+       //int doc_id = Integer.valueOf(txtdoc_id.getText());
+       //String contact_doc = jTextField3.getText();
+       String spec = (String) specCombox.getSelectedItem(); 
+       int pager_id = Integer.valueOf(txtpager_id.getText()); 
+       // int hos_id = this.hos_id ;       
             // validate the text from text boxes 
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String SELECTHOSSQL = "update doctor set doc_name=? ,contact_doc=? where doc_id=? ";
+  String SELECTHOSSQL = "update doctors set doc_name=?, spec=?, pager_id=?  where doc_id =?";
                 PreparedStatement stmt; 
         try
         {
@@ -243,17 +287,19 @@ public class Doctor extends javax.swing.JFrame {
        
              
             stmt.setString(1,doc_name); 
-            stmt.setInt(2,doc_id);
-            stmt.setString(3,contact_doc);
+            //stmt.setInt(2,1);//put hos_id later.
+            stmt.setString(2,spec);
+            //stmt.setString(4, spec);
+            stmt.setInt(3,pager_id);
+            stmt.setInt(4,doc_id);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
         {
             Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        int SelectedRowIndex=tblDoctor.getSelectedRow();
-       System.out.println("SelectedRowIndex "+SelectedRowIndex);
-                  if(SelectedRowIndex<0)
+        
+        if(SelectedRowIndex<0)
         {
          JOptionPane.showMessageDialog(this, "Please select a row to Update");
             
@@ -262,41 +308,46 @@ public class Doctor extends javax.swing.JFrame {
         // to display in the text boxes          
         DefaultTableModel tblModel = (DefaultTableModel) tblDoctor.getModel();
               
-       tblModel.setValueAt(doc_name,tblDoctor.getSelectedRow(), 0);
-       tblModel.setValueAt(doc_id,tblDoctor.getSelectedRow(), 1);
-       tblModel.setValueAt(contact_doc,tblDoctor.getSelectedRow(), 2);
+       tblModel.setValueAt(doc_id,tblDoctor.getSelectedRow(), 0);
+       tblModel.setValueAt(doc_name,tblDoctor.getSelectedRow(), 1);
+       tblModel.setValueAt(spec,tblDoctor.getSelectedRow(), 2);
+       tblModel.setValueAt(pager_id,tblDoctor.getSelectedRow(), 3);
        
        
       JOptionPane.showMessageDialog(this,"Doctor data Updated");
 
-  jTextField1.setText("");
-  jTextField2.setText("");
-  jTextField3.setText("");
+  txtdoc_name.setText("");
+  txtdoc_id.setText("");
+  txtpager_id.setText("");
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
        
-       String doc_name = jTextField1.getText();
-       int doc_id = Integer.valueOf(jTextField2.getText());
-       String contact_doc = jTextField3.getText();
+       String doc_name = txtdoc_name.getText();
+       int doc_id = Integer.valueOf(txtdoc_id.getText());
+       String spec = (String) specCombox.getSelectedItem(); 
+       int pager_id = Integer.valueOf(txtpager_id.getText());
+       
+       
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String INSERTHOSSQL = "insert into doctor(doc_name,doc_id,contact_doc) values (?,?,?) ";
-
+        String INSERTDOCSQL = "insert into doctors(doc_id, hos_id, doc_name, spec, pager_id) values (?,?,?,?,?)";
+        // or handle exceptions here. 
         PreparedStatement stmt; 
         try
         {
-            stmt = conn.prepareStatement(INSERTHOSSQL);
+            stmt = conn.prepareStatement(INSERTDOCSQL);
        
              
-            stmt.setString(1,doc_name); 
-            stmt.setInt(2,doc_id);
-            stmt.setString(3,contact_doc);
-
+            stmt.setInt(1,doc_id); 
+            stmt.setInt(2,1);//put hos_id later.
+            stmt.setString(3,doc_name);
+            stmt.setString(4, spec);
+            stmt.setInt(5,pager_id);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
@@ -310,25 +361,25 @@ public class Doctor extends javax.swing.JFrame {
    
   //stop
   
-  jTextField1.setText("");
-  jTextField2.setText("");
-  jTextField3.setText("");
+  txtdoc_name.setText("");
+  txtdoc_id.setText("");
+  txtpager_id.setText("");
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.hide();
         HospitalWorkArea frame = new HospitalWorkArea();
         frame.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtdoc_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdoc_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtdoc_idActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
     Connection conn = dbconn.getConnection();
          int SelectedRowIndex=tblDoctor.getSelectedRow();
         if(SelectedRowIndex<0)
@@ -338,17 +389,18 @@ public class Doctor extends javax.swing.JFrame {
         return;
         }
         DefaultTableModel model =(DefaultTableModel) tblDoctor.getModel();
-         int id=(int) model.getValueAt(SelectedRowIndex, 1);
+        
+          int doc_id=(int) model.getValueAt(SelectedRowIndex, 0);
        
          conn = dbconn.getConnection();
-         int doc_id = Integer.valueOf(jTextField2.getText());
-          String selectSql = "Delete from doctor where doc_id=?";
+         //int doc_id = Integer.valueOf(txtdoc_id.getText());
+          String selectSql = "Delete from doctors where doc_id=?";
      PreparedStatement stmt;
       try {
              
              stmt=conn.prepareStatement(selectSql);
              
-                 stmt.setInt(2, doc_id);
+                 stmt.setInt(1, doc_id);
                                    
               stmt.executeUpdate();
           conn.close();
@@ -359,27 +411,32 @@ public class Doctor extends javax.swing.JFrame {
          
         JOptionPane.showMessageDialog(this, "Doctor Deleted");
         populateTable();
+        txtdoc_name.setText("");
+        txtdoc_id.setText("");
+        txtpager_id.setText("");
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblDoctorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoctorMouseClicked
     DefaultTableModel tblModel = (DefaultTableModel) tblDoctor.getModel();
+    
+    String doc_id = tblModel.getValueAt(tblDoctor.getSelectedRow(),0).toString();
+    String doc_name = tblModel.getValueAt(tblDoctor.getSelectedRow(),1).toString();
+    String spec = tblModel.getValueAt(tblDoctor.getSelectedRow(),2).toString();
+    String pager_id = tblModel.getValueAt(tblDoctor.getSelectedRow(),3).toString();
+    
+    txtdoc_name.setText(doc_name);
+    txtdoc_id.setText(doc_id);
+    txtpager_id.setText(pager_id); 
 
-        // set data to textfield when raw is selected
-
-        String doc_name = tblModel.getValueAt(tblDoctor.getSelectedRow(),0).toString();
-        String doc_id = tblModel.getValueAt(tblDoctor.getSelectedRow(),1).toString();
-        String contact_doc = tblModel.getValueAt(tblDoctor.getSelectedRow(),2).toString();
-      
-        
-
-        jTextField2.setText(String.valueOf(doc_id));
-        jTextField1.setText(doc_name);
-        jTextField3.setText(contact_doc);
         
         // TODO add your handling code here:
     }//GEN-LAST:event_tblDoctorMouseClicked
+
+    private void txtdoc_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdoc_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdoc_nameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,18 +475,20 @@ public class Doctor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JComboBox<String> specCombox;
     private javax.swing.JTable tblDoctor;
+    private javax.swing.JTextField txtdoc_id;
+    private javax.swing.JTextField txtdoc_name;
+    private javax.swing.JTextField txtpager_id;
     // End of variables declaration//GEN-END:variables
 }

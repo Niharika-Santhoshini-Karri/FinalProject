@@ -104,11 +104,12 @@ public class AdminHospital extends javax.swing.JFrame {
         txtid.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 340, 70, 17);
+        jLabel1.setBounds(230, 340, 70, 25);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("HOSPITALS ");
@@ -117,19 +118,19 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 380, 80, 17);
+        jLabel2.setBounds(220, 380, 80, 25);
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(350, 380, 74, 23);
+        txtAddress.setBounds(350, 380, 74, 31);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(250, 290, 12, 17);
+        lblSelectOrgType.setBounds(250, 290, 18, 25);
 
         jLabel5.setText("Zip Code");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(220, 410, 100, 40);
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(350, 460, 74, 23);
+        txtmobile.setBounds(350, 460, 74, 31);
 
         tblHospital.setBackground(new java.awt.Color(204, 255, 204));
         tblHospital.setModel(new javax.swing.table.DefaultTableModel(
@@ -175,7 +176,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(270, 500, 87, 23);
+        btnAdd.setBounds(270, 500, 87, 31);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +185,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(250, 210, 100, 23);
+        btnUpdate.setBounds(250, 210, 100, 31);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +194,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 210, 100, 23);
+        btnDelete.setBounds(370, 210, 100, 31);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -202,15 +203,15 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 10, 100, 23);
+        btnBack.setBounds(550, 10, 100, 31);
         getContentPane().add(txtHospital_name);
-        txtHospital_name.setBounds(350, 340, 74, 23);
+        txtHospital_name.setBounds(350, 340, 74, 31);
 
         jLabel6.setText("Mobile");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(230, 450, 100, 40);
         getContentPane().add(txtZipCode);
-        txtZipCode.setBounds(350, 420, 74, 23);
+        txtZipCode.setBounds(350, 420, 74, 31);
 
         txthos_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +219,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txthos_id);
-        txthos_id.setBounds(350, 290, 64, 23);
+        txthos_id.setBounds(350, 290, 64, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -246,6 +247,7 @@ public class AdminHospital extends javax.swing.JFrame {
             stmt.setString(3,address);
             stmt.setInt(4,zipcode);
             stmt.setString(5,mobile);
+            
             stmt.executeUpdate();
         }
         catch (SQLException ex)
@@ -268,11 +270,69 @@ public class AdminHospital extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        int hos_id = Integer.valueOf(txthos_id.getText());
+       String hospital_name = txtHospital_name.getText();
+       String address = txtAddress.getText();
+       Integer zipcode = Integer.valueOf(txtZipCode.getText());
+       String mobile = txtmobile.getText();
+    
+       
+            // validate the text from text boxes 
+       //DBUTIL dbconn= new DBUTIL();
+        Connection conn = dbconn.getConnection();
+        //do validation here.
+        //check if the id already exists
+                String SELECTHOSSQL = "update hospital set hospital_name=? ,address =?,zipcode=?,mobile=? where hos_id=? ";
+                PreparedStatement stmt; 
+        try
+        {
+            stmt = conn.prepareStatement(SELECTHOSSQL);
+       
+             
+            stmt.setInt(1,hos_id); 
+            stmt.setString(2,hospital_name);
+            stmt.setString(3,address);
+            stmt.setInt(4,zipcode);
+            stmt.setString(5,mobile);
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int SelectedRowIndex=tblHospital.getSelectedRow();
+       System.out.println("SelectedRowIndex "+SelectedRowIndex);
+                  if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to Update");
+            
+        return;
+        }
+        // to display in the text boxes          
+        DefaultTableModel tblModel = (DefaultTableModel) tblHospital.getModel();
+              
+       tblModel.setValueAt(hos_id,tblHospital.getSelectedRow(), 0);
+       tblModel.setValueAt(hospital_name,tblHospital.getSelectedRow(), 1);
+       tblModel.setValueAt(address,tblHospital.getSelectedRow(), 2);
+       tblModel.setValueAt(zipcode,tblHospital.getSelectedRow(), 3);
+       tblModel.setValueAt(mobile,tblHospital.getSelectedRow(), 4);
+       
+       
+      JOptionPane.showMessageDialog(this,"Hospital data Updated");
+
+  txthos_id.setText("");
+  txtHospital_name.setText("");
+  txtAddress.setText("");
+  txtZipCode.setText("");
+   txtmobile.setText("");
+        
         
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+                                               
         // TODO add your handling code here:
         Connection conn = dbconn.getConnection();
          int SelectedRowIndex=tblHospital.getSelectedRow();
@@ -283,10 +343,9 @@ public class AdminHospital extends javax.swing.JFrame {
         return;
         }
         DefaultTableModel model =(DefaultTableModel) tblHospital.getModel();
-         int id=(int) model.getValueAt(SelectedRowIndex, 0);
+         int hos_id=(int) model.getValueAt(SelectedRowIndex, 0);
        
          conn = dbconn.getConnection();
-         int hos_id = Integer.valueOf(txthos_id.getText());
           String selectSql = "Delete from hospital where hos_id=?";
      PreparedStatement stmt;
       try {
