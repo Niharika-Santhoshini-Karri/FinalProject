@@ -5,12 +5,14 @@
 package UI;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonModel;
 
 /**
  *
@@ -21,10 +23,12 @@ public class VDonorRegForm extends javax.swing.JFrame {
     /**
      * Creates new form VDonorRegForm
      */
+    Validations validations;
     ResultSet resultSet1= null;
     DBUTIL dbconn= new DBUTIL();
     public VDonorRegForm() {
         initComponents();
+        validations = new Validations();
     }
 
     /**
@@ -36,6 +40,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGender = new javax.swing.ButtonGroup();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -47,78 +52,140 @@ public class VDonorRegForm extends javax.swing.JFrame {
         txtAddress = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        combgender = new javax.swing.JComboBox<>();
-        combbg = new javax.swing.JComboBox<>();
+        ComboBlood = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
-        txtPass_word = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
+        valName = new javax.swing.JLabel();
+        valAge = new javax.swing.JLabel();
+        valGender = new javax.swing.JLabel();
+        valPhone = new javax.swing.JLabel();
+        valAddress = new javax.swing.JLabel();
+        valUsername = new javax.swing.JLabel();
+        valPassword = new javax.swing.JLabel();
+        btnMale = new javax.swing.JRadioButton();
+        btnFemale = new javax.swing.JRadioButton();
+        txtPassword = new javax.swing.JPasswordField();
+        valBlood = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(698, 44, 72, 23);
 
         jLabel1.setText("Name");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(50, 90, 34, 17);
 
         jLabel2.setText("Blood Group");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(50, 240, 74, 17);
 
         jLabel3.setText("Address");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(50, 340, 49, 17);
 
-        jLabel4.setText("Password");
+        jLabel4.setText("PASSWORD");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(480, 200, 80, 17);
 
         txtUser_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUser_IDActionPerformed(evt);
             }
         });
+        txtUser_ID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUser_IDKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtUser_ID);
+        txtUser_ID.setBounds(590, 130, 208, 23);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAgeActionPerformed(evt);
             }
         });
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtAge);
+        txtAge.setBounds(170, 120, 112, 23);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtName);
+        txtName.setBounds(170, 90, 112, 23);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAddressActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Gender");
-
-        jLabel6.setText("Age");
-
-        combgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
-
-        combbg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
-        combbg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combbgActionPerformed(evt);
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAddressKeyReleased(evt);
             }
         });
+        getContentPane().add(txtAddress);
+        txtAddress.setBounds(170, 340, 77, 23);
+
+        jLabel5.setText("Gender");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(50, 180, 43, 17);
+
+        jLabel6.setText("Age");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(50, 120, 22, 17);
+
+        ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
+        ComboBlood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBloodActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ComboBlood);
+        ComboBlood.setBounds(170, 240, 72, 23);
 
         jLabel7.setText("Contact");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(50, 280, 45, 20);
 
         jLabel8.setText("USER ID");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(490, 130, 50, 17);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContactActionPerformed(evt);
             }
         });
-
-        txtPass_word.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPass_wordActionPerformed(evt);
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContactKeyReleased(evt);
             }
         });
+        getContentPane().add(txtContact);
+        txtContact.setBounds(170, 280, 77, 20);
 
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -126,100 +193,66 @@ public class VDonorRegForm extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRegister);
+        btnRegister.setBounds(650, 260, 78, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtContact, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(combgender, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(combbg, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRegister)
-                                .addGap(39, 39, 39))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(txtName))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel4))
-                                .addGap(47, 47, 47)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPass_word, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                    .addComponent(txtUser_ID)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBack)))
-                .addGap(61, 61, 61))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(btnBack)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtUser_ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPass_word, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(combgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(combbg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(btnRegister)))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
-        );
+        valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valName);
+        valName.setBounds(300, 90, 180, 20);
+
+        valAge.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valAge);
+        valAge.setBounds(290, 120, 160, 20);
+
+        valGender.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valGender);
+        valGender.setBounds(290, 180, 170, 20);
+
+        valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valPhone);
+        valPhone.setBounds(270, 280, 160, 20);
+
+        valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valAddress);
+        valAddress.setBounds(260, 340, 190, 20);
+
+        valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valUsername);
+        valUsername.setBounds(600, 170, 180, 20);
+
+        valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valPassword);
+        valPassword.setBounds(600, 230, 170, 20);
+
+        btnMale.setText("Male");
+        btnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMale);
+        btnMale.setBounds(150, 180, 51, 21);
+
+        btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFemale);
+        btnFemale.setBounds(220, 180, 65, 21);
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(600, 200, 190, 23);
+
+        valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valBlood);
+        valBlood.setBounds(260, 240, 160, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -244,20 +277,74 @@ public class VDonorRegForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactActionPerformed
 
-    private void txtPass_wordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPass_wordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPass_wordActionPerformed
-
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+        
+        var valid = true;
+        
+         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+            valBlood.setText("Please Select Blood Group");
+            valid = false;
+        }
+        
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+            valid = false;
+        }
+
+
+        if (btnGender.getSelection() == null) {
+            valGender.setText("Gender is required");
+            valid = false;
+        }
+
+       
+
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valPhone.setText("Phone Number is Invalid");
+            valid = false;
+        }
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+            valid = false;
+        }
+
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+            valid = false;
+        }
+
+        if (!this.validations.ValidateUsername(txtUser_ID.getText()) ) {
+            valUsername.setText("Username is Invalid");
+            valid = false;
+        } 
+
+        String pass_word = String.valueOf(txtPassword.getPassword());
+        if (!this.validations.ValidatePassword(pass_word) ) {
+            valPassword.setText("Should be 5-12 character long");
+            valid = false;
+        }
+
+        //
+        if (valid) {
+
+            String gender = null;
+            if (btnMale.isSelected()) {
+                gender = "Male";
+            }
+            else if (btnFemale.isSelected()) {
+                gender = "Female";
+            }
+           
+            
         String name = txtName.getText(); 
         int age = Integer.valueOf(txtAge.getText()); 
-        String gender = (String) combgender.getSelectedItem();
-        String bloodgroup = (String) combbg.getSelectedItem(); 
+        //String gender = btnGender.getSelection();
+        String bloodgroup = (String) ComboBlood.getSelectedItem(); 
         String contact = txtContact.getText();
         String Address = txtAddress.getText();
         int user_id = Integer.valueOf(txtUser_ID.getText()); 
-        String pass_word = txtPass_word.getText();
+        //String pass_word = txtPassword.getText();
         
         String countDonors = "select count(*) from vdonor";
         
@@ -317,13 +404,101 @@ public class VDonorRegForm extends javax.swing.JFrame {
         
         
         
-        
-        
+      setTextNull();
+      setValidationNull();  
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void combbgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combbgActionPerformed
+    private void ComboBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBloodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combbgActionPerformed
+        Object blood_group = ComboBlood.getSelectedItem();
+        
+
+        if (blood_group == null || blood_group.toString().equals("")) {
+            valBlood.setText("Please Select Blood Group");
+            ComboBlood.removeAllItems();
+            valBlood.setText(null);
+        } else {
+            ComboBlood.setSelectedItem("");
+        }
+    }//GEN-LAST:event_ComboBloodActionPerformed
+
+    private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
+        valGender.setText(null);
+    }//GEN-LAST:event_btnMaleActionPerformed
+
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+        valGender.setText(null);
+    }//GEN-LAST:event_btnFemaleActionPerformed
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+         if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+        }
+        else {
+            valName.setText(null);
+        }
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+        }
+        else {
+            valAge.setText(null);
+        }
+    }//GEN-LAST:event_txtAgeKeyReleased
+
+    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
+        // TODO add your handling code here:
+                if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valPhone.setText("Phone Number is Invalid");
+        }
+        else {
+            valPhone.setText(null);
+        }
+    }//GEN-LAST:event_txtContactKeyReleased
+
+    private void txtUser_IDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUser_IDKeyReleased
+        // TODO add your handling code here:
+         if (!this.validations.ValidateUsername(txtUser_ID.getText()) ) {
+            valUsername.setText("Username is Invalid");
+         }
+
+        else {
+            valUsername.setText(null);
+         }
+    }//GEN-LAST:event_txtUser_IDKeyReleased
+
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+        // TODO add your handling code here:
+        String password = String.valueOf(txtPassword.getPassword());
+        if (!this.validations.ValidatePassword(password) ) {
+            valPassword.setText("Should be 5-12 character long");
+        } else {
+            valPassword.setText(null);
+        }
+    }//GEN-LAST:event_txtPasswordKeyReleased
+
+    private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+         }
+
+        else {
+            valAddress.setText(null);
+         }
+    }//GEN-LAST:event_txtAddressKeyReleased
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+        LoginScreen frame = new LoginScreen();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,12 +535,38 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void setTextNull() {
+        
+        btnGender.clearSelection();
+        txtName.setText(null);
+        txtAge.setText(null);
+        txtContact.setText(null);
+        txtUser_ID.setText(null);
+        txtPassword.setText(null);
+        txtAddress.setText(null);
+        
+    }
+    
+    private void setValidationNull() {
+        
+        valName.setText(null);
+        valAddress.setText(null);
+        valAge.setText(null);
+        valGender.setText(null);
+        valPhone.setText(null);
+        valUsername.setText(null);
+        valPassword.setText(null);
+     
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBlood;
     private javax.swing.JButton btnBack;
+    private javax.swing.JRadioButton btnFemale;
+    private javax.swing.ButtonGroup btnGender;
+    private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JComboBox<String> combbg;
-    private javax.swing.JComboBox<String> combgender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -378,7 +579,15 @@ public class VDonorRegForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPass_word;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser_ID;
+    private javax.swing.JLabel valAddress;
+    private javax.swing.JLabel valAge;
+    private javax.swing.JLabel valBlood;
+    private javax.swing.JLabel valGender;
+    private javax.swing.JLabel valName;
+    private javax.swing.JLabel valPassword;
+    private javax.swing.JLabel valPhone;
+    private javax.swing.JLabel valUsername;
     // End of variables declaration//GEN-END:variables
 }

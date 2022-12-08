@@ -5,6 +5,7 @@
 package UI;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.Admin.AdminWorkArea;
 import UI.Hospital.HospitalWorkArea;
 import java.sql.Connection;
@@ -24,11 +25,11 @@ import VDONOR.VDonorWA;
  * @author rishikagurram
  */
 public class LoginScreen extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form LoginScreen
      */
-    
+    Validations validations;
     public static int hos_id ; 
 
     public static int getHos_id() {
@@ -57,7 +58,7 @@ public class LoginScreen extends javax.swing.JFrame {
     
     public LoginScreen() {
         initComponents();
-       
+        validations = new Validations();
     }
 
     /**
@@ -69,6 +70,8 @@ public class LoginScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        valPassword = new javax.swing.JLabel();
+        valUsername = new javax.swing.JLabel();
         btndonar = new javax.swing.JButton();
         btnngo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -84,6 +87,10 @@ public class LoginScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+        getContentPane().add(valPassword);
+        valPassword.setBounds(490, 230, 230, 20);
+        getContentPane().add(valUsername);
+        valUsername.setBounds(500, 150, 230, 20);
 
         btndonar.setText("Donor Registration");
         btndonar.addActionListener(new java.awt.event.ActionListener() {
@@ -129,15 +136,27 @@ public class LoginScreen extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(20, 440, 160, 40);
+
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUserNameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtUserName);
         txtUserName.setBounds(560, 100, 118, 30);
+
+        pwdField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                pwdFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(pwdField);
-        pwdField.setBounds(560, 150, 120, 30);
+        pwdField.setBounds(560, 180, 120, 30);
 
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("PASSWORD :");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(462, 160, 80, 17);
+        lblPassword.setBounds(460, 190, 80, 17);
 
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUser.setText("USERNAME :");
@@ -147,7 +166,7 @@ public class LoginScreen extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("American Typewriter", 0, 24)); // NOI18N
         lblTitle.setText("PlasMain - The Plasma Managery");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(210, 0, 439, 57);
+        lblTitle.setBounds(200, 0, 439, 57);
 
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -156,9 +175,8 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(580, 210, 72, 23);
+        btnLogin.setBounds(580, 260, 72, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/rishikagurram/Downloads/plasma login (1).jpeg")); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 599));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
@@ -175,7 +193,9 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btndonarActionPerformed
 
     private void btnngoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnngoActionPerformed
-
+       NgoRegisterJFrame NGO= new NgoRegisterJFrame();
+        this.dispose();
+        NGO.setVisible(true);
     }//GEN-LAST:event_btnngoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -194,7 +214,9 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-       String username = txtUserName.getText(); 
+        
+        
+        String username = txtUserName.getText(); 
        char[] passwordCharArray = pwdField.getPassword();
        String password = String.valueOf(passwordCharArray);
        //flag to track if the password given is true or false
@@ -287,9 +309,10 @@ System.out.println("Connected to database !!");
                  }
                 }
             }
+         
             if(flag==false)
             {
-                JOptionPane.showMessageDialog(this , "invalid username password");
+                JOptionPane.showMessageDialog(this , "Please check Username and Password");
             }
         }catch (SQLException ex) {
               System.out.println(ex.getMessage());
@@ -305,6 +328,27 @@ System.out.println("Connected to database !!");
          
 
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtUserNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyReleased
+        // TODO add your handling code here:
+          if (!this.validations.ValidateUsername(txtUserName.getText()) ) {
+            valUsername.setText("Username is Invalid");
+         }
+
+        else {
+            valUsername.setText(null);
+         }
+    }//GEN-LAST:event_txtUserNameKeyReleased
+
+    private void pwdFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwdFieldKeyReleased
+        // TODO add your handling code here:
+        String password = String.valueOf(pwdField.getPassword());
+        if (!this.validations.ValidatePassword(password) ) {
+            valPassword.setText("Should be 5-12 character long");
+        } else {
+            valPassword.setText(null);
+        }
+    }//GEN-LAST:event_pwdFieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -355,5 +399,7 @@ System.out.println("Connected to database !!");
     private javax.swing.JLabel lblUser;
     private javax.swing.JPasswordField pwdField;
     private javax.swing.JTextField txtUserName;
+    private javax.swing.JLabel valPassword;
+    private javax.swing.JLabel valUsername;
     // End of variables declaration//GEN-END:variables
 }
