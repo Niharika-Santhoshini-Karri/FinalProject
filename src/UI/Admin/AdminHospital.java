@@ -254,6 +254,35 @@ public class AdminHospital extends javax.swing.JFrame {
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
+                
+        if(txthos_id.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid hospital id");
+           return;
+        }
+        if(txtHospital_name.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid hospital Name");
+            return;
+        }
+
+        if(txtAddress.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter address");
+            return;
+        }
+        if(!txtZipCode.getText().matches("\\d+")){
+
+            JOptionPane.showMessageDialog(this, "enter a valid zipcode");
+            return;
+
+        }
+            if(!txtmobile.getText().matches("\\d+")){
+
+            JOptionPane.showMessageDialog(this, "enter a valid 10 digit contact number");
+            return;
+
+        }
         //check if the id already exists
                 String INSERTHOSSQL = "insert into hospital(hos_id,hospital_name,address,zipcode,mobile) values (?,?,?,?,?) ";
 

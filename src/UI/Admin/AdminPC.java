@@ -223,6 +223,28 @@ public class AdminPC extends javax.swing.JFrame {
        
         Connection conn = dbconn.getConnection();
         //do validation here.
+        if(txtid.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid");
+           return;
+        }
+        if(txthos_id.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid hospital ID");
+            return;
+        }
+
+        if(txtaddress.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter address");
+            return;
+        }
+        if(!txtmobile.getText().matches("\\d+")){
+
+            JOptionPane.showMessageDialog(this, "enter a valid 10 digit contact number");
+            return;
+
+        }
         //check if the id already exists and a valid hospital id laready exists
                 String INSERTPCSQL = "insert into plasmaC(pc_id,pc_name,hospital_id,address,mobile) values (?,?,?,?,?) ";
 

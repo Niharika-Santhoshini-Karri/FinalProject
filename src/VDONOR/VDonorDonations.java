@@ -28,7 +28,6 @@ public class VDonorDonations extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        datePicker = new com.github.lgooddatepicker.components.DatePicker();
         btn_create = new javax.swing.JButton();
         txtpc_name = new javax.swing.JTextField();
         txtCommunity1 = new javax.swing.JTextField();
@@ -67,8 +66,6 @@ public class VDonorDonations extends javax.swing.JPanel {
 
         add(jScrollPane1);
         jScrollPane1.setBounds(70, 50, 452, 200);
-        add(datePicker);
-        datePicker.setBounds(280, 450, 190, 30);
 
         btn_create.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btn_create.setText("CREATE APPOINTMENT");
@@ -82,21 +79,21 @@ public class VDonorDonations extends javax.swing.JPanel {
 
         txtpc_name.setEditable(false);
         add(txtpc_name);
-        txtpc_name.setBounds(280, 370, 207, 23);
+        txtpc_name.setBounds(280, 370, 207, 22);
 
         txtCommunity1.setEditable(false);
         add(txtCommunity1);
-        txtCommunity1.setBounds(280, 290, 207, 23);
+        txtCommunity1.setBounds(280, 290, 207, 22);
 
         lblpc_name.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lblpc_name.setText("PLASMA CENTER NAME");
         add(lblpc_name);
-        lblpc_name.setBounds(70, 370, 200, 18);
+        lblpc_name.setBounds(70, 370, 200, 19);
 
         lblpc_id1.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lblpc_id1.setText("PLASMA CENTER ID");
         add(lblpc_id1);
-        lblpc_id1.setBounds(80, 290, 170, 18);
+        lblpc_id1.setBounds(80, 290, 170, 19);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
@@ -107,7 +104,6 @@ public class VDonorDonations extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_create;
-    private com.github.lgooddatepicker.components.DatePicker datePicker;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblpc_id1;
