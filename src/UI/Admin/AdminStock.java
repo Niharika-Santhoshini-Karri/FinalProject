@@ -4,6 +4,9 @@
  */
 package UI.Admin;
 
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rishikagurram
@@ -13,8 +16,12 @@ public class AdminStock extends javax.swing.JFrame {
     /**
      * Creates new form AdminStock
      */
+     Vector originalTableModel;
+     
     public AdminStock() {
         initComponents();
+       originalTableModel = (Vector) ((DefaultTableModel) tblStock.getModel()).getDataVector().clone();
+       populateTable();
     }
 
     /**
@@ -26,21 +33,93 @@ public class AdminStock extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblStock = new javax.swing.JTable();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        lblTitle = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 499, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        tblStock.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Plasma Center", "Blood Group", "Quantity"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblStock);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(21, 207, 623, 227);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(80, 120, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(160, 120, 430, 30);
+
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitle.setText("ANALYSE STOCK");
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(80, 30, 310, 29);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblStock.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -78,5 +157,14 @@ public class AdminStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblStock;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        
+    }
 }

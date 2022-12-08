@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,11 +26,13 @@ public class AdminPC extends javax.swing.JFrame {
     /**
      * Creates new form AdminPC
      */
+    Vector originalTableModel;
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
     public AdminPC() {
         initComponents();
         populateTable();
+        originalTableModel = (Vector) ((DefaultTableModel) tblPlasma.getModel()).getDataVector().clone();
     }
 
     /**
@@ -58,6 +61,8 @@ public class AdminPC extends javax.swing.JFrame {
         txtid = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtpcname = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -69,7 +74,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 31);
+        btnBack.setBounds(570, 30, 100, 23);
 
         txtmobile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,17 +82,16 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(170, 440, 74, 31);
+        txtmobile.setBounds(180, 490, 74, 23);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 320, 70, 25);
+        jLabel1.setBounds(50, 370, 70, 17);
 
         jLabel5.setText("Mobile");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 440, 90, 30);
+        jLabel5.setBounds(40, 490, 90, 30);
 
-        tblPlasma.setBackground(new java.awt.Color(204, 255, 204));
         tblPlasma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -122,7 +126,7 @@ public class AdminPC extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblPlasma);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(42, 89, 680, 130);
+        jScrollPane1.setBounds(50, 140, 680, 130);
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -131,11 +135,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(150, 520, 87, 31);
+        btnAdd.setBounds(160, 570, 87, 23);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(70, 280, 60, 25);
+        lblSelectOrgType.setBounds(80, 330, 60, 17);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -144,14 +148,14 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(390, 230, 100, 31);
+        btnDelete.setBounds(400, 280, 100, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(190, 30, 220, 29);
         getContentPane().add(txtaddress);
-        txtaddress.setBounds(170, 360, 74, 31);
+        txtaddress.setBounds(180, 410, 74, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -160,13 +164,13 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(270, 230, 100, 31);
+        btnUpdate.setBounds(280, 280, 100, 23);
         getContentPane().add(txthos_id);
-        txthos_id.setBounds(170, 400, 74, 31);
+        txthos_id.setBounds(180, 450, 74, 23);
 
         jLabel4.setText("Hospital_ID");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 400, 110, 25);
+        jLabel4.setBounds(40, 450, 110, 17);
 
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,13 +178,31 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(170, 270, 74, 31);
+        txtid.setBounds(180, 320, 74, 23);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 360, 80, 25);
+        jLabel2.setBounds(40, 410, 80, 17);
         getContentPane().add(txtpcname);
-        txtpcname.setBounds(170, 320, 74, 31);
+        txtpcname.setBounds(180, 370, 74, 23);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(70, 80, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(150, 80, 430, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -367,6 +389,28 @@ public class AdminPC extends javax.swing.JFrame {
         txtmobile.setText(mobile);
     }//GEN-LAST:event_tblPlasmaMouseClicked
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblPlasma.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -412,9 +456,11 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblPlasma;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txthos_id;
     private javax.swing.JTextField txtid;
