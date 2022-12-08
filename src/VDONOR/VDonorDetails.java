@@ -5,6 +5,7 @@
 package VDONOR;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.VDonorRegForm;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,9 +23,11 @@ public class VDonorDetails extends javax.swing.JPanel {
     /**
      * Creates new form VDonorDetails
      */
+    Validations validations;
     DBUTIL dbconn= new DBUTIL();
     public VDonorDetails() {
         initComponents();
+        validations = new Validations();
     }
 
     /**
@@ -36,21 +39,29 @@ public class VDonorDetails extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGender = new javax.swing.ButtonGroup();
         btnUpdate = new javax.swing.JButton();
-        combgender = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtAge = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        combbg = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtContact = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        txtName = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        btnMale = new javax.swing.JRadioButton();
+        btnFemale = new javax.swing.JRadioButton();
+        ComboBlood = new javax.swing.JComboBox<>();
+        txtContact = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
+        valName = new javax.swing.JLabel();
+        valAge = new javax.swing.JLabel();
+        valGender = new javax.swing.JLabel();
+        valBlood = new javax.swing.JLabel();
+        valPhone = new javax.swing.JLabel();
+        valAddress = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -63,33 +74,13 @@ public class VDonorDetails extends javax.swing.JPanel {
         add(btnUpdate);
         btnUpdate.setBounds(220, 340, 87, 23);
 
-        combgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
-        add(combgender);
-        combgender.setBounds(240, 130, 77, 23);
-
         jLabel1.setText("Name");
         add(jLabel1);
         jLabel1.setBounds(110, 40, 34, 17);
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        add(txtName);
-        txtName.setBounds(240, 40, 112, 23);
-
         jLabel6.setText("Age");
         add(jLabel6);
         jLabel6.setBounds(110, 70, 22, 17);
-
-        txtAge.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAgeActionPerformed(evt);
-            }
-        });
-        add(txtAge);
-        txtAge.setBounds(240, 70, 112, 23);
 
         jLabel5.setText("Gender");
         add(jLabel5);
@@ -99,38 +90,13 @@ public class VDonorDetails extends javax.swing.JPanel {
         add(jLabel2);
         jLabel2.setBounds(110, 190, 74, 17);
 
-        combbg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
-        combbg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combbgActionPerformed(evt);
-            }
-        });
-        add(combbg);
-        combbg.setBounds(240, 190, 72, 23);
-
         jLabel3.setText("Address");
         add(jLabel3);
-        jLabel3.setBounds(110, 250, 49, 17);
-
-        txtAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressActionPerformed(evt);
-            }
-        });
-        add(txtAddress);
-        txtAddress.setBounds(240, 250, 77, 23);
+        jLabel3.setBounds(120, 240, 49, 17);
 
         jLabel7.setText("Contact");
         add(jLabel7);
         jLabel7.setBounds(110, 280, 45, 17);
-
-        txtContact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContactActionPerformed(evt);
-            }
-        });
-        add(txtContact);
-        txtContact.setBounds(240, 280, 77, 23);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,13 +128,164 @@ public class VDonorDetails extends javax.swing.JPanel {
 
         add(jScrollPane1);
         jScrollPane1.setBounds(40, 390, 452, 200);
+
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
+        add(txtName);
+        txtName.setBounds(180, 40, 112, 23);
+
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
+        });
+        add(txtAge);
+        txtAge.setBounds(180, 80, 112, 23);
+
+        btnGender.add(btnMale);
+        btnMale.setText("Male");
+        btnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleActionPerformed(evt);
+            }
+        });
+        add(btnMale);
+        btnMale.setBounds(180, 130, 51, 21);
+
+        btnGender.add(btnFemale);
+        btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
+        add(btnFemale);
+        btnFemale.setBounds(250, 130, 65, 21);
+
+        ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
+        ComboBlood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBloodActionPerformed(evt);
+            }
+        });
+        add(ComboBlood);
+        ComboBlood.setBounds(200, 190, 72, 23);
+
+        txtContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContactActionPerformed(evt);
+            }
+        });
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContactKeyReleased(evt);
+            }
+        });
+        add(txtContact);
+        txtContact.setBounds(200, 240, 77, 20);
+
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAddressKeyReleased(evt);
+            }
+        });
+        add(txtAddress);
+        txtAddress.setBounds(200, 280, 77, 23);
+
+        valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        add(valName);
+        valName.setBounds(330, 40, 180, 20);
+
+        valAge.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        add(valAge);
+        valAge.setBounds(320, 70, 160, 20);
+
+        valGender.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        add(valGender);
+        valGender.setBounds(320, 130, 170, 20);
+
+        valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        add(valBlood);
+        valBlood.setBounds(290, 190, 160, 20);
+
+        valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        add(valPhone);
+        valPhone.setBounds(300, 230, 160, 20);
+
+        valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        add(valAddress);
+        valAddress.setBounds(290, 290, 190, 20);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-            String name = txtName.getText(); 
+        var valid = true;
+        
+         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+            valBlood.setText("Please Select Blood Group");
+            valid = false;
+        }
+        
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+            valid = false;
+        }
+
+
+        if (btnGender.getSelection() == null) {
+            valGender.setText("Gender is required");
+            valid = false;
+        }
+
+       
+
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valPhone.setText("Phone Number is Invalid");
+            valid = false;
+        }
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+            valid = false;
+        }
+
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+            valid = false;
+        }
+
+
+        //
+        if (valid) {
+
+            String gender = null;
+            if (btnMale.isSelected()) {
+                gender = "Male";
+            }
+            else if (btnFemale.isSelected()) {
+                gender = "Female";
+            }
+            
+        String name = txtName.getText(); 
         int age = Integer.valueOf(txtAge.getText()); 
-        String gender = (String) combgender.getSelectedItem();
-        String bloodgroup = (String) combbg.getSelectedItem(); 
+        //String gender = (String) combgender.getSelectedItem();
+        String bloodgroup = (String) ComboBlood.getSelectedItem(); 
         String contact = txtContact.getText();
         String Address = txtAddress.getText();
         
@@ -211,34 +328,94 @@ public class VDonorDetails extends javax.swing.JPanel {
    
   //stop
 
-       
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+        }
+        else {
+            valName.setText(null);
+        }
+    }//GEN-LAST:event_txtNameKeyReleased
+
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAgeActionPerformed
 
-    private void combbgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combbgActionPerformed
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_combbgActionPerformed
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+        }
+        else {
+            valAge.setText(null);
+        }
+    }//GEN-LAST:event_txtAgeKeyReleased
 
-    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+    private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
+        valGender.setText(null);
+    }//GEN-LAST:event_btnMaleActionPerformed
+
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+        valGender.setText(null);
+    }//GEN-LAST:event_btnFemaleActionPerformed
+
+    private void ComboBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBloodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddressActionPerformed
+        Object blood_group = ComboBlood.getSelectedItem();
+
+        if (blood_group == null || blood_group.toString().equals("")) {
+            valBlood.setText("Please Select Blood Group");
+            ComboBlood.removeAllItems();
+            valBlood.setText(null);
+        } else {
+            ComboBlood.setSelectedItem("");
+        }
+    }//GEN-LAST:event_ComboBloodActionPerformed
 
     private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactActionPerformed
 
+    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valPhone.setText("Phone Number is Invalid");
+        }
+        else {
+            valPhone.setText(null);
+        }
+    }//GEN-LAST:event_txtContactKeyReleased
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+        }
+
+        else {
+            valAddress.setText(null);
+        }
+    }//GEN-LAST:event_txtAddressKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBlood;
+    private javax.swing.JRadioButton btnFemale;
+    private javax.swing.ButtonGroup btnGender;
+    private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> combbg;
-    private javax.swing.JComboBox<String> combgender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -251,5 +428,11 @@ public class VDonorDetails extends javax.swing.JPanel {
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtName;
+    private javax.swing.JLabel valAddress;
+    private javax.swing.JLabel valAge;
+    private javax.swing.JLabel valBlood;
+    private javax.swing.JLabel valGender;
+    private javax.swing.JLabel valName;
+    private javax.swing.JLabel valPhone;
     // End of variables declaration//GEN-END:variables
 }

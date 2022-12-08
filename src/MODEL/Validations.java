@@ -78,4 +78,9 @@ public class Validations {
         Matcher match = patt.matcher(value);
         return match.matches();
     }
+    public boolean ValidateQuantity(String value) {
+        String PATTERN = "^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$";
+        return MatchPattern(PATTERN, value);
+    }
+    
 }

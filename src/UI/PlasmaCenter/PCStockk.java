@@ -5,6 +5,7 @@
 package UI.PlasmaCenter;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.Admin.AdminHospital;
 import UI.LoginScreen;
 import java.sql.Connection;
@@ -31,10 +32,12 @@ public class PCStockk extends javax.swing.JFrame {
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
     Vector originalTableModel;
+    Validations validations;
     public PCStockk() {
         initComponents();
         populateTable();
    originalTableModel = (Vector) ((DefaultTableModel) tblStock.getModel()).getDataVector().clone();
+    validations = new Validations();
     }
     
     private void populateTable(){
@@ -98,6 +101,8 @@ public class PCStockk extends javax.swing.JFrame {
         txtStock = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        valQty = new javax.swing.JLabel();
+        valBlood = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -141,6 +146,12 @@ public class PCStockk extends javax.swing.JFrame {
         jLabel5.setText("Quantity Available");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(210, 470, 120, 40);
+
+        txtQty.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtQtyKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtQty);
         txtQty.setBounds(360, 480, 74, 23);
 
@@ -190,6 +201,11 @@ public class PCStockk extends javax.swing.JFrame {
         jScrollPane1.setBounds(40, 160, 660, 92);
 
         ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AB+", "AB-", "O+", "O-", "A+", "A-", "B+", "B-" }));
+        ComboBlood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBloodActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboBlood);
         ComboBlood.setBounds(360, 420, 72, 23);
 
@@ -217,6 +233,14 @@ public class PCStockk extends javax.swing.JFrame {
         getContentPane().add(txtSearch);
         txtSearch.setBounds(170, 100, 430, 30);
 
+        valQty.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valQty);
+        valQty.setBounds(460, 480, 160, 20);
+
+        valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valBlood);
+        valBlood.setBounds(460, 420, 160, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -229,7 +253,19 @@ public class PCStockk extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         // take from text boxes
-       int stock_id = Integer.valueOf(txtStock.getText());
+       var valid = true;
+        
+         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+            valBlood.setText("Please Select Blood Group");
+            valid = false;
+        }
+        
+        if (!this.validations.ValidateName(txtQty.getText()) ) {
+            valQty.setText("Quantity is Invalid");
+            valid = false;
+        }
+        
+        int stock_id = Integer.valueOf(txtStock.getText());
        String blood_group = (String) ComboBlood.getSelectedItem();
        Integer qty = Integer.valueOf(txtQty.getText());
        
@@ -271,6 +307,9 @@ public class PCStockk extends javax.swing.JFrame {
   txtStock.setText("");
   ComboBlood.setSelectedItem("");
   txtQty.setText("");
+  
+   setTextNull();
+            setValidationNull();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -310,7 +349,19 @@ public class PCStockk extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       int stock_id = Integer.valueOf(txtStock.getText());
+       var valid = true;
+        
+         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+            valBlood.setText("Please Select Blood Group");
+            valid = false;
+        }
+        
+        if (!this.validations.ValidateName(txtQty.getText()) ) {
+            valQty.setText("Quantity is Invalid");
+            valid = false;
+        }
+        
+        int stock_id = Integer.valueOf(txtStock.getText());
        String blood_group = (String) ComboBlood.getSelectedItem();
        Integer qty = Integer.valueOf(txtQty.getText());
        
@@ -343,10 +394,8 @@ public class PCStockk extends javax.swing.JFrame {
        populateTable(); 
    
   //stop
-  txtStock.setText("");
-  ComboBlood.setSelectedItem("");
-  txtQty.setText("");
-  
+  setTextNull();
+  setValidationNull();
                
         
 
@@ -366,6 +415,8 @@ public class PCStockk extends javax.swing.JFrame {
         ComboBlood.setSelectedItem(blood_group);
         txtQty.setText(qty);
         
+        
+            setValidationNull();
         
 
     }//GEN-LAST:event_tblStockMouseClicked
@@ -391,6 +442,30 @@ public class PCStockk extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void ComboBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBloodActionPerformed
+        // TODO add your handling code here:
+         Object blood_group = ComboBlood.getSelectedItem();
+        
+
+        if (blood_group == null || blood_group.toString().equals("")) {
+            valQty.setText("Please Select Blood Group");
+            ComboBlood.removeAllItems();
+            valQty.setText(null);
+        } else {
+            ComboBlood.setSelectedItem("");
+        }
+    }//GEN-LAST:event_ComboBloodActionPerformed
+
+    private void txtQtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtyKeyReleased
+        // TODO add your handling code here:
+              if (!this.validations.ValidateQuantity(txtQty.getText()) ) {
+            valQty.setText("Phone Number is Invalid");
+        }
+        else {
+            valQty.setText(null);
+        }
+    }//GEN-LAST:event_txtQtyKeyReleased
 
     /**
      * @param args the command line arguments
@@ -427,6 +502,23 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
     }
+    
+     private void setTextNull() {
+        
+        
+        ComboBlood.setSelectedItem(null);
+        txtQty.setText(null);
+        
+        
+    }
+    
+    private void setValidationNull() {
+        
+        valBlood.setText(null);
+        valQty.setText(null);
+        
+     
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBlood;
@@ -444,5 +536,7 @@ public class PCStockk extends javax.swing.JFrame {
     private javax.swing.JTextField txtQty;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtStock;
+    private javax.swing.JLabel valBlood;
+    private javax.swing.JLabel valQty;
     // End of variables declaration//GEN-END:variables
 }

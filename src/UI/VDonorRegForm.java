@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -225,6 +226,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         getContentPane().add(valPassword);
         valPassword.setBounds(600, 230, 170, 20);
 
+        btnGender.add(btnMale);
         btnMale.setText("Male");
         btnMale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +236,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         getContentPane().add(btnMale);
         btnMale.setBounds(150, 180, 51, 21);
 
+        btnGender.add(btnFemale);
         btnFemale.setText("Female");
         btnFemale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,6 +406,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             Logger.getLogger(VDonorRegForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        JOptionPane.showMessageDialog(this,"Registered Successfully");
         
         
         
