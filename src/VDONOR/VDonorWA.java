@@ -96,25 +96,26 @@ public class VDonorWA extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
+        getContentPane().add(splitPane);
+        splitPane.setBounds(0, 0, 200, 600);
+
         workArea.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(workAreaLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        splitPane.setRightComponent(workArea);
-
-        getContentPane().add(splitPane);
-        splitPane.setBounds(0, 0, 230, 600);
+        getContentPane().add(workArea);
+        workArea.setBounds(200, 0, 540, 600);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(200, 0, 530, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

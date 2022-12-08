@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 import UI.Hospital.HospitalWorkArea;
 import UI.NGO.NGOWorkArea;
 import UI.DOC.DoctorWorkArea;
+import UI.PlasmaCenter.PCWorkArea;
+import VDONOR.VDonorWA;
 
 /**
  *
@@ -37,6 +39,15 @@ public class LoginScreen extends javax.swing.JFrame {
         LoginScreen.hos_id = hos_id;
     }
     public static int pc_id; 
+   
+      public static int getpc_id() {
+        return pc_id;
+    }
+
+    public static void setpc_id(int pc_id) {
+        LoginScreen.pc_id = pc_id;
+    }
+
     public static int doc_id; 
     public static int ngo_id; 
     public static int vdon_id; 
@@ -183,19 +194,20 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String username = txtUserName.getText(); 
+       String username = txtUserName.getText(); 
        char[] passwordCharArray = pwdField.getPassword();
        String password = String.valueOf(passwordCharArray);
        //flag to track if the password given is true or false
        boolean flag = false; 
        DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
-        ResultSet resultSet1, resultSethos = null;
+        ResultSet resultSet1, resultSethos, resultSetpc = null;
        
 System.out.println("Connected to database !!");
   String selectSql = "SELECT * from logins";
       Statement stmt;
       PreparedStatement stmthos_id;
+      PreparedStatement stmtpc_id;
         try {
             stmt = conn.createStatement();
        
@@ -232,6 +244,21 @@ System.out.println("Connected to database !!");
                     this.dispose();
                     HWA.setVisible(true);
                  }
+                   if(x==3)
+                {
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    String findpc_id = "select pc_id from employee where user_id=?";
+                    int user_id = Integer.valueOf(username);
+                    stmtpc_id = conn.prepareStatement(findpc_id); 
+                    stmtpc_id.setInt(1, user_id);
+                    resultSetpc = stmtpc_id.executeQuery();
+                    resultSetpc.next();
+                    int thispc_id = Integer.valueOf(resultSetpc.getInt(1));
+                    setpc_id(thispc_id);
+                    PCWorkArea PCW=new PCWorkArea();
+                    this.dispose();
+                    PCW.setVisible(true);
+                 }
                    if(x==5)
                 {
                     //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
@@ -251,8 +278,11 @@ System.out.println("Connected to database !!");
                     if(x==7)
                  {
                      // now open the vdonor personal page.
-                     JOptionPane.showMessageDialog(this , "NOW OPEN THE VDONOR PAGE");
-                     
+                     //JOptionPane.showMessageDialog(this , "NOW OPEN THE VDONOR PAGE");
+                     VDonorWA VDWA=new VDonorWA();
+                    
+                    this.dispose();
+                    VDWA.setVisible(true);
                      
                  }
                 }
