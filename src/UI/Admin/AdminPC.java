@@ -5,6 +5,7 @@
 package UI.Admin;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.LoginScreen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,12 +27,14 @@ public class AdminPC extends javax.swing.JFrame {
     /**
      * Creates new form AdminPC
      */
+    Validations validations;
     Vector originalTableModel;
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
     public AdminPC() {
         initComponents();
         populateTable();
+        validations= new Validations();
         originalTableModel = (Vector) ((DefaultTableModel) tblPlasma.getModel()).getDataVector().clone();
     }
 
@@ -63,6 +66,9 @@ public class AdminPC extends javax.swing.JFrame {
         txtpcname = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        valName = new javax.swing.JLabel();
+        valAddress = new javax.swing.JLabel();
+        valContact = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -81,8 +87,13 @@ public class AdminPC extends javax.swing.JFrame {
                 txtmobileActionPerformed(evt);
             }
         });
+        txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtmobileKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(180, 490, 74, 23);
+        txtmobile.setBounds(180, 490, 100, 23);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
@@ -154,8 +165,14 @@ public class AdminPC extends javax.swing.JFrame {
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(190, 30, 220, 29);
+
+        txtaddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtaddressKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtaddress);
-        txtaddress.setBounds(180, 410, 74, 23);
+        txtaddress.setBounds(180, 410, 100, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +183,7 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(btnUpdate);
         btnUpdate.setBounds(280, 280, 100, 23);
         getContentPane().add(txthos_id);
-        txthos_id.setBounds(180, 450, 74, 23);
+        txthos_id.setBounds(180, 450, 100, 23);
 
         jLabel4.setText("Hospital_ID");
         getContentPane().add(jLabel4);
@@ -178,13 +195,19 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(180, 320, 74, 23);
+        txtid.setBounds(180, 320, 100, 23);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(40, 410, 80, 17);
+
+        txtpcname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtpcnameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtpcname);
-        txtpcname.setBounds(180, 370, 74, 23);
+        txtpcname.setBounds(180, 370, 100, 23);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -204,6 +227,18 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(txtSearch);
         txtSearch.setBounds(150, 80, 430, 30);
 
+        valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valName);
+        valName.setBounds(310, 370, 150, 20);
+
+        valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valAddress);
+        valAddress.setBounds(310, 410, 150, 30);
+
+        valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valContact);
+        valContact.setBounds(300, 490, 130, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -214,6 +249,24 @@ public class AdminPC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+       var valid = true;
+       
+        if (!this.validations.ValidateName(txtpcname.getText()) ) {
+            valName.setText("Plasma  Name is Invalid");
+            valid = false;
+      
+        }
+        
+        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+            valAddress.setText("Address is required");
+            valid = false;
+        }
+        
+       
+        if (!this.validations.ValidatePhoneNumber(txtmobile.getText()) ) {
+            valContact.setText("Phone Number is Invalid");
+            valid = false;
+        }
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtid.getText();
        int hos_id = Integer.valueOf(txthos_id.getText());
@@ -269,13 +322,10 @@ public class AdminPC extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this,"New Plasma Center Added");
 
        populateTable(); 
-   
+   setTextNull();
+   setValidationNull();
   //stop
-        txtid.setText("");
-        txtpcname.setText("");
-         txtaddress.setText("");
-         txthos_id.setText("");
-          txtmobile.setText("");
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -316,6 +366,24 @@ public class AdminPC extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        var valid = true;
+       
+        if (!this.validations.ValidateName(txtpcname.getText()) ) {
+            valName.setText("Plasma  Name is Invalid");
+            valid = false;
+      
+        }
+        
+        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+            valAddress.setText("Address is required");
+            valid = false;
+        }
+        
+       
+        if (!this.validations.ValidatePhoneNumber(txtmobile.getText()) ) {
+            valContact.setText("Phone Number is Invalid");
+            valid = false;
+        }
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtid.getText();
        int hos_id = Integer.valueOf(txthos_id.getText());
@@ -372,11 +440,8 @@ public class AdminPC extends javax.swing.JFrame {
        populateTable(); 
    
   //stop
-        txtid.setText("");
-        txtpcname.setText("");
-         txtaddress.setText("");
-         txthos_id.setText("");
-          txtmobile.setText("");
+       setTextNull();
+       setValidationNull();
         
         
 
@@ -409,6 +474,8 @@ public class AdminPC extends javax.swing.JFrame {
         txthos_id.setText(hos_id);
         txtaddress.setText(address);
         txtmobile.setText(mobile);
+        
+        setValidationNull();
     }//GEN-LAST:event_tblPlasmaMouseClicked
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
@@ -432,6 +499,36 @@ public class AdminPC extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void txtpcnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpcnameKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateName(txtpcname.getText()) ) {
+            valName.setText("Plasma Center Name is required");
+        }
+        else {
+            valName.setText(null);
+        }
+    }//GEN-LAST:event_txtpcnameKeyReleased
+
+    private void txtaddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddressKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+            valAddress.setText("Address is required");
+        }
+        else {
+            valAddress.setText(null);
+        }
+    }//GEN-LAST:event_txtaddressKeyReleased
+
+    private void txtmobileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmobileKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidatePhoneNumber(txtmobile.getText()) ) {
+            valContact.setText(" Contact is required");
+        }
+        else {
+            valContact.setText(null);
+        }
+    }//GEN-LAST:event_txtmobileKeyReleased
 
     /**
      * @param args the command line arguments
@@ -488,6 +585,9 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtmobile;
     private javax.swing.JTextField txtpcname;
+    private javax.swing.JLabel valAddress;
+    private javax.swing.JLabel valContact;
+    private javax.swing.JLabel valName;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
@@ -523,5 +623,18 @@ public class AdminPC extends javax.swing.JFrame {
        catch (SQLException ex) {
             Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    private void setTextNull() {
+    txtid.setText(null);
+        txtpcname.setText(null);
+         txtaddress.setText(null);
+         txthos_id.setText(null);
+          txtmobile.setText(null);
+    }
+    private void setValidationNull() {
+        valName.setText(null);
+         valAddress.setText(null);
+        valContact.setText(null);
+       
     }
 }

@@ -68,6 +68,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         btnFemale = new javax.swing.JRadioButton();
         txtPassword = new javax.swing.JPasswordField();
         valBlood = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -253,6 +254,12 @@ public class VDonorRegForm extends javax.swing.JFrame {
         valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valBlood);
         valBlood.setBounds(260, 240, 160, 20);
+
+        jLabel9.setBackground(new java.awt.Color(51, 102, 255));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("VOLUNTARY DONOR REGISTRATION");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(210, 20, 350, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -575,6 +582,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;

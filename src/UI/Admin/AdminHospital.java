@@ -5,6 +5,7 @@
 package UI.Admin;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.LoginScreen;
 import java.sql.Connection;
 import java.util.logging.Level;
@@ -30,13 +31,13 @@ public class AdminHospital extends javax.swing.JFrame {
    
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-    
+    Validations validations;
     public AdminHospital() {
         initComponents();
         
         populateTable();
         originalTableModel = (Vector) ((DefaultTableModel) tblHospital.getModel()).getDataVector().clone();
-    
+        validations= new Validations();
         
 
     
@@ -89,22 +90,26 @@ public class AdminHospital extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
         lblSelectOrgType = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtmobile = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHospital = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        txtHospital_name = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtZipCode = new javax.swing.JTextField();
-        txthos_id = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        txtContact = new javax.swing.JTextField();
+        valName = new javax.swing.JLabel();
+        txtaddress = new javax.swing.JTextField();
+        txtzipCode = new javax.swing.JTextField();
+        valAddress = new javax.swing.JLabel();
+        valZipCode = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txthos_id = new javax.swing.JTextField();
+        valContact = new javax.swing.JLabel();
 
         txtid.setEditable(false);
 
@@ -123,8 +128,6 @@ public class AdminHospital extends javax.swing.JFrame {
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(220, 410, 80, 17);
-        getContentPane().add(txtAddress);
-        txtAddress.setBounds(350, 410, 74, 23);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
@@ -133,8 +136,6 @@ public class AdminHospital extends javax.swing.JFrame {
         jLabel5.setText("Zip Code");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(220, 440, 100, 40);
-        getContentPane().add(txtmobile);
-        txtmobile.setBounds(350, 490, 74, 23);
 
         tblHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -207,22 +208,10 @@ public class AdminHospital extends javax.swing.JFrame {
         });
         getContentPane().add(btnBack);
         btnBack.setBounds(550, 10, 100, 23);
-        getContentPane().add(txtHospital_name);
-        txtHospital_name.setBounds(350, 370, 74, 23);
 
         jLabel6.setText("Mobile");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(230, 480, 100, 40);
-        getContentPane().add(txtZipCode);
-        txtZipCode.setBounds(350, 450, 74, 23);
-
-        txthos_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txthos_idActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txthos_id);
-        txthos_id.setBounds(350, 320, 64, 23);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -242,47 +231,98 @@ public class AdminHospital extends javax.swing.JFrame {
         getContentPane().add(txtSearch);
         txtSearch.setBounds(170, 70, 430, 30);
 
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContactKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtContact);
+        txtContact.setBounds(340, 490, 140, 23);
+
+        valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valName);
+        valName.setBounds(500, 360, 150, 20);
+
+        txtaddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtaddressKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtaddress);
+        txtaddress.setBounds(340, 410, 140, 30);
+
+        txtzipCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtzipCodeKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtzipCode);
+        txtzipCode.setBounds(340, 450, 140, 30);
+
+        valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valAddress);
+        valAddress.setBounds(510, 410, 150, 30);
+
+        valZipCode.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valZipCode);
+        valZipCode.setBounds(510, 450, 140, 20);
+
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtName);
+        txtName.setBounds(340, 360, 140, 30);
+
+        txthos_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txthos_idKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txthos_id);
+        txthos_id.setBounds(340, 310, 140, 30);
+
+        valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valContact);
+        valContact.setBounds(510, 490, 130, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+       var valid = true;
+       
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Hospital Name is Invalid");
+            valid = false;
+      
+        }
+        
+        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+            valAddress.setText("Address is required");
+            valid = false;
+        }
+        
+        if (!this.validations.ValidateZip(txtzipCode.getText()) ) {
+            valZipCode.setText("Zip Code is invalid");
+            valid = false;
+        }
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valContact.setText("Phone Number is Invalid");
+            valid = false;
+        }
+        
        int hos_id = Integer.valueOf(txthos_id.getText());
-       String hospital_name = txtHospital_name.getText();
-       String address = txtAddress.getText();
-       Integer zipcode = Integer.valueOf(txtZipCode.getText());
-       String mobile = txtmobile.getText();
+       String hospital_name = txtName.getText();
+       String address = txtaddress.getText();
+       Integer zipcode = Integer.valueOf(txtzipCode.getText());
+       String mobile = txtContact.getText();
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
                 
-        if(txthos_id.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter valid hospital id");
-           return;
-        }
-        if(txtHospital_name.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter valid hospital Name");
-            return;
-        }
-
-        if(txtAddress.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter address");
-            return;
-        }
-        if(!txtZipCode.getText().matches("\\d+")){
-
-            JOptionPane.showMessageDialog(this, "enter a valid zipcode");
-            return;
-
-        }
-            if(!txtmobile.getText().matches("\\d+")){
-
-            JOptionPane.showMessageDialog(this, "enter a valid 10 digit contact number");
-            return;
-
-        }
+        
         //check if the id already exists
                 String INSERTHOSSQL = "insert into hospital(hos_id,hospital_name,address,zipcode,mobile) values (?,?,?,?,?) ";
 
@@ -308,23 +348,42 @@ public class AdminHospital extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this,"Hospital Added");
 
        populateTable(); 
-   
+      setTextNull();
+            setValidationNull();
   //stop
-  txthos_id.setText("");
-  txtHospital_name.setText("");
-  txtAddress.setText("");
-  txtZipCode.setText("");
-   txtmobile.setText("");
+ 
        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        var valid = true;
+       
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Hospital Name is Invalid");
+            valid = false;
+      
+        }
+        
+        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+            valAddress.setText("Address is required");
+            valid = false;
+        }
+        
+        if (!this.validations.ValidateZip(txtzipCode.getText()) ) {
+            valZipCode.setText("Zip Code is invalid");
+            valid = false;
+        }
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valContact.setText("Phone Number is Invalid");
+            valid = false;
+        }
+        
         int hos_id = Integer.valueOf(txthos_id.getText());
-       String hospital_name = txtHospital_name.getText();
-       String address = txtAddress.getText();
-       Integer zipcode = Integer.valueOf(txtZipCode.getText());
-       String mobile = txtmobile.getText();
+       String hospital_name = txtName.getText();
+       String address = txtaddress.getText();
+       Integer zipcode = Integer.valueOf(txtzipCode.getText());
+       String mobile = txtContact.getText();
     
        
             // validate the text from text boxes 
@@ -370,13 +429,10 @@ public class AdminHospital extends javax.swing.JFrame {
        
       JOptionPane.showMessageDialog(this,"Hospital data Updated");
 
-  txthos_id.setText("");
-  txtHospital_name.setText("");
-  txtAddress.setText("");
-  txtZipCode.setText("");
-   txtmobile.setText("");
-        
-        
+  
+      setTextNull();  
+     populateTable(); 
+      setValidationNull();
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -436,15 +492,14 @@ public class AdminHospital extends javax.swing.JFrame {
         
 
         txthos_id.setText(String.valueOf(hos_id));
-        txtHospital_name.setText(hospital_name);
-        txtAddress.setText(address);
-        txtZipCode.setText(String.valueOf(zipcode));
-        txtmobile.setText(mobile);
+        txtName.setText(hospital_name);
+        txtaddress.setText(address);
+        txtzipCode.setText(String.valueOf(zipcode));
+        txtContact.setText(mobile);
+        
+       
+            setValidationNull();
     }//GEN-LAST:event_tblHospitalMouseClicked
-
-    private void txthos_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthos_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txthos_idActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -467,6 +522,51 @@ public class AdminHospital extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valContact.setText(" Contact is required");
+        }
+        else {
+            valContact.setText(null);
+        }
+    }//GEN-LAST:event_txtContactKeyReleased
+
+    private void txtaddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddressKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+            valAddress.setText("Address is required");
+        }
+        else {
+            valAddress.setText(null);
+        }
+    }//GEN-LAST:event_txtaddressKeyReleased
+
+    private void txtzipCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtzipCodeKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateZip(txtzipCode.getText()) ) {
+            valZipCode.setText("Zip Code is invalid");
+        }
+        else {
+            valZipCode.setText(null);
+        }
+    }//GEN-LAST:event_txtzipCodeKeyReleased
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is required");
+        }
+        else {
+            valName.setText(null);
+        }
+    
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void txthos_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthos_idKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthos_idKeyReleased
 
     /**
      * @param args the command line arguments
@@ -502,6 +602,21 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void setTextNull() {
+     txthos_id.setText(null);
+  txtName.setText(null);
+  txtaddress.setText(null);
+  txtzipCode.setText(null);
+   txtContact.setText(null);
+    }
+    private void setValidationNull() {
+        valName.setText(null);
+         valAddress.setText(null);
+        valZipCode.setText(null);
+        valContact.setText(null);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -517,12 +632,16 @@ public class AdminHospital extends javax.swing.JFrame {
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblHospital;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtHospital_name;
+    private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtZipCode;
+    private javax.swing.JTextField txtaddress;
     private javax.swing.JTextField txthos_id;
     private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtmobile;
+    private javax.swing.JTextField txtzipCode;
+    private javax.swing.JLabel valAddress;
+    private javax.swing.JLabel valContact;
+    private javax.swing.JLabel valName;
+    private javax.swing.JLabel valZipCode;
     // End of variables declaration//GEN-END:variables
 }
