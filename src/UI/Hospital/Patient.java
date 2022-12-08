@@ -367,6 +367,26 @@ public class Patient extends javax.swing.JFrame {
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
+        if(txtpat_id.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter patient id");
+           return;
+        }
+        if(txtpat_name.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter pager id");
+            return;
+        }
+        if(txtage.getText().matches("\\d+"))
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid age in digits");
+            return;
+        }
+        if(txtaddress.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid address");
+            return;
+        }
         //check if the id already exists
                 String INSERTHOSSQL = "insert into patients(patient_id,patient_name,"
                         + "age,gender, doc_id, address) values (?,?,?,?,?,?) ";

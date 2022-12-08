@@ -334,6 +334,22 @@ public class Doctor extends javax.swing.JFrame {
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
+        if(txtdoc_name.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter doctor name");
+           return;
+        }
+        if(txtdoc_id.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid doctor id");
+            return;
+        }
+
+        if(txtpager_id.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter pager id");
+            return;
+        }
         //check if the id already exists
         String INSERTDOCSQL = "insert into doctors(doc_id, hos_id, doc_name, spec, pager_id) values (?,?,?,?,?)";
         // or handle exceptions here. 

@@ -283,6 +283,16 @@ public class AdminEmployee extends javax.swing.JFrame {
             //validate username and password
             Connection conn = dbconn.getConnection();
         //do validation here.
+        if(txtEmpID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid id");
+           return;
+        }
+        if(txtUsername.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please enter valid username");
+            return;
+        }
         //check if the id already exists
      String INSERLOGINSSQL = "insert into logins(user_id, pass_word,role_id) values(?,?,?) ";
      String INSERTEMPLOYEESQL = "insert into employee(emp_id, hos_id, pc_id,emp_name, user_id) values(?,?,?,?,?)";
@@ -322,6 +332,10 @@ public class AdminEmployee extends javax.swing.JFrame {
   //stop
    txtEmpName.setText("");
    ComboOrganizationList.setSelectedItem("");
+   txtEmpID.setText("");
+   txtUsername.setText("");
+   txtPassword.setText("");
+        
    
             
             
