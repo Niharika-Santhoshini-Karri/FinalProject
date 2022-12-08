@@ -4,6 +4,8 @@
  */
 package VDONOR;
 
+import UI.Admin.AdminWorkArea;
+
 /**
  *
  * @author Aish
@@ -26,35 +28,112 @@ public class VDonorWA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnViewPrevDonations = new javax.swing.JButton();
+        splitPane = new javax.swing.JSplitPane();
+        controlPanel = new javax.swing.JPanel();
+        btn_back_admin1 = new javax.swing.JButton();
+        btnDetails1 = new javax.swing.JButton();
+        btnAppointment1 = new javax.swing.JButton();
+        workArea = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        btnViewPrevDonations.setText("VIEW PREVIOUS DONATIONS");
+        controlPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(175, Short.MAX_VALUE)
-                    .addComponent(btnViewPrevDonations, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(282, Short.MAX_VALUE)))
+        btn_back_admin1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btn_back_admin1.setForeground(new java.awt.Color(255, 102, 51));
+        btn_back_admin1.setText(" LOGOUT");
+        btn_back_admin1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_back_admin1ActionPerformed(evt);
+            }
+        });
+
+        btnDetails1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnDetails1.setForeground(new java.awt.Color(255, 102, 51));
+        btnDetails1.setText("DETAILS");
+        btnDetails1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetails1ActionPerformed(evt);
+            }
+        });
+
+        btnAppointment1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnAppointment1.setForeground(new java.awt.Color(255, 102, 51));
+        btnAppointment1.setText("BOOK APPOINTMENT");
+        btnAppointment1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppointment1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
+        controlPanel.setLayout(controlPanelLayout);
+        controlPanelLayout.setHorizontalGroup(
+            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAppointment1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(btn_back_admin1))
+                    .addComponent(btnDetails1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(135, Short.MAX_VALUE)
-                    .addComponent(btnViewPrevDonations, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(170, Short.MAX_VALUE)))
+        controlPanelLayout.setVerticalGroup(
+            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(btn_back_admin1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addComponent(btnDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(btnAppointment1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(298, Short.MAX_VALUE))
         );
+
+        splitPane.setLeftComponent(controlPanel);
+
+        workArea.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
+        workArea.setLayout(workAreaLayout);
+        workAreaLayout.setHorizontalGroup(
+            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(workAreaLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        workAreaLayout.setVerticalGroup(
+            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+        );
+
+        splitPane.setRightComponent(workArea);
+
+        getContentPane().add(splitPane);
+        splitPane.setBounds(0, 0, 230, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_back_admin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_admin1ActionPerformed
+       this.hide();
+        AdminWorkArea frame = new AdminWorkArea();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btn_back_admin1ActionPerformed
+
+    private void btnDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetails1ActionPerformed
+        VDonorDetails VD = new VDonorDetails();
+        splitPane.setRightComponent(VD);
+    }//GEN-LAST:event_btnDetails1ActionPerformed
+
+    private void btnAppointment1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointment1ActionPerformed
+        VDonorDonations VDD = new VDonorDonations();
+        splitPane.setRightComponent(VDD);
+    }//GEN-LAST:event_btnAppointment1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,6 +171,12 @@ public class VDonorWA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnViewPrevDonations;
+    private javax.swing.JButton btnAppointment1;
+    private javax.swing.JButton btnDetails1;
+    private javax.swing.JButton btn_back_admin1;
+    private javax.swing.JPanel controlPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSplitPane splitPane;
+    private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
 }

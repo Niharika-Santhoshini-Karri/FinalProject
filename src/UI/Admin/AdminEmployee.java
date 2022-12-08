@@ -5,13 +5,17 @@
 package UI.Admin;
 
 import DBUTIL.DBUTIL;
+import UI.LoginScreen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,14 +26,22 @@ public class AdminEmployee extends javax.swing.JFrame {
     /**
      * Creates new form AdminEmployee
      */
+    Vector originalTableModel;
     ResultSet resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
     public AdminEmployee() {
         initComponents();
+        populateTable();
         UpdateComboxes();
+                originalTableModel = (Vector) ((DefaultTableModel) tblEmployees.getModel()).getDataVector().clone();
+
         
         
     }
+    private void populateTable(){
+        
+        
+                }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,6 +72,8 @@ public class AdminEmployee extends javax.swing.JFrame {
         lblEmployeeName2 = new javax.swing.JLabel();
         lblEmployeeName3 = new javax.swing.JLabel();
         txtEmpName = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -71,9 +85,8 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboOrganizationList);
-        ComboOrganizationList.setBounds(350, 80, 163, 31);
+        ComboOrganizationList.setBounds(350, 120, 163, 23);
 
-        tblEmployees.setBackground(new java.awt.Color(204, 255, 204));
         tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -103,14 +116,14 @@ public class AdminEmployee extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblEmployees);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(90, 130, 680, 140);
+        jScrollPane1.setBounds(90, 170, 680, 140);
 
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(520, 430, 72, 31);
+        ComboPlasmaCenter.setBounds(520, 470, 72, 23);
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(220, 480, 110, 25);
+        lblEmployeeName.setBounds(220, 520, 110, 17);
 
         ComboHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,21 +131,21 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboHospital);
-        ComboHospital.setBounds(200, 430, 72, 31);
+        ComboHospital.setBounds(200, 470, 72, 23);
 
         lblbank.setText("Plasma Center");
         getContentPane().add(lblbank);
-        lblbank.setBounds(320, 430, 150, 25);
+        lblbank.setBounds(320, 470, 150, 17);
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(400, 480, 360, 31);
+        txtUsername.setBounds(400, 520, 360, 23);
 
         lblOrganizationPicker.setText(" Organization:");
         getContentPane().add(lblOrganizationPicker);
-        lblOrganizationPicker.setBounds(160, 80, 130, 25);
+        lblOrganizationPicker.setBounds(160, 120, 130, 17);
 
         lblhos.setText("Hospital");
         getContentPane().add(lblhos);
-        lblhos.setBounds(70, 430, 110, 25);
+        lblhos.setBounds(70, 470, 110, 17);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +154,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(790, 50, 100, 31);
+        btnBack.setBounds(790, 50, 100, 23);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +163,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(670, 280, 100, 31);
+        btndel.setBounds(670, 320, 100, 23);
 
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -159,30 +172,48 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(240, 580, 210, 31);
+        btnAdd.setBounds(240, 620, 210, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("EMPLOYEES ");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(170, 20, 220, 29);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(400, 520, 360, 31);
+        txtPassword.setBounds(400, 560, 360, 23);
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(220, 520, 100, 25);
+        lblEmployeeName1.setBounds(220, 560, 100, 17);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(280, 330, 360, 31);
+        txtEmpID.setBounds(280, 370, 360, 23);
 
         lblEmployeeName2.setText("Employee ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(90, 330, 150, 25);
+        lblEmployeeName2.setBounds(90, 370, 150, 17);
 
         lblEmployeeName3.setText("Name:");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(90, 370, 110, 25);
+        lblEmployeeName3.setBounds(90, 410, 110, 17);
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(280, 370, 360, 31);
+        txtEmpName.setBounds(280, 410, 360, 23);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(70, 70, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(150, 70, 430, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,6 +231,36 @@ public class AdminEmployee extends javax.swing.JFrame {
 
     private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
         // TODO add your handling code here:
+        
+        Connection conn = dbconn.getConnection();
+         int SelectedRowIndex=tblEmployees.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
+        DefaultTableModel model =(DefaultTableModel) tblEmployees.getModel();
+         int emp_id=(int) model.getValueAt(SelectedRowIndex, 0);
+       
+         conn = dbconn.getConnection();
+          String selectSql = "Delete from employees where emp_id=?";
+     PreparedStatement stmt;
+      try {
+             
+             stmt=conn.prepareStatement(selectSql);
+             
+                 stmt.setInt(1, emp_id);
+                                   
+              stmt.executeUpdate();
+          conn.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    
+         
+        JOptionPane.showMessageDialog(this, "Employee Deleted");
+        populateTable();
     }//GEN-LAST:event_btndelActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -252,9 +313,16 @@ public class AdminEmployee extends javax.swing.JFrame {
             Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-           JOptionPane.showMessageDialog(this,"Hospital Added");
 
-       
+
+        JOptionPane.showMessageDialog(this,"Employee Added");
+
+       populateTable(); 
+   
+  //stop
+   txtEmpName.setText("");
+   ComboOrganizationList.setSelectedItem("");
+   
             
             
             
@@ -267,6 +335,28 @@ public class AdminEmployee extends javax.swing.JFrame {
         //ComboHospital.addItem("efgh");
             
     }//GEN-LAST:event_ComboHospitalActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblEmployees.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -334,6 +424,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         {
             Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
         
         
 }
@@ -346,6 +437,7 @@ public class AdminEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btndel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JLabel lblEmployeeName2;
@@ -358,6 +450,7 @@ public class AdminEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmpID;
     private javax.swing.JTextField txtEmpName;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

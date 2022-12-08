@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +26,7 @@ public class AdminHospital extends javax.swing.JFrame {
     /**
      * Creates new form AdminHospital
      */
+     Vector originalTableModel;
    
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
@@ -33,6 +35,7 @@ public class AdminHospital extends javax.swing.JFrame {
         initComponents();
         
         populateTable();
+        originalTableModel = (Vector) ((DefaultTableModel) tblHospital.getModel()).getDataVector().clone();
     
         
 
@@ -100,16 +103,17 @@ public class AdminHospital extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtZipCode = new javax.swing.JTextField();
         txthos_id = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         txtid.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 340, 70, 25);
+        jLabel1.setBounds(230, 370, 70, 17);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("HOSPITALS ");
@@ -118,21 +122,20 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 380, 80, 25);
+        jLabel2.setBounds(220, 410, 80, 17);
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(350, 380, 74, 31);
+        txtAddress.setBounds(350, 410, 74, 23);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(250, 290, 18, 25);
+        lblSelectOrgType.setBounds(250, 320, 12, 17);
 
         jLabel5.setText("Zip Code");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(220, 410, 100, 40);
+        jLabel5.setBounds(220, 440, 100, 40);
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(350, 460, 74, 31);
+        txtmobile.setBounds(350, 490, 74, 23);
 
-        tblHospital.setBackground(new java.awt.Color(204, 255, 204));
         tblHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -167,7 +170,7 @@ public class AdminHospital extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblHospital);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 90, 650, 92);
+        jScrollPane1.setBounds(40, 120, 650, 92);
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +179,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(270, 500, 87, 31);
+        btnAdd.setBounds(270, 530, 87, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +188,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(250, 210, 100, 31);
+        btnUpdate.setBounds(250, 240, 100, 23);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +197,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 210, 100, 31);
+        btnDelete.setBounds(370, 240, 100, 23);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -203,15 +206,15 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 10, 100, 31);
+        btnBack.setBounds(550, 10, 100, 23);
         getContentPane().add(txtHospital_name);
-        txtHospital_name.setBounds(350, 340, 74, 31);
+        txtHospital_name.setBounds(350, 370, 74, 23);
 
         jLabel6.setText("Mobile");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(230, 450, 100, 40);
+        jLabel6.setBounds(230, 480, 100, 40);
         getContentPane().add(txtZipCode);
-        txtZipCode.setBounds(350, 420, 74, 31);
+        txtZipCode.setBounds(350, 450, 74, 23);
 
         txthos_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +222,25 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txthos_id);
-        txthos_id.setBounds(350, 290, 64, 31);
+        txthos_id.setBounds(350, 320, 64, 23);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(90, 70, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(170, 70, 430, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -396,6 +417,28 @@ public class AdminHospital extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txthos_idActionPerformed
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblHospital.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -441,11 +484,13 @@ public class AdminHospital extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblHospital;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtHospital_name;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtZipCode;
     private javax.swing.JTextField txthos_id;
     private javax.swing.JTextField txtid;
