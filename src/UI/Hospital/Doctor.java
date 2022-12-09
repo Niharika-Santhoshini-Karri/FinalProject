@@ -156,7 +156,7 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(487, 245, 79, 23);
+        btnUpdate.setBounds(487, 245, 73, 23);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -165,19 +165,19 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(584, 245, 77, 23);
+        btnDelete.setBounds(584, 245, 72, 23);
 
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(173, 298, 67, 17);
+        jLabel2.setBounds(173, 298, 67, 16);
 
         jLabel3.setText("Doctor ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(173, 336, 54, 17);
+        jLabel3.setBounds(173, 336, 50, 16);
 
         jLabel4.setText("Specialization");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(173, 383, 80, 17);
+        jLabel4.setBounds(173, 383, 72, 16);
 
         txtdoc_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +185,7 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtdoc_name);
-        txtdoc_name.setBounds(337, 295, 131, 23);
+        txtdoc_name.setBounds(337, 295, 131, 22);
 
         txtdoc_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +193,7 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtdoc_id);
-        txtdoc_id.setBounds(337, 336, 131, 23);
+        txtdoc_id.setBounds(337, 336, 131, 22);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -206,13 +206,18 @@ public class Doctor extends javax.swing.JFrame {
 
         jLabel5.setText("Pager ID ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(173, 421, 53, 17);
+        jLabel5.setBounds(173, 421, 47, 16);
         getContentPane().add(txtpager_id);
-        txtpager_id.setBounds(337, 418, 131, 23);
+        txtpager_id.setBounds(337, 418, 131, 22);
 
         specCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cardiologist", "General Surgeon", "Orthopedician" }));
+        specCombox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                specComboxActionPerformed(evt);
+            }
+        });
         getContentPane().add(specCombox);
-        specCombox.setBounds(337, 377, 131, 23);
+        specCombox.setBounds(337, 377, 121, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -412,6 +417,10 @@ public class Doctor extends javax.swing.JFrame {
     private void txtdoc_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdoc_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdoc_nameActionPerformed
+
+    private void specComboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specComboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_specComboxActionPerformed
 
     /**
      * @param args the command line arguments

@@ -30,9 +30,8 @@ public class PCWorkArea extends javax.swing.JFrame {
 
         btnDonorDetails = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
-        btnHospOperations = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -55,14 +54,6 @@ public class PCWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnStock);
         btnStock.setBounds(140, 290, 150, 60);
 
-        btnHospOperations.setText("HOSPITAL REQUESTS");
-        getContentPane().add(btnHospOperations);
-        btnHospOperations.setBounds(470, 120, 161, 50);
-
-        jButton4.setText("NGO REQUESTS");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(480, 290, 150, 50);
-
         btnBack.setText("BACK TO LOGIN");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +62,15 @@ public class PCWorkArea extends javax.swing.JFrame {
         });
         getContentPane().add(btnBack);
         btnBack.setBounds(570, 20, 140, 30);
+
+        jButton1.setText("Plasma Requests");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(510, 183, 120, 80);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -95,6 +95,13 @@ public class PCWorkArea extends javax.swing.JFrame {
       PCS.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_btnStockActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    PlasmaRequests PR = new PlasmaRequests();
+    PR.setVisible(true);
+    this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,8 +142,7 @@ public class PCWorkArea extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDonorDetails;
-    private javax.swing.JButton btnHospOperations;
     private javax.swing.JButton btnStock;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

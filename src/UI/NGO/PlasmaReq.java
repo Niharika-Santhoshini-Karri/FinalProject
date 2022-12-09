@@ -6,7 +6,7 @@ package UI.NGO;
 
 /**
  *
- * @author 91918
+ * @author Niharika
  */
 public class PlasmaReq extends javax.swing.JFrame {
 

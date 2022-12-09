@@ -6,7 +6,7 @@ package UI.NGO;
 
 /**
  *
- * @author 91918
+ * @author Niharika
  */
 public class ViewDonors extends javax.swing.JFrame {
 
@@ -49,7 +49,7 @@ public class ViewDonors extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Donor Name", "Blood Group", "Address", "Mobile", "Donated Count"
+                "Donor Name", "Age", "Blood Group", "Address", "Contact"
             }
         ) {
             Class[] types = new Class [] {

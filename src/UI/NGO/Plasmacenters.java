@@ -15,7 +15,7 @@ import java.sql.Connection;
 
 /**
  *
- * @author 91918
+ * @author Niharika
  */
 public class Plasmacenters extends javax.swing.JFrame {
 
