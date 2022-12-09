@@ -291,6 +291,7 @@ System.out.println("Connected to database !!");
                     
                     this.dispose();
                     NGO.setVisible(true);
+                     JOptionPane.showMessageDialog(this , "NOW OPEN THE NGO ADMIN PAGE");
                  }
                    if(x==4)
                 {

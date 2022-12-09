@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  */
 public class DBUTIL {
     private String dburl= "jdbc:oracle:thin:@localhost:1521;XE";
-     private  String user = "system";
-private String pass = "pass";
+     private  String user = "SYSTEM";
+private String pass = "abcd";
    public DBUTIL() {
        
     this.dburl=dburl;
@@ -34,7 +34,7 @@ private String pass = "pass";
         try {
            // Connection conn = DriverManager.getConnection(dburl, user, pass);
             Class.forName(("oracle.jdbc.OracleDriver"));
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","pass");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM","abcd");
              System.out.println("Now connected..!");
              //return conn;
         } catch (SQLException ex) {

@@ -75,28 +75,28 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("NGO REGISTRATION");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(195, 61, 226, 22);
+        jLabel1.setBounds(195, 61, 226, 25);
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 255));
         jLabel2.setText("NGO Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(161, 135, 67, 17);
+        jLabel2.setBounds(161, 135, 94, 25);
 
         jLabel3.setText("ADDRESS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(161, 176, 59, 17);
+        jLabel3.setBounds(161, 176, 78, 25);
 
         jLabel4.setText("CONTACT");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(161, 263, 59, 17);
+        jLabel4.setBounds(161, 263, 81, 25);
 
         jLabel5.setText("USER ID");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(161, 304, 50, 17);
+        jLabel5.setBounds(161, 304, 66, 25);
 
         jLabel6.setText("PASSWORD");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(150, 340, 72, 17);
+        jLabel6.setBounds(150, 340, 96, 25);
 
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +105,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegister);
-        btnRegister.setBounds(221, 393, 78, 23);
+        btnRegister.setBounds(200, 420, 94, 31);
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -114,11 +114,11 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(56, 32, 72, 23);
+        btnBack.setBounds(56, 32, 72, 31);
 
         jLabel7.setText("ZIPCODE");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(165, 222, 55, 17);
+        jLabel7.setBounds(165, 222, 73, 25);
 
         valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPhone);
@@ -155,7 +155,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(240, 130, 120, 23);
+        txtName.setBounds(240, 130, 120, 31);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(240, 170, 120, 23);
+        txtAddress.setBounds(240, 170, 120, 31);
 
         txtZipCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +194,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipCode);
-        txtZipCode.setBounds(240, 220, 110, 23);
+        txtZipCode.setBounds(240, 220, 110, 31);
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -202,7 +202,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(240, 340, 90, 23);
+        txtPassword.setBounds(290, 340, 90, 31);
 
         txtUser_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +215,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUser_ID);
-        txtUser_ID.setBounds(240, 300, 110, 23);
+        txtUser_ID.setBounds(290, 300, 110, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,8 +262,8 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
        
        String countNGOs = "select count(*) from NGO";
         
-        String addNGO = "insert into (ngo_id, user_id, ngo_name, "
-                + "contact, address,zipcode) values (?,?,?,?,?,?)";
+        String addNGO = "insert into ngo(ngo_id, ngo_name, "
+                + " address,zipcode,user_id,contact) values (?,?,?,?,?,?)";
         
         String adduser = "insert into logins(user_id, pass_word, role_id) values(?,?,?)";
         
@@ -280,6 +280,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             ngo_id ++; 
             
             
+            
             stmt3 = conn.prepareStatement(adduser);
             
             stmt3.setInt(1,user_id); 
@@ -289,14 +290,16 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             stmt3.executeQuery();
             
             stmt2 = conn.prepareStatement(addNGO);
+            
+            
               
              
             stmt2.setInt(1,ngo_id); 
-            stmt2.setInt(2,user_id);
-            stmt2.setString(3,name);
-            stmt2.setString(4,contact);
-            stmt2.setString(5,Address);
-            stmt2.setInt(6,zipcode);
+            stmt2.setString(2,name);
+            stmt2.setString(3,Address);
+            stmt2.setInt(4,zipcode);
+            stmt2.setInt(5,user_id);
+            stmt2.setString(6,contact);
             
             
             
