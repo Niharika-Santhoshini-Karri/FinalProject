@@ -8,7 +8,7 @@ import UI.LoginScreen;
 
 /**
  *
- * @author 91918
+ * @author Niharika
  */
 public class NGOWorkArea extends javax.swing.JFrame {
 
@@ -28,96 +28,79 @@ public class NGOWorkArea extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        btnDonorsList = new javax.swing.JButton();
+        btnPlasmaReq = new javax.swing.JButton();
+        btnPC = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jButton1.setText("Check Plasma Availability");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDonorsList.setText("Donors List");
+        btnDonorsList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDonorsListActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(214, 83, 181, 23);
+        getContentPane().add(btnDonorsList);
+        btnDonorsList.setBounds(214, 146, 181, 23);
 
-        jButton2.setText("Donors List");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPlasmaReq.setText("Plasma request");
+        btnPlasmaReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPlasmaReqActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(214, 146, 181, 23);
+        getContentPane().add(btnPlasmaReq);
+        btnPlasmaReq.setBounds(214, 214, 181, 23);
 
-        jButton3.setText("Patient request");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnPC.setText("Plasma Centers");
+        btnPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnPCActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(214, 214, 181, 23);
+        getContentPane().add(btnPC);
+        btnPC.setBounds(214, 280, 181, 23);
 
-        jButton4.setText("Plasma Centers");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setText("LOGOUT");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(214, 280, 181, 23);
-
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBack);
-        btnBack.setBounds(480, 30, 100, 23);
+        getContentPane().add(btnLogout);
+        btnLogout.setBounds(480, 30, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCActionPerformed
       Plasmacenters PLA = new Plasmacenters();
       PLA.setVisible(true);
       this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnPCActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Availability AVAL= new Availability();
-      AVAL.setVisible(true);
-      this.dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDonorsListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonorsListActionPerformed
       ViewDonors DON= new ViewDonors();
       DON.setVisible(true);
       this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnDonorsListActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      PatientReq REQ= new PatientReq();
+    private void btnPlasmaReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlasmaReqActionPerformed
+      PlasmaReq REQ= new PlasmaReq();
       REQ.setVisible(true);
       this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnPlasmaReqActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         this.hide();
         LoginScreen frame = new  LoginScreen();
         frame.setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,10 +138,9 @@ public class NGOWorkArea extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnDonorsList;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnPC;
+    private javax.swing.JButton btnPlasmaReq;
     // End of variables declaration//GEN-END:variables
 }
