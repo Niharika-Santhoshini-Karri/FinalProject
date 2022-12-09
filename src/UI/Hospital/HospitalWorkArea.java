@@ -16,10 +16,22 @@ public class HospitalWorkArea extends javax.swing.JFrame {
     /**
      * Creates new form HospitalWorkArea
      */
+    
+    public static int ourhos_id  = LoginScreen.getHos_id();
+
+    public static int getOurhos_id() {
+        return ourhos_id;
+    }
+
+    public static void setOurhos_id(int ourhos_id) {
+        HospitalWorkArea.ourhos_id = ourhos_id;
+    }
+    
+   
     public HospitalWorkArea() {
         initComponents();
-        int hos_id = LoginScreen.getHos_id();
-        System.out.println("hos_id="+hos_id);
+        //int hos_id = LoginScreen.getHos_id();
+        System.out.println("workarea hos_id="+ourhos_id);
     }
 
     /**
@@ -65,12 +77,12 @@ public class HospitalWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(219, 280, 183, 66);
+        jButton3.setBounds(210, 270, 233, 66);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("HOSPITAL ADMIN PORTAL");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(183, 27, 239, 46);
+        jLabel1.setBounds(183, 27, 231, 46);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +91,7 @@ public class HospitalWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(500, 30, 100, 23);
+        btnBack.setBounds(500, 30, 100, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

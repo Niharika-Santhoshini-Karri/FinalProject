@@ -39,6 +39,36 @@ public class AdminEmployee extends javax.swing.JFrame {
         
     }
     private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblEmployees.getModel();
+        Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+        
+         
+                  String selectSql = "SELECT EMp_ID, EMPLOYEE_NAME FROM EMPLOYEE";
+
+      Statement stmt;
+       try {
+            stmt = conn.createStatement();
+       
+            resultSet1 = stmt.executeQuery(selectSql);
+
+             while (resultSet1.next()) {
+            
+            Object[] row = new Object[5];
+            row[0]=resultSet1.getInt(1);
+            row[1] = resultSet1.getString(2);
+             
+            
+                model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(AdminEmployee.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
                 }
@@ -85,7 +115,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboOrganizationList);
-        ComboOrganizationList.setBounds(350, 120, 163, 23);
+        ComboOrganizationList.setBounds(350, 120, 163, 31);
 
         tblEmployees.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,11 +125,11 @@ public class AdminEmployee extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Name", "Organization"
+                "Employee_ID", "Employee_Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -119,11 +149,11 @@ public class AdminEmployee extends javax.swing.JFrame {
         jScrollPane1.setBounds(90, 170, 680, 140);
 
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(520, 470, 72, 23);
+        ComboPlasmaCenter.setBounds(520, 470, 72, 31);
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(220, 520, 110, 17);
+        lblEmployeeName.setBounds(220, 520, 110, 25);
 
         ComboHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,21 +161,21 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboHospital);
-        ComboHospital.setBounds(200, 470, 72, 23);
+        ComboHospital.setBounds(200, 470, 72, 31);
 
         lblbank.setText("Plasma Center");
         getContentPane().add(lblbank);
-        lblbank.setBounds(320, 470, 150, 17);
+        lblbank.setBounds(320, 470, 150, 25);
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(400, 520, 360, 23);
+        txtUsername.setBounds(400, 520, 360, 31);
 
         lblOrganizationPicker.setText(" Organization:");
         getContentPane().add(lblOrganizationPicker);
-        lblOrganizationPicker.setBounds(160, 120, 130, 17);
+        lblOrganizationPicker.setBounds(160, 120, 130, 25);
 
         lblhos.setText("Hospital");
         getContentPane().add(lblhos);
-        lblhos.setBounds(70, 470, 110, 17);
+        lblhos.setBounds(70, 470, 110, 25);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +184,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(790, 50, 100, 23);
+        btnBack.setBounds(790, 50, 100, 31);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +193,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(670, 320, 100, 23);
+        btndel.setBounds(670, 320, 100, 31);
 
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -172,30 +202,30 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(240, 620, 210, 23);
+        btnAdd.setBounds(240, 620, 210, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("EMPLOYEES ");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(170, 20, 220, 29);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(400, 560, 360, 23);
+        txtPassword.setBounds(400, 560, 360, 31);
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(220, 560, 100, 17);
+        lblEmployeeName1.setBounds(230, 560, 100, 25);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(280, 370, 360, 23);
+        txtEmpID.setBounds(280, 370, 360, 31);
 
         lblEmployeeName2.setText("Employee ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(90, 370, 150, 17);
+        lblEmployeeName2.setBounds(90, 370, 150, 25);
 
         lblEmployeeName3.setText("Name:");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(90, 410, 110, 17);
+        lblEmployeeName3.setBounds(90, 410, 110, 25);
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(280, 410, 360, 23);
+        txtEmpName.setBounds(280, 410, 360, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -295,7 +325,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         }
         //check if the id already exists
      String INSERLOGINSSQL = "insert into logins(user_id, pass_word,role_id) values(?,?,?) ";
-     String INSERTEMPLOYEESQL = "insert into employee(emp_id, hos_id, pc_id,emp_name, user_id) values(?,?,?,?,?)";
+     String INSERTEMPLOYEESQL = "insert into employee(emp_id, hos_id, pc_id,employee_name, user_id) values(?,?,?,?,?)";
 
         PreparedStatement stmt1, stmt2; 
         try

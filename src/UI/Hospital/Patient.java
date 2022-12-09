@@ -41,7 +41,7 @@ public class Patient extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-       String selectSql = "SELECT patient_id,patient_name,age, gender, doc_id,address from patients ";
+       String selectSql = "SELECT pat_id,pat_name,age, gender, doc_id,address from patients ";
         
 
       Statement stmt;
@@ -251,7 +251,7 @@ public class Patient extends javax.swing.JFrame {
        int SelectedRowIndex=tblPatient.getSelectedRow();
         if(SelectedRowIndex<0)
         {
-         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+         JOptionPane.showMessageDialog(this, "Please select a row to update");
             
         return;
         }
@@ -269,8 +269,8 @@ public class Patient extends javax.swing.JFrame {
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String UPDATEPATIENTSQL = "update patients set patient_name=?, "
-                        + "age=?, gender=?, doc_id=?, address=? where patient_id =?";
+                String UPDATEPATIENTSQL = "update patients set pat_name=?, "
+                        + "age=?, gender=?, doc_id=?, address=? where pat_id =?";
 
         PreparedStatement stmt; 
          
@@ -313,28 +313,9 @@ public class Patient extends javax.swing.JFrame {
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
-        if(txtpat_id.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter patient id");
-           return;
-        }
-        if(txtpat_name.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter pager id");
-            return;
-        }
-        if(txtage.getText().matches("\\d+"))
-        {
-            JOptionPane.showMessageDialog(this, "Please enter valid age in digits");
-            return;
-        }
-        if(txtaddress.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter valid address");
-            return;
-        }
+        
         //check if the id already exists
-                String INSERTHOSSQL = "insert into patients(patient_id,patient_name,"
+                String INSERTHOSSQL = "insert into patients(pat_id,pat_name,"
                         + "age,gender, doc_id, address) values (?,?,?,?,?,?) ";
 
         PreparedStatement stmt; 
@@ -386,7 +367,7 @@ public class Patient extends javax.swing.JFrame {
        
          conn = dbconn.getConnection();
          //int pat_id = Integer.valueOf(txtpat_id.getText());
-          String selectSql = "Delete from patients where patient_id=?";
+          String selectSql = "Delete from patients where pat_id=?";
      PreparedStatement stmt;
       try {
              

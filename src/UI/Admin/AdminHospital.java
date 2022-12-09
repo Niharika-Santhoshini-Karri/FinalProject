@@ -44,11 +44,11 @@ public class AdminHospital extends javax.swing.JFrame {
     }
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
-         Connection conn = dbconn.getConnection();
+        Connection conn = dbconn.getConnection();
         model.setRowCount(0);
         
          
-                  String selectSql = "SELECT hos_id,hospital_name,address,zipcode,mobile from hospital";
+                  String selectSql = "SELECT HOS_ID,HOS_NAME,ADDRESS, ZIPCODE, MOBILE FROM HOSPITAL";
 
       Statement stmt;
        try {
@@ -324,7 +324,7 @@ public class AdminHospital extends javax.swing.JFrame {
                 
         
         //check if the id already exists
-                String INSERTHOSSQL = "insert into hospital(hos_id,hospital_name,address,zipcode,mobile) values (?,?,?,?,?) ";
+                String INSERTHOSSQL = "insert into hospital(hos_id,hos_name,address,zipcode,mobile) values (?,?,?,?,?) ";
 
         PreparedStatement stmt; 
         try
@@ -391,7 +391,7 @@ public class AdminHospital extends javax.swing.JFrame {
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String SELECTHOSSQL = "update hospital set hospital_name=? ,address =?,zipcode=?,mobile=? where hos_id=? ";
+                String SELECTHOSSQL = "update hospital set hos_name=? ,address =?,zipcode=?,mobile=? where hos_id=? ";
                 PreparedStatement stmt; 
         try
         {

@@ -26,6 +26,7 @@ public class Doctor extends javax.swing.JFrame {
      * Creates new form RequestToPlasmacenter
      */
     
+    
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
     
