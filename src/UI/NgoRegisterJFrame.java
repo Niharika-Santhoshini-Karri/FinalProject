@@ -247,7 +247,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
 
         String pass_word = String.valueOf(txtPassword.getPassword());
         if (!this.validations.ValidatePassword(pass_word) ) {
-            valPassword.setText("Should be 5-12 character long");
+            valPassword.setText("Should be 4-12 character long");
             valid = false;
         }
         
@@ -394,7 +394,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String password = String.valueOf(txtPassword.getPassword());
         if (!this.validations.ValidatePassword(password) ) {
-            valPassword.setText("Should be 5-12 character long");
+            valPassword.setText("Should be 4-12 character long");
         } else {
             valPassword.setText(null);
         }

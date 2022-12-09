@@ -331,7 +331,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
 
         String pass_word = String.valueOf(txtPassword.getPassword());
         if (!this.validations.ValidatePassword(pass_word) ) {
-            valPassword.setText("Should be 5-12 character long");
+            valPassword.setText("Should be 4-12 character long");
             valid = false;
         }
 

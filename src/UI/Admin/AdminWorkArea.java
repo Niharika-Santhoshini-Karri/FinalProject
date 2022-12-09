@@ -4,6 +4,8 @@
  */
 package UI.Admin;
 
+import UI.LoginScreen;
+
 /**
  *
  * @author Aish
@@ -26,6 +28,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBack = new javax.swing.JButton();
         btnStock = new javax.swing.JButton();
         btnHospital = new javax.swing.JButton();
         btnPlasmaCenter = new javax.swing.JButton();
@@ -35,6 +38,15 @@ public class AdminWorkArea extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(580, 30, 100, 23);
 
         btnStock.setText("ANALYSE STOCK");
         btnStock.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +119,12 @@ public class AdminWorkArea extends javax.swing.JFrame {
       this.dispose();
     }//GEN-LAST:event_btnEmployeesActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.hide();
+        LoginScreen frame = new  LoginScreen();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,6 +161,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEmployees;
     private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnPlasmaCenter;

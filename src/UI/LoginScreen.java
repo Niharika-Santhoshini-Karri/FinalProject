@@ -5,6 +5,7 @@
 package UI;
 
 import DBUTIL.DBUTIL;
+import MODEL.Login;
 import MODEL.Validations;
 import UI.Admin.AdminWorkArea;
 import UI.Hospital.HospitalWorkArea;
@@ -52,6 +53,8 @@ public class LoginScreen extends javax.swing.JFrame {
     public static int doc_id; 
     public static int ngo_id; 
     public static int vdon_id; 
+    
+    public static Login login = new Login();
     
     
     
@@ -344,7 +347,7 @@ System.out.println("Connected to database !!");
         // TODO add your handling code here:
         String password = String.valueOf(pwdField.getPassword());
         if (!this.validations.ValidatePassword(password) ) {
-            valPassword.setText("Should be 5-12 character long");
+            valPassword.setText("Should be 4-12 character long");
         } else {
             valPassword.setText(null);
         }

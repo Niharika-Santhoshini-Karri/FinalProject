@@ -18,12 +18,12 @@ public class Validations {
     }
     
     public boolean ValidatePassword(String value) {
-        String PATTERN = "^[a-zA-Z0-9]{5,12}$";
+        String PATTERN = "^[a-zA-Z0-9]{4,12}$";
         return MatchPattern(PATTERN, value);
     }
     
     public boolean ValidateUsername(String value) {
-        String PATTERN = "^(?=.{3,20}$)(?![.])[a-zA-Z0-9._]+(?<![.])$";
+        String PATTERN = "^(?=.{1,20}$)(?![.])[a-zA-Z0-9._]+(?<![.])$";
         return MatchPattern(PATTERN, value);
     }
     

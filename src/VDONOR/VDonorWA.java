@@ -5,6 +5,7 @@
 package VDONOR;
 
 import UI.Admin.AdminWorkArea;
+import UI.LoginScreen;
 
 /**
  *
@@ -96,33 +97,35 @@ public class VDonorWA extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
-        getContentPane().add(splitPane);
-        splitPane.setBounds(0, 0, 200, 600);
-
         workArea.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGroup(workAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(workArea);
-        workArea.setBounds(200, 0, 540, 600);
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(200, 0, 530, 600);
+        splitPane.setRightComponent(workArea);
+
+        getContentPane().add(splitPane);
+        splitPane.setBounds(0, 0, 740, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_back_admin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_admin1ActionPerformed
        this.hide();
-        AdminWorkArea frame = new AdminWorkArea();
+        LoginScreen frame = new LoginScreen();
         frame.setVisible(true);
     }//GEN-LAST:event_btn_back_admin1ActionPerformed
 

@@ -33,6 +33,7 @@ public class VDonorDonations extends javax.swing.JPanel {
         txtCommunity1 = new javax.swing.JTextField();
         lblpc_name = new javax.swing.JLabel();
         lblpc_id1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setLayout(null);
 
@@ -75,25 +76,34 @@ public class VDonorDonations extends javax.swing.JPanel {
             }
         });
         add(btn_create);
-        btn_create.setBounds(270, 510, 210, 40);
+        btn_create.setBounds(290, 470, 210, 40);
 
         txtpc_name.setEditable(false);
         add(txtpc_name);
-        txtpc_name.setBounds(280, 370, 207, 22);
+        txtpc_name.setBounds(280, 370, 207, 23);
 
         txtCommunity1.setEditable(false);
         add(txtCommunity1);
-        txtCommunity1.setBounds(280, 290, 207, 22);
+        txtCommunity1.setBounds(280, 290, 207, 23);
 
         lblpc_name.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lblpc_name.setText("PLASMA CENTER NAME");
         add(lblpc_name);
-        lblpc_name.setBounds(70, 370, 200, 19);
+        lblpc_name.setBounds(70, 370, 200, 18);
 
         lblpc_id1.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lblpc_id1.setText("PLASMA CENTER ID");
         add(lblpc_id1);
-        lblpc_id1.setBounds(80, 290, 170, 19);
+        lblpc_id1.setBounds(80, 290, 170, 18);
+
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack);
+        btnBack.setBounds(500, 20, 100, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
@@ -101,8 +111,15 @@ public class VDonorDonations extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btn_createActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.hide();
+        VDonorWA frame = new  VDonorWA();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btn_create;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

@@ -38,6 +38,7 @@ public class AdminStock extends javax.swing.JFrame {
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -96,6 +97,15 @@ public class AdminStock extends javax.swing.JFrame {
         getContentPane().add(lblTitle);
         lblTitle.setBounds(80, 30, 310, 29);
 
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(580, 30, 100, 23);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -120,6 +130,12 @@ public class AdminStock extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.hide();
+        AdminWorkArea frame = new AdminWorkArea();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,6 +173,7 @@ public class AdminStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblTitle;

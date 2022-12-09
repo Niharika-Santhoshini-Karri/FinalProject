@@ -59,8 +59,6 @@ public class AdminPC extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         txtaddress = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
-        txthos_id = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtpcname = new javax.swing.JTextField();
@@ -93,7 +91,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(180, 490, 100, 23);
+        txtmobile.setBounds(180, 450, 100, 23);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
@@ -101,24 +99,24 @@ public class AdminPC extends javax.swing.JFrame {
 
         jLabel5.setText("Mobile");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 490, 90, 30);
+        jLabel5.setBounds(40, 450, 90, 30);
 
         tblPlasma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Hospital_ID", "Address", "Mobile"
+                "ID", "Name", "Address", "Mobile"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -146,7 +144,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(160, 570, 87, 23);
+        btnAdd.setBounds(160, 530, 87, 23);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
@@ -182,12 +180,6 @@ public class AdminPC extends javax.swing.JFrame {
         });
         getContentPane().add(btnUpdate);
         btnUpdate.setBounds(280, 280, 100, 23);
-        getContentPane().add(txthos_id);
-        txthos_id.setBounds(180, 450, 100, 23);
-
-        jLabel4.setText("Hospital_ID");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 450, 110, 17);
 
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +229,7 @@ public class AdminPC extends javax.swing.JFrame {
 
         valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valContact);
-        valContact.setBounds(300, 490, 130, 20);
+        valContact.setBounds(300, 450, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -269,7 +261,7 @@ public class AdminPC extends javax.swing.JFrame {
         }
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtid.getText();
-       int hos_id = Integer.valueOf(txthos_id.getText());
+       //int hos_id = Integer.valueOf(txthos_id.getText());
        String address = txtaddress.getText();
       
        String mobile = txtmobile.getText();
@@ -281,11 +273,7 @@ public class AdminPC extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter valid");
            return;
         }
-        if(txthos_id.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter valid hospital ID");
-            return;
-        }
+     
 
         if(txtaddress.getText().isEmpty())
         {
@@ -299,7 +287,7 @@ public class AdminPC extends javax.swing.JFrame {
 
         }
         //check if the id already exists and a valid hospital id laready exists
-                String INSERTPCSQL = "insert into plasmaC(pc_id,pc_name,hospital_id,address,mobile) values (?,?,?,?,?) ";
+                String INSERTPCSQL = "insert into plasmaC(pc_id,pc_name,address,mobile) values (?,?,?,?) ";
 
         PreparedStatement stmt; 
         try
@@ -309,14 +297,14 @@ public class AdminPC extends javax.swing.JFrame {
              
             stmt.setInt(1,pc_id); 
             stmt.setString(2,pc_name);
-            stmt.setInt(3,hos_id);
-            stmt.setString(4,address);
-            stmt.setString(5,mobile);
+            //stmt.setInt(3,hos_id);
+            stmt.setString(3,address);
+            stmt.setString(4,mobile);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
         {
-            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminPC.class.getName()).log(Level.SEVERE, null, ex);
         }
 
            JOptionPane.showMessageDialog(this,"New Plasma Center Added");
@@ -366,7 +354,7 @@ public class AdminPC extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        var valid = true;
+         var valid = true;
        
         if (!this.validations.ValidateName(txtpcname.getText()) ) {
             valName.setText("Plasma  Name is Invalid");
@@ -386,7 +374,7 @@ public class AdminPC extends javax.swing.JFrame {
         }
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtid.getText();
-       int hos_id = Integer.valueOf(txthos_id.getText());
+       //int hos_id = Integer.valueOf(txthos_id.getText());
        String address = txtaddress.getText();
       
        String mobile = txtmobile.getText();
@@ -398,7 +386,7 @@ public class AdminPC extends javax.swing.JFrame {
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String SELECTHOSSQL = "update plasmaC set pc_name=? ,hospital_id =?,address=?,mobile=? where pc_id=? ";
+                String SELECTHOSSQL = "update plasmaC set pc_name=? ,address=?,mobile=? where pc_id=? ";
                 PreparedStatement stmt; 
         try
         {
@@ -406,10 +394,10 @@ public class AdminPC extends javax.swing.JFrame {
        
              
             stmt.setString(1,pc_name); 
-            stmt.setInt(2,hos_id);
-            stmt.setString(3,address);
-            stmt.setString(4,mobile);
-            stmt.setInt(5,pc_id);
+           // stmt.setInt(2,hos_id);
+            stmt.setString(2,address);
+            stmt.setString(3,mobile);
+            stmt.setInt(4,pc_id);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
@@ -429,9 +417,9 @@ public class AdminPC extends javax.swing.JFrame {
               
        tblModel.setValueAt(pc_id,tblPlasma.getSelectedRow(), 0);
        tblModel.setValueAt(pc_name,tblPlasma.getSelectedRow(), 1);
-       tblModel.setValueAt(hos_id,tblPlasma.getSelectedRow(), 2);
-       tblModel.setValueAt(address,tblPlasma.getSelectedRow(), 3);
-       tblModel.setValueAt(mobile,tblPlasma.getSelectedRow(), 4);
+      // tblModel.setValueAt(hos_id,tblPlasma.getSelectedRow(), 2);
+       tblModel.setValueAt(address,tblPlasma.getSelectedRow(), 2);
+       tblModel.setValueAt(mobile,tblPlasma.getSelectedRow(), 3);
        
         
 
@@ -463,15 +451,15 @@ public class AdminPC extends javax.swing.JFrame {
 
         String id = tblModel.getValueAt(tblPlasma.getSelectedRow(),0).toString();
         String pc_name = tblModel.getValueAt(tblPlasma.getSelectedRow(),1).toString();
-        String hos_id = tblModel.getValueAt(tblPlasma.getSelectedRow(),2).toString();
-        String address = tblModel.getValueAt(tblPlasma.getSelectedRow(),3).toString();
-        String mobile = tblModel.getValueAt(tblPlasma.getSelectedRow(),4).toString();
+        //String hos_id = tblModel.getValueAt(tblPlasma.getSelectedRow(),2).toString();
+        String address = tblModel.getValueAt(tblPlasma.getSelectedRow(),2).toString();
+        String mobile = tblModel.getValueAt(tblPlasma.getSelectedRow(),3).toString();
       
         
 
         txtid.setText(String.valueOf(id));
         txtpcname.setText(pc_name);
-        txthos_id.setText(hos_id);
+        //txthos_id.setText(hos_id);
         txtaddress.setText(address);
         txtmobile.setText(mobile);
         
@@ -572,7 +560,6 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
@@ -581,7 +568,6 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JTable tblPlasma;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtaddress;
-    private javax.swing.JTextField txthos_id;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtmobile;
     private javax.swing.JTextField txtpcname;
@@ -606,12 +592,11 @@ public class AdminPC extends javax.swing.JFrame {
 
              while (resultSet.next()) {
             
-            Object[] row = new Object[5];
+            Object[] row = new Object[4];
             row[0]=resultSet.getInt(1);
             row[1] = resultSet.getString(2);
-            row[2] = resultSet.getInt(3);
-            row[3]=resultSet.getString(4);
-            row[4]=resultSet.getString(5);  
+            row[2]=resultSet.getString(3);
+            row[3]=resultSet.getString(4);  
             
             model.addRow(row);
              }
@@ -628,7 +613,7 @@ public class AdminPC extends javax.swing.JFrame {
     txtid.setText(null);
         txtpcname.setText(null);
          txtaddress.setText(null);
-         txthos_id.setText(null);
+         //txthos_id.setText(null);
           txtmobile.setText(null);
     }
     private void setValidationNull() {
