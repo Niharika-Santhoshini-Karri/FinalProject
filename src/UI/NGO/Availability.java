@@ -155,6 +155,9 @@ public class Availability extends javax.swing.JFrame {
     }//GEN-LAST:event_btntypeActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    this.hide();
+        NGOWorkArea frame = new NGOWorkArea();
+        frame.setVisible(true);
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton1ActionPerformed

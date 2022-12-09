@@ -107,6 +107,9 @@ public class ViewDonors extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+    this.hide();
+        NGOWorkArea frame = new NGOWorkArea();
+        frame.setVisible(true);
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnbackActionPerformed

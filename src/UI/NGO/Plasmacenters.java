@@ -4,6 +4,15 @@
  */
 package UI.NGO;
 
+import DBUTIL.DBUTIL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+
 /**
  *
  * @author 91918
@@ -13,9 +22,8 @@ public class Plasmacenters extends javax.swing.JFrame {
     /**
      * Creates new form Plasmacenters
      */
-    public Plasmacenters() {
-        initComponents();
-    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,14 +35,14 @@ public class Plasmacenters extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblOrganizations = new javax.swing.JTable();
+        tblPlasmacenters = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tblOrganizations.setBackground(new java.awt.Color(204, 255, 204));
-        tblOrganizations.setModel(new javax.swing.table.DefaultTableModel(
+        tblPlasmacenters.setBackground(new java.awt.Color(204, 255, 204));
+        tblPlasmacenters.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -60,7 +68,7 @@ public class Plasmacenters extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblOrganizations);
+        jScrollPane1.setViewportView(tblPlasmacenters);
 
         btnBack.setBackground(new java.awt.Color(102, 153, 255));
         btnBack.setText("Back");
@@ -103,7 +111,9 @@ public class Plasmacenters extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-
+        this.hide();
+        NGOWorkArea frame = new NGOWorkArea();
+        frame.setVisible(true);
         
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -147,6 +157,6 @@ public class Plasmacenters extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblOrganizations;
+    private javax.swing.JTable tblPlasmacenters;
     // End of variables declaration//GEN-END:variables
 }
