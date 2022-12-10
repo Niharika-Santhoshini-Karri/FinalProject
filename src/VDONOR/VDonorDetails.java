@@ -63,8 +63,8 @@ public class VDonorDetails extends javax.swing.JPanel {
         btnMale = new javax.swing.JRadioButton();
         btnFemale = new javax.swing.JRadioButton();
         ComboBlood = new javax.swing.JComboBox<>();
-        txtContact = new javax.swing.JTextField();
         txtAddress = new javax.swing.JTextField();
+        txtContact = new javax.swing.JTextField();
         valName = new javax.swing.JLabel();
         valAge = new javax.swing.JLabel();
         valGender = new javax.swing.JLabel();
@@ -82,31 +82,31 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnUpdate);
-        btnUpdate.setBounds(220, 370, 200, 31);
+        btnUpdate.setBounds(220, 370, 200, 23);
 
         jLabel1.setText("Name");
         add(jLabel1);
-        jLabel1.setBounds(110, 70, 80, 25);
+        jLabel1.setBounds(110, 70, 80, 17);
 
         jLabel6.setText("Age");
         add(jLabel6);
-        jLabel6.setBounds(110, 120, 90, 25);
+        jLabel6.setBounds(110, 120, 90, 17);
 
         jLabel5.setText("Gender");
         add(jLabel5);
-        jLabel5.setBounds(110, 160, 90, 25);
+        jLabel5.setBounds(110, 160, 90, 17);
 
         jLabel2.setText("Blood Group");
         add(jLabel2);
-        jLabel2.setBounds(110, 220, 120, 25);
+        jLabel2.setBounds(110, 220, 120, 17);
 
         jLabel3.setText("Address");
         add(jLabel3);
-        jLabel3.setBounds(120, 270, 100, 25);
+        jLabel3.setBounds(140, 310, 100, 17);
 
         jLabel7.setText("Contact");
         add(jLabel7);
-        jLabel7.setBounds(110, 310, 130, 25);
+        jLabel7.setBounds(140, 280, 130, 17);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,7 +137,7 @@ public class VDonorDetails extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(40, 420, 800, 200);
+        jScrollPane1.setBounds(90, 430, 470, 200);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +150,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtName);
-        txtName.setBounds(270, 70, 112, 31);
+        txtName.setBounds(270, 70, 112, 23);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +163,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtAge);
-        txtAge.setBounds(270, 110, 112, 31);
+        txtAge.setBounds(270, 110, 112, 23);
 
         btnGender.add(btnMale);
         btnMale.setText("Male");
@@ -173,7 +173,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnMale);
-        btnMale.setBounds(260, 160, 100, 29);
+        btnMale.setBounds(260, 160, 100, 21);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -183,7 +183,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnFemale);
-        btnFemale.setBounds(480, 160, 150, 29);
+        btnFemale.setBounds(350, 160, 150, 21);
 
         ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         ComboBlood.addActionListener(new java.awt.event.ActionListener() {
@@ -192,20 +192,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(ComboBlood);
-        ComboBlood.setBounds(290, 220, 77, 31);
-
-        txtContact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContactActionPerformed(evt);
-            }
-        });
-        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtContactKeyReleased(evt);
-            }
-        });
-        add(txtContact);
-        txtContact.setBounds(290, 320, 77, 20);
+        ComboBlood.setBounds(290, 220, 77, 23);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +205,20 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtAddress);
-        txtAddress.setBounds(290, 280, 77, 31);
+        txtAddress.setBounds(267, 310, 110, 30);
+
+        txtContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContactActionPerformed(evt);
+            }
+        });
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContactKeyReleased(evt);
+            }
+        });
+        add(txtContact);
+        txtContact.setBounds(267, 273, 100, 23);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valName);
@@ -238,11 +238,11 @@ public class VDonorDetails extends javax.swing.JPanel {
 
         valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valPhone);
-        valPhone.setBounds(300, 260, 160, 20);
+        valPhone.setBounds(400, 270, 160, 20);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valAddress);
-        valAddress.setBounds(290, 320, 190, 20);
+        valAddress.setBounds(390, 310, 190, 20);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +251,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(430, 10, 100, 31);
+        btnBack.setBounds(490, 20, 100, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -305,8 +305,8 @@ public class VDonorDetails extends javax.swing.JPanel {
         int age = Integer.valueOf(txtAge.getText()); 
         //String gender = (String) combgender.getSelectedItem();
         String bloodgroup = (String) ComboBlood.getSelectedItem(); 
-        String contact = txtContact.getText();
-        String Address = txtAddress.getText();
+        String contact = txtAddress.getText();
+        String Address = txtContact.getText();
         
         Connection conn = dbconn.getConnection();
        
@@ -399,20 +399,6 @@ public class VDonorDetails extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ComboBloodActionPerformed
 
-    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContactActionPerformed
-
-    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
-        // TODO add your handling code here:
-        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
-            valPhone.setText("Phone Number is Invalid");
-        }
-        else {
-            valPhone.setText(null);
-        }
-    }//GEN-LAST:event_txtContactKeyReleased
-
     private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressActionPerformed
@@ -422,11 +408,25 @@ public class VDonorDetails extends javax.swing.JPanel {
         if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
             valAddress.setText("Address is Invalid");
         }
-
         else {
             valAddress.setText(null);
         }
     }//GEN-LAST:event_txtAddressKeyReleased
+
+    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContactActionPerformed
+
+    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
+            valPhone.setText("Contact is Invalid");
+        }
+
+        else {
+            valPhone.setText(null);
+        }
+    }//GEN-LAST:event_txtContactKeyReleased
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.hide();
@@ -478,8 +478,8 @@ public class VDonorDetails extends javax.swing.JPanel {
 //                    System.out.println("Some discrepancy here!");
 //                    break;
 //            }
-            txtAddress.setText(resultSet1.getString(4));
-            txtContact.setText(resultSet1.getString(5));
+            txtContact.setText(resultSet1.getString(4));
+            txtAddress.setText(resultSet1.getString(5));
             
             
             

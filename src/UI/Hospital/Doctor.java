@@ -99,6 +99,12 @@ Validations validations;
         valName = new javax.swing.JLabel();
         valSpecialisation = new javax.swing.JLabel();
         valPagerID = new javax.swing.JLabel();
+        lblEmployeeName = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblEmployeeName1 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        valUsername = new javax.swing.JLabel();
+        valPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -151,7 +157,7 @@ Validations validations;
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(260, 520, 72, 23);
+        btnAdd.setBounds(260, 550, 72, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +252,32 @@ Validations validations;
         getContentPane().add(valPagerID);
         valPagerID.setBounds(500, 420, 180, 20);
 
+        lblEmployeeName.setText("Username :");
+        getContentPane().add(lblEmployeeName);
+        lblEmployeeName.setBounds(170, 450, 110, 17);
+
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtUsername);
+        txtUsername.setBounds(330, 460, 140, 23);
+
+        lblEmployeeName1.setText("Password :");
+        getContentPane().add(lblEmployeeName1);
+        lblEmployeeName1.setBounds(170, 490, 100, 17);
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(330, 490, 140, 23);
+
+        valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valUsername);
+        valUsername.setBounds(490, 460, 180, 20);
+
+        valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valPassword);
+        valPassword.setBounds(500, 490, 170, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,6 +293,16 @@ Validations validations;
         }
           if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
             valPagerID.setText("Phone Number is Invalid");
+            valid = false;
+        }
+          if (!this.validations.ValidateUsername(txtUsername.getText()) ) {
+            valUsername.setText("Username is Invalid");
+            valid = false;
+        }
+
+        String pass_word = String.valueOf(txtPassword.getPassword());
+        if (!this.validations.ValidatePassword(pass_word) ) {
+            valPassword.setText("Should be 4-12 character long");
             valid = false;
         }
         
@@ -343,6 +385,16 @@ Validations validations;
         }
           if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
             valPagerID.setText("Phone Number is Invalid");
+            valid = false;
+        }
+          if (!this.validations.ValidateUsername(txtUsername.getText()) ) {
+            valUsername.setText("Username is Invalid");
+            valid = false;
+        }
+
+        String pass_word = String.valueOf(txtPassword.getPassword());
+        if (!this.validations.ValidatePassword(pass_word) ) {
+            valPassword.setText("Should be 4-12 character long");
             valid = false;
         }
          
@@ -502,6 +554,10 @@ Validations validations;
         }
     }//GEN-LAST:event_txtpager_idKeyReleased
 
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -562,13 +618,19 @@ Validations validations;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEmployeeName;
+    private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JComboBox<String> specCombox;
     private javax.swing.JTable tblDoctor;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     private javax.swing.JTextField txtdoc_id;
     private javax.swing.JTextField txtdoc_name;
     private javax.swing.JTextField txtpager_id;
     private javax.swing.JLabel valName;
     private javax.swing.JLabel valPagerID;
+    private javax.swing.JLabel valPassword;
     private javax.swing.JLabel valSpecialisation;
+    private javax.swing.JLabel valUsername;
     // End of variables declaration//GEN-END:variables
 }
