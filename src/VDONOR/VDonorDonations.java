@@ -26,33 +26,37 @@ public class VDonorDonations extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btn_create = new javax.swing.JButton();
-        txtpc_name = new javax.swing.JTextField();
-        txtCommunity1 = new javax.swing.JTextField();
-        lblpc_name = new javax.swing.JLabel();
-        lblpc_id1 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
 
         setLayout(null);
 
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack);
+        btnBack.setBounds(500, 20, 100, 23);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Donation ID", "Plasma Center ID", "Plasma Center Name"
+                "Donation ID", "Plasma Center ID", "Donation Date", "Quantity Donated"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -66,50 +70,8 @@ public class VDonorDonations extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(70, 50, 452, 200);
-
-        btn_create.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btn_create.setText("CREATE APPOINTMENT");
-        btn_create.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_createActionPerformed(evt);
-            }
-        });
-        add(btn_create);
-        btn_create.setBounds(290, 470, 210, 40);
-
-        txtpc_name.setEditable(false);
-        add(txtpc_name);
-        txtpc_name.setBounds(280, 370, 207, 23);
-
-        txtCommunity1.setEditable(false);
-        add(txtCommunity1);
-        txtCommunity1.setBounds(280, 290, 207, 23);
-
-        lblpc_name.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
-        lblpc_name.setText("PLASMA CENTER NAME");
-        add(lblpc_name);
-        lblpc_name.setBounds(70, 370, 200, 18);
-
-        lblpc_id1.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
-        lblpc_id1.setText("PLASMA CENTER ID");
-        add(lblpc_id1);
-        lblpc_id1.setBounds(80, 290, 170, 18);
-
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack);
-        btnBack.setBounds(500, 20, 100, 23);
+        jScrollPane1.setBounds(70, 100, 470, 200);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_createActionPerformed
-
-        
-    }//GEN-LAST:event_btn_createActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.hide();
@@ -120,12 +82,7 @@ public class VDonorDonations extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btn_create;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblpc_id1;
-    private javax.swing.JLabel lblpc_name;
-    private javax.swing.JTextField txtCommunity1;
-    private javax.swing.JTextField txtpc_name;
     // End of variables declaration//GEN-END:variables
 }

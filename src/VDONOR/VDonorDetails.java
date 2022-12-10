@@ -56,8 +56,6 @@ public class VDonorDetails extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         txtName = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         btnMale = new javax.swing.JRadioButton();
@@ -72,6 +70,7 @@ public class VDonorDetails extends javax.swing.JPanel {
         valPhone = new javax.swing.JLabel();
         valAddress = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(null);
 
@@ -82,62 +81,31 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnUpdate);
-        btnUpdate.setBounds(220, 370, 200, 23);
+        btnUpdate.setBounds(220, 420, 200, 23);
 
         jLabel1.setText("Name");
         add(jLabel1);
-        jLabel1.setBounds(110, 70, 80, 17);
+        jLabel1.setBounds(110, 120, 80, 17);
 
         jLabel6.setText("Age");
         add(jLabel6);
-        jLabel6.setBounds(110, 120, 90, 17);
+        jLabel6.setBounds(110, 170, 90, 17);
 
         jLabel5.setText("Gender");
         add(jLabel5);
-        jLabel5.setBounds(110, 160, 90, 17);
+        jLabel5.setBounds(110, 210, 90, 17);
 
         jLabel2.setText("Blood Group");
         add(jLabel2);
-        jLabel2.setBounds(110, 220, 120, 17);
+        jLabel2.setBounds(110, 270, 120, 17);
 
         jLabel3.setText("Address");
         add(jLabel3);
-        jLabel3.setBounds(140, 310, 100, 17);
+        jLabel3.setBounds(140, 360, 100, 17);
 
         jLabel7.setText("Contact");
         add(jLabel7);
-        jLabel7.setBounds(140, 280, 130, 17);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "DONATION ID", "QUANTITY DONATED", "PLASMA CENTER NAME"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        add(jScrollPane1);
-        jScrollPane1.setBounds(90, 430, 470, 200);
+        jLabel7.setBounds(140, 330, 130, 17);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +118,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtName);
-        txtName.setBounds(270, 70, 112, 23);
+        txtName.setBounds(270, 120, 112, 23);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +131,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtAge);
-        txtAge.setBounds(270, 110, 112, 23);
+        txtAge.setBounds(270, 160, 112, 23);
 
         btnGender.add(btnMale);
         btnMale.setText("Male");
@@ -173,7 +141,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnMale);
-        btnMale.setBounds(260, 160, 100, 21);
+        btnMale.setBounds(260, 210, 100, 21);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -183,7 +151,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnFemale);
-        btnFemale.setBounds(350, 160, 150, 21);
+        btnFemale.setBounds(320, 210, 150, 21);
 
         ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         ComboBlood.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +160,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(ComboBlood);
-        ComboBlood.setBounds(290, 220, 77, 23);
+        ComboBlood.setBounds(290, 270, 77, 23);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +173,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtAddress);
-        txtAddress.setBounds(267, 310, 110, 30);
+        txtAddress.setBounds(270, 360, 110, 30);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,31 +186,31 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtContact);
-        txtContact.setBounds(267, 273, 100, 23);
+        txtContact.setBounds(270, 320, 100, 23);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valName);
-        valName.setBounds(330, 70, 180, 20);
+        valName.setBounds(410, 120, 180, 20);
 
         valAge.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valAge);
-        valAge.setBounds(320, 100, 160, 20);
+        valAge.setBounds(410, 160, 160, 20);
 
         valGender.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valGender);
-        valGender.setBounds(320, 160, 170, 20);
+        valGender.setBounds(420, 210, 170, 20);
 
         valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valBlood);
-        valBlood.setBounds(290, 220, 160, 20);
+        valBlood.setBounds(400, 270, 160, 20);
 
         valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valPhone);
-        valPhone.setBounds(400, 270, 160, 20);
+        valPhone.setBounds(400, 320, 160, 20);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valAddress);
-        valAddress.setBounds(390, 310, 190, 20);
+        valAddress.setBounds(410, 360, 190, 20);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +220,11 @@ public class VDonorDetails extends javax.swing.JPanel {
         });
         add(btnBack);
         btnBack.setBounds(490, 20, 100, 23);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("YOUR DETAILS");
+        add(jLabel4);
+        jLabel4.setBounds(190, 10, 220, 39);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -302,8 +275,9 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
             
         String name = txtName.getText(); 
-        int age = Integer.valueOf(txtAge.getText()); 
-        //String gender = (String) combgender.getSelectedItem();
+        int age = Integer.valueOf(txtAge.getText());
+        
+        //String gender = (String) btngender.getSelectedItem();
         String bloodgroup = (String) ComboBlood.getSelectedItem(); 
         String contact = txtAddress.getText();
         String Address = txtContact.getText();
@@ -327,12 +301,13 @@ public class VDonorDetails extends javax.swing.JPanel {
             stmt = conn.prepareStatement(updateDonor );
        
              
-           stmt.setString(3,name);
-            stmt.setInt(4,age);
-            stmt.setString(5,gender);
-            stmt.setString(6,contact);
-            stmt.setString(7,Address);
-            stmt.setString(8,bloodgroup);
+           stmt.setString(1,name);
+            stmt.setInt(2,age);
+            stmt.setString(3,gender);
+            stmt.setString(4,contact);
+            stmt.setString(5,Address);
+            stmt.setString(6,bloodgroup);
+            stmt.setInt(7,donor_id);
             
             stmt.executeUpdate();
         }
@@ -451,11 +426,11 @@ public class VDonorDetails extends javax.swing.JPanel {
             String gender = resultSet1.getString(3);
             String blood_group = resultSet1.getString(6);
             ComboBlood.setSelectedItem(blood_group);
-            if("M".equals(gender))
+            if("Male".equals(gender))
             {
                 btnMale.setSelected(true);
             }
-            else if("F".equals(gender))
+            else if("Female".equals(gender))
             {
                 btnFemale.setSelected(true);
             }
@@ -505,11 +480,10 @@ public class VDonorDetails extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
