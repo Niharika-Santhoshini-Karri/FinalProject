@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import MODEL.HOSPITAL;
+import java.util.Vector;
 
 /**
  *
@@ -31,11 +32,12 @@ Validations validations;
     
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-    
+    Vector originalTableModel;
     public Doctor() {
         initComponents();
         validations = new Validations();
         populateTable();
+        originalTableModel = (Vector) ((DefaultTableModel) tblDoctor.getModel()).getDataVector().clone();
     }
     
     private void populateTable(){
@@ -106,6 +108,8 @@ Validations validations;
         txtPassword = new javax.swing.JPasswordField();
         valUsername = new javax.swing.JLabel();
         valPassword = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -144,7 +148,7 @@ Validations validations;
         jScrollPane1.setViewportView(tblDoctor);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 90, 480, 132);
+        jScrollPane1.setBounds(120, 170, 480, 132);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("ADD DOCTOR");
@@ -158,7 +162,7 @@ Validations validations;
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(260, 550, 72, 23);
+        btnAdd.setBounds(260, 630, 72, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +171,7 @@ Validations validations;
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(320, 240, 79, 23);
+        btnUpdate.setBounds(320, 320, 79, 23);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -176,19 +180,19 @@ Validations validations;
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(410, 240, 77, 23);
+        btnDelete.setBounds(410, 320, 77, 23);
 
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(180, 330, 67, 17);
+        jLabel2.setBounds(180, 410, 67, 17);
 
         jLabel3.setText("Doctor ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(170, 290, 54, 17);
+        jLabel3.setBounds(170, 370, 54, 17);
 
         jLabel4.setText("Specialization");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(173, 383, 80, 17);
+        jLabel4.setBounds(170, 460, 80, 17);
 
         txtdoc_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +205,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtdoc_name);
-        txtdoc_name.setBounds(340, 330, 131, 23);
+        txtdoc_name.setBounds(340, 410, 131, 23);
 
         txtdoc_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +213,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtdoc_id);
-        txtdoc_id.setBounds(340, 290, 131, 23);
+        txtdoc_id.setBounds(340, 370, 131, 23);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +226,7 @@ Validations validations;
 
         jLabel5.setText("Pager ID ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(173, 421, 53, 17);
+        jLabel5.setBounds(170, 500, 53, 17);
 
         txtpager_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -230,7 +234,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtpager_id);
-        txtpager_id.setBounds(337, 418, 131, 23);
+        txtpager_id.setBounds(330, 500, 131, 23);
 
         specCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cardiologist", "General Surgeon", "Orthopedician" }));
         specCombox.addActionListener(new java.awt.event.ActionListener() {
@@ -239,23 +243,23 @@ Validations validations;
             }
         });
         getContentPane().add(specCombox);
-        specCombox.setBounds(337, 377, 131, 23);
+        specCombox.setBounds(330, 460, 131, 23);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(500, 330, 180, 20);
+        valName.setBounds(500, 410, 180, 20);
 
         valSpecialisation.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valSpecialisation);
-        valSpecialisation.setBounds(500, 380, 180, 20);
+        valSpecialisation.setBounds(500, 460, 180, 20);
 
         valPagerID.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPagerID);
-        valPagerID.setBounds(500, 420, 180, 20);
+        valPagerID.setBounds(500, 500, 180, 20);
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(170, 450, 110, 17);
+        lblEmployeeName.setBounds(170, 530, 110, 17);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,21 +267,39 @@ Validations validations;
             }
         });
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(330, 460, 140, 23);
+        txtUsername.setBounds(330, 540, 140, 23);
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(170, 490, 100, 17);
+        lblEmployeeName1.setBounds(170, 570, 100, 17);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(330, 490, 140, 23);
+        txtPassword.setBounds(330, 570, 140, 23);
 
         valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valUsername);
-        valUsername.setBounds(490, 460, 180, 20);
+        valUsername.setBounds(490, 540, 180, 20);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(500, 490, 170, 20);
+        valPassword.setBounds(500, 570, 170, 20);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(170, 110, 430, 30);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(90, 110, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -570,6 +592,28 @@ Validations validations;
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -630,11 +674,13 @@ Validations validations;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JComboBox<String> specCombox;
     private javax.swing.JTable tblDoctor;
     private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtUsername;
     private javax.swing.JTextField txtdoc_id;
     private javax.swing.JTextField txtdoc_name;

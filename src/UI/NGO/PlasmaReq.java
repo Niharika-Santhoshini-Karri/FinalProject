@@ -4,6 +4,9 @@
  */
 package UI.NGO;
 
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Niharika
@@ -13,8 +16,10 @@ public class PlasmaReq extends javax.swing.JFrame {
     /**
      * Creates new form PatientReq
      */
+    Vector originalTableModel;
     public PlasmaReq() {
         initComponents();
+        originalTableModel = (Vector) ((DefaultTableModel) tblWorkRequests.getModel()).getDataVector().clone();
     }
 
     /**
@@ -26,24 +31,23 @@ public class PlasmaReq extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btntype = new javax.swing.JButton();
-        cmbtype = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnback = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
+        cmbStatus = new javax.swing.JComboBox<>();
+        lblStatus = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btntype.setText("Search By Type");
-        btntype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btntypeActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Pending plasma requirements");
+        jLabel1.setText("PLASMA REQUESTS");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(190, 30, 280, 22);
 
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -51,8 +55,9 @@ public class PlasmaReq extends javax.swing.JFrame {
                 btnbackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnback);
+        btnback.setBounds(540, 50, 72, 23);
 
-        tblWorkRequests.setBackground(new java.awt.Color(204, 255, 204));
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -81,53 +86,46 @@ public class PlasmaReq extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblWorkRequests);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(btnback)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(cmbtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btntype)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnback)))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btntype)
-                    .addComponent(cmbtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(27, 147, 577, 171);
+
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Item 2", " " }));
+        getContentPane().add(cmbStatus);
+        cmbStatus.setBounds(110, 350, 95, 23);
+
+        lblStatus.setText("Status");
+        getContentPane().add(lblStatus);
+        lblStatus.setBounds(60, 350, 37, 17);
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpdate);
+        btnUpdate.setBounds(500, 350, 73, 23);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(80, 90, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(160, 90, 430, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btntypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntypeActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btntypeActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         this.hide();
@@ -136,6 +134,34 @@ public class PlasmaReq extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnbackActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblWorkRequests.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -174,11 +200,14 @@ public class PlasmaReq extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnback;
-    private javax.swing.JButton btntype;
-    private javax.swing.JComboBox<String> cmbtype;
+    private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JTable tblWorkRequests;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

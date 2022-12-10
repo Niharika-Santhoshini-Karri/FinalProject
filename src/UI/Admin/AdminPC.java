@@ -80,11 +80,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 31);
+        btnBack.setBounds(570, 30, 100, 23);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 370, 70, 25);
+        jLabel1.setBounds(50, 370, 70, 17);
 
         lblZipcode.setText("ZIP CODE");
         getContentPane().add(lblZipcode);
@@ -133,11 +133,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(130, 550, 87, 31);
+        btnAdd.setBounds(130, 550, 87, 23);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(80, 330, 60, 25);
+        lblSelectOrgType.setBounds(80, 330, 60, 17);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(400, 280, 100, 31);
+        btnDelete.setBounds(400, 280, 100, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
@@ -159,7 +159,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipcode);
-        txtZipcode.setBounds(180, 490, 100, 31);
+        txtZipcode.setBounds(180, 490, 100, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +168,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(280, 280, 100, 31);
+        btnUpdate.setBounds(280, 280, 100, 23);
 
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,11 +176,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(180, 320, 100, 31);
+        txtid.setBounds(180, 320, 100, 23);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 410, 80, 25);
+        jLabel2.setBounds(40, 410, 80, 17);
 
         txtpcname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -188,7 +188,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtpcname);
-        txtpcname.setBounds(180, 370, 100, 31);
+        txtpcname.setBounds(180, 370, 100, 23);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -201,6 +201,9 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
             }
@@ -230,7 +233,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtaddress1);
-        txtaddress1.setBounds(180, 410, 100, 31);
+        txtaddress1.setBounds(180, 410, 100, 23);
 
         txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -238,7 +241,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(180, 450, 100, 31);
+        txtmobile.setBounds(180, 450, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -522,6 +525,10 @@ public class AdminPC extends javax.swing.JFrame {
     private void txtmobileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmobileKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_txtmobileKeyReleased
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchKeyPressed
 
     /**
      * @param args the command line arguments
