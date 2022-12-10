@@ -21,6 +21,7 @@ import UI.NGO.NGOWorkArea;
 import UI.DOC.DoctorWorkArea;
 import UI.PlasmaCenter.PCWorkArea;
 import VDONOR.VDonorWA;
+import MODEL.HOSPITAL;
 
 /**
  *
@@ -32,15 +33,9 @@ public class LoginScreen extends javax.swing.JFrame {
      * Creates new form LoginScreen
      */
     Validations validations;
-    public static int hos_id ; 
+   
 
-    public static int getHos_id() {
-        return hos_id;
-    }
-
-    public static void setHos_id(int hos_id) {
-        LoginScreen.hos_id = hos_id;
-    }
+    
     public static int pc_id; 
    
       public static int getpc_id() {
@@ -269,7 +264,7 @@ System.out.println("Connected to database !!");
                     resultSethos = stmthos_id.executeQuery();
                     resultSethos.next();
                     int thishos_id = Integer.valueOf(resultSethos.getInt(1));
-                    setHos_id(thishos_id);
+                    HOSPITAL.setHos_id(thishos_id);
                     HospitalWorkArea HWA=new HospitalWorkArea();
                     this.dispose();
                     HWA.setVisible(true);

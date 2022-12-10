@@ -81,23 +81,23 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(698, 44, 72, 23);
+        btnBack.setBounds(698, 44, 72, 31);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 90, 34, 17);
+        jLabel1.setBounds(50, 90, 49, 25);
 
         jLabel2.setText("Blood Group");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 240, 74, 17);
+        jLabel2.setBounds(30, 250, 102, 25);
 
         jLabel3.setText("Address");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 340, 49, 17);
+        jLabel3.setBounds(50, 380, 65, 25);
 
         jLabel4.setText("PASSWORD");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(480, 200, 80, 17);
+        jLabel4.setBounds(480, 200, 80, 25);
 
         txtUser_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +110,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUser_ID);
-        txtUser_ID.setBounds(590, 130, 208, 23);
+        txtUser_ID.setBounds(590, 130, 208, 31);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,7 +123,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAge);
-        txtAge.setBounds(170, 120, 112, 23);
+        txtAge.setBounds(170, 120, 112, 31);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +136,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(170, 90, 112, 23);
+        txtName.setBounds(170, 90, 112, 31);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,15 +149,15 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(170, 340, 77, 23);
+        txtAddress.setBounds(180, 380, 77, 31);
 
         jLabel5.setText("Gender");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(50, 180, 43, 17);
+        jLabel5.setBounds(50, 180, 60, 25);
 
         jLabel6.setText("Age");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(50, 120, 22, 17);
+        jLabel6.setBounds(50, 120, 33, 25);
 
         ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         ComboBlood.addActionListener(new java.awt.event.ActionListener() {
@@ -166,15 +166,15 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboBlood);
-        ComboBlood.setBounds(170, 240, 72, 23);
+        ComboBlood.setBounds(200, 240, 77, 31);
 
         jLabel7.setText("Contact");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(50, 280, 45, 20);
+        jLabel7.setBounds(50, 340, 61, 20);
 
         jLabel8.setText("USER ID");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(490, 130, 50, 17);
+        jLabel8.setBounds(490, 130, 66, 25);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +187,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
-        txtContact.setBounds(170, 280, 77, 20);
+        txtContact.setBounds(180, 340, 77, 20);
 
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -196,7 +196,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegister);
-        btnRegister.setBounds(650, 260, 78, 23);
+        btnRegister.setBounds(650, 260, 97, 31);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -234,7 +234,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMale);
-        btnMale.setBounds(150, 180, 51, 21);
+        btnMale.setBounds(150, 180, 64, 29);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -244,7 +244,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnFemale);
-        btnFemale.setBounds(220, 180, 65, 21);
+        btnFemale.setBounds(220, 180, 81, 29);
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -252,7 +252,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(600, 200, 190, 23);
+        txtPassword.setBounds(600, 200, 190, 31);
 
         valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valBlood);
@@ -262,7 +262,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("VOLUNTARY DONOR REGISTRATION");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(210, 20, 350, 22);
+        jLabel9.setBounds(210, 20, 350, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

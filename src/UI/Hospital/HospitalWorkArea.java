@@ -17,21 +17,21 @@ public class HospitalWorkArea extends javax.swing.JFrame {
      * Creates new form HospitalWorkArea
      */
     
-    public static int ourhos_id  = LoginScreen.getHos_id();
-
-    public static int getOurhos_id() {
-        return ourhos_id;
-    }
-
-    public static void setOurhos_id(int ourhos_id) {
-        HospitalWorkArea.ourhos_id = ourhos_id;
-    }
+//    public static int ourhos_id  = LoginScreen.getHos_id();
+//
+//    public static int getOurhos_id() {
+//        return ourhos_id;
+//    }
+//
+//    public static void setOurhos_id(int ourhos_id) {
+//        HospitalWorkArea.ourhos_id = ourhos_id;
+//    }
     
    
     public HospitalWorkArea() {
         initComponents();
         //int hos_id = LoginScreen.getHos_id();
-        System.out.println("workarea hos_id="+ourhos_id);
+        //
     }
 
     /**

@@ -8,17 +8,15 @@ package MODEL;
  *
  * @author Aish
  */
-public class Doctor {
-    
-    public static int doc_id; 
+public class HOSPITAL {
+    public static int hos_id ; 
 
-    public static int getDoc_id() {
-        return doc_id;
+    public static int getHos_id() {
+        return hos_id;
     }
 
-    public static void setDoc_id(int doc_id) {
-        Doctor.doc_id = doc_id;
+    public static void setHos_id(int hos_id) {
+        HOSPITAL.hos_id = hos_id;
     }
-    
     
 }

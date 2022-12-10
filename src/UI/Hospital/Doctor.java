@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import MODEL.HOSPITAL;
 
 /**
  *
@@ -33,7 +34,7 @@ Validations validations;
     
     public Doctor() {
         initComponents();
-        
+        validations = new Validations();
         populateTable();
     }
     
@@ -402,6 +403,9 @@ Validations validations;
        int doc_id = Integer.valueOf(txtdoc_id.getText());
        String spec = (String) specCombox.getSelectedItem(); 
        int pager_id = Integer.valueOf(txtpager_id.getText());
+       int user_id = Integer.valueOf(txtUsername.getText()); 
+       String password = txtPassword.getText(); 
+       int dochos_id = HOSPITAL.getHos_id();
        
        
        //DBUTIL dbconn= new DBUTIL();
@@ -424,20 +428,28 @@ Validations validations;
             return;
         }
         //check if the id already exists
-        String INSERTDOCSQL = "insert into doctors(doc_id, hos_id, doc_name, spec, pager_id) values (?,?,?,?,?)";
+        String INSERTLOGIN = "insert into logins(user_id, pass_word, role_id) values (?,?,?)";
+        String INSERTDOCSQL = "insert into doctors(doc_id, hos_id, doc_name, spec, pager_id, user_id) values (?,?,?,?,?,?)";
         // or handle exceptions here. 
-        PreparedStatement stmt; 
+        PreparedStatement stmt1, STMT2; 
         try
         {
-            stmt = conn.prepareStatement(INSERTDOCSQL);
+            stmt1 = conn.prepareStatement(INSERTLOGIN);
+            STMT2 = conn.prepareStatement(INSERTDOCSQL);
+            
+            stmt1.setInt(1,user_id); 
+            stmt1.setString(2, password);
+            stmt1.setInt(3, 4);
        
-             
-            stmt.setInt(1,doc_id); 
-            stmt.setInt(2,1);//put hos_id later.
-            stmt.setString(3,doc_name);
-            stmt.setString(4, spec);
-            stmt.setInt(5,pager_id);
-            stmt.executeUpdate();
+            stmt1.executeUpdate(); 
+            
+            STMT2.setInt(1,doc_id); 
+            STMT2.setInt(2,dochos_id);//put hos_id later.
+            STMT2.setString(3,doc_name);
+            STMT2.setString(4, spec);
+            STMT2.setInt(5,pager_id);
+            STMT2.setInt(6,user_id);
+            STMT2.executeUpdate();
         }
         catch (SQLException ex)
         {
@@ -546,8 +558,8 @@ Validations validations;
 
     private void txtpager_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpager_idKeyReleased
         // TODO add your handling code here:
-                if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
-            valPagerID.setText("Phone Number is Invalid");
+                if (!this.validations.ValidatePagerID(txtpager_id.getText()) ) {
+            valPagerID.setText("Pager ID is Invalid");
         }
         else {
             valPagerID.setText(null);

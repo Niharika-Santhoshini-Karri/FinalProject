@@ -6,6 +6,7 @@ package UI.Hospital;
 
 
 import DBUTIL.DBUTIL;
+import MODEL.HOSPITAL;
 import UI.Admin.AdminHospital;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
      */
     DBUTIL dbconn= new DBUTIL();
     ResultSet resultSet1, resultSet2 = null;
-    public static int myhos_id = HospitalWorkArea.getOurhos_id();
+    public static int myhos_id = HOSPITAL.getHos_id();
     
     public RequestToPlasmaCenter() {
         initComponents();

@@ -47,6 +47,10 @@ public class Validations {
         String PATTERN = "^[0-9]{5,7}$";
         return MatchPattern(PATTERN, value);
     }
+    public boolean ValidatePagerID(String value) {
+        String PATTERN = "^[0-9]{1,5}$";
+        return MatchPattern(PATTERN, value);
+    }
     
     public boolean ValidateDate(String value) {
         return !value.isEmpty();
