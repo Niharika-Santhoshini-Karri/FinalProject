@@ -5,6 +5,7 @@
 package UI.Hospital;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.LoginScreen;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Niharika
  */
 public class Doctor extends javax.swing.JFrame {
-
+Validations validations;
     /**
      * Creates new form RequestToPlasmacenter
      */
@@ -95,6 +96,9 @@ public class Doctor extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtpager_id = new javax.swing.JTextField();
         specCombox = new javax.swing.JComboBox<>();
+        valName = new javax.swing.JLabel();
+        valSpecialisation = new javax.swing.JLabel();
+        valPagerID = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -133,7 +137,7 @@ public class Doctor extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDoctor);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(51, 95, 723, 132);
+        jScrollPane1.setBounds(120, 90, 480, 132);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("ADD DOCTOR");
@@ -147,7 +151,7 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(259, 447, 72, 23);
+        btnAdd.setBounds(260, 520, 72, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +160,7 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(487, 245, 73, 23);
+        btnUpdate.setBounds(320, 240, 79, 23);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -165,27 +169,32 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(584, 245, 72, 23);
+        btnDelete.setBounds(410, 240, 77, 23);
 
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(173, 298, 67, 16);
+        jLabel2.setBounds(180, 330, 67, 17);
 
         jLabel3.setText("Doctor ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(173, 336, 50, 16);
+        jLabel3.setBounds(170, 290, 54, 17);
 
         jLabel4.setText("Specialization");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(173, 383, 72, 16);
+        jLabel4.setBounds(173, 383, 80, 17);
 
         txtdoc_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtdoc_nameActionPerformed(evt);
             }
         });
+        txtdoc_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtdoc_nameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtdoc_name);
-        txtdoc_name.setBounds(337, 295, 131, 22);
+        txtdoc_name.setBounds(340, 330, 131, 23);
 
         txtdoc_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +202,7 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtdoc_id);
-        txtdoc_id.setBounds(337, 336, 131, 22);
+        txtdoc_id.setBounds(340, 290, 131, 23);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -206,9 +215,15 @@ public class Doctor extends javax.swing.JFrame {
 
         jLabel5.setText("Pager ID ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(173, 421, 47, 16);
+        jLabel5.setBounds(173, 421, 53, 17);
+
+        txtpager_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtpager_idKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtpager_id);
-        txtpager_id.setBounds(337, 418, 131, 22);
+        txtpager_id.setBounds(337, 418, 131, 23);
 
         specCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cardiologist", "General Surgeon", "Orthopedician" }));
         specCombox.addActionListener(new java.awt.event.ActionListener() {
@@ -217,13 +232,39 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
         getContentPane().add(specCombox);
-        specCombox.setBounds(337, 377, 121, 22);
+        specCombox.setBounds(337, 377, 131, 23);
+
+        valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valName);
+        valName.setBounds(500, 330, 180, 20);
+
+        valSpecialisation.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valSpecialisation);
+        valSpecialisation.setBounds(500, 380, 180, 20);
+
+        valPagerID.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valPagerID);
+        valPagerID.setBounds(500, 420, 180, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-       int SelectedRowIndex=tblDoctor.getSelectedRow();
+       var valid = true;
+         if (!this.validations.ValidateName(txtdoc_name.getText()) ) {
+            valName.setText("Name is Invalid");
+            valid = false;
+        }
+         if (specCombox.getSelectedItem() == null || specCombox.getSelectedItem().toString().isEmpty()) {
+            valSpecialisation.setText("Please Select Doctor Specialisation");
+            valid = false;
+        }
+          if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
+            valPagerID.setText("Phone Number is Invalid");
+            valid = false;
+        }
+        
+        int SelectedRowIndex=tblDoctor.getSelectedRow();
         if(SelectedRowIndex<0)
         {
          JOptionPane.showMessageDialog(this, "Please select a row to delete");
@@ -280,15 +321,31 @@ public class Doctor extends javax.swing.JFrame {
        
       JOptionPane.showMessageDialog(this,"Doctor data Updated");
 
-  txtdoc_name.setText("");
-  txtdoc_id.setText("");
-  txtpager_id.setText("");
+//  txtdoc_name.setText("");
+//  txtdoc_id.setText("");
+//  txtpager_id.setText("");
+   populateTable();
+  setTextNull();  
+      setValidationNull();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       
+       var valid = true;
+         if (!this.validations.ValidateName(txtdoc_name.getText()) ) {
+            valName.setText("Name is Invalid");
+            valid = false;
+        }
+         if (specCombox.getSelectedItem() == null || specCombox.getSelectedItem().toString().isEmpty()) {
+            valSpecialisation.setText("Please Select Doctor Specialisation");
+            valid = false;
+        }
+          if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
+            valPagerID.setText("Phone Number is Invalid");
+            valid = false;
+        }
+         
        String doc_name = txtdoc_name.getText();
        int doc_id = Integer.valueOf(txtdoc_id.getText());
        String spec = (String) specCombox.getSelectedItem(); 
@@ -338,7 +395,8 @@ public class Doctor extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this,"Doctor Added");
 
        populateTable(); 
-   
+   setTextNull();  
+      setValidationNull();
   //stop
   
   txtdoc_name.setText("");
@@ -391,9 +449,9 @@ public class Doctor extends javax.swing.JFrame {
          
         JOptionPane.showMessageDialog(this, "Doctor Deleted");
         populateTable();
-        txtdoc_name.setText("");
-        txtdoc_id.setText("");
-        txtpager_id.setText("");
+//        txtdoc_name.setText("");
+//        txtdoc_id.setText("");
+//        txtpager_id.setText("");
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -409,6 +467,8 @@ public class Doctor extends javax.swing.JFrame {
     txtdoc_name.setText(doc_name);
     txtdoc_id.setText(doc_id);
     txtpager_id.setText(pager_id); 
+    
+     setValidationNull();
 
         
         // TODO add your handling code here:
@@ -421,6 +481,26 @@ public class Doctor extends javax.swing.JFrame {
     private void specComboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_specComboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_specComboxActionPerformed
+
+    private void txtdoc_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdoc_nameKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateName(txtdoc_name.getText()) ) {
+            valName.setText("Name is Invalid");
+        }
+        else {
+            valName.setText(null);
+        }
+    }//GEN-LAST:event_txtdoc_nameKeyReleased
+
+    private void txtpager_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpager_idKeyReleased
+        // TODO add your handling code here:
+                if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
+            valPagerID.setText("Phone Number is Invalid");
+        }
+        else {
+            valPagerID.setText(null);
+        }
+    }//GEN-LAST:event_txtpager_idKeyReleased
 
     /**
      * @param args the command line arguments
@@ -457,6 +537,19 @@ public class Doctor extends javax.swing.JFrame {
             }
         });
     }
+     private void setTextNull() {
+     
+         txtdoc_name.setText(null);
+         txtpager_id.setText(null);
+         specCombox.setSelectedItem(null);
+  
+    }
+    private void setValidationNull() {
+        valName.setText(null);
+        valSpecialisation.setText(null);
+        valPagerID.setText(null);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -474,5 +567,8 @@ public class Doctor extends javax.swing.JFrame {
     private javax.swing.JTextField txtdoc_id;
     private javax.swing.JTextField txtdoc_name;
     private javax.swing.JTextField txtpager_id;
+    private javax.swing.JLabel valName;
+    private javax.swing.JLabel valPagerID;
+    private javax.swing.JLabel valSpecialisation;
     // End of variables declaration//GEN-END:variables
 }

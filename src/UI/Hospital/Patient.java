@@ -5,6 +5,7 @@
 package UI.Hospital;
 
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import UI.Admin.AdminHospital;
 import UI.LoginScreen;
 import java.sql.Connection;
@@ -26,6 +27,7 @@ public class Patient extends javax.swing.JFrame {
     /**
      * Creates new form Patient
      */
+    Validations validations;
     ResultSet resultSet, resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
     
@@ -33,6 +35,7 @@ public class Patient extends javax.swing.JFrame {
         initComponents();
         UpdateComboxdoc_id();
         populateTable();
+        validations = new Validations();
     }
     
     private void populateTable(){
@@ -41,7 +44,7 @@ public class Patient extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-       String selectSql = "SELECT pat_id,pat_name,age, gender, doc_id,address from patients ";
+       String selectSql = "SELECT patient_id,patient_name,age, gender, doc_id,address from patients ";
         
 
       Statement stmt;
@@ -82,6 +85,7 @@ public class Patient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGender = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatient = new javax.swing.JTable();
@@ -89,18 +93,24 @@ public class Patient extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtpat_id = new javax.swing.JTextField();
-        txtpat_name = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         Gender = new javax.swing.JLabel();
-        comboxgender = new javax.swing.JComboBox<>();
         comboxdoc_id = new javax.swing.JComboBox<>();
-        txtage = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Gender1 = new javax.swing.JLabel();
-        txtaddress = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        btnMale = new javax.swing.JRadioButton();
+        btnFemale = new javax.swing.JRadioButton();
+        txtAddress = new javax.swing.JTextField();
+        valAddress = new javax.swing.JLabel();
+        valGender = new javax.swing.JLabel();
+        valAge = new javax.swing.JLabel();
+        valName = new javax.swing.JLabel();
+        valDoc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -142,31 +152,28 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblPatient);
+        if (tblPatient.getColumnModel().getColumnCount() > 0) {
+            tblPatient.getColumnModel().getColumn(5).setMinWidth(0);
+            tblPatient.getColumnModel().getColumn(5).setPreferredWidth(0);
+            tblPatient.getColumnModel().getColumn(5).setMaxWidth(0);
+        }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(27, 66, 888, 180);
+        jScrollPane1.setBounds(40, 80, 580, 180);
 
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(300, 380, 80, 17);
+        jLabel2.setBounds(110, 390, 80, 17);
 
         jLabel3.setText("Patient ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(280, 350, 56, 17);
+        jLabel3.setBounds(90, 360, 56, 17);
 
         jLabel4.setText("Age ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(300, 410, 26, 17);
+        jLabel4.setBounds(110, 420, 26, 17);
         getContentPane().add(txtpat_id);
-        txtpat_id.setBounds(410, 350, 138, 23);
-
-        txtpat_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpat_nameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtpat_name);
-        txtpat_name.setBounds(410, 380, 138, 23);
+        txtpat_id.setBounds(220, 350, 100, 23);
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +182,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(300, 590, 72, 23);
+        btnAdd.setBounds(110, 590, 72, 23);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +191,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(590, 260, 73, 23);
+        btnUpdate.setBounds(350, 270, 73, 23);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +200,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(690, 260, 72, 23);
+        btnDelete.setBounds(470, 270, 72, 23);
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -206,52 +213,143 @@ public class Patient extends javax.swing.JFrame {
 
         Gender.setText("Address");
         getContentPane().add(Gender);
-        Gender.setBounds(280, 520, 84, 17);
-
-        comboxgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", " " }));
-        getContentPane().add(comboxgender);
-        comboxgender.setBounds(410, 440, 138, 23);
+        Gender.setBounds(90, 520, 84, 17);
 
         getContentPane().add(comboxdoc_id);
-        comboxdoc_id.setBounds(410, 480, 138, 23);
-
-        txtage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtageActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtage);
-        txtage.setBounds(410, 410, 138, 23);
+        comboxdoc_id.setBounds(220, 490, 100, 23);
 
         jLabel5.setText("Gender");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(280, 440, 43, 17);
+        jLabel5.setBounds(90, 450, 43, 17);
 
         Gender1.setText("Doctor");
         getContentPane().add(Gender1);
-        Gender1.setBounds(280, 480, 38, 17);
+        Gender1.setBounds(90, 480, 38, 17);
 
-        txtaddress.addActionListener(new java.awt.event.ActionListener() {
+        txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtaddressActionPerformed(evt);
+                txtNameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtaddress);
-        txtaddress.setBounds(410, 520, 138, 23);
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtName);
+        txtName.setBounds(220, 390, 100, 23);
+
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtAge);
+        txtAge.setBounds(220, 420, 100, 23);
+
+        btnGender.add(btnMale);
+        btnMale.setText("Male");
+        btnMale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMale);
+        btnMale.setBounds(210, 460, 51, 21);
+
+        btnGender.add(btnFemale);
+        btnFemale.setText("Female");
+        btnFemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFemaleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFemale);
+        btnFemale.setBounds(280, 460, 65, 21);
+
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAddressKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtAddress);
+        txtAddress.setBounds(220, 520, 100, 23);
+
+        valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valAddress);
+        valAddress.setBounds(350, 520, 190, 20);
+
+        valGender.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valGender);
+        valGender.setBounds(380, 460, 170, 20);
+
+        valAge.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valAge);
+        valAge.setBounds(360, 420, 160, 20);
+
+        valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valName);
+        valName.setBounds(360, 390, 180, 20);
+
+        valDoc.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valDoc);
+        valDoc.setBounds(380, 490, 170, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtpat_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpat_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpat_nameActionPerformed
-
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
        //int pat_id = Integer.valueOf(txtpat_name.getText());
-       int SelectedRowIndex=tblPatient.getSelectedRow();
+       var valid = true;
+         if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+            valid = false;
+        }
+
+
+        if (btnGender.getSelection() == null) {
+            valGender.setText("Gender is required");
+            valid = false;
+        }
+       if (comboxdoc_id.getSelectedItem() == null || comboxdoc_id.getSelectedItem().toString().isEmpty()) {
+            valDoc.setText("Please Select Doctor");
+            valid = false;
+        }
+       
+
+        
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+            valid = false;
+        }
+
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+            valid = false;
+        }
+        if (valid) {
+
+            String gender = null;
+            if (btnMale.isSelected()) {
+                gender = "Male";
+            }
+            else if (btnFemale.isSelected()) {
+                gender = "Female";
+            }
+            int SelectedRowIndex=tblPatient.getSelectedRow();
         if(SelectedRowIndex<0)
         {
-         JOptionPane.showMessageDialog(this, "Please select a row to update");
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
             
         return;
         }
@@ -260,17 +358,17 @@ public class Patient extends javax.swing.JFrame {
          
          
        txtpat_id.setVisible(false);
-       String patient_name = txtpat_name.getText();
-       int age = Integer.valueOf(txtage.getText()); 
-       String gender = (String) comboxgender.getSelectedItem();
+       String patient_name = txtName.getText();
+       int age = Integer.valueOf(txtAge.getText()); 
+       //String gender = (String) comboxgender.getSelectedItem();
        int doc_id = Integer.valueOf((String)comboxdoc_id.getSelectedItem());
-       String address = txtaddress.getText();
+       String address = txtAddress.getText();
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String UPDATEPATIENTSQL = "update patients set pat_name=?, "
-                        + "age=?, gender=?, doc_id=?, address=? where pat_id =?";
+                String UPDATEPATIENTSQL = "update patients set patient_name=?, "
+                        + "age=?, gender=?, doc_id=?, address=? where patient_id =?";
 
         PreparedStatement stmt; 
          
@@ -294,28 +392,69 @@ public class Patient extends javax.swing.JFrame {
         
       JOptionPane.showMessageDialog(this,"Patient data Updated");
 
-  txtpat_name.setText("");
-  txtpat_id.setText("");
-  txtage.setText("");
-  txtaddress.setText("");
+//  txtName.setText("");
+//  txtpat_id.setText("");
+//  txtAge.setText("");
+//  txtAddress.setText("");
   populateTable();
+  setTextNull();  
+    
+      setValidationNull();
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-      int patinet_id = Integer.valueOf(txtpat_id.getText());
-       String patient_name = txtpat_name.getText();
-       int age = Integer.valueOf(txtage.getText()); 
-       String gender = (String) comboxgender.getSelectedItem();
+
+        var valid = true;
+         if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+            valid = false;
+        }
+
+
+        if (btnGender.getSelection() == null) {
+            valGender.setText("Gender is required");
+            valid = false;
+        }
+       if (comboxdoc_id.getSelectedItem() == null || comboxdoc_id.getSelectedItem().toString().isEmpty()) {
+            valDoc.setText("Please Select Doctor");
+            valid = false;
+        }
+       
+
+        
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+            valid = false;
+        }
+
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+            valid = false;
+        }
+        if (valid) {
+
+            String gender = null;
+            if (btnMale.isSelected()) {
+                gender = "Male";
+            }
+            else if (btnFemale.isSelected()) {
+                gender = "Female";
+            }
+        int patinet_id = Integer.valueOf(txtpat_id.getText());
+       String patient_name = txtName.getText();
+       int age = Integer.valueOf(txtAge.getText()); 
+       //String gender = (String) comboxgender.getSelectedItem();
         
        int doc_id = Integer.valueOf((String) comboxdoc_id.getSelectedItem());
-       String address = txtaddress.getText();
+       String address = txtAddress.getText();
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
         
         //check if the id already exists
-                String INSERTHOSSQL = "insert into patients(pat_id,pat_name,"
+                String INSERTHOSSQL = "insert into patients(patient_id,patient_name,"
                         + "age,gender, doc_id, address) values (?,?,?,?,?,?) ";
 
         PreparedStatement stmt; 
@@ -342,14 +481,16 @@ public class Patient extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this,"Patient Added");
 
        populateTable(); 
+       setTextNull();  
+      setValidationNull();
    
   //stop
-  txtpat_name.setText("");
+  txtName.setText("");
   txtpat_id.setText("");
-  txtage.setText("");
-  txtaddress.setText("");
+  txtAge.setText("");
+  txtAddress.setText("");
   //populateTable();
-        
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -367,7 +508,7 @@ public class Patient extends javax.swing.JFrame {
        
          conn = dbconn.getConnection();
          //int pat_id = Integer.valueOf(txtpat_id.getText());
-          String selectSql = "Delete from patients where pat_id=?";
+          String selectSql = "Delete from patients where patient_id=?";
      PreparedStatement stmt;
       try {
              
@@ -383,7 +524,8 @@ public class Patient extends javax.swing.JFrame {
     
          
         JOptionPane.showMessageDialog(this, "Patient Deleted");
-        populateTable();
+        populateTable(); 
+     
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -409,22 +551,67 @@ public class Patient extends javax.swing.JFrame {
         
 
         txtpat_id.setText(String.valueOf(patient_id));
-        txtpat_name.setText(patient_name);
-        txtage.setText(age);
+        txtName.setText(patient_name);
+        txtAge.setText(age);
         //comboxgender.
         //comboxdoc_id.
-        txtaddress.setText(address);
+        txtAddress.setText(address);
+        
+          setValidationNull();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientMouseClicked
 
-    private void txtageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtageActionPerformed
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtageActionPerformed
+    }//GEN-LAST:event_txtNameActionPerformed
 
-    private void txtaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaddressActionPerformed
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtaddressActionPerformed
+        if (!this.validations.ValidateName(txtName.getText()) ) {
+            valName.setText("Name is Invalid");
+        }
+        else {
+            valName.setText(null);
+        }
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeActionPerformed
+
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAge(txtAge.getText()) ) {
+            valAge.setText("Age is Invalid");
+        }
+        else {
+            valAge.setText(null);
+        }
+    }//GEN-LAST:event_txtAgeKeyReleased
+
+    private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
+        valGender.setText(null);
+    }//GEN-LAST:event_btnMaleActionPerformed
+
+    private void btnFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFemaleActionPerformed
+        valGender.setText(null);
+    }//GEN-LAST:event_btnFemaleActionPerformed
+
+    private void txtAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressActionPerformed
+
+    private void txtAddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
+            valAddress.setText("Address is Invalid");
+        }
+
+        else {
+            valAddress.setText(null);
+        }
+    }//GEN-LAST:event_txtAddressKeyReleased
 
     /**
      * @param args the command line arguments
@@ -452,6 +639,7 @@ public class Patient extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Patient.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -460,6 +648,24 @@ public class Patient extends javax.swing.JFrame {
             }
         });
     }
+    
+     private void setTextNull() {
+     
+   txtName.setText(null);
+  txtAddress.setText(null);
+  txtAge.setText(null);
+  btnGender.clearSelection();
+  comboxdoc_id.setSelectedItem(null);
+  
+    }
+    private void setValidationNull() {
+        valName.setText(null);
+         valAddress.setText(null);
+        valAge.setText(null);
+        valGender.setText(null);
+        valDoc.setText(null);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Gender;
@@ -467,9 +673,11 @@ public class Patient extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JRadioButton btnFemale;
+    private javax.swing.ButtonGroup btnGender;
+    private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> comboxdoc_id;
-    private javax.swing.JComboBox<String> comboxgender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -477,10 +685,15 @@ public class Patient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPatient;
-    private javax.swing.JTextField txtaddress;
-    private javax.swing.JTextField txtage;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtpat_id;
-    private javax.swing.JTextField txtpat_name;
+    private javax.swing.JLabel valAddress;
+    private javax.swing.JLabel valAge;
+    private javax.swing.JLabel valDoc;
+    private javax.swing.JLabel valGender;
+    private javax.swing.JLabel valName;
     // End of variables declaration//GEN-END:variables
 
     private void UpdateComboxdoc_id() {

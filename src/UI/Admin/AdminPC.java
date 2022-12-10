@@ -260,7 +260,7 @@ public class AdminPC extends javax.swing.JFrame {
             valid = false;
         }
         int pc_id = Integer.valueOf(txtid.getText());
-       String pc_name = txtid.getText();
+       String pc_name = txtpcname.getText();
        //int hos_id = Integer.valueOf(txthos_id.getText());
        String address = txtaddress.getText();
       
@@ -373,7 +373,7 @@ public class AdminPC extends javax.swing.JFrame {
             valid = false;
         }
         int pc_id = Integer.valueOf(txtid.getText());
-       String pc_name = txtid.getText();
+       String pc_name = txtpcname.getText();
        //int hos_id = Integer.valueOf(txthos_id.getText());
        String address = txtaddress.getText();
       
