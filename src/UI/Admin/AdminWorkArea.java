@@ -28,13 +28,15 @@ public class AdminWorkArea extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        btnStock = new javax.swing.JButton();
         btnHospital = new javax.swing.JButton();
         btnPlasmaCenter = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnEmployees = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btnPCEmployee = new javax.swing.JButton();
+        btnHosEmployee = new javax.swing.JButton();
+
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -46,16 +48,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(580, 30, 100, 23);
-
-        btnStock.setText("ANALYSE STOCK");
-        btnStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStockActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnStock);
-        btnStock.setBounds(500, 370, 170, 40);
+        btnBack.setBounds(580, 30, 100, 31);
 
         btnHospital.setText("HOSPITALS");
         btnHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +57,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHospital);
-        btnHospital.setBounds(170, 370, 180, 40);
+        btnHospital.setBounds(500, 130, 180, 40);
 
         btnPlasmaCenter.setText("PLASMA CENTERS");
         btnPlasmaCenter.addActionListener(new java.awt.event.ActionListener() {
@@ -73,32 +66,33 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPlasmaCenter);
-        btnPlasmaCenter.setBounds(160, 130, 190, 40);
+        btnPlasmaCenter.setBounds(100, 140, 190, 40);
 
         lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 36)); // NOI18N
         lblTitle.setText("ADMIN PORTAL");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(20, 10, 350, 50);
 
-        btnEmployees.setText("EMPLOYEES");
-        btnEmployees.addActionListener(new java.awt.event.ActionListener() {
+        btnPCEmployee.setText("PLASMA CENTER EMPLOYEES");
+        btnPCEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmployeesActionPerformed(evt);
+                btnPCEmployeeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEmployees);
-        btnEmployees.setBounds(500, 130, 180, 40);
+        getContentPane().add(btnPCEmployee);
+        btnPCEmployee.setBounds(60, 270, 290, 40);
 
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(2, 0, 800, 550);
+        btnHosEmployee.setText("HOSPITAL EMPLOYEES");
+        btnHosEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHosEmployeeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnHosEmployee);
+        btnHosEmployee.setBounds(470, 270, 270, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockActionPerformed
-
-    }//GEN-LAST:event_btnStockActionPerformed
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
       AdminHospital AH= new AdminHospital();
@@ -113,17 +107,24 @@ public class AdminWorkArea extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btnPlasmaCenterActionPerformed
 
-    private void btnEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeesActionPerformed
+    private void btnPCEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCEmployeeActionPerformed
       AdminEmployee AE= new AdminEmployee();
       AE.setVisible(true);
       this.dispose();
-    }//GEN-LAST:event_btnEmployeesActionPerformed
+    }//GEN-LAST:event_btnPCEmployeeActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.hide();
         LoginScreen frame = new  LoginScreen();
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnHosEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHosEmployeeActionPerformed
+        // TODO add your handling code here:
+      AdminHosEmployee AHE= new AdminHosEmployee();
+      AHE.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_btnHosEmployeeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,10 +163,10 @@ public class AdminWorkArea extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnEmployees;
+    private javax.swing.JButton btnHosEmployee;
     private javax.swing.JButton btnHospital;
+    private javax.swing.JButton btnPCEmployee;
     private javax.swing.JButton btnPlasmaCenter;
-    private javax.swing.JButton btnStock;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables

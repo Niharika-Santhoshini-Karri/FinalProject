@@ -79,15 +79,15 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(202, 280, 140, 23);
+        ComboPlasmaCenter.setBounds(300, 230, 140, 31);
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(200, 340, 110, 17);
+        lblEmployeeName.setBounds(120, 330, 110, 25);
 
         lblbank.setText("Plasma Center");
         getContentPane().add(lblbank);
-        lblbank.setBounds(70, 280, 150, 17);
+        lblbank.setBounds(70, 220, 150, 25);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +95,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(290, 340, 140, 23);
+        txtUsername.setBounds(290, 320, 140, 31);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(490, 20, 100, 23);
+        btnBack.setBounds(490, 20, 100, 31);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +113,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(380, 440, 170, 23);
+        btndel.setBounds(380, 440, 170, 31);
 
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +122,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(90, 440, 210, 23);
+        btnAdd.setBounds(90, 440, 210, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER EMPLOYEES ");
@@ -131,21 +131,21 @@ public class AdminEmployee extends javax.swing.JFrame {
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(200, 380, 100, 17);
+        lblEmployeeName1.setBounds(120, 380, 100, 25);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(190, 190, 160, 23);
+        txtEmpID.setBounds(290, 130, 160, 31);
 
         lblEmployeeName2.setText("Employee ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(70, 190, 150, 17);
+        lblEmployeeName2.setBounds(70, 140, 150, 25);
 
         lblEmployeeName3.setText("Name:");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(70, 230, 110, 17);
+        lblEmployeeName3.setBounds(70, 180, 110, 25);
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(190, 230, 160, 23);
+        txtEmpName.setBounds(290, 180, 160, 31);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(290, 380, 140, 23);
+        txtPassword.setBounds(290, 380, 140, 31);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -238,7 +238,7 @@ public class AdminEmployee extends javax.swing.JFrame {
        
         //check if the id already exists
      String INSERLOGINSSQL = "insert into logins(user_id, pass_word,role_id) values(?,?,?) ";
-     String INSERTEMPLOYEESQL = "insert into employee(emp_id, hos_id, pc_id,emp_name, user_id) values(?,?,?,?,?)";
+     String INSERTEMPLOYEESQL = "insert into emppc(emp_id,pc_id,employee_name, user_id) values(?,?,?,?)";
 
         PreparedStatement stmt1, stmt2; 
         try
@@ -248,14 +248,14 @@ public class AdminEmployee extends javax.swing.JFrame {
             
             stmt1.setInt(1,user_id); 
             stmt1.setString(2,password); 
-            stmt1.setInt(3,x);//role_id is set to =2// hospital_admin
+            stmt1.setInt(3,3);//role_id is set to =3// for plasma center admin
             
             stmt2.setInt(1,emp_id); 
             // get hos_id or pc_id from combo box
-            stmt2.setInt(2,hos_id); 
-            stmt2.setInt(3, pc_id);
-            stmt2.setString(4, emp_name);
-            stmt2.setInt(5,user_id);
+            stmt2.setInt(2,pc_id); 
+            
+            stmt2.setString(3, emp_name);
+            stmt2.setInt(4,user_id);
             
             stmt1.executeUpdate(); 
             stmt2.executeUpdate(); 
@@ -263,7 +263,7 @@ public class AdminEmployee extends javax.swing.JFrame {
           }
         catch (SQLException ex)
         {
-            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -341,22 +341,19 @@ public class AdminEmployee extends javax.swing.JFrame {
 {
     
     Connection conn = dbconn.getConnection();
-        String SELECTSQL1 = "SELECT HOS_ID FROM HOSPITAL";
+        
         String SELECTSQL2 = "SELECT PC_ID FROM PLASMAC";
 
-        PreparedStatement stmt1,stmt2; 
+        PreparedStatement stmt2; 
         try
         {
-            stmt1 = conn.prepareStatement(SELECTSQL1);
+            
             stmt2 = conn.prepareStatement(SELECTSQL2);
-            resultSet1 = stmt1.executeQuery();
+            
             resultSet2 = stmt2.executeQuery(); 
             
             
-            while(resultSet1.next())
-            {
-                ComboHospital.addItem(resultSet1.getString(1));
-            }
+            
             while(resultSet2.next())
             {
                 ComboPlasmaCenter.addItem(resultSet2.getString(1));
@@ -367,7 +364,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         }
         catch (SQLException ex)
         {
-            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
        
         

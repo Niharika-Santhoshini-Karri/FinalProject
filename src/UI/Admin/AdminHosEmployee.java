@@ -26,10 +26,12 @@ public class AdminHosEmployee extends javax.swing.JFrame {
      */
      DBUTIL dbconn= new DBUTIL();
     Validations validations;
+    ResultSet resultSet1, resultSet2 = null;
     public AdminHosEmployee() {
         initComponents();
        
         validations= new Validations();
+         UpdateComboxes();
     }
 
     /**
@@ -68,7 +70,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
         lblhos.setText("Hospital");
         getContentPane().add(lblhos);
-        lblhos.setBounds(60, 270, 110, 17);
+        lblhos.setBounds(60, 260, 110, 25);
 
         ComboHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +78,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboHospital);
-        ComboHospital.setBounds(190, 270, 140, 23);
+        ComboHospital.setBounds(290, 260, 140, 31);
 
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -85,15 +87,15 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(70, 480, 210, 23);
+        btnAdd.setBounds(70, 480, 210, 31);
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(180, 420, 100, 17);
+        lblEmployeeName1.setBounds(180, 420, 100, 25);
 
         lblEmployeeName2.setText("Employee ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(60, 180, 150, 17);
+        lblEmployeeName2.setBounds(60, 140, 150, 25);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
@@ -101,12 +103,12 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(180, 380, 110, 17);
+        lblEmployeeName.setBounds(180, 380, 110, 25);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(180, 180, 160, 23);
+        txtEmpID.setBounds(280, 130, 160, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTitle.setText("PLASMA CENTER EMPLOYEES ");
+        lblTitle.setText("HOSPITAL EMPLOYEES ");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(40, 10, 410, 29);
 
@@ -125,11 +127,11 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(480, 10, 100, 23);
+        btnBack.setBounds(480, 10, 100, 31);
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(180, 220, 160, 23);
+        txtEmpName.setBounds(290, 190, 160, 31);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(270, 420, 140, 23);
+        txtPassword.setBounds(270, 420, 140, 31);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +140,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(360, 480, 170, 23);
+        btndel.setBounds(360, 480, 170, 31);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,24 +148,24 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(270, 380, 140, 23);
+        txtUsername.setBounds(270, 380, 140, 31);
 
         lblEmployeeName3.setText("Name:");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(60, 220, 110, 17);
+        lblEmployeeName3.setBounds(60, 200, 110, 25);
 
         lblhos1.setText("Department");
         getContentPane().add(lblhos1);
-        lblhos1.setBounds(40, 310, 110, 17);
+        lblhos1.setBounds(40, 310, 110, 25);
 
-        ComboDepts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Laboratory ", "Accountant" }));
+        ComboDepts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Laboratory", "Accountant" }));
         ComboDepts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboDeptsActionPerformed(evt);
             }
         });
         getContentPane().add(ComboDepts);
-        ComboDepts.setBounds(190, 300, 140, 23);
+        ComboDepts.setBounds(300, 310, 140, 31);
 
         valDept.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valDept);
@@ -220,18 +222,36 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
         String shos_id = (String) ComboHospital.getSelectedItem();
         int hos_id = Integer.valueOf(shos_id);
+        
+        int role_id=100; 
+        String role_name =(String) ComboDepts.getSelectedItem(); 
+        
+        System.out.println(role_name);
+        
+        if(role_name.equals("Administrator"))
+        {
+            role_id = 2; 
+        }
+        if(ComboDepts.getSelectedItem().equals("Laboratory"))
+        {
+            role_id = 8; 
+        }
+        if(ComboDepts.getSelectedItem().equals("Accountant"))
+        {
+            role_id = 9; 
+        }
+        if(role_id ==100)
+        {
+           JOptionPane.showMessageDialog(this,"Role not selected");
+        }
 
-//        String spc_id = (String) ComboPlasmaCenter.getSelectedItem();
-//        int pc_id = Integer.valueOf(spc_id);
 
-        int x = 2;
-        //validate username and password
+
+        
         Connection conn = dbconn.getConnection();
-        //do validation here.
-       
-        //check if the id already exists
+        
         String INSERLOGINSSQL = "insert into logins(user_id, pass_word,role_id) values(?,?,?) ";
-        String INSERTEMPLOYEESQL = "insert into employee(emp_id, hos_id, pc_id,emp_name, user_id) values(?,?,?,?,?)";
+        String INSERTEMPLOYEESQL = "insert into emphos(emp_id, hos_id,employee_name, user_id) values(?,?,?,?)";
 
         PreparedStatement stmt1, stmt2;
         try
@@ -241,14 +261,15 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
             stmt1.setInt(1,user_id);
             stmt1.setString(2,password);
-            stmt1.setInt(3,x);//role_id is set to =2// hospital_admin
+            stmt1.setInt(3,role_id);
+            
+            System.out.println("inserted into logins!");
 
             stmt2.setInt(1,emp_id);
-            // get hos_id or pc_id from combo box
             stmt2.setInt(2,hos_id);
-            stmt2.setInt(3, pc_id);
-            stmt2.setString(4, emp_name);
-            stmt2.setInt(5,user_id);
+            
+            stmt2.setString(3, emp_name);
+            stmt2.setInt(4,user_id);
 
             stmt1.executeUpdate();
             stmt2.executeUpdate();
@@ -256,7 +277,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         }
         catch (SQLException ex)
         {
-            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminHosEmployee.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         JOptionPane.showMessageDialog(this,"Employee Created");
@@ -266,6 +287,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         txtEmpID.setText("");
         txtUsername.setText("");
         txtPassword.setText("");
+        ComboDepts.setSelectedItem("");
 
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -306,16 +328,16 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
     private void ComboDeptsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboDeptsActionPerformed
         // TODO add your handling code here:
-        Object hosp_department = ComboDepts.getSelectedItem();
-        
-
-        if (hosp_department  == null || hosp_department .toString().equals("")) {
-            valDept.setText("Please Select Blood Group");
-            ComboDepts.removeAllItems();
-           valDept.setText(null);
-        } else {
-            ComboDepts.setSelectedItem("");
-        }
+//        Object hosp_department = ComboDepts.getSelectedItem();
+//        
+//
+//        if (hosp_department  == null || hosp_department .toString().equals("")) {
+//            valDept.setText("Please Select ");
+//            ComboDepts.removeAllItems();
+//           valDept.setText(null);
+//        } else {
+//            ComboDepts.setSelectedItem("");
+//        }
     }//GEN-LAST:event_ComboDeptsActionPerformed
 
     /**
@@ -376,4 +398,33 @@ public class AdminHosEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel valPassword;
     private javax.swing.JLabel valUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void UpdateComboxes() {
+       Connection conn = dbconn.getConnection();
+        
+        String SELECTSQL2 = "SELECT HOS_ID FROM HOSPITAL";
+
+        PreparedStatement stmt2; 
+        try
+        {
+            
+            stmt2 = conn.prepareStatement(SELECTSQL2);
+            
+            resultSet2 = stmt2.executeQuery(); 
+            
+            
+            
+            while(resultSet2.next())
+            {
+                ComboHospital.addItem(resultSet2.getString(1));
+            }
+       
+             
+            
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHosEmployee.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

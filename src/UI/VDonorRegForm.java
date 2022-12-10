@@ -350,7 +350,11 @@ public class VDonorRegForm extends javax.swing.JFrame {
         String name = txtName.getText(); 
         int age = Integer.valueOf(txtAge.getText()); 
         //String gender = btnGender.getSelection();
+        
         String bloodgroup = (String) ComboBlood.getSelectedItem(); 
+        System.out.println(bloodgroup);
+        
+        
         String contact = txtContact.getText();
         String Address = txtAddress.getText();
         int user_id = Integer.valueOf(txtUser_ID.getText()); 

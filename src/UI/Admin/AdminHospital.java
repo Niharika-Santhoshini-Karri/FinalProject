@@ -73,7 +73,7 @@ public class AdminHospital extends javax.swing.JFrame {
              
        }
        catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
                 }
 

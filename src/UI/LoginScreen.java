@@ -233,6 +233,7 @@ public class LoginScreen extends javax.swing.JFrame {
        
 System.out.println("Connected to database !!");
   String selectSql = "SELECT * from logins";
+  System.out.println("Connected to database !!!");
       Statement stmt;
       PreparedStatement stmthos_id;
       PreparedStatement stmtpc_id;
@@ -261,7 +262,7 @@ System.out.println("Connected to database !!");
                    if(x==2)
                 {
                     //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
-                    String findhos_id = "select hos_id from employee where user_id=?";
+                    String findhos_id = "select hos_id from emphos where user_id=?";
                     int user_id = Integer.valueOf(username);
                     stmthos_id = conn.prepareStatement(findhos_id); 
                     stmthos_id.setInt(1, user_id);
@@ -276,7 +277,7 @@ System.out.println("Connected to database !!");
                    if(x==3)
                 {
                     //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
-                    String findpc_id = "select pc_id from employee where user_id=?";
+                    String findpc_id = "select pc_id from emppc where user_id=?";
                     int user_id = Integer.valueOf(username);
                     stmtpc_id = conn.prepareStatement(findpc_id); 
                     stmtpc_id.setInt(1, user_id);
@@ -323,6 +324,14 @@ System.out.println("Connected to database !!");
                     VDWA.setVisible(true);
                      
                  }
+                   if(x==8)
+                   {
+                      JOptionPane.showMessageDialog(this , "NOW OPEN THE HOSPITAL BILLING SECTION PAGE PAGE");
+                   }
+                   if(x==9)
+                   {
+                      JOptionPane.showMessageDialog(this , "NOW OPEN THE HOSPITAL LAB SECTION PAGE PAGE");
+                   }
                 }
             }
          
