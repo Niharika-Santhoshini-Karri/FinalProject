@@ -5,6 +5,7 @@
 package UI;
 
 import DBUTIL.DBUTIL;
+import MODEL.Donor;
 import MODEL.Login;
 import MODEL.Validations;
 import UI.Admin.AdminWorkArea;
@@ -53,6 +54,8 @@ public class LoginScreen extends javax.swing.JFrame {
     public static int doc_id; 
     public static int ngo_id; 
     public static int vdon_id; 
+    
+    public static int donor_id = Donor.getDonor_id(); 
     
     public static Login login = new Login();
     
@@ -226,13 +229,14 @@ public class LoginScreen extends javax.swing.JFrame {
        boolean flag = false; 
        DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
-        ResultSet resultSet1, resultSethos, resultSetpc = null;
+         ResultSet resultSet1, resultSethos, resultSetpc, resultSetvdonor = null;
        
 System.out.println("Connected to database !!");
   String selectSql = "SELECT * from logins";
       Statement stmt;
       PreparedStatement stmthos_id;
       PreparedStatement stmtpc_id;
+       PreparedStatement stmtvdonor_id;
         try {
             stmt = conn.createStatement();
        
@@ -305,6 +309,14 @@ System.out.println("Connected to database !!");
                  {
                      // now open the vdonor personal page.
                      //JOptionPane.showMessageDialog(this , "NOW OPEN THE VDONOR PAGE");
+                      String donor_id = "select vdonor_id from vdonor where user_id =?"; 
+                     int user_id = Integer.valueOf(username);
+                    stmtvdonor_id = conn.prepareStatement(donor_id); 
+                    stmtvdonor_id.setInt(1, user_id);
+                    resultSetvdonor = stmtvdonor_id.executeQuery(); 
+                    resultSetvdonor.next(); 
+                    int thisvdonor_id = Integer.valueOf(resultSetvdonor.getInt(1));
+                    Donor.setDonor_id(thisvdonor_id);
                      VDonorWA VDWA=new VDonorWA();
                     
                     this.dispose();

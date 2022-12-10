@@ -11,6 +11,7 @@ import UI.LoginScreen;
 import UI.VDonorRegForm;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,13 +27,16 @@ public class VDonorDetails extends javax.swing.JPanel {
      * Creates new form VDonorDetails
      */
     Validations validations;
+    
     DBUTIL dbconn= new DBUTIL();
-    Donor donor;
+    ResultSet resultSet1, resultSet2 = null;
+    public static int donor_id = Donor.getDonor_id();
     public VDonorDetails() {
         initComponents();
         validations = new Validations();
+        System.out.println("test and try donor details");
         setPersonalDetails();
-        donor = (Donor) LoginScreen.login.getObject();
+        
     }
 
     /**
@@ -78,31 +82,31 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnUpdate);
-        btnUpdate.setBounds(220, 370, 87, 23);
+        btnUpdate.setBounds(220, 370, 200, 31);
 
         jLabel1.setText("Name");
         add(jLabel1);
-        jLabel1.setBounds(110, 70, 34, 17);
+        jLabel1.setBounds(110, 70, 80, 25);
 
         jLabel6.setText("Age");
         add(jLabel6);
-        jLabel6.setBounds(110, 100, 22, 17);
+        jLabel6.setBounds(110, 120, 90, 25);
 
         jLabel5.setText("Gender");
         add(jLabel5);
-        jLabel5.setBounds(110, 160, 43, 17);
+        jLabel5.setBounds(110, 160, 90, 25);
 
         jLabel2.setText("Blood Group");
         add(jLabel2);
-        jLabel2.setBounds(110, 220, 74, 17);
+        jLabel2.setBounds(110, 220, 120, 25);
 
         jLabel3.setText("Address");
         add(jLabel3);
-        jLabel3.setBounds(120, 270, 49, 17);
+        jLabel3.setBounds(120, 270, 100, 25);
 
         jLabel7.setText("Contact");
         add(jLabel7);
-        jLabel7.setBounds(110, 310, 45, 17);
+        jLabel7.setBounds(110, 310, 130, 25);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,7 +137,7 @@ public class VDonorDetails extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(40, 420, 452, 200);
+        jScrollPane1.setBounds(40, 420, 800, 200);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +150,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtName);
-        txtName.setBounds(180, 70, 112, 23);
+        txtName.setBounds(270, 70, 112, 31);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +163,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtAge);
-        txtAge.setBounds(180, 110, 112, 23);
+        txtAge.setBounds(270, 110, 112, 31);
 
         btnGender.add(btnMale);
         btnMale.setText("Male");
@@ -169,7 +173,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnMale);
-        btnMale.setBounds(180, 160, 51, 21);
+        btnMale.setBounds(260, 160, 100, 29);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -179,7 +183,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnFemale);
-        btnFemale.setBounds(250, 160, 65, 21);
+        btnFemale.setBounds(480, 160, 150, 29);
 
         ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         ComboBlood.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +192,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(ComboBlood);
-        ComboBlood.setBounds(200, 220, 72, 23);
+        ComboBlood.setBounds(290, 220, 77, 31);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +205,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtContact);
-        txtContact.setBounds(200, 270, 77, 20);
+        txtContact.setBounds(290, 320, 77, 20);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +218,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(txtAddress);
-        txtAddress.setBounds(200, 310, 77, 23);
+        txtAddress.setBounds(290, 280, 77, 31);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         add(valName);
@@ -247,7 +251,7 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(430, 10, 100, 23);
+        btnBack.setBounds(430, 10, 100, 31);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -430,18 +434,64 @@ public class VDonorDetails extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
    private void setPersonalDetails() {
-        txtName.setText(donor.getName());
-        txtAge.setText(String.valueOf(donor.getAge()));
-        if (null == donor.getGender()) {
+       System.out.println("test and try");
+        String getdonor_details = "select vname,age, gender,contact, address, blood_group,email from vdonor where vdonor_id =? ";
+        
+        Connection conn = dbconn.getConnection();
+        PreparedStatement stmt1 ; 
+        try
+        {
+            stmt1 = conn.prepareStatement(getdonor_details);
+            stmt1. setInt(1,donor_id); // this is now set to 2, later change to random number of req id
             
+            resultSet1 = stmt1.executeQuery();
+            resultSet1.next();
+            txtName.setText(resultSet1.getString(1));
+            txtAge.setText(resultSet1.getString(2));
+            String gender = resultSet1.getString(3);
+            String blood_group = resultSet1.getString(6);
+            ComboBlood.setSelectedItem(blood_group);
+            if("M".equals(gender))
+            {
+                btnMale.setSelected(true);
+            }
+            else if("F".equals(gender))
+            {
+                btnFemale.setSelected(true);
+            }
+//            else
+//            {
+//                System.out.println("Some discrepancy here!");
+//            }
+//            if(null == gender)
+//            {
+//                System.out.println("Some discrepancy here!");
+//            }
+//            else switch (gender) {
+//                case "M":
+//                    btnMale.setSelected(true);
+//                    break;
+//                case "F":
+//                    btnFemale.setSelected(true);
+//                    break;
+//                default:
+//                    System.out.println("Some discrepancy here!");
+//                    break;
+//            }
+            txtAddress.setText(resultSet1.getString(4));
+            txtContact.setText(resultSet1.getString(5));
+            
+            
+            
+            }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(VDonorRegForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        else switch (donor.getGender()) {
-            case "Male" -> btnMale.setSelected(true);
-            case "Female" -> btnFemale.setSelected(true);
-           
-        }
-        txtAddress.setText(donor.getAddress());
-        ComboBlood.addItem("");
+        
+        
+        
+        
         
     }
 

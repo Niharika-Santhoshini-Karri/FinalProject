@@ -9,6 +9,17 @@ package MODEL;
  * @author rishikagurram
  */
 public class Donor {
+    public static int donor_id ; 
+
+    public static int getDonor_id() {
+        return donor_id;
+    }
+
+    public static void setDonor_id(int donor_id) {
+        Donor.donor_id = donor_id;
+    }
+ 
+    
     String name;
     int age;
     String gender;

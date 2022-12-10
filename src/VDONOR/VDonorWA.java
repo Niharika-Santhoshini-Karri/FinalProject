@@ -6,6 +6,7 @@ package VDONOR;
 
 import UI.Admin.AdminWorkArea;
 import UI.LoginScreen;
+import MODEL.Donor; 
 
 /**
  *
@@ -16,8 +17,15 @@ public class VDonorWA extends javax.swing.JFrame {
     /**
      * Creates new form VDonorWA
      */
+    public static int donor_id = Donor.getDonor_id();
     public VDonorWA() {
         initComponents();
+        VDonorDetails donorView= new VDonorDetails();
+        splitPane.setRightComponent(donorView);
+
+        String don = String.valueOf(donor_id); 
+        txtdonor_id.setText(don);
+        System.out.println("test and try donor work area");
     }
 
     /**
@@ -34,6 +42,7 @@ public class VDonorWA extends javax.swing.JFrame {
         btn_back_admin1 = new javax.swing.JButton();
         btnDetails1 = new javax.swing.JButton();
         btnAppointment1 = new javax.swing.JButton();
+        txtdonor_id = new javax.swing.JTextField();
         workArea = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -69,18 +78,25 @@ public class VDonorWA extends javax.swing.JFrame {
             }
         });
 
+        txtdonor_id.setEditable(false);
+
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAppointment1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btn_back_admin1))
-                    .addComponent(btnDetails1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAppointment1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(controlPanelLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(btn_back_admin1))
+                            .addComponent(btnDetails1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(txtdonor_id, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
@@ -92,7 +108,9 @@ public class VDonorWA extends javax.swing.JFrame {
                 .addComponent(btnDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btnAppointment1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addComponent(txtdonor_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(controlPanel);
@@ -106,19 +124,20 @@ public class VDonorWA extends javax.swing.JFrame {
             .addGroup(workAreaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         splitPane.setRightComponent(workArea);
 
         getContentPane().add(splitPane);
-        splitPane.setBounds(0, 0, 740, 600);
+        splitPane.setBounds(0, 0, 740, 612);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,6 +200,7 @@ public class VDonorWA extends javax.swing.JFrame {
     private javax.swing.JPanel controlPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSplitPane splitPane;
+    private javax.swing.JTextField txtdonor_id;
     private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
 }
