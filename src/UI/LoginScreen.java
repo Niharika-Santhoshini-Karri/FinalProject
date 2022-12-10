@@ -22,6 +22,7 @@ import UI.DOC.DoctorWorkArea;
 import UI.PlasmaCenter.PCWorkArea;
 import VDONOR.VDonorWA;
 import MODEL.HOSPITAL;
+import MODEL.PlasmaCenter;
 
 /**
  *
@@ -36,15 +37,7 @@ public class LoginScreen extends javax.swing.JFrame {
    
 
     
-    public static int pc_id; 
-   
-      public static int getpc_id() {
-        return pc_id;
-    }
-
-    public static void setpc_id(int pc_id) {
-        LoginScreen.pc_id = pc_id;
-    }
+    
 
     public static int doc_id; 
     public static int ngo_id; 
@@ -279,7 +272,7 @@ System.out.println("Connected to database !!");
                     resultSetpc = stmtpc_id.executeQuery();
                     resultSetpc.next();
                     int thispc_id = Integer.valueOf(resultSetpc.getInt(1));
-                    setpc_id(thispc_id);
+                    PlasmaCenter.setPc_id(thispc_id); 
                     PCWorkArea PCW=new PCWorkArea();
                     this.dispose();
                     PCW.setVisible(true);
