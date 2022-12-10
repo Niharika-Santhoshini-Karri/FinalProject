@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
+import java.util.Vector;
 
 /**
  *
@@ -22,13 +23,13 @@ public class Plasmacenters extends javax.swing.JFrame {
     /**
      * Creates new form Plasmacenters
      */
-    
+    Vector originalTableModel;
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
     
     public Plasmacenters() {
         initComponents();
-        
+        originalTableModel = (Vector) ((DefaultTableModel) tblPlasmacenters.getModel()).getDataVector().clone();
         populateTable();
     }
     private void populateTable(){
@@ -82,10 +83,12 @@ public class Plasmacenters extends javax.swing.JFrame {
         tblPlasmacenters = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        tblPlasmacenters.setBackground(new java.awt.Color(204, 255, 204));
         tblPlasmacenters.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -114,42 +117,40 @@ public class Plasmacenters extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblPlasmacenters);
 
-        btnBack.setBackground(new java.awt.Color(102, 153, 255));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(80, 230, 480, 146);
+
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(540, 70, 72, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("List of Plasma Centers");
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(236, 44, 199, 22);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack)
-                        .addGap(86, 86, 86)
-                        .addComponent(lblTitle)))
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblTitle))
-                .addGap(85, 85, 85)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
-        );
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(160, 150, 430, 30);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(80, 150, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,6 +161,28 @@ public class Plasmacenters extends javax.swing.JFrame {
         frame.setVisible(true);
         
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblPlasmacenters.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -200,7 +223,9 @@ public class Plasmacenters extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblPlasmacenters;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,12 +31,13 @@ public class Patient extends javax.swing.JFrame {
     Validations validations;
     ResultSet resultSet, resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
-    
+    Vector originalTableModel;
     public Patient() {
         initComponents();
         UpdateComboxdoc_id();
         populateTable();
         validations = new Validations();
+        originalTableModel = (Vector) ((DefaultTableModel) tblPatient.getModel()).getDataVector().clone();
     }
     
     private void populateTable(){
@@ -111,6 +113,8 @@ public class Patient extends javax.swing.JFrame {
         valAge = new javax.swing.JLabel();
         valName = new javax.swing.JLabel();
         valDoc = new javax.swing.JLabel();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -159,21 +163,21 @@ public class Patient extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 80, 580, 180);
+        jScrollPane1.setBounds(50, 150, 580, 180);
 
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 390, 80, 17);
+        jLabel2.setBounds(120, 460, 80, 17);
 
         jLabel3.setText("Patient ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 360, 56, 17);
+        jLabel3.setBounds(100, 430, 56, 17);
 
         jLabel4.setText("Age ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(110, 420, 26, 17);
+        jLabel4.setBounds(120, 490, 26, 17);
         getContentPane().add(txtpat_id);
-        txtpat_id.setBounds(220, 350, 100, 23);
+        txtpat_id.setBounds(230, 420, 100, 23);
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +186,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(110, 590, 72, 23);
+        btnAdd.setBounds(120, 660, 72, 23);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +195,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(350, 270, 73, 23);
+        btnUpdate.setBounds(360, 340, 73, 23);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +204,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(470, 270, 72, 23);
+        btnDelete.setBounds(480, 340, 72, 23);
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -213,18 +217,18 @@ public class Patient extends javax.swing.JFrame {
 
         Gender.setText("Address");
         getContentPane().add(Gender);
-        Gender.setBounds(90, 520, 84, 17);
+        Gender.setBounds(100, 590, 84, 17);
 
         getContentPane().add(comboxdoc_id);
-        comboxdoc_id.setBounds(220, 490, 100, 23);
+        comboxdoc_id.setBounds(230, 560, 100, 23);
 
         jLabel5.setText("Gender");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(90, 450, 43, 17);
+        jLabel5.setBounds(100, 520, 43, 17);
 
         Gender1.setText("Doctor");
         getContentPane().add(Gender1);
-        Gender1.setBounds(90, 480, 38, 17);
+        Gender1.setBounds(100, 550, 38, 17);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,7 +241,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(220, 390, 100, 23);
+        txtName.setBounds(230, 460, 100, 23);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +254,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAge);
-        txtAge.setBounds(220, 420, 100, 23);
+        txtAge.setBounds(230, 490, 100, 23);
 
         btnGender.add(btnMale);
         btnMale.setText("Male");
@@ -260,7 +264,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMale);
-        btnMale.setBounds(210, 460, 51, 21);
+        btnMale.setBounds(220, 530, 51, 21);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -270,7 +274,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnFemale);
-        btnFemale.setBounds(280, 460, 65, 21);
+        btnFemale.setBounds(290, 530, 65, 21);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,27 +287,45 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(220, 520, 100, 23);
+        txtAddress.setBounds(230, 590, 100, 23);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAddress);
-        valAddress.setBounds(350, 520, 190, 20);
+        valAddress.setBounds(360, 590, 190, 20);
 
         valGender.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valGender);
-        valGender.setBounds(380, 460, 170, 20);
+        valGender.setBounds(390, 530, 170, 20);
 
         valAge.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAge);
-        valAge.setBounds(360, 420, 160, 20);
+        valAge.setBounds(370, 490, 160, 20);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(360, 390, 180, 20);
+        valName.setBounds(370, 460, 180, 20);
 
         valDoc.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valDoc);
-        valDoc.setBounds(380, 490, 170, 20);
+        valDoc.setBounds(390, 560, 170, 20);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(80, 90, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(160, 90, 430, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -613,6 +635,28 @@ public class Patient extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtAddressKeyReleased
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblPatient.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -684,10 +728,12 @@ public class Patient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblPatient;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtpat_id;
     private javax.swing.JLabel valAddress;
     private javax.swing.JLabel valAge;

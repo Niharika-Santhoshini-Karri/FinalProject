@@ -4,6 +4,8 @@
  */
 package VDONOR;
 import java.text.SimpleDateFormat;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author rishikagurram
@@ -13,8 +15,10 @@ public class VDonorDonations extends javax.swing.JPanel {
     /**
      * Creates new form VDonorDonations
      */
+    Vector originalTableModel;
     public VDonorDonations() {
         initComponents();
+        originalTableModel = (Vector) ((DefaultTableModel) tblDonations.getModel()).getDataVector().clone();
     }
 
     /**
@@ -28,7 +32,10 @@ public class VDonorDonations extends javax.swing.JPanel {
 
         btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDonations = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setLayout(null);
 
@@ -39,9 +46,9 @@ public class VDonorDonations extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(500, 20, 100, 23);
+        btnBack.setBounds(510, 60, 100, 23);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDonations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,10 +74,33 @@ public class VDonorDonations extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblDonations);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(70, 100, 470, 200);
+        jScrollPane1.setBounds(80, 240, 470, 200);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("YOUR DONATIONS");
+        add(jLabel4);
+        jLabel4.setBounds(150, 30, 260, 39);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        add(lbSearch);
+        lbSearch.setBounds(70, 140, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        add(txtSearch);
+        txtSearch.setBounds(150, 140, 430, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -79,10 +109,35 @@ public class VDonorDonations extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblDonations.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbSearch;
+    private javax.swing.JTable tblDonations;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
