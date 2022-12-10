@@ -23,15 +23,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="cmbStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="387" max="32767" attributes="0"/>
-              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -39,10 +30,24 @@
               <Component id="btnBack" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="713" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                      <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="cmbStatus" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="713" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="363" max="-2" attributes="0"/>
+                      <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="173" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,11 +68,12 @@
               <Component id="jScrollPane1" min="-2" pref="162" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="136" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -153,7 +159,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
             <StringItem index="0" value="On Transit"/>
-            <StringItem index="1" value="Item 2"/>
+            <StringItem index="1" value="Pending"/>
             <StringItem index="2" value=" "/>
           </StringArray>
         </Property>

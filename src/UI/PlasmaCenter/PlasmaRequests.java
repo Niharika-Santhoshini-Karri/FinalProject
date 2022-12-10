@@ -93,7 +93,7 @@ public class PlasmaRequests extends javax.swing.JFrame {
 
         lblStatus.setText("Status");
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Item 2", " " }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Pending", " " }));
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -106,14 +106,6 @@ public class PlasmaRequests extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(lblStatus)
-                .addGap(28, 28, 28)
-                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
-                .addComponent(btnUpdate)
-                .addGap(185, 185, 185))
             .addGroup(layout.createSequentialGroup()
                 .addGap(194, 194, 194)
                 .addComponent(jLabel1)
@@ -121,9 +113,19 @@ public class PlasmaRequests extends javax.swing.JFrame {
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(lblStatus)
+                        .addGap(28, 28, 28)
+                        .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(363, 363, 363)
+                        .addComponent(btnUpdate)))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,10 +141,11 @@ public class PlasmaRequests extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
                     .addComponent(lblStatus)
                     .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btnUpdate)
+                .addGap(72, 72, 72))
         );
 
         pack();
@@ -158,9 +161,10 @@ public class PlasmaRequests extends javax.swing.JFrame {
         }
         DefaultTableModel model =(DefaultTableModel) tblPlasmaRequests.getModel();
         Connection conn = dbconn.getConnection();
-        //do validation here.
-        //check if the id already exists
-        String updateStatus = "update plasmarequests set status=? where hos_id=? ";
+      
+         String request_id = model.getValueAt(tblPlasmaRequests.getSelectedRow(),0).toString();
+         int req_id = Integer.valueOf(request_id); 
+        String updateStatus = "update HPCRequest set status=? where request_id=? ";
         
         String status = (String) cmbStatus.getSelectedItem(); 
 
@@ -171,7 +175,8 @@ public class PlasmaRequests extends javax.swing.JFrame {
        
              
             
-            stmt.setString(3,status);
+            stmt.setString(1,status);
+            stmt.setInt(2,req_id);
             
            
             
@@ -185,6 +190,7 @@ public class PlasmaRequests extends javax.swing.JFrame {
         
       
       JOptionPane.showMessageDialog(this,"Status Updated");
+      populateTable();
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateActionPerformed

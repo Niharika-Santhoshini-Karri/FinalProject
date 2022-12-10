@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 import java.util.Vector;
 
@@ -19,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -31,6 +33,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
      */
     DBUTIL dbconn= new DBUTIL();
     ResultSet resultSet1, resultSet2 = null;
+    Random rand = new Random();
     public static int myhos_id = HOSPITAL.getHos_id();
   
 
@@ -117,15 +120,15 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
 
         jLabel3.setText("Blood Group");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(220, 410, 74, 17);
+        jLabel3.setBounds(220, 410, 103, 25);
 
         jLabel4.setText("Patient ID");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 470, 56, 17);
+        jLabel4.setBounds(240, 470, 80, 25);
 
         jLabel5.setText("Quantity");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(250, 520, 49, 17);
+        jLabel5.setBounds(250, 520, 70, 25);
 
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,11 +136,11 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantity);
-        txtQuantity.setBounds(340, 510, 199, 23);
+        txtQuantity.setBounds(340, 510, 199, 31);
 
         jLabel6.setText("Status");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(250, 560, 37, 17);
+        jLabel6.setBounds(250, 560, 50, 25);
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +149,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(310, 590, 72, 23);
+        btnAdd.setBounds(310, 590, 72, 31);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +158,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(370, 340, 73, 23);
+        btnUpdate.setBounds(370, 340, 91, 31);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +167,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(480, 340, 72, 23);
+        btnDelete.setBounds(480, 340, 83, 31);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +176,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(80, 32, 72, 23);
+        btnBack.setBounds(80, 32, 74, 31);
 
         comboxPatientID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,11 +184,11 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxPatientID);
-        comboxPatientID.setBounds(370, 460, 72, 23);
+        comboxPatientID.setBounds(370, 460, 72, 31);
 
         comboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Requested", "Recieved" }));
         getContentPane().add(comboxStatus);
-        comboxStatus.setBounds(340, 550, 99, 23);
+        comboxStatus.setBounds(340, 550, 130, 31);
 
         comboxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         comboxBloodGroup.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +197,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxBloodGroup);
-        comboxBloodGroup.setBounds(370, 410, 72, 23);
+        comboxBloodGroup.setBounds(370, 410, 78, 31);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
