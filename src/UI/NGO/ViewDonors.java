@@ -32,7 +32,40 @@ public class ViewDonors extends javax.swing.JFrame {
     }
     
     private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblDonorsList.getModel();
+        Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
         
+         
+                  String selectSql = "SELECT VNAME,AGE,CONTACT,ADDRESS,BLOOD_GROUP FROM VDONOR";
+
+      Statement stmt;
+       try {
+            stmt = conn.createStatement();
+       
+            resultSet = stmt.executeQuery(selectSql);
+
+             while (resultSet.next()) {
+            
+            Object[] row = new Object[5];
+            row[0] = resultSet.getString(1);
+            row[1]=resultSet.getInt(2);
+            row[2] = resultSet.getInt(3);
+            row[3]=resultSet.getString(4);
+            row[4]=resultSet.getString(5);
+            
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(ViewDonors.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                }
 
     /**
      * This method is called from within the constructor to initialize the form.
