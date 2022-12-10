@@ -32,7 +32,37 @@ public class Plasmacenters extends javax.swing.JFrame {
         populateTable();
     }
     private void populateTable(){
+        DefaultTableModel model = (DefaultTableModel) tblPlasmacenters.getModel();
+        Connection conn = dbconn.getConnection();
         
+        model.setRowCount(0);
+        System.out.println("populate");
+        //
+         String selectSql = "SELECT PC_NAME,ADDRESS,MOBILE,ZIPCODE from plasmacenters";
+      Statement stmt;
+       try {
+            stmt = conn.createStatement();
+       
+            resultSet = stmt.executeQuery(selectSql);
+            // conn.close();
+             while (resultSet.next()) {
+                
+            Object[] row = new Object[4];
+            row[0]=resultSet.getString(1);
+            row[1] = resultSet.getString(2);
+            row[2] = resultSet.getInt(3);
+            row[3]=resultSet.getInt(4);
+            
+            model.addRow(row);
+             }//while
+             
+            
+             conn.close();
+             
+       }//try
+       catch (SQLException ex) {
+            Logger.getLogger(Plasmacenters.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
        
         //
