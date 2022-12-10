@@ -25,7 +25,7 @@ public class Plasmacenters extends javax.swing.JFrame {
     
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-    Connection conn = dbconn.getConnection();
+    
     public Plasmacenters() {
         initComponents();
         
@@ -33,11 +33,12 @@ public class Plasmacenters extends javax.swing.JFrame {
     }
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel) tblPlasmacenters.getModel();
+        Connection conn = dbconn.getConnection();
         
         model.setRowCount(0);
         System.out.println("populate");
         //
-         String selectSql = "SELECT * from plasmacenters";
+         String selectSql = "SELECT PC_NAME,ADDRESS,MOBILE,ZIPCODE from plasmacenters";
       Statement stmt;
        try {
             stmt = conn.createStatement();
@@ -46,12 +47,12 @@ public class Plasmacenters extends javax.swing.JFrame {
             // conn.close();
              while (resultSet.next()) {
                 
-            Object[] row = new Object[5];
-            row[0]=resultSet.getInt(1);
+            Object[] row = new Object[4];
+            row[0]=resultSet.getString(1);
             row[1] = resultSet.getString(2);
-            row[2] = resultSet.getString(3);
-            row[3]=resultSet.getString(4);
-            row[4]=resultSet.getInt(5);  
+            row[2] = resultSet.getInt(3);
+            row[3]=resultSet.getInt(4);
+            
             model.addRow(row);
              }//while
              
