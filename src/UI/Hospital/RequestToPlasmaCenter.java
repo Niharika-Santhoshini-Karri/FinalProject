@@ -12,7 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Random;
+
+import java.util.Vector;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,12 +32,15 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     DBUTIL dbconn= new DBUTIL();
     ResultSet resultSet1, resultSet2 = null;
     public static int myhos_id = HOSPITAL.getHos_id();
-    Random rand = new Random(); 
-    
+  
+
+    Vector originalTableModel;
+
     public RequestToPlasmaCenter() {
         initComponents();
         System.out.println("plasma req hos_id="+myhos_id);
         populateCombox(); 
+        originalTableModel = (Vector) ((DefaultTableModel) tblHPCRequest.getModel()).getDataVector().clone();
         //populateTable(); 
     }
 
@@ -63,6 +68,8 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         comboxPatientID = new javax.swing.JComboBox<>();
         comboxStatus = new javax.swing.JComboBox<>();
         comboxBloodGroup = new javax.swing.JComboBox<>();
+        txtSearch = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -106,19 +113,19 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblHPCRequest);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(80, 122, 580, 133);
+        jScrollPane1.setBounds(70, 190, 580, 133);
 
         jLabel3.setText("Blood Group");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(228, 345, 74, 17);
+        jLabel3.setBounds(220, 410, 74, 17);
 
         jLabel4.setText("Patient ID");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(246, 396, 56, 17);
+        jLabel4.setBounds(240, 470, 56, 17);
 
         jLabel5.setText("Quantity");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(253, 446, 49, 17);
+        jLabel5.setBounds(250, 520, 49, 17);
 
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,11 +133,11 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQuantity);
-        txtQuantity.setBounds(348, 443, 199, 23);
+        txtQuantity.setBounds(340, 510, 199, 23);
 
         jLabel6.setText("Status");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(253, 487, 37, 17);
+        jLabel6.setBounds(250, 560, 37, 17);
 
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -139,11 +146,16 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(315, 516, 72, 23);
+        btnAdd.setBounds(310, 590, 72, 23);
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(380, 270, 73, 23);
+        btnUpdate.setBounds(370, 340, 73, 23);
 
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +164,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(490, 270, 72, 23);
+        btnDelete.setBounds(480, 340, 72, 23);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -169,11 +181,11 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxPatientID);
-        comboxPatientID.setBounds(375, 393, 72, 23);
+        comboxPatientID.setBounds(370, 460, 72, 23);
 
         comboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Requested", "Recieved" }));
         getContentPane().add(comboxStatus);
-        comboxStatus.setBounds(348, 484, 99, 23);
+        comboxStatus.setBounds(340, 550, 99, 23);
 
         comboxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         comboxBloodGroup.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +194,28 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxBloodGroup);
-        comboxBloodGroup.setBounds(375, 342, 72, 23);
+        comboxBloodGroup.setBounds(370, 410, 72, 23);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(180, 130, 430, 30);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(100, 130, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -269,6 +302,36 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboxBloodGroupActionPerformed
 
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchKeyPressed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblHPCRequest.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,8 +381,10 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblHPCRequest;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {

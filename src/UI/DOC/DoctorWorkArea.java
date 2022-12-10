@@ -28,10 +28,10 @@ public class DoctorWorkArea extends javax.swing.JFrame {
      */
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-    
+    Vector originalTableModel;
     public DoctorWorkArea() {
         initComponents();
-        
+        originalTableModel = (Vector) ((DefaultTableModel) tblViewPatients.getModel()).getDataVector().clone();
         populateTable();
         
         
@@ -85,6 +85,8 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         tblViewPatients = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
+        lbSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -103,7 +105,7 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblViewPatients);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(77, 146, 490, 163);
+        jScrollPane1.setBounds(80, 210, 490, 163);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("              PATIENT DETAILS");
@@ -119,6 +121,24 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnLogout);
         btnLogout.setBounds(52, 29, 83, 23);
 
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(70, 140, 90, 30);
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(150, 140, 430, 30);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -128,6 +148,28 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         frame.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblViewPatients.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -168,6 +210,8 @@ public class DoctorWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblViewPatients;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

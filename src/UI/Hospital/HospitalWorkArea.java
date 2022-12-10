@@ -52,37 +52,37 @@ public class HospitalWorkArea extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jButton1.setText("Add Doctor");
+        jButton1.setText(" DOCTOR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(219, 100, 183, 57);
+        jButton1.setBounds(240, 160, 220, 50);
 
-        jButton2.setText("Add Patient");
+        jButton2.setText("PATIENT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(219, 184, 183, 50);
+        jButton2.setBounds(240, 250, 220, 50);
 
-        jButton3.setText("Request to Plasma Center");
+        jButton3.setText("REQUEST TO PLASMA CENTER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(210, 270, 233, 66);
+        jButton3.setBounds(243, 330, 220, 60);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("HOSPITAL ADMIN PORTAL");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(183, 27, 231, 46);
+        jLabel1.setBounds(183, 27, 239, 46);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +91,7 @@ public class HospitalWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(500, 30, 100, 31);
+        btnBack.setBounds(630, 60, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

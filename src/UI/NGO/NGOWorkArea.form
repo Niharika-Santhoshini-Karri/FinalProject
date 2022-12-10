@@ -27,40 +27,40 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnDonorsList">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Donors List"/>
+        <Property name="text" type="java.lang.String" value="DONORS LIST"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDonorsListActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="214" y="146" width="181" height="-1"/>
+          <AbsoluteConstraints x="220" y="280" width="190" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnPlasmaReq">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Plasma request"/>
+        <Property name="text" type="java.lang.String" value="PLASMA REQUESTS"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPlasmaReqActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="214" y="214" width="181" height="-1"/>
+          <AbsoluteConstraints x="220" y="100" width="181" height="50"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnPC">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Plasma Centers"/>
+        <Property name="text" type="java.lang.String" value="PLASMA CENTERS"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPCActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="214" y="280" width="181" height="-1"/>
+          <AbsoluteConstraints x="220" y="190" width="190" height="50"/>
         </Constraint>
       </Constraints>
     </Component>

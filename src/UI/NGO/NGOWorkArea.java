@@ -36,32 +36,32 @@ public class NGOWorkArea extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        btnDonorsList.setText("Donors List");
+        btnDonorsList.setText("DONORS LIST");
         btnDonorsList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDonorsListActionPerformed(evt);
             }
         });
         getContentPane().add(btnDonorsList);
-        btnDonorsList.setBounds(214, 146, 181, 23);
+        btnDonorsList.setBounds(220, 280, 190, 50);
 
-        btnPlasmaReq.setText("Plasma request");
+        btnPlasmaReq.setText("PLASMA REQUESTS");
         btnPlasmaReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlasmaReqActionPerformed(evt);
             }
         });
         getContentPane().add(btnPlasmaReq);
-        btnPlasmaReq.setBounds(214, 214, 181, 23);
+        btnPlasmaReq.setBounds(220, 100, 181, 50);
 
-        btnPC.setText("Plasma Centers");
+        btnPC.setText("PLASMA CENTERS");
         btnPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPCActionPerformed(evt);
             }
         });
         getContentPane().add(btnPC);
-        btnPC.setBounds(214, 280, 181, 23);
+        btnPC.setBounds(220, 190, 190, 50);
 
         btnLogout.setText("LOGOUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {

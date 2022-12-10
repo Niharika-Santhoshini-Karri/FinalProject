@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -24,10 +25,10 @@ public class ViewDonors extends javax.swing.JFrame {
      */
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-    
+     Vector originalTableModel;
     public ViewDonors() {
         initComponents();
-        
+        originalTableModel = (Vector) ((DefaultTableModel) tblDonorsList.getModel()).getDataVector().clone();
         populateTable();
     }
     
@@ -80,8 +81,11 @@ public class ViewDonors extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDonorsList = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        lbSearch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -89,8 +93,9 @@ public class ViewDonors extends javax.swing.JFrame {
                 btnbackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnback);
+        btnback.setBounds(50, 35, 72, 23);
 
-        tblDonorsList.setBackground(new java.awt.Color(204, 255, 204));
         tblDonorsList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -119,39 +124,31 @@ public class ViewDonors extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDonorsList);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(30, 220, 546, 171);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("DONORS LIST");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(210, 53, 151, 37);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(btnback)
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btnback))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
-        );
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(150, 140, 430, 30);
+
+        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
+        lbSearch.setText("SEARCH");
+        getContentPane().add(lbSearch);
+        lbSearch.setBounds(70, 140, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,6 +160,28 @@ public class ViewDonors extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnbackActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)tblDonorsList.getModel();
+
+        model.setRowCount(0);
+        for (Object rows : originalTableModel) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
+                    //content found so adding to table
+                    model.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -203,6 +222,8 @@ public class ViewDonors extends javax.swing.JFrame {
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblDonorsList;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
