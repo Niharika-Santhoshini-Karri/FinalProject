@@ -70,7 +70,7 @@ public class PCWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(510, 183, 120, 80);
+        jButton1.setBounds(460, 120, 170, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

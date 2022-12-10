@@ -86,9 +86,6 @@ public class PCDonorr extends javax.swing.JFrame {
         tblDonor = new javax.swing.JTable();
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtQty = new javax.swing.JTextField();
-        btnUpdate = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
 
@@ -103,11 +100,11 @@ public class PCDonorr extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Donation ID", "Name", "Blood Group", "Donation Date", "Quantity Donated", "Donor ID"
+                "Stock ID", "Donor ID", "Name", "Blood Group", "Donation Date", "Quantity Donated"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -127,11 +124,6 @@ public class PCDonorr extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblDonor);
-        if (tblDonor.getColumnModel().getColumnCount() > 0) {
-            tblDonor.getColumnModel().getColumn(5).setMinWidth(0);
-            tblDonor.getColumnModel().getColumn(5).setPreferredWidth(0);
-            tblDonor.getColumnModel().getColumn(5).setMaxWidth(0);
-        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 180, 660, 210);
@@ -149,27 +141,6 @@ public class PCDonorr extends javax.swing.JFrame {
         });
         getContentPane().add(btnBack);
         btnBack.setBounds(550, 30, 100, 23);
-
-        jLabel1.setText("QUANTITY DONATED");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(120, 450, 160, 17);
-
-        txtQty.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQtyActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtQty);
-        txtQty.setBounds(310, 450, 90, 23);
-
-        btnUpdate.setText("UPDATE DETAILS");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(260, 530, 180, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,30 +185,6 @@ public class PCDonorr extends javax.swing.JFrame {
         PCWorkArea frame = new PCWorkArea();
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void txtQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQtyActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQtyActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-        
-        int qty = Integer.valueOf(txtQty.getText());
-        
-        int selectRowIndex = tblDonor.getSelectedRow();
-        if (selectRowIndex<0){
-            JOptionPane.showMessageDialog(this, "Please select a row to update");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel)tblDonor.getModel();
-        
-        tblDonor.setValueAt(qty,tblDonor.getSelectedRow(), 4);
-        
-        JOptionPane.showMessageDialog(this, "Appointment details Updated");
-        
-        populateTable();
-
-    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -299,13 +246,10 @@ public class PCDonorr extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblDonor;
-    private javax.swing.JTextField txtQty;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
