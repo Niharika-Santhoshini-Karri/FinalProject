@@ -155,7 +155,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(240, 130, 120, 31);
+        txtName.setBounds(350, 130, 120, 31);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +181,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(240, 170, 120, 31);
+        txtAddress.setBounds(350, 170, 120, 31);
 
         txtZipCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

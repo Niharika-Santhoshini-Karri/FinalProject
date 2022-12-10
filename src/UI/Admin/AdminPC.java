@@ -48,16 +48,15 @@ public class AdminPC extends javax.swing.JFrame {
     private void initComponents() {
 
         btnBack = new javax.swing.JButton();
-        txtmobile = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblZipcode = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPlasma = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         lblSelectOrgType = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        txtaddress = new javax.swing.JTextField();
+        txtZipcode = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         txtid = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -67,6 +66,9 @@ public class AdminPC extends javax.swing.JFrame {
         valName = new javax.swing.JLabel();
         valAddress = new javax.swing.JLabel();
         valContact = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtaddress1 = new javax.swing.JTextField();
+        txtmobile = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -78,28 +80,15 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 23);
-
-        txtmobile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmobileActionPerformed(evt);
-            }
-        });
-        txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtmobileKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtmobile);
-        txtmobile.setBounds(180, 450, 100, 23);
+        btnBack.setBounds(570, 30, 100, 31);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 370, 70, 17);
+        jLabel1.setBounds(50, 370, 70, 25);
 
-        jLabel5.setText("Mobile");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 450, 90, 30);
+        lblZipcode.setText("ZIP CODE");
+        getContentPane().add(lblZipcode);
+        lblZipcode.setBounds(40, 490, 90, 30);
 
         tblPlasma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,11 +133,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(160, 530, 87, 23);
+        btnAdd.setBounds(130, 550, 87, 31);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(80, 330, 60, 17);
+        lblSelectOrgType.setBounds(80, 330, 60, 25);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -157,20 +146,20 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(400, 280, 100, 23);
+        btnDelete.setBounds(400, 280, 100, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(190, 30, 220, 29);
 
-        txtaddress.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtZipcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtaddressKeyReleased(evt);
+                txtZipcodeKeyReleased(evt);
             }
         });
-        getContentPane().add(txtaddress);
-        txtaddress.setBounds(180, 410, 100, 23);
+        getContentPane().add(txtZipcode);
+        txtZipcode.setBounds(180, 490, 100, 31);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +168,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(280, 280, 100, 23);
+        btnUpdate.setBounds(280, 280, 100, 31);
 
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,11 +176,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(180, 320, 100, 23);
+        txtid.setBounds(180, 320, 100, 31);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 410, 80, 17);
+        jLabel2.setBounds(40, 410, 80, 25);
 
         txtpcname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -199,7 +188,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtpcname);
-        txtpcname.setBounds(180, 370, 100, 23);
+        txtpcname.setBounds(180, 370, 100, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -231,6 +220,26 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(valContact);
         valContact.setBounds(300, 450, 130, 20);
 
+        jLabel6.setText("Mobile");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(40, 450, 90, 30);
+
+        txtaddress1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtaddress1KeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtaddress1);
+        txtaddress1.setBounds(180, 410, 100, 31);
+
+        txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtmobileKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtmobile);
+        txtmobile.setBounds(180, 450, 100, 31);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,7 +258,7 @@ public class AdminPC extends javax.swing.JFrame {
       
         }
         
-        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+        if (!this.validations.ValidateAddress(txtZipcode.getText()) ) {
             valAddress.setText("Address is required");
             valid = false;
         }
@@ -262,9 +271,10 @@ public class AdminPC extends javax.swing.JFrame {
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtpcname.getText();
        //int hos_id = Integer.valueOf(txthos_id.getText());
-       String address = txtaddress.getText();
+       String address = txtZipcode.getText();
       
        String mobile = txtmobile.getText();
+       int  zipcode = Integer.valueOf(txtZipcode.getText());
        
         Connection conn = dbconn.getConnection();
         //do validation here.
@@ -275,7 +285,7 @@ public class AdminPC extends javax.swing.JFrame {
         }
      
 
-        if(txtaddress.getText().isEmpty())
+        if(txtZipcode.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please enter address");
             return;
@@ -287,7 +297,7 @@ public class AdminPC extends javax.swing.JFrame {
 
         }
         //check if the id already exists and a valid hospital id laready exists
-                String INSERTPCSQL = "insert into plasmaC(pc_id,pc_name,address,mobile) values (?,?,?,?) ";
+                String INSERTPCSQL = "insert into plasmaC(pc_id,pc_name,address,mobile,zipcode) values (?,?,?,?,?) ";
 
         PreparedStatement stmt; 
         try
@@ -300,6 +310,7 @@ public class AdminPC extends javax.swing.JFrame {
             //stmt.setInt(3,hos_id);
             stmt.setString(3,address);
             stmt.setString(4,mobile);
+            stmt.setInt(5,zipcode);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
@@ -362,7 +373,7 @@ public class AdminPC extends javax.swing.JFrame {
       
         }
         
-        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+        if (!this.validations.ValidateAddress(txtZipcode.getText()) ) {
             valAddress.setText("Address is required");
             valid = false;
         }
@@ -375,7 +386,7 @@ public class AdminPC extends javax.swing.JFrame {
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtpcname.getText();
        //int hos_id = Integer.valueOf(txthos_id.getText());
-       String address = txtaddress.getText();
+       String address = txtZipcode.getText();
       
        String mobile = txtmobile.getText();
        
@@ -435,10 +446,6 @@ public class AdminPC extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void txtmobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmobileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtmobileActionPerformed
-
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtidActionPerformed
@@ -460,7 +467,7 @@ public class AdminPC extends javax.swing.JFrame {
         txtid.setText(String.valueOf(id));
         txtpcname.setText(pc_name);
         //txthos_id.setText(hos_id);
-        txtaddress.setText(address);
+        txtZipcode.setText(address);
         txtmobile.setText(mobile);
         
         setValidationNull();
@@ -498,24 +505,22 @@ public class AdminPC extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtpcnameKeyReleased
 
-    private void txtaddressKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddressKeyReleased
+    private void txtZipcodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtZipcodeKeyReleased
         // TODO add your handling code here:
-        if (!this.validations.ValidateAddress(txtaddress.getText()) ) {
+        if (!this.validations.ValidateAddress(txtZipcode.getText()) ) {
             valAddress.setText("Address is required");
         }
         else {
             valAddress.setText(null);
         }
-    }//GEN-LAST:event_txtaddressKeyReleased
+    }//GEN-LAST:event_txtZipcodeKeyReleased
+
+    private void txtaddress1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddress1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtaddress1KeyReleased
 
     private void txtmobileKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmobileKeyReleased
         // TODO add your handling code here:
-        if (!this.validations.ValidatePhoneNumber(txtmobile.getText()) ) {
-            valContact.setText(" Contact is required");
-        }
-        else {
-            valContact.setText(null);
-        }
     }//GEN-LAST:event_txtmobileKeyReleased
 
     /**
@@ -560,14 +565,16 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblSelectOrgType;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblZipcode;
     private javax.swing.JTable tblPlasma;
     private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtaddress;
+    private javax.swing.JTextField txtZipcode;
+    private javax.swing.JTextField txtaddress1;
     private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtmobile;
     private javax.swing.JTextField txtpcname;
@@ -612,7 +619,7 @@ public class AdminPC extends javax.swing.JFrame {
     private void setTextNull() {
     txtid.setText(null);
         txtpcname.setText(null);
-         txtaddress.setText(null);
+         txtZipcode.setText(null);
          //txthos_id.setText(null);
           txtmobile.setText(null);
     }

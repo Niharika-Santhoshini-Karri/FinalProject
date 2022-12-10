@@ -38,7 +38,7 @@ public class Plasmacenters extends javax.swing.JFrame {
         model.setRowCount(0);
         System.out.println("populate");
         //
-         String selectSql = "SELECT PC_NAME,ADDRESS,MOBILE,ZIPCODE from plasmacenters";
+         String selectSql = "SELECT PC_NAME,ADDRESS,MOBILE,ZIPCODE from plasmac";
       Statement stmt;
        try {
             stmt = conn.createStatement();
@@ -88,20 +88,20 @@ public class Plasmacenters extends javax.swing.JFrame {
         tblPlasmacenters.setBackground(new java.awt.Color(204, 255, 204));
         tblPlasmacenters.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "hospital", "Address", "mobile"
+                "NAME", "ADDRESS", "MOBILE", "ZIP CODE"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
