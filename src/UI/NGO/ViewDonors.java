@@ -4,6 +4,15 @@
  */
 package UI.NGO;
 
+import DBUTIL.DBUTIL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Niharika
@@ -13,9 +22,17 @@ public class ViewDonors extends javax.swing.JFrame {
     /**
      * Creates new form ViewDonors
      */
+    ResultSet resultSet = null;
+    DBUTIL dbconn= new DBUTIL();
+    
     public ViewDonors() {
         initComponents();
+        
+        populateTable();
     }
+    
+    private void populateTable(){
+        
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +66,7 @@ public class ViewDonors extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Donor Name", "Age", "Blood Group", "Address", "Contact"
+                "Donor Name", "Age", "Contact", "Address", "Blood Group"
             }
         ) {
             Class[] types = new Class [] {

@@ -118,7 +118,7 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 370, 70, 17);
+        jLabel1.setBounds(230, 370, 70, 16);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("HOSPITALS ");
@@ -127,11 +127,11 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 410, 80, 17);
+        jLabel2.setBounds(220, 410, 80, 16);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(250, 320, 12, 17);
+        lblSelectOrgType.setBounds(250, 320, 11, 16);
 
         jLabel5.setText("Zip Code");
         getContentPane().add(jLabel5);
@@ -237,7 +237,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
-        txtContact.setBounds(340, 490, 140, 23);
+        txtContact.setBounds(340, 490, 140, 22);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
