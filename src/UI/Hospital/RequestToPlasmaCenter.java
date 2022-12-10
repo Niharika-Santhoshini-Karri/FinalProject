@@ -12,7 +12,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.Vector;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,7 +32,10 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     DBUTIL dbconn= new DBUTIL();
     ResultSet resultSet1, resultSet2 = null;
     public static int myhos_id = HOSPITAL.getHos_id();
+  
+
     Vector originalTableModel;
+
     public RequestToPlasmaCenter() {
         initComponents();
         System.out.println("plasma req hos_id="+myhos_id);
@@ -243,7 +248,8 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         try
         {
             stmt1 = conn.prepareStatement(addReq);
-            stmt1. setInt(1,2); // this is now set to 2, later change to random number of req id
+            int req_id = rand.nextInt(100); 
+            stmt1. setInt(1,req_id); // this is now set to 2, later change to random number of req id
             stmt1. setInt(2,pat_id); 
             stmt1.setInt(3,quantity);
             stmt1.setString(4,status);

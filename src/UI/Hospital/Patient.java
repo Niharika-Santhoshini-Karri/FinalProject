@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import MODEL.HOSPITAL;
 
 /**
  *
@@ -44,11 +45,8 @@ public class Patient extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblPatient.getModel();
          Connection conn = dbconn.getConnection();
         model.setRowCount(0);
-        
-         
-       String selectSql = "SELECT patient_id,patient_name,age, gender, doc_id,address from patients ";
-        
-
+ String selectSql = "SELECT pat_id,pat_name,age, gender, doc_id,address from patients ";
+    
       Statement stmt;
        try {
             stmt = conn.createStatement();
@@ -389,8 +387,8 @@ public class Patient extends javax.swing.JFrame {
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String UPDATEPATIENTSQL = "update patients set patient_name=?, "
-                        + "age=?, gender=?, doc_id=?, address=? where patient_id =?";
+                String UPDATEPATIENTSQL = "update patients set pat_name=?, "
+                        + "age=?, gender=?, doc_id=?, address=? where pat_id =?";
 
         PreparedStatement stmt; 
          
@@ -476,7 +474,7 @@ public class Patient extends javax.swing.JFrame {
         //do validation here.
         
         //check if the id already exists
-                String INSERTHOSSQL = "insert into patients(patient_id,patient_name,"
+                String INSERTHOSSQL = "insert into patients(pat_id,pat_name,"
                         + "age,gender, doc_id, address) values (?,?,?,?,?,?) ";
 
         PreparedStatement stmt; 
@@ -530,7 +528,7 @@ public class Patient extends javax.swing.JFrame {
        
          conn = dbconn.getConnection();
          //int pat_id = Integer.valueOf(txtpat_id.getText());
-          String selectSql = "Delete from patients where patient_id=?";
+          String selectSql = "Delete from patients where pat_id=?";
      PreparedStatement stmt;
       try {
              
@@ -752,8 +750,9 @@ public class Patient extends javax.swing.JFrame {
         try
         {
             stmt1 = conn.prepareStatement(SELECTSQL1);
+            int hos_id = HOSPITAL.getHos_id();
             
-            stmt1.setInt(1,1);// later change it to stmt1.setInt(1,hos_id); 
+            stmt1.setInt(1,hos_id);// later change it to stmt1.setInt(1,hos_id); 
             
             resultSet1 = stmt1.executeQuery();
             

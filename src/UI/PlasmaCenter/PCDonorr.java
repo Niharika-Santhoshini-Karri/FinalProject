@@ -126,7 +126,7 @@ public class PCDonorr extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDonor);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 180, 660, 210);
+        jScrollPane1.setBounds(40, 180, 810, 210);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("DONORS");
@@ -140,7 +140,7 @@ public class PCDonorr extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 30, 100, 23);
+        btnBack.setBounds(550, 30, 100, 31);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

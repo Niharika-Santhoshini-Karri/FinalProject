@@ -4,13 +4,16 @@
  */
 package UI.PlasmaCenter;
 import DBUTIL.DBUTIL;
+import MODEL.Validations;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Statement;
 
 /**
  *
@@ -21,10 +24,14 @@ public class PlasmaRequests extends javax.swing.JFrame {
     /**
      * Creates new form PlasmaRequests
      */
+    Validations validations;
+    ResultSet resultSet, resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
+    
     
     public PlasmaRequests() {
         initComponents();
+        populateTable(); 
     }
 
     /**
@@ -48,15 +55,30 @@ public class PlasmaRequests extends javax.swing.JFrame {
 
         tblPlasmaRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "HOSPITAL ID", "Quantity", "Status", "Blood group"
+                "Req ID", "HOSPITAL ID", "Quantity", "Status", "Blood group"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblPlasmaRequests);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -84,16 +106,12 @@ public class PlasmaRequests extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(lblStatus)
                 .addGap(28, 28, 28)
                 .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
                 .addComponent(btnUpdate)
                 .addGap(185, 185, 185))
             .addGroup(layout.createSequentialGroup()
@@ -102,6 +120,10 @@ public class PlasmaRequests extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,4 +239,40 @@ public class PlasmaRequests extends javax.swing.JFrame {
     private javax.swing.JLabel lblStatus;
     private javax.swing.JTable tblPlasmaRequests;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblPlasmaRequests.getModel();
+         Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+ String selectSql ="select r.request_id , d.hos_id , r.qty, r.status, r.blood_group from hpcrequest r inner join patients p on r.pat_id = p.pat_id inner join doctors d on p.doc_id = d.doc_id ";
+    
+      Statement stmt;
+       try {
+            stmt = conn.createStatement();
+       
+            resultSet = stmt.executeQuery(selectSql);
+            resultSet.next();
+
+             while (resultSet.next()) {
+            
+            Object[] row = new Object[5];
+            row[0]=resultSet.getInt(1);
+            row[1] = resultSet.getInt(2);
+            row[2] = resultSet.getInt(3);
+            row[3]=resultSet.getString(4);
+            row[4]=resultSet.getString(5);
+            
+            
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(PlasmaRequests.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
