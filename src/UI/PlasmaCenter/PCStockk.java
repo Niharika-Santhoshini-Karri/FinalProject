@@ -106,7 +106,7 @@ public class PCStockk extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtQty1 = new javax.swing.JTextField();
         lblDonor_id1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new org.netbeans.modules.form.InvalidComponent();
         ComboBlood1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,7 +124,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 30, 100, 31);
+        btnBack.setBounds(550, 30, 100, 23);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(190, 230, 100, 31);
+        btnUpdate.setBounds(190, 230, 100, 23);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -142,11 +142,11 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 240, 100, 31);
+        btnDelete.setBounds(370, 240, 100, 23);
 
         jLabel1.setText("Blood Group");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 350, 110, 25);
+        jLabel1.setBounds(190, 350, 110, 16);
 
         lblDonor_id.setText("Date of Donation");
         getContentPane().add(lblDonor_id);
@@ -159,7 +159,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(280, 560, 87, 31);
+        btnAdd.setBounds(280, 560, 87, 23);
 
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -203,13 +203,13 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboDonor_ID);
-        comboDonor_ID.setBounds(390, 450, 77, 31);
+        comboDonor_ID.setBounds(390, 450, 77, 22);
 
         jLabel6.setText("Stock ID");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(200, 300, 90, 40);
         getContentPane().add(txtStock);
-        txtStock.setBounds(380, 300, 74, 31);
+        txtStock.setBounds(380, 300, 74, 22);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -247,13 +247,13 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtQty1);
-        txtQty1.setBounds(380, 400, 120, 31);
+        txtQty1.setBounds(380, 400, 120, 22);
 
         lblDonor_id1.setText("Donor ID");
         getContentPane().add(lblDonor_id1);
         lblDonor_id1.setBounds(170, 450, 160, 40);
         getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(380, 490, 126, 31);
+        jDateChooser1.setBounds(380, 490, 37, 18);
 
         ComboBlood1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AB+", "AB-", "O+", "O-", "A+", "A-", "B+", "B-" }));
         ComboBlood1.addActionListener(new java.awt.event.ActionListener() {
@@ -262,7 +262,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboBlood1);
-        ComboBlood1.setBounds(380, 350, 77, 31);
+        ComboBlood1.setBounds(380, 350, 77, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -548,7 +548,7 @@ public class PCStockk extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> comboDonor_ID;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private org.netbeans.modules.form.InvalidComponent jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
