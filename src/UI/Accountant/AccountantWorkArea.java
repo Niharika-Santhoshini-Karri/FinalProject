@@ -74,7 +74,7 @@ public class AccountantWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(120, 290, 105, 23);
+        jButton2.setBounds(120, 290, 96, 23);
 
         txtareabill.setColumns(20);
         txtareabill.setRows(5);

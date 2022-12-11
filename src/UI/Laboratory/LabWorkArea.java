@@ -73,15 +73,15 @@ public class LabWorkArea extends javax.swing.JFrame {
 
         jLabel1.setText("REQ ID");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(170, 300, 70, 17);
+        jLabel1.setBounds(170, 300, 70, 16);
 
         jLabel2.setText("PC ID");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(180, 340, 33, 17);
+        jLabel2.setBounds(180, 340, 29, 16);
 
         jLabel3.setText("INFECTION");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(152, 380, 70, 17);
+        jLabel3.setBounds(152, 380, 70, 16);
 
         jButton1.setText("UPDATE");
         getContentPane().add(jButton1);
@@ -89,15 +89,15 @@ public class LabWorkArea extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(250, 300, 64, 23);
+        jTextField1.setBounds(250, 300, 64, 22);
 
         jTextField2.setEditable(false);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(250, 340, 64, 23);
+        jTextField2.setBounds(250, 340, 64, 22);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES", "NO" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(250, 380, 72, 23);
+        jComboBox1.setBounds(250, 380, 72, 22);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel4.setText("LABORATORY");
