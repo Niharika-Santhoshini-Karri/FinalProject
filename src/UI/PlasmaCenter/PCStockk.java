@@ -18,7 +18,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import MODEL.PlasmaCenter; 
+import java.text.SimpleDateFormat;
+import java.util.Random;
 /**
  *
  * @author rishikagurram
@@ -29,10 +31,12 @@ public class PCStockk extends javax.swing.JFrame {
     /**
      * Creates new form PCStock
      */
+    Random rand = new Random(); 
     ResultSet resultSet, resultSetx = null;
     DBUTIL dbconn= new DBUTIL();
     Vector originalTableModel;
     Validations validations;
+    public static int thispc_id = PlasmaCenter.getPc_id(); 
     public PCStockk() {
         initComponents();
         populateTable();
@@ -48,7 +52,7 @@ public class PCStockk extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-                  String selectSql = "SELECT stock_id,blood_group,qty from stock";
+    String selectSql = "select s.stock_id, d.vdonor_id, d.blood_group, s.quantity, s.date_donation from all_stock s join vdonor d on s.vdonor_id = d.vdonor_id";
 
       Statement stmt;
        try {
@@ -58,10 +62,12 @@ public class PCStockk extends javax.swing.JFrame {
 
              while (resultSet.next()) {
             
-            Object[] row = new Object[3];
+            Object[] row = new Object[5];
             row[0]=resultSet.getInt(1);
             row[1] = resultSet.getString(2);
             row[2] = resultSet.getString(3);
+            row[3] = resultSet.getString(4);
+            row[4] = resultSet.getString(5);
            
             
             model.addRow(row);
@@ -91,23 +97,19 @@ public class PCStockk extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         lblDonor_id = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStock = new javax.swing.JTable();
-        comboDonor_ID = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        txtStock = new javax.swing.JTextField();
+        comboDonor = new javax.swing.JComboBox<>();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         valQty = new javax.swing.JLabel();
         valBlood = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtQty1 = new javax.swing.JTextField();
         lblDonor_id1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        ComboBlood1 = new javax.swing.JComboBox<>();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
+        comboxqty = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -133,7 +135,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(190, 230, 100, 31);
+        btnUpdate.setBounds(190, 240, 100, 31);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -144,13 +146,9 @@ public class PCStockk extends javax.swing.JFrame {
         getContentPane().add(btnDelete);
         btnDelete.setBounds(370, 240, 100, 31);
 
-        jLabel1.setText("Blood Group");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 350, 110, 25);
-
         lblDonor_id.setText("Date of Donation");
         getContentPane().add(lblDonor_id);
-        lblDonor_id.setBounds(160, 500, 160, 40);
+        lblDonor_id.setBounds(140, 460, 160, 40);
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -163,20 +161,20 @@ public class PCStockk extends javax.swing.JFrame {
 
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Stock ID", "Blood Group", "Quantity Available "
+                "Stock ID", "Donor ID", "Blood Group", "Quantity Available ", "Date of Donation"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -195,21 +193,15 @@ public class PCStockk extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblStock);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 120, 660, 92);
+        jScrollPane1.setBounds(40, 120, 810, 92);
 
-        comboDonor_ID.addActionListener(new java.awt.event.ActionListener() {
+        comboDonor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboDonor_IDActionPerformed(evt);
+                comboDonorActionPerformed(evt);
             }
         });
-        getContentPane().add(comboDonor_ID);
-        comboDonor_ID.setBounds(390, 450, 77, 31);
-
-        jLabel6.setText("Stock ID");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(200, 300, 90, 40);
-        getContentPane().add(txtStock);
-        txtStock.setBounds(380, 300, 74, 31);
+        getContentPane().add(comboDonor);
+        comboDonor.setBounds(390, 400, 77, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -237,32 +229,19 @@ public class PCStockk extends javax.swing.JFrame {
         getContentPane().add(valBlood);
         valBlood.setBounds(460, 420, 160, 20);
 
-        jLabel7.setText("Quantity Available");
+        jLabel7.setText("Quantity Donated");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(160, 400, 160, 40);
-
-        txtQty1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtQty1KeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtQty1);
-        txtQty1.setBounds(380, 400, 120, 31);
+        jLabel7.setBounds(160, 330, 160, 40);
 
         lblDonor_id1.setText("Donor ID");
         getContentPane().add(lblDonor_id1);
-        lblDonor_id1.setBounds(170, 450, 160, 40);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(380, 490, 126, 31);
+        lblDonor_id1.setBounds(160, 400, 160, 40);
+        getContentPane().add(jDateChooser);
+        jDateChooser.setBounds(390, 460, 126, 31);
 
-        ComboBlood1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AB+", "AB-", "O+", "O-", "A+", "A-", "B+", "B-" }));
-        ComboBlood1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBlood1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ComboBlood1);
-        ComboBlood1.setBounds(380, 350, 77, 31);
+        comboxqty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        getContentPane().add(comboxqty);
+        comboxqty.setBounds(390, 340, 72, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -274,65 +253,50 @@ public class PCStockk extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-        // take from text boxes
-       var valid = true;
-        
-         if (comboDonor_ID.getSelectedItem() == null || comboDonor_ID.getSelectedItem().toString().isEmpty()) {
-            valBlood.setText("Please Select Blood Group");
-            valid = false;
-        }
-        
-        if (!this.validations.ValidateName(txtQty.getText()) ) {
-            valQty.setText("Quantity is Invalid");
-            valid = false;
-        }
-        
-        int stock_id = Integer.valueOf(txtStock.getText());
-       String blood_group = (String) comboDonor_ID.getSelectedItem();
-       Integer qty = Integer.valueOf(txtQty.getText());
        
-       //DBUTIL dbconn= new DBUTIL();
+        
+       DefaultTableModel tblModel = (DefaultTableModel) tblStock.getModel();
+
+        // set data to textfield when raw is selected
+
+        String id = tblModel.getValueAt(tblStock.getSelectedRow(),0).toString();
+        int stock_id = Integer.valueOf(id); 
+        
+        String strdonor_id = (String) comboDonor.getSelectedItem();
+       int vdonor_id = Integer.valueOf(strdonor_id);
+       
+       String strqty = (String) comboxqty.getSelectedItem();
+       int qty = Integer.valueOf(strqty);
+       
+       SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
+       String don_date = dateFormat.format(jDateChooser.getDate()); 
+       
         Connection conn = dbconn.getConnection();
-        //do validation here.
-        //check if the id already exists
-                String addStock = "update stock set blood_group=? ,qty=? where stock_id=? ";
+        
+       String updateStock = "update all_stock set vdonor_id =?, quantity=?, date_donation=? where stock_id=?";
 
         PreparedStatement stmt; 
         try
         {
-            stmt = conn.prepareStatement(addStock);
+            stmt = conn.prepareStatement(updateStock);
        
              
-            stmt.setInt(1,stock_id); 
-            stmt.setString(2,blood_group);
-            stmt.setInt(3,qty);
+            stmt.setInt(1,vdonor_id); 
+            stmt.setInt(2,qty);
+            stmt.setString(3,don_date);
+            stmt.setInt(4,stock_id);
            
             
             stmt.executeUpdate();
         }
         catch (SQLException ex)
         {
-            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PCStockk.class.getName()).log(Level.SEVERE, null, ex);
         }
 
           
            
-             DefaultTableModel tblModel = (DefaultTableModel) tblStock.getModel();
-              
-       tblModel.setValueAt(stock_id,tblStock.getSelectedRow(), 0);
-       tblModel.setValueAt(blood_group,tblStock.getSelectedRow(), 1);
-       tblModel.setValueAt(qty,tblStock.getSelectedRow(), 2);
- JOptionPane.showMessageDialog(this,"Stock Details Updated");
-        
-   
-  //stop
-  txtStock.setText("");
-  comboDonor_ID.setSelectedItem("");
-  txtQty.setText("");
-  
-   setTextNull();
-            setValidationNull();
+       
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -372,27 +336,24 @@ public class PCStockk extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       var valid = true;
         
-         if (comboDonor_ID.getSelectedItem() == null || comboDonor_ID.getSelectedItem().toString().isEmpty()) {
-            valBlood.setText("Please Select Blood Group");
-            valid = false;
-        }
-        
-        if (!this.validations.ValidateName(txtQty.getText()) ) {
-            valQty.setText("Quantity is Invalid");
-            valid = false;
-        }
-        
-        int stock_id = Integer.valueOf(txtStock.getText());
-       String blood_group = (String) comboDonor_ID.getSelectedItem();
-       Integer qty = Integer.valueOf(txtQty.getText());
+        int stock_id = rand.nextInt(1,10000); 
        
-       //DBUTIL dbconn= new DBUTIL();
+       String strdonor_id = (String) comboDonor.getSelectedItem();
+       int vdonor_id = Integer.valueOf(strdonor_id);
+       
+       String strqty = (String) comboxqty.getSelectedItem();
+       int qty = Integer.valueOf(strqty);
+       
+       SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+       String don_date = dateFormat.format(jDateChooser.getDate()); 
+       
+       System.out.println(don_date); 
+       
         Connection conn = dbconn.getConnection();
-        //do validation here.
-        //check if the id already exists
-                String addStock = "insert into stock(stock_id,blood_group,qty) values (?,?,?) ";
+        
+        
+        String addStock = "insert into all_stock(stock_id,pc_id, vdonor_id, quantity, date_donation) values (?,?,?,?,?) ";
 
         PreparedStatement stmt; 
         try
@@ -401,8 +362,10 @@ public class PCStockk extends javax.swing.JFrame {
        
              
             stmt.setInt(1,stock_id); 
-            stmt.setString(2,blood_group);
-            stmt.setInt(3,qty);
+            stmt.setInt(2,thispc_id); 
+            stmt.setInt(3,vdonor_id);
+            stmt.setInt(4,qty);
+            stmt.setString(5,don_date); 
            
             
             stmt.executeUpdate();
@@ -426,18 +389,20 @@ public class PCStockk extends javax.swing.JFrame {
 
     private void tblStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStockMouseClicked
         // TODO add your handling code here:
-        String stock_id = tblStock.getValueAt(tblStock.getSelectedRow(),0).toString();
+        //String stock_id = tblStock.getValueAt(tblStock.getSelectedRow(),0).toString();
         String blood_group = tblStock.getValueAt(tblStock.getSelectedRow(),1).toString();
         String qty = tblStock.getValueAt(tblStock.getSelectedRow(),2).toString();
         
+        int stock_id = Integer.valueOf(tblStock.getValueAt(tblStock.getSelectedRow(),0).toString());
+        comboxqty.setSelectedItem(stock_id);
         
-      
+        //(stock_id);
         
 
-        txtStock.setText(String.valueOf(stock_id));
-        comboDonor_ID.setSelectedItem(blood_group);
-        txtQty.setText(qty);
-        
+//        txtStock.setText(String.valueOf(stock_id));
+//        comboDonor.setSelectedItem(blood_group);
+//        txtQty1.setText(qty);
+//        
         
             setValidationNull();
         
@@ -466,27 +431,19 @@ public class PCStockk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void comboDonor_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDonor_IDActionPerformed
+    private void comboDonorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDonorActionPerformed
         // TODO add your handling code here:
-         Object blood_group = comboDonor_ID.getSelectedItem();
+         Object blood_group = comboDonor.getSelectedItem();
         
 
         if (blood_group == null || blood_group.toString().equals("")) {
             valQty.setText("Please Select Blood Group");
-            comboDonor_ID.removeAllItems();
+            comboDonor.removeAllItems();
             valQty.setText(null);
         } else {
-            comboDonor_ID.setSelectedItem("");
+            comboDonor.setSelectedItem("");
         }
-    }//GEN-LAST:event_comboDonor_IDActionPerformed
-
-    private void txtQty1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQty1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQty1KeyReleased
-
-    private void ComboBlood1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBlood1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBlood1ActionPerformed
+    }//GEN-LAST:event_comboDonorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -527,8 +484,11 @@ public class PCStockk extends javax.swing.JFrame {
      private void setTextNull() {
         
         
-        comboDonor_ID.setSelectedItem(null);
-        txtQty.setText(null);
+        comboDonor.setSelectedItem(null);
+        comboxqty.setSelectedItem(null);
+        
+        jDateChooser.setDate(null);
+        
         
         
     }
@@ -542,15 +502,13 @@ public class PCStockk extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBlood1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> comboDonor_ID;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JComboBox<String> comboDonor;
+    private javax.swing.JComboBox<String> comboxqty;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
@@ -558,9 +516,7 @@ public class PCStockk extends javax.swing.JFrame {
     private javax.swing.JLabel lblDonor_id1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblStock;
-    private javax.swing.JTextField txtQty1;
     private javax.swing.JTextField txtSearch;
-    private javax.swing.JTextField txtStock;
     private javax.swing.JLabel valBlood;
     private javax.swing.JLabel valQty;
     // End of variables declaration//GEN-END:variables
@@ -582,7 +538,7 @@ public class PCStockk extends javax.swing.JFrame {
             
             while(resultSetx.next())
             {
-                ComboPlasmaCenter.addItem(resultSet2.getString(1));
+                comboDonor.addItem(resultSetx.getString(1));
             }
        
              

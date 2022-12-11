@@ -313,17 +313,20 @@ public class VDonorRegForm extends javax.swing.JFrame {
          if (comboxNGO.getSelectedItem() == null || comboxNGO.getSelectedItem().toString().isEmpty()) {
             valBlood.setText("Please Select Blood Group");
             valid = false;
+            return ;
         }
         
         if (!this.validations.ValidateName(txtName.getText()) ) {
             valName.setText("Name is Invalid");
             valid = false;
+            return ;
         }
 
 
         if (btnGender.getSelection() == null) {
             valGender.setText("Gender is required");
             valid = false;
+            return ;
         }
 
        
@@ -331,26 +334,31 @@ public class VDonorRegForm extends javax.swing.JFrame {
         if (!this.validations.ValidatePhoneNumber(txtContact.getText()) ) {
             valPhone.setText("Phone Number is Invalid");
             valid = false;
+            return ;
         }
         if (!this.validations.ValidateAddress(txtAddress.getText()) ) {
             valAddress.setText("Address is Invalid");
             valid = false;
+            return ;
         }
 
         if (!this.validations.ValidateAge(txtAge.getText()) ) {
             valAge.setText("Age is Invalid");
             valid = false;
+            return ;
         }
 
         if (!this.validations.ValidateUsername(txtUser_ID.getText()) ) {
             valUsername.setText("Username is Invalid");
             valid = false;
+            return ;
         } 
 
         String pass_word = String.valueOf(txtPassword.getPassword());
         if (!this.validations.ValidatePassword(pass_word) ) {
             valPassword.setText("Should be 4-12 character long");
             valid = false;
+            return ;
         }
 
         //
@@ -369,8 +377,8 @@ public class VDonorRegForm extends javax.swing.JFrame {
         int age = Integer.valueOf(txtAge.getText()); 
         //String gender = btnGender.getSelection();
         
-        String bloodgroup = (String) comboxNGO.getSelectedItem(); 
-        System.out.println(bloodgroup);
+        String bloodgroup = (String) ComboBlood1.getSelectedItem(); 
+        
         
         
         String contact = txtContact.getText();
@@ -381,21 +389,23 @@ public class VDonorRegForm extends javax.swing.JFrame {
         
         
         String addDonor = "insert into vdonor(vdonor_id, user_id, vname, age, gender, "
-                + "contact, address, blood_group) values (?,?,?,?,?,?,?,?)";
+                + "contact, address, blood_group, ngo_id) values (?,?,?,?,?,?,?,?,?)";
         
         String adduser = "insert into logins(user_id, pass_word, role_id) values(?,?,?)";
         
         String ngo_name = (String) comboxNGO.getSelectedItem();
         
-        String getngo_name = "select ngo_id from ngo where ngo_name="+ngo_name ; 
+        
         
         Connection conn = dbconn.getConnection();
-        PreparedStatement stmt1 = null, stmt2, stmt3; 
+        PreparedStatement stmt2, stmt3; 
         try
         {
-            resultSet1 = stmt1.executeQuery(); 
-            int ngo_id = resultSet1.getInt(0); 
-            int vdonor_id = rand.nextInt(0);
+            
+           String strngo_id =(String) comboxNGO.getSelectedItem(); 
+           int ngo_id = Integer.valueOf(strngo_id); 
+            
+            int vdonor_id = rand.nextInt(1,1000);
             
             
             
@@ -418,6 +428,8 @@ public class VDonorRegForm extends javax.swing.JFrame {
             stmt2.setString(6,contact);
             stmt2.setString(7,Address);
             stmt2.setString(8,bloodgroup);
+            stmt2.setInt(9,ngo_id);
+            
             
             stmt2.executeUpdate();
             
@@ -636,7 +648,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
 
     private void updatecombox() {
         Connection conn = dbconn.getConnection();
-        String SELECTSQL1 = "select NGO_NAME from ngo";
+        String SELECTSQL1 = "select NGO_id from ngo";
        
         PreparedStatement stmt1; 
         try

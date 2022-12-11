@@ -34,7 +34,7 @@ public class PCDonorr extends javax.swing.JFrame {
     DBUTIL dbconn= new DBUTIL();
     public PCDonorr() {
         initComponents();
-        populateTable();
+       // populateTable();
     originalTableModel = (Vector) ((DefaultTableModel) tblDonor.getModel()).getDataVector().clone();
     }
     private void populateTable(){
@@ -43,7 +43,7 @@ public class PCDonorr extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-                  String selectSql = "SELECT don_id,d_name,blood_group,don_date, quantity where d_id=? from donations";
+                  String selectSql = "";
 
       Statement stmt;
        try {
