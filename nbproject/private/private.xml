@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< Updated upstream
         <group/>
+=======
+        <group>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Admin/AdminPC.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Admin/AdminHosEmployee.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Admin/DelHosEmployee.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Admin/AdminEmployee.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/LoginScreen.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Email.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Admin/DelPlasmaEmp.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/DBUTIL/DBUTIL.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/UI/Admin/AdminWorkArea.java</file>
+            <file>file:/Users/rishikagurram/Documents/AEDTen2/FinalProject/src/MODEL/Login.java</file>
+        </group>
+>>>>>>> Stashed changes
     </open-files>
 </project-private>

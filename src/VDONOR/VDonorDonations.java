@@ -30,23 +30,14 @@ public class VDonorDonations extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDonations = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(null);
-
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack);
-        btnBack.setBounds(510, 60, 100, 23);
 
         tblDonations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,9 +68,9 @@ public class VDonorDonations extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblDonations);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(80, 240, 470, 200);
+        jScrollPane1.setBounds(50, 230, 470, 200);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel4.setText("YOUR DONATIONS");
         add(jLabel4);
         jLabel4.setBounds(150, 30, 260, 39);
@@ -87,7 +78,7 @@ public class VDonorDonations extends javax.swing.JPanel {
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         add(lbSearch);
-        lbSearch.setBounds(70, 140, 90, 30);
+        lbSearch.setBounds(60, 130, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,14 +91,12 @@ public class VDonorDonations extends javax.swing.JPanel {
             }
         });
         add(txtSearch);
-        txtSearch.setBounds(150, 140, 430, 30);
-    }// </editor-fold>//GEN-END:initComponents
+        txtSearch.setBounds(140, 130, 380, 30);
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.hide();
-        VDonorWA frame = new  VDonorWA();
-        frame.setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VDONOR/VDONOR.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 600, 600);
+    }// </editor-fold>//GEN-END:initComponents
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -133,7 +122,7 @@ public class VDonorDonations extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;

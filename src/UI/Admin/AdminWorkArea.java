@@ -37,21 +37,24 @@ public class AdminWorkArea extends javax.swing.JFrame {
         btnHosEmployee = new javax.swing.JButton();
         btnDelPCEmp = new javax.swing.JButton();
         btnDelHosEmp = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        btnBack.setText("BACK");
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnBack.setText("LOGOUT");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(580, 30, 100, 23);
+        btnBack.setBounds(660, 60, 120, 23);
 
+        btnHospital.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnHospital.setText("MANAGE HOSPITALS");
         btnHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,8 +62,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHospital);
-        btnHospital.setBounds(500, 130, 180, 40);
+        btnHospital.setBounds(90, 250, 200, 40);
 
+        btnPlasmaCenter.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnPlasmaCenter.setText("MANAGE PLASMA CENTERS");
         btnPlasmaCenter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,13 +72,14 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPlasmaCenter);
-        btnPlasmaCenter.setBounds(100, 140, 190, 40);
+        btnPlasmaCenter.setBounds(490, 240, 250, 40);
 
         lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 36)); // NOI18N
-        lblTitle.setText("ADMIN PORTAL");
+        lblTitle.setText("HEALTH CARE ADMIN PORTAL");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(20, 10, 350, 50);
+        lblTitle.setBounds(30, 0, 630, 50);
 
+        btnPCEmployee.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnPCEmployee.setText("CREATE PLASMA CENTER EMPLOYEES");
         btnPCEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,8 +87,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPCEmployee);
-        btnPCEmployee.setBounds(60, 270, 290, 40);
+        btnPCEmployee.setBounds(480, 440, 310, 40);
 
+        btnHosEmployee.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnHosEmployee.setText(" CREATE HOSPITAL EMPLOYEES");
         btnHosEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,8 +97,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnHosEmployee);
-        btnHosEmployee.setBounds(470, 270, 270, 40);
+        btnHosEmployee.setBounds(30, 450, 290, 40);
 
+        btnDelPCEmp.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDelPCEmp.setText("DELETE PLASMA CENTER EMPLOYEES");
         btnDelPCEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,8 +107,9 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelPCEmp);
-        btnDelPCEmp.setBounds(60, 360, 290, 60);
+        btnDelPCEmp.setBounds(480, 530, 310, 50);
 
+        btnDelHosEmp.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDelHosEmp.setText("DELETE HOSPITAL EMPLOYEES");
         btnDelHosEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +117,11 @@ public class AdminWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelHosEmp);
-        btnDelHosEmp.setBounds(530, 353, 200, 50);
+        btnDelHosEmp.setBounds(30, 540, 290, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal page.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(2, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +217,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnPCEmployee;
     private javax.swing.JButton btnPlasmaCenter;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

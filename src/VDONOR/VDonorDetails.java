@@ -69,11 +69,12 @@ public class VDonorDetails extends javax.swing.JPanel {
         valBlood = new javax.swing.JLabel();
         valPhone = new javax.swing.JLabel();
         valAddress = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setLayout(null);
 
+        btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,31 +82,37 @@ public class VDonorDetails extends javax.swing.JPanel {
             }
         });
         add(btnUpdate);
-        btnUpdate.setBounds(220, 420, 200, 23);
+        btnUpdate.setBounds(200, 430, 200, 23);
 
-        jLabel1.setText("Name");
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel1.setText("NAME");
         add(jLabel1);
-        jLabel1.setBounds(110, 120, 80, 17);
+        jLabel1.setBounds(150, 120, 80, 17);
 
-        jLabel6.setText("Age");
+        jLabel6.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel6.setText("AGE");
         add(jLabel6);
-        jLabel6.setBounds(110, 170, 90, 17);
+        jLabel6.setBounds(150, 170, 90, 17);
 
-        jLabel5.setText("Gender");
+        jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel5.setText("GENDER");
         add(jLabel5);
-        jLabel5.setBounds(110, 210, 90, 17);
+        jLabel5.setBounds(150, 210, 90, 17);
 
-        jLabel2.setText("Blood Group");
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel2.setText("BLOOD GROUP");
         add(jLabel2);
-        jLabel2.setBounds(110, 270, 120, 17);
+        jLabel2.setBounds(150, 270, 120, 17);
 
-        jLabel3.setText("Address");
+        jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel3.setText("ADDRESS");
         add(jLabel3);
-        jLabel3.setBounds(140, 360, 100, 17);
+        jLabel3.setBounds(150, 360, 100, 17);
 
-        jLabel7.setText("Contact");
+        jLabel7.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel7.setText("CONTACT");
         add(jLabel7);
-        jLabel7.setBounds(140, 330, 130, 17);
+        jLabel7.setBounds(150, 320, 130, 17);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,19 +219,14 @@ public class VDonorDetails extends javax.swing.JPanel {
         add(valAddress);
         valAddress.setBounds(410, 360, 190, 20);
 
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack);
-        btnBack.setBounds(490, 20, 100, 23);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel4.setText("YOUR DETAILS");
         add(jLabel4);
-        jLabel4.setBounds(190, 10, 220, 39);
+        jLabel4.setBounds(180, 10, 260, 39);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VDONOR/VDONOR.png"))); // NOI18N
+        add(jLabel8);
+        jLabel8.setBounds(0, 0, 600, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -402,12 +404,6 @@ public class VDonorDetails extends javax.swing.JPanel {
             valPhone.setText(null);
         }
     }//GEN-LAST:event_txtContactKeyReleased
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.hide();
-        VDonorWA frame = new  VDonorWA();
-        frame.setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
    private void setPersonalDetails() {
        System.out.println("test and try");
         String getdonor_details = "select vname,age, gender,contact, address, blood_group,email from vdonor where vdonor_id =? ";
@@ -472,7 +468,6 @@ public class VDonorDetails extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBlood;
-    private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.ButtonGroup btnGender;
     private javax.swing.JRadioButton btnMale;
@@ -484,6 +479,7 @@ public class VDonorDetails extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;

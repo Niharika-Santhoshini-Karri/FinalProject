@@ -49,73 +49,51 @@ public class VDonorWA extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        controlPanel.setBackground(new java.awt.Color(255, 255, 255));
+        controlPanel.setBackground(new java.awt.Color(255, 204, 0));
+        controlPanel.setLayout(null);
 
         btn_back_admin1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btn_back_admin1.setForeground(new java.awt.Color(255, 102, 51));
+        btn_back_admin1.setForeground(new java.awt.Color(255, 0, 0));
         btn_back_admin1.setText(" LOGOUT");
         btn_back_admin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_back_admin1ActionPerformed(evt);
             }
         });
+        controlPanel.add(btn_back_admin1);
+        btn_back_admin1.setBounds(33, 28, 89, 42);
 
         btnDetails1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btnDetails1.setForeground(new java.awt.Color(255, 102, 51));
+        btnDetails1.setForeground(new java.awt.Color(255, 0, 0));
         btnDetails1.setText("DETAILS");
         btnDetails1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetails1ActionPerformed(evt);
             }
         });
+        controlPanel.add(btnDetails1);
+        btnDetails1.setBounds(6, 180, 179, 39);
 
         btnAppointment1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btnAppointment1.setForeground(new java.awt.Color(255, 102, 51));
+        btnAppointment1.setForeground(new java.awt.Color(255, 0, 0));
         btnAppointment1.setText("BOOK APPOINTMENT");
         btnAppointment1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAppointment1ActionPerformed(evt);
             }
         });
+        controlPanel.add(btnAppointment1);
+        btnAppointment1.setBounds(6, 251, 179, 51);
 
         txtdonor_id.setEditable(false);
-
-        javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
-        controlPanel.setLayout(controlPanelLayout);
-        controlPanelLayout.setHorizontalGroup(
-            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAppointment1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(btn_back_admin1))
-                            .addComponent(btnDetails1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(txtdonor_id, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        controlPanelLayout.setVerticalGroup(
-            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btn_back_admin1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
-                .addComponent(btnDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnAppointment1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(txtdonor_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
-        );
+        controlPanel.add(txtdonor_id);
+        txtdonor_id.setBounds(33, 370, 121, 23);
 
         splitPane.setLeftComponent(controlPanel);
 
         workArea.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VDONOR/VDONOR.png"))); // NOI18N
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
@@ -123,21 +101,20 @@ public class VDonorWA extends javax.swing.JFrame {
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(workAreaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(workAreaLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 5, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(workArea);
 
         getContentPane().add(splitPane);
-        splitPane.setBounds(0, 0, 740, 612);
+        splitPane.setBounds(0, 0, 740, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

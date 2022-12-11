@@ -26,6 +26,7 @@ public class Donor {
     String bloodgroup;
     String contact;
     String address;
+    String email;
 
     public String getName() {
         return name;
@@ -73,6 +74,13 @@ public class Donor {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     

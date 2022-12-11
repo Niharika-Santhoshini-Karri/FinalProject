@@ -66,83 +66,93 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
         txtZipCode = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         txtUser_ID = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
         getContentPane().setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(51, 102, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("NGO REGISTRATION");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(195, 61, 226, 25);
+        jLabel1.setBounds(150, 20, 290, 30);
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 255));
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel2.setText("NGO Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(161, 135, 94, 25);
+        jLabel2.setBounds(90, 100, 80, 17);
 
+        jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel3.setText("ADDRESS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(161, 176, 78, 25);
+        jLabel3.setBounds(90, 140, 70, 17);
 
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel4.setText("CONTACT");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(161, 263, 81, 25);
+        jLabel4.setBounds(90, 230, 70, 17);
 
+        jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel5.setText("USER ID");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(161, 304, 66, 25);
+        jLabel5.setBounds(90, 360, 60, 17);
 
+        jLabel6.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel6.setText("PASSWORD");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(150, 340, 96, 25);
+        jLabel6.setBounds(70, 400, 90, 17);
 
-        btnRegister.setText("Register");
+        btnRegister.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnRegister.setText("REGISTER");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegister);
-        btnRegister.setBounds(200, 420, 94, 31);
+        btnRegister.setBounds(180, 480, 190, 50);
 
-        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(56, 32, 72, 31);
+        btnBack.setBounds(450, 60, 90, 23);
 
+        jLabel7.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel7.setText("ZIPCODE");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(165, 222, 73, 25);
+        jLabel7.setBounds(80, 190, 70, 17);
 
         valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPhone);
-        valPhone.setBounds(380, 260, 160, 20);
+        valPhone.setBounds(330, 230, 230, 20);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(370, 340, 200, 20);
+        valPassword.setBounds(320, 400, 250, 20);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(390, 130, 180, 20);
+        valName.setBounds(310, 100, 250, 20);
 
         valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valUsername);
-        valUsername.setBounds(400, 300, 180, 20);
+        valUsername.setBounds(320, 360, 240, 20);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAddress);
-        valAddress.setBounds(380, 170, 190, 20);
+        valAddress.setBounds(310, 140, 250, 20);
 
         valZipcode.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valZipcode);
-        valZipcode.setBounds(380, 220, 180, 20);
+        valZipcode.setBounds(320, 190, 260, 20);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +165,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(350, 130, 120, 31);
+        txtName.setBounds(190, 100, 110, 23);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +178,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
-        txtContact.setBounds(240, 260, 110, 20);
+        txtContact.setBounds(190, 230, 110, 20);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,7 +191,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(350, 170, 120, 31);
+        txtAddress.setBounds(190, 140, 110, 23);
 
         txtZipCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +204,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipCode);
-        txtZipCode.setBounds(240, 220, 110, 31);
+        txtZipCode.setBounds(190, 190, 110, 23);
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -202,7 +212,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(290, 340, 90, 31);
+        txtPassword.setBounds(190, 400, 110, 23);
 
         txtUser_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +225,16 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUser_ID);
-        txtUser_ID.setBounds(290, 300, 110, 31);
+        txtUser_ID.setBounds(190, 360, 110, 23);
+
+        jLabel11.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
+        jLabel11.setText("SET UP ACCOUNT  ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(10, 300, 270, 40);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/DONATE NGO.png"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(2, 0, 580, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -464,12 +483,14 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtName;

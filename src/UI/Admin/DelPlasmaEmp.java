@@ -40,53 +40,36 @@ public class DelPlasmaEmp extends javax.swing.JFrame {
         txtEmp_id = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        lblEmpId.setText("EMP_ID");
+        lblEmpId.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmpId.setText("EMPLOYEE ID");
+        getContentPane().add(lblEmpId);
+        lblEmpId.setBounds(155, 134, 110, 17);
+        getContentPane().add(txtEmp_id);
+        txtEmp_id.setBounds(331, 131, 64, 23);
 
-        btnDelete.setText("DELETE");
+        btnDelete.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnDelete.setText("DELETE EMPLOYEE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDelete);
+        btnDelete.setBounds(262, 208, 190, 23);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel2.setText("      DELETE PLASMA EMPLOYEES");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(140, 30, 460, 32);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(lblEmpId)
-                        .addGap(66, 66, 66)
-                        .addComponent(txtEmp_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(btnDelete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(201, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmpId)
-                    .addComponent(txtEmp_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(btnDelete)
-                .addContainerGap(289, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(2, 0, 690, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,6 +134,7 @@ public class DelPlasmaEmp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblEmpId;
     private javax.swing.JTextField txtEmp_id;

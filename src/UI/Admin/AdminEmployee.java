@@ -58,7 +58,6 @@ public class AdminEmployee extends javax.swing.JFrame {
         lblbank = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-        btndel = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         lblEmployeeName1 = new javax.swing.JLabel();
@@ -71,6 +70,8 @@ public class AdminEmployee extends javax.swing.JFrame {
         valUsername = new javax.swing.JLabel();
         valPassword = new javax.swing.JLabel();
         valPC = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -81,15 +82,29 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboPlasmaCenter);
+<<<<<<< Updated upstream
         ComboPlasmaCenter.setBounds(300, 230, 140, 22);
+=======
+        ComboPlasmaCenter.setBounds(200, 220, 160, 23);
+>>>>>>> Stashed changes
 
-        lblEmployeeName.setText("Username :");
+        lblEmployeeName.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName.setText("USERNAME");
         getContentPane().add(lblEmployeeName);
+<<<<<<< Updated upstream
         lblEmployeeName.setBounds(120, 330, 110, 16);
+=======
+        lblEmployeeName.setBounds(80, 390, 100, 17);
+>>>>>>> Stashed changes
 
-        lblbank.setText("Plasma Center");
+        lblbank.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblbank.setText("PLASMA CENTER");
         getContentPane().add(lblbank);
+<<<<<<< Updated upstream
         lblbank.setBounds(70, 220, 150, 16);
+=======
+        lblbank.setBounds(40, 220, 130, 17);
+>>>>>>> Stashed changes
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +112,13 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUsername);
+<<<<<<< Updated upstream
         txtUsername.setBounds(290, 320, 140, 22);
+=======
+        txtUsername.setBounds(210, 390, 150, 23);
+>>>>>>> Stashed changes
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +126,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
+<<<<<<< Updated upstream
         btnBack.setBounds(490, 20, 100, 23);
 
         btndel.setText("DELETE");
@@ -116,7 +137,11 @@ public class AdminEmployee extends javax.swing.JFrame {
         });
         getContentPane().add(btndel);
         btndel.setBounds(380, 440, 170, 23);
+=======
+        btnBack.setBounds(470, 20, 120, 23);
+>>>>>>> Stashed changes
 
+        btnAdd.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,48 +149,82 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
+<<<<<<< Updated upstream
         btnAdd.setBounds(90, 440, 210, 23);
+=======
+        btnAdd.setBounds(190, 550, 230, 30);
+>>>>>>> Stashed changes
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER EMPLOYEES ");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(50, 20, 410, 29);
 
-        lblEmployeeName1.setText("Password :");
+        lblEmployeeName1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName1.setText("PASSWORD");
         getContentPane().add(lblEmployeeName1);
+<<<<<<< Updated upstream
         lblEmployeeName1.setBounds(120, 380, 100, 16);
 
         txtEmpID.setEditable(false);
         getContentPane().add(txtEmpID);
         txtEmpID.setBounds(290, 130, 160, 22);
+=======
+        lblEmployeeName1.setBounds(80, 450, 110, 17);
+        getContentPane().add(txtEmpID);
+        txtEmpID.setBounds(200, 130, 160, 23);
+>>>>>>> Stashed changes
 
-        lblEmployeeName2.setText("Employee ID: ");
+        lblEmployeeName2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName2.setText("EMPLOYEE ID ");
         getContentPane().add(lblEmployeeName2);
+<<<<<<< Updated upstream
         lblEmployeeName2.setBounds(70, 140, 150, 16);
+=======
+        lblEmployeeName2.setBounds(60, 130, 120, 17);
+>>>>>>> Stashed changes
 
-        lblEmployeeName3.setText("Name:");
+        lblEmployeeName3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName3.setText("NAME");
         getContentPane().add(lblEmployeeName3);
+<<<<<<< Updated upstream
         lblEmployeeName3.setBounds(70, 180, 110, 16);
         getContentPane().add(txtEmpName);
         txtEmpName.setBounds(290, 180, 160, 22);
         getContentPane().add(txtPassword);
         txtPassword.setBounds(290, 380, 140, 22);
+=======
+        lblEmployeeName3.setBounds(100, 170, 60, 17);
+        getContentPane().add(txtEmpName);
+        txtEmpName.setBounds(200, 170, 160, 23);
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(210, 450, 150, 23);
+>>>>>>> Stashed changes
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(370, 230, 180, 20);
+        valName.setBounds(370, 170, 290, 20);
 
         valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valUsername);
-        valUsername.setBounds(450, 340, 180, 20);
+        valUsername.setBounds(400, 390, 210, 20);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(460, 380, 170, 20);
+        valPassword.setBounds(410, 450, 210, 20);
 
         valPC.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPC);
-        valPC.setBounds(390, 280, 180, 20);
+        valPC.setBounds(380, 220, 270, 20);
+
+        jLabel11.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
+        jLabel11.setText("SET UP ACCOUNT  ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(50, 320, 270, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +235,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
+<<<<<<< Updated upstream
     private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
         // TODO add your handling code here:
         
@@ -202,6 +262,8 @@ public class AdminEmployee extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btndelActionPerformed
 
+=======
+>>>>>>> Stashed changes
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         var valid = true;
         
@@ -382,7 +444,8 @@ public class AdminEmployee extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboPlasmaCenter;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btndel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JLabel lblEmployeeName2;

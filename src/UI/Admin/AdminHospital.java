@@ -113,32 +113,49 @@ public class AdminHospital extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txthos_id = new javax.swing.JTextField();
         valContact = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         txtid.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Name");
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel1.setText("NAME");
         getContentPane().add(jLabel1);
+<<<<<<< Updated upstream
         jLabel1.setBounds(230, 370, 70, 25);
+=======
+        jLabel1.setBounds(210, 370, 90, 17);
+>>>>>>> Stashed changes
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 30)); // NOI18N
         lblTitle.setText("HOSPITALS ");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(40, 20, 150, 50);
+        lblTitle.setBounds(190, 0, 240, 50);
 
-        jLabel2.setText("Address");
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel2.setText("ADDRESS");
         getContentPane().add(jLabel2);
+<<<<<<< Updated upstream
         jLabel2.setBounds(220, 410, 80, 25);
+=======
+        jLabel2.setBounds(200, 410, 100, 17);
+>>>>>>> Stashed changes
 
+        lblSelectOrgType.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
+<<<<<<< Updated upstream
         lblSelectOrgType.setBounds(250, 320, 18, 25);
+=======
+        lblSelectOrgType.setBounds(232, 320, 30, 17);
+>>>>>>> Stashed changes
 
-        jLabel5.setText("Zip Code");
+        jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel5.setText("ZIP CODE");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(220, 440, 100, 40);
+        jLabel5.setBounds(200, 440, 120, 40);
 
         tblHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,6 +193,7 @@ public class AdminHospital extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 120, 650, 92);
 
+        btnAdd.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,8 +201,13 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
+<<<<<<< Updated upstream
         btnAdd.setBounds(270, 530, 87, 31);
+=======
+        btnAdd.setBounds(310, 550, 87, 23);
+>>>>>>> Stashed changes
 
+        btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,8 +215,13 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
+<<<<<<< Updated upstream
         btnUpdate.setBounds(250, 240, 100, 31);
+=======
+        btnUpdate.setBounds(230, 240, 120, 23);
+>>>>>>> Stashed changes
 
+        btnDelete.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,8 +229,13 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
+<<<<<<< Updated upstream
         btnDelete.setBounds(370, 240, 100, 31);
+=======
+        btnDelete.setBounds(400, 240, 120, 23);
+>>>>>>> Stashed changes
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,16 +243,21 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
+<<<<<<< Updated upstream
         btnBack.setBounds(550, 10, 100, 31);
+=======
+        btnBack.setBounds(640, 60, 120, 23);
+>>>>>>> Stashed changes
 
-        jLabel6.setText("Mobile");
+        jLabel6.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel6.setText("CONTACT");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(230, 480, 100, 40);
+        jLabel6.setBounds(200, 480, 120, 40);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
-        lbSearch.setBounds(90, 70, 90, 30);
+        lbSearch.setBounds(30, 70, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +270,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(170, 70, 430, 30);
+        txtSearch.setBounds(110, 70, 430, 30);
 
         txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -240,11 +278,15 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
+<<<<<<< Updated upstream
         txtContact.setBounds(340, 490, 140, 31);
+=======
+        txtContact.setBounds(340, 490, 140, 23);
+>>>>>>> Stashed changes
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(500, 360, 150, 20);
+        valName.setBounds(500, 360, 230, 20);
 
         txtaddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -264,11 +306,11 @@ public class AdminHospital extends javax.swing.JFrame {
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAddress);
-        valAddress.setBounds(510, 410, 150, 30);
+        valAddress.setBounds(510, 410, 240, 20);
 
         valZipCode.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valZipCode);
-        valZipCode.setBounds(510, 450, 140, 20);
+        valZipCode.setBounds(510, 450, 230, 20);
 
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -289,7 +331,11 @@ public class AdminHospital extends javax.swing.JFrame {
 
         valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valContact);
-        valContact.setBounds(510, 490, 130, 30);
+        valContact.setBounds(510, 490, 240, 20);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(2, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -630,6 +676,7 @@ public class AdminHospital extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;

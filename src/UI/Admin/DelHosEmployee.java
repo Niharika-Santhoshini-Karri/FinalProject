@@ -40,53 +40,42 @@ public class DelHosEmployee extends javax.swing.JFrame {
         txtEmpID = new javax.swing.JTextField();
         btnDel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jLabel2.setText("EMP_ID");
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel2.setText("EMPLOYEE ID ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(160, 155, 120, 17);
 
-        btnDel.setText("DELETE");
+        txtEmpID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmpIDKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtEmpID);
+        txtEmpID.setBounds(299, 152, 64, 23);
+
+        btnDel.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnDel.setText("DELETE EMPLOYEE");
         btnDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDelActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDel);
+        btnDel.setBounds(258, 292, 230, 40);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("  DELETE HOSPITAL EMPLOYEES");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(150, 20, 460, 32);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(btnDel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(224, 224, 224)
-                        .addComponent(jLabel2)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(167, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(117, 117, 117)
-                .addComponent(btnDel)
-                .addContainerGap(189, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(2, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,6 +102,10 @@ public class DelHosEmployee extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Employee Deleted");
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDelActionPerformed
+
+    private void txtEmpIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpIDKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmpIDKeyReleased
 
     /**
      * @param args the command line arguments
@@ -153,6 +146,7 @@ public class DelHosEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnDel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtEmpID;
     // End of variables declaration//GEN-END:variables
 }

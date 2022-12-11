@@ -59,20 +59,26 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         txtEmpName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
-        btndel = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
         lblEmployeeName3 = new javax.swing.JLabel();
         lblhos1 = new javax.swing.JLabel();
         ComboDepts = new javax.swing.JComboBox<>();
         valDept = new javax.swing.JLabel();
         valHosp = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        lblhos.setText("Hospital");
+        lblhos.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblhos.setText("HOSPITAL");
         getContentPane().add(lblhos);
+<<<<<<< Updated upstream
         lblhos.setBounds(60, 260, 110, 16);
+=======
+        lblhos.setBounds(60, 220, 90, 17);
+>>>>>>> Stashed changes
 
         ComboHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +86,13 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboHospital);
+<<<<<<< Updated upstream
         ComboHospital.setBounds(290, 260, 140, 22);
+=======
+        ComboHospital.setBounds(180, 220, 160, 30);
+>>>>>>> Stashed changes
 
+        btnAdd.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,27 +100,48 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
+<<<<<<< Updated upstream
         btnAdd.setBounds(70, 480, 210, 23);
+=======
+        btnAdd.setBounds(180, 550, 230, 23);
+>>>>>>> Stashed changes
 
-        lblEmployeeName1.setText("Password :");
+        lblEmployeeName1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName1.setText("PASSWORD");
         getContentPane().add(lblEmployeeName1);
+<<<<<<< Updated upstream
         lblEmployeeName1.setBounds(180, 420, 100, 16);
+=======
+        lblEmployeeName1.setBounds(40, 480, 120, 17);
+>>>>>>> Stashed changes
 
-        lblEmployeeName2.setText("Employee ID: ");
+        lblEmployeeName2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName2.setText("EMPLOYEE ID");
         getContentPane().add(lblEmployeeName2);
+<<<<<<< Updated upstream
         lblEmployeeName2.setBounds(60, 140, 150, 16);
+=======
+        lblEmployeeName2.setBounds(40, 110, 120, 17);
+>>>>>>> Stashed changes
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(440, 420, 170, 20);
+        valPassword.setBounds(350, 480, 320, 20);
 
-        lblEmployeeName.setText("Username :");
+        lblEmployeeName.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName.setText("USERNAME");
         getContentPane().add(lblEmployeeName);
+<<<<<<< Updated upstream
         lblEmployeeName.setBounds(180, 380, 110, 16);
 
         txtEmpID.setEditable(false);
         getContentPane().add(txtEmpID);
         txtEmpID.setBounds(280, 130, 160, 22);
+=======
+        lblEmployeeName.setBounds(50, 430, 130, 17);
+        getContentPane().add(txtEmpID);
+        txtEmpID.setBounds(180, 110, 160, 30);
+>>>>>>> Stashed changes
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("HOSPITAL EMPLOYEES ");
@@ -118,12 +150,13 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
         valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valUsername);
-        valUsername.setBounds(430, 380, 180, 20);
+        valUsername.setBounds(360, 430, 310, 20);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(380, 220, 180, 20);
+        valName.setBounds(370, 160, 310, 20);
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +164,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
+<<<<<<< Updated upstream
         btnBack.setBounds(480, 10, 100, 23);
         getContentPane().add(txtEmpName);
         txtEmpName.setBounds(290, 190, 160, 22);
@@ -145,6 +179,13 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         });
         getContentPane().add(btndel);
         btndel.setBounds(360, 480, 170, 23);
+=======
+        btnBack.setBounds(460, 10, 120, 23);
+        getContentPane().add(txtEmpName);
+        txtEmpName.setBounds(180, 160, 160, 30);
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(190, 480, 140, 23);
+>>>>>>> Stashed changes
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,15 +193,29 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUsername);
+<<<<<<< Updated upstream
         txtUsername.setBounds(270, 380, 140, 22);
+=======
+        txtUsername.setBounds(190, 430, 140, 23);
+>>>>>>> Stashed changes
 
-        lblEmployeeName3.setText("Name:");
+        lblEmployeeName3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblEmployeeName3.setText("NAME");
         getContentPane().add(lblEmployeeName3);
+<<<<<<< Updated upstream
         lblEmployeeName3.setBounds(60, 200, 110, 16);
+=======
+        lblEmployeeName3.setBounds(80, 170, 60, 17);
+>>>>>>> Stashed changes
 
-        lblhos1.setText("Department");
+        lblhos1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        lblhos1.setText("DEPARTMENT");
         getContentPane().add(lblhos1);
+<<<<<<< Updated upstream
         lblhos1.setBounds(40, 310, 110, 16);
+=======
+        lblhos1.setBounds(50, 280, 120, 17);
+>>>>>>> Stashed changes
 
         ComboDepts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Laboratory", "Accountant" }));
         ComboDepts.addActionListener(new java.awt.event.ActionListener() {
@@ -169,15 +224,29 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboDepts);
+<<<<<<< Updated upstream
         ComboDepts.setBounds(300, 310, 140, 22);
+=======
+        ComboDepts.setBounds(190, 270, 150, 30);
+>>>>>>> Stashed changes
 
         valDept.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valDept);
-        valDept.setBounds(360, 300, 180, 20);
+        valDept.setBounds(370, 280, 320, 20);
 
         valHosp.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valHosp);
-        valHosp.setBounds(360, 270, 180, 20);
+        valHosp.setBounds(370, 220, 330, 20);
+
+        jLabel11.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
+        jLabel11.setText("SET UP ACCOUNT  ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(50, 350, 270, 40);
+
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -302,31 +371,6 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
-        // TODO add your handling code here:
-
-        Connection conn = dbconn.getConnection();
-        int emp_id=(int) Integer.valueOf(txtUsername.getText());
-
-        conn = dbconn.getConnection();
-        String selectSql = "Delete from employees where emp_id=?";
-        PreparedStatement stmt;
-        try {
-
-            stmt=conn.prepareStatement(selectSql);
-
-            stmt.setInt(1, emp_id);
-
-            stmt.executeUpdate();
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        JOptionPane.showMessageDialog(this, "Employee Deleted");
-
-    }//GEN-LAST:event_btndelActionPerformed
-
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
@@ -385,7 +429,8 @@ public class AdminHosEmployee extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboHospital;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btndel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel lblEmployeeName;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JLabel lblEmployeeName2;

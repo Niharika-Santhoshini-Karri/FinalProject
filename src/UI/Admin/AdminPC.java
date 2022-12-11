@@ -71,11 +71,16 @@ public class AdminPC extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtaddress1 = new javax.swing.JTextField();
         txtmobile = new javax.swing.JTextField();
+<<<<<<< Updated upstream
         valZip = new javax.swing.JLabel();
+=======
+        jLabel3 = new javax.swing.JLabel();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,15 +88,25 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
+<<<<<<< Updated upstream
         btnBack.setBounds(570, 30, 100, 31);
+=======
+        btnBack.setBounds(660, 50, 100, 23);
+>>>>>>> Stashed changes
 
-        jLabel1.setText("Name");
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel1.setText("NAME");
         getContentPane().add(jLabel1);
+<<<<<<< Updated upstream
         jLabel1.setBounds(50, 370, 70, 25);
+=======
+        jLabel1.setBounds(220, 380, 70, 17);
+>>>>>>> Stashed changes
 
+        lblZipcode.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblZipcode.setText("ZIP CODE");
         getContentPane().add(lblZipcode);
-        lblZipcode.setBounds(40, 490, 90, 30);
+        lblZipcode.setBounds(210, 500, 90, 30);
 
         tblPlasma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,6 +144,7 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(50, 140, 680, 130);
 
+        btnAdd.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,12 +152,22 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
+<<<<<<< Updated upstream
         btnAdd.setBounds(130, 550, 87, 31);
+=======
+        btnAdd.setBounds(300, 560, 87, 23);
+>>>>>>> Stashed changes
 
+        lblSelectOrgType.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
+<<<<<<< Updated upstream
         lblSelectOrgType.setBounds(80, 330, 60, 25);
+=======
+        lblSelectOrgType.setBounds(250, 340, 60, 17);
+>>>>>>> Stashed changes
 
+        btnDelete.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,10 +177,10 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(btnDelete);
         btnDelete.setBounds(400, 280, 100, 31);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 30)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(190, 30, 220, 29);
+        lblTitle.setBounds(50, 10, 340, 38);
 
         txtZipcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -162,8 +188,13 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipcode);
+<<<<<<< Updated upstream
         txtZipcode.setBounds(180, 490, 100, 31);
+=======
+        txtZipcode.setBounds(310, 500, 100, 23);
+>>>>>>> Stashed changes
 
+        btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,11 +211,20 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
+<<<<<<< Updated upstream
         txtid.setBounds(180, 320, 100, 31);
+=======
+        txtid.setBounds(310, 340, 100, 23);
+>>>>>>> Stashed changes
 
-        jLabel2.setText("Address");
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel2.setText("ADDRESS");
         getContentPane().add(jLabel2);
+<<<<<<< Updated upstream
         jLabel2.setBounds(40, 410, 80, 25);
+=======
+        jLabel2.setBounds(210, 420, 80, 17);
+>>>>>>> Stashed changes
 
         txtpcname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -192,7 +232,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtpcname);
+<<<<<<< Updated upstream
         txtpcname.setBounds(180, 370, 100, 31);
+=======
+        txtpcname.setBounds(310, 380, 100, 23);
+>>>>>>> Stashed changes
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -217,19 +261,24 @@ public class AdminPC extends javax.swing.JFrame {
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(310, 370, 150, 20);
+        valName.setBounds(430, 380, 200, 20);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAddress);
-        valAddress.setBounds(310, 410, 150, 30);
+        valAddress.setBounds(430, 420, 220, 20);
 
         valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valContact);
+<<<<<<< Updated upstream
         valContact.setBounds(290, 450, 130, 20);
+=======
+        valContact.setBounds(440, 460, 210, 20);
+>>>>>>> Stashed changes
 
-        jLabel6.setText("Mobile");
+        jLabel6.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel6.setText("MOBILE");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 450, 90, 30);
+        jLabel6.setBounds(210, 460, 90, 30);
 
         txtaddress1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -237,7 +286,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtaddress1);
+<<<<<<< Updated upstream
         txtaddress1.setBounds(180, 410, 100, 31);
+=======
+        txtaddress1.setBounds(310, 420, 100, 23);
+>>>>>>> Stashed changes
 
         txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -245,11 +298,19 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtmobile);
+<<<<<<< Updated upstream
         txtmobile.setBounds(180, 450, 100, 31);
 
         valZip.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valZip);
         valZip.setBounds(300, 490, 130, 20);
+=======
+        txtmobile.setBounds(310, 460, 100, 23);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin portal.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(2, 0, 800, 600);
+>>>>>>> Stashed changes
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -584,6 +645,7 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
