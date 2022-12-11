@@ -47,7 +47,7 @@ public class PlasmaReq extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("PLASMA REQUESTS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 30, 280, 22);
+        jLabel1.setBounds(190, 30, 280, 25);
 
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +91,11 @@ public class PlasmaReq extends javax.swing.JFrame {
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Item 2", " " }));
         getContentPane().add(cmbStatus);
-        cmbStatus.setBounds(110, 350, 95, 23);
+        cmbStatus.setBounds(110, 350, 88, 22);
 
         lblStatus.setText("Status");
         getContentPane().add(lblStatus);
-        lblStatus.setBounds(60, 350, 37, 17);
+        lblStatus.setBounds(60, 350, 32, 16);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class PlasmaReq extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(500, 350, 73, 23);
+        btnUpdate.setBounds(500, 350, 72, 23);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");

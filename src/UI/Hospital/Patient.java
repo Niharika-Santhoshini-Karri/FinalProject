@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import MODEL.HOSPITAL;
+import java.util.Random;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Patient extends javax.swing.JFrame {
      * Creates new form Patient
      */
     Validations validations;
+    Random rand = new Random();
     ResultSet resultSet, resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
     Vector originalTableModel;
@@ -462,7 +464,8 @@ public class Patient extends javax.swing.JFrame {
             else if (btnFemale.isSelected()) {
                 gender = "Female";
             }
-        int patinet_id = Integer.valueOf(txtpat_id.getText());
+        //int patinet_id = Integer.valueOf(txtpat_id.getText());
+        int patinet_id = rand.nextInt(1, 100);
        String patient_name = txtName.getText();
        int age = Integer.valueOf(txtAge.getText()); 
        //String gender = (String) comboxgender.getSelectedItem();
