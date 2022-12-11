@@ -25,6 +25,7 @@ import MODEL.HOSPITAL;
 import MODEL.PlasmaCenter;
 import MODEL.Doctor;
 import MODEL.NGO; 
+import UI.Laboratory.UpdateTest;
 
 /**
  *
@@ -196,14 +197,14 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
- AdminStock AS= new AdminStock();
-        this.dispose();
-        AS.setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstatusActionPerformed
         // TODO add your handling code here:
-
+ AdminStock AS= new AdminStock();
+        this.dispose();
+        AS.setVisible(true);
     }//GEN-LAST:event_btnstatusActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -330,7 +331,8 @@ System.out.println("Connected to database !!");
                     resultSetvdonor.next(); 
                     int thisvdonor_id = Integer.valueOf(resultSetvdonor.getInt(1));
                     Donor.setDonor_id(thisvdonor_id);
-                     VDonorWA VDWA=new VDonorWA();
+                     
+                    VDonorWA VDWA=new VDonorWA();
                     
                     this.dispose();
                     VDWA.setVisible(true);
@@ -342,7 +344,20 @@ System.out.println("Connected to database !!");
                    }
                    if(x==9)
                    {
-                      JOptionPane.showMessageDialog(this , "NOW OPEN THE HOSPITAL LAB SECTION PAGE PAGE");
+                    String findhos_id = "select hos_id from emphos where user_id=?";
+                    int user_id = Integer.valueOf(username);
+                    stmthos_id = conn.prepareStatement(findhos_id); 
+                    stmthos_id.setInt(1, user_id);
+                    resultSethos = stmthos_id.executeQuery();
+                    resultSethos.next();
+                    int thishos_id = Integer.valueOf(resultSethos.getInt(1));
+                    HOSPITAL.setHos_id(thishos_id);
+                     JOptionPane.showMessageDialog(this , "NOW OPEN THE HOSPITAL LAB SECTION PAGE PAGE");
+                      UpdateTest UT=new UpdateTest();
+                    
+                    this.dispose();
+                    UT.setVisible(true);
+                     
                    }
                 }
             }

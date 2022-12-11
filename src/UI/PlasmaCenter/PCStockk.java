@@ -108,8 +108,8 @@ public class PCStockk extends javax.swing.JFrame {
         valBlood = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lblDonor_id1 = new javax.swing.JLabel();
-        jDateChooser = new org.netbeans.modules.form.InvalidComponent();
         comboxqty = new javax.swing.JComboBox<>();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -126,7 +126,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 30, 100, 23);
+        btnBack.setBounds(550, 30, 100, 31);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(190, 240, 100, 23);
+        btnUpdate.setBounds(190, 240, 100, 31);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 240, 100, 23);
+        btnDelete.setBounds(370, 240, 100, 31);
 
         lblDonor_id.setText("Date of Donation");
         getContentPane().add(lblDonor_id);
@@ -157,7 +157,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(280, 560, 87, 23);
+        btnAdd.setBounds(280, 560, 87, 31);
 
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,7 +201,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboDonor);
-        comboDonor.setBounds(390, 400, 77, 23);
+        comboDonor.setBounds(390, 400, 77, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -236,12 +236,12 @@ public class PCStockk extends javax.swing.JFrame {
         lblDonor_id1.setText("Donor ID");
         getContentPane().add(lblDonor_id1);
         lblDonor_id1.setBounds(160, 400, 160, 40);
-        getContentPane().add(jDateChooser);
-        jDateChooser.setBounds(390, 460, 40, 19);
 
         comboxqty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         getContentPane().add(comboxqty);
-        comboxqty.setBounds(390, 340, 72, 23);
+        comboxqty.setBounds(390, 340, 72, 31);
+        getContentPane().add(jDateChooser);
+        jDateChooser.setBounds(380, 460, 126, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,6 +258,13 @@ public class PCStockk extends javax.swing.JFrame {
        DefaultTableModel tblModel = (DefaultTableModel) tblStock.getModel();
 
         // set data to textfield when raw is selected
+        int SelectedRowIndex=tblStock.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
 
         String id = tblModel.getValueAt(tblStock.getSelectedRow(),0).toString();
         int stock_id = Integer.valueOf(id); 
@@ -513,7 +520,7 @@ public class PCStockk extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> comboDonor;
     private javax.swing.JComboBox<String> comboxqty;
-    private org.netbeans.modules.form.InvalidComponent jDateChooser;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
