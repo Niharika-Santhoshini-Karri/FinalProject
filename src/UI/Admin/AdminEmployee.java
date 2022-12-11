@@ -81,15 +81,15 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(300, 230, 140, 31);
+        ComboPlasmaCenter.setBounds(300, 230, 140, 22);
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(120, 330, 110, 25);
+        lblEmployeeName.setBounds(120, 330, 110, 16);
 
         lblbank.setText("Plasma Center");
         getContentPane().add(lblbank);
-        lblbank.setBounds(70, 220, 150, 25);
+        lblbank.setBounds(70, 220, 150, 16);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +97,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(290, 320, 140, 31);
+        txtUsername.setBounds(290, 320, 140, 22);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(490, 20, 100, 31);
+        btnBack.setBounds(490, 20, 100, 23);
 
         btndel.setText("DELETE");
         btndel.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btndel);
-        btndel.setBounds(380, 440, 170, 31);
+        btndel.setBounds(380, 440, 170, 23);
 
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(90, 440, 210, 31);
+        btnAdd.setBounds(90, 440, 210, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER EMPLOYEES ");
@@ -133,21 +133,23 @@ public class AdminEmployee extends javax.swing.JFrame {
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(120, 380, 100, 25);
+        lblEmployeeName1.setBounds(120, 380, 100, 16);
+
+        txtEmpID.setEditable(false);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(290, 130, 160, 31);
+        txtEmpID.setBounds(290, 130, 160, 22);
 
         lblEmployeeName2.setText("Employee ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(70, 140, 150, 25);
+        lblEmployeeName2.setBounds(70, 140, 150, 16);
 
         lblEmployeeName3.setText("Name:");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(70, 180, 110, 25);
+        lblEmployeeName3.setBounds(70, 180, 110, 16);
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(290, 180, 160, 31);
+        txtEmpName.setBounds(290, 180, 160, 22);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(290, 380, 140, 31);
+        txtPassword.setBounds(290, 380, 140, 22);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -179,7 +181,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         
         Connection conn = dbconn.getConnection();
          int emp_id=(int) Integer.valueOf(txtUsername.getText());
-       
+         
          conn = dbconn.getConnection();
           String selectSql = "Delete from employees where emp_id=?";
      PreparedStatement stmt;
