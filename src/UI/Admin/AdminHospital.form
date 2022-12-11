@@ -310,6 +310,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txthos_id">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txthos_idKeyReleased"/>
       </Events>

@@ -762,10 +762,6 @@ public class Patient extends javax.swing.JFrame {
             {
                 comboxdoc_id.addItem(resultSet1.getString(1));
             }
-            
-       
-             
-            
         }
         catch (SQLException ex)
         {

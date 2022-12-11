@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ public class AdminEmployee extends javax.swing.JFrame {
      */
       Validations validations;
     Vector originalTableModel;
+    Random rand = new Random();
     ResultSet resultSet1, resultSet2 = null;
     DBUTIL dbconn= new DBUTIL();
     public AdminEmployee() {
@@ -219,11 +221,12 @@ public class AdminEmployee extends javax.swing.JFrame {
         }
         
         String emp_name = txtEmpName.getText(); 
-            int user_id = Integer.valueOf(txtUsername.getText()); 
+            //int user_id = Integer.valueOf(txtUsername.getText()); 
+            int user_id = rand.nextInt(1,1000);
             String password = txtPassword.getText(); 
             
-            int emp_id = Integer.valueOf(txtEmpID.getText());
-            
+            //int emp_id = Integer.valueOf(txtEmpID.getText());
+            int emp_id = rand.nextInt(1,1000);
             
             
             
@@ -237,6 +240,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         //do validation here.
        
         //check if the id already exists
+       
      String INSERLOGINSSQL = "insert into logins(user_id, pass_word,role_id) values(?,?,?) ";
      String INSERTEMPLOYEESQL = "insert into emppc(emp_id,pc_id,employee_name, user_id) values(?,?,?,?)";
 
@@ -269,6 +273,7 @@ public class AdminEmployee extends javax.swing.JFrame {
 
 
         JOptionPane.showMessageDialog(this,"Employee Created");
+        JOptionPane.showMessageDialog(this,"USER_ID = "+user_id);
 
     
    

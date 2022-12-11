@@ -4,12 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/LoginScreen.java</file>
-            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/DBUTIL/DBCONNECTION.java</file>
             <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/MODEL/Donor.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/PlasmaCenter/PlasmaRequests.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/Hospital/Doctor.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/Hospital/Patient.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/Admin/AdminHosEmployee.java</file>
             <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/VDONOR/VDonorWA.java</file>
-            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/DBUTIL/DBUTIL.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/Hospital/RequestToPlasmaCenter.java</file>
             <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/VDonorRegForm.java</file>
             <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/VDONOR/VDonorDetails.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP2/FinalProject/src/UI/Admin/AdminEmployee.java</file>
         </group>
     </open-files>
 </project-private>

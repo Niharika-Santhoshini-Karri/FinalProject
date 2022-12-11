@@ -29,13 +29,14 @@ public class PCStockk extends javax.swing.JFrame {
     /**
      * Creates new form PCStock
      */
-    ResultSet resultSet = null;
+    ResultSet resultSet, resultSetx = null;
     DBUTIL dbconn= new DBUTIL();
     Vector originalTableModel;
     Validations validations;
     public PCStockk() {
         initComponents();
         populateTable();
+        updateComboxDonor(); 
    originalTableModel = (Vector) ((DefaultTableModel) tblStock.getModel()).getDataVector().clone();
     validations = new Validations();
     }
@@ -91,18 +92,22 @@ public class PCStockk extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtQty = new javax.swing.JTextField();
+        lblDonor_id = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStock = new javax.swing.JTable();
-        ComboBlood = new javax.swing.JComboBox<>();
+        comboDonor_ID = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         valQty = new javax.swing.JLabel();
         valBlood = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtQty1 = new javax.swing.JTextField();
+        lblDonor_id1 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        ComboBlood1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -110,7 +115,7 @@ public class PCStockk extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("STOCK");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(40, 20, 150, 50);
+        lblTitle.setBounds(140, 10, 150, 50);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +124,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 30, 100, 23);
+        btnBack.setBounds(550, 30, 100, 31);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +133,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(250, 280, 100, 23);
+        btnUpdate.setBounds(190, 230, 100, 31);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -137,23 +142,15 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 280, 100, 23);
+        btnDelete.setBounds(370, 240, 100, 31);
 
         jLabel1.setText("Blood Group");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 430, 90, 17);
+        jLabel1.setBounds(190, 350, 110, 25);
 
-        jLabel5.setText("Quantity Available");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(210, 470, 120, 40);
-
-        txtQty.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtQtyKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtQty);
-        txtQty.setBounds(360, 480, 74, 23);
+        lblDonor_id.setText("Date of Donation");
+        getContentPane().add(lblDonor_id);
+        lblDonor_id.setBounds(160, 500, 160, 40);
 
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +159,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(280, 560, 87, 23);
+        btnAdd.setBounds(280, 560, 87, 31);
 
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,27 +195,26 @@ public class PCStockk extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblStock);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 160, 660, 92);
+        jScrollPane1.setBounds(40, 120, 660, 92);
 
-        ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AB+", "AB-", "O+", "O-", "A+", "A-", "B+", "B-" }));
-        ComboBlood.addActionListener(new java.awt.event.ActionListener() {
+        comboDonor_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBloodActionPerformed(evt);
+                comboDonor_IDActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBlood);
-        ComboBlood.setBounds(360, 420, 72, 23);
+        getContentPane().add(comboDonor_ID);
+        comboDonor_ID.setBounds(390, 450, 77, 31);
 
         jLabel6.setText("Stock ID");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(220, 360, 90, 40);
+        jLabel6.setBounds(200, 300, 90, 40);
         getContentPane().add(txtStock);
-        txtStock.setBounds(360, 370, 74, 23);
+        txtStock.setBounds(380, 300, 74, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
-        lbSearch.setBounds(90, 100, 90, 30);
+        lbSearch.setBounds(130, 70, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +227,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(170, 100, 430, 30);
+        txtSearch.setBounds(290, 70, 230, 30);
 
         valQty.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valQty);
@@ -240,6 +236,33 @@ public class PCStockk extends javax.swing.JFrame {
         valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valBlood);
         valBlood.setBounds(460, 420, 160, 20);
+
+        jLabel7.setText("Quantity Available");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(160, 400, 160, 40);
+
+        txtQty1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtQty1KeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtQty1);
+        txtQty1.setBounds(380, 400, 120, 31);
+
+        lblDonor_id1.setText("Donor ID");
+        getContentPane().add(lblDonor_id1);
+        lblDonor_id1.setBounds(170, 450, 160, 40);
+        getContentPane().add(jDateChooser1);
+        jDateChooser1.setBounds(380, 490, 126, 31);
+
+        ComboBlood1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AB+", "AB-", "O+", "O-", "A+", "A-", "B+", "B-" }));
+        ComboBlood1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBlood1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ComboBlood1);
+        ComboBlood1.setBounds(380, 350, 77, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -255,7 +278,7 @@ public class PCStockk extends javax.swing.JFrame {
         // take from text boxes
        var valid = true;
         
-         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+         if (comboDonor_ID.getSelectedItem() == null || comboDonor_ID.getSelectedItem().toString().isEmpty()) {
             valBlood.setText("Please Select Blood Group");
             valid = false;
         }
@@ -266,7 +289,7 @@ public class PCStockk extends javax.swing.JFrame {
         }
         
         int stock_id = Integer.valueOf(txtStock.getText());
-       String blood_group = (String) ComboBlood.getSelectedItem();
+       String blood_group = (String) comboDonor_ID.getSelectedItem();
        Integer qty = Integer.valueOf(txtQty.getText());
        
        //DBUTIL dbconn= new DBUTIL();
@@ -305,7 +328,7 @@ public class PCStockk extends javax.swing.JFrame {
    
   //stop
   txtStock.setText("");
-  ComboBlood.setSelectedItem("");
+  comboDonor_ID.setSelectedItem("");
   txtQty.setText("");
   
    setTextNull();
@@ -351,7 +374,7 @@ public class PCStockk extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
        var valid = true;
         
-         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+         if (comboDonor_ID.getSelectedItem() == null || comboDonor_ID.getSelectedItem().toString().isEmpty()) {
             valBlood.setText("Please Select Blood Group");
             valid = false;
         }
@@ -362,7 +385,7 @@ public class PCStockk extends javax.swing.JFrame {
         }
         
         int stock_id = Integer.valueOf(txtStock.getText());
-       String blood_group = (String) ComboBlood.getSelectedItem();
+       String blood_group = (String) comboDonor_ID.getSelectedItem();
        Integer qty = Integer.valueOf(txtQty.getText());
        
        //DBUTIL dbconn= new DBUTIL();
@@ -412,7 +435,7 @@ public class PCStockk extends javax.swing.JFrame {
         
 
         txtStock.setText(String.valueOf(stock_id));
-        ComboBlood.setSelectedItem(blood_group);
+        comboDonor_ID.setSelectedItem(blood_group);
         txtQty.setText(qty);
         
         
@@ -443,29 +466,27 @@ public class PCStockk extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void ComboBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBloodActionPerformed
+    private void comboDonor_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDonor_IDActionPerformed
         // TODO add your handling code here:
-         Object blood_group = ComboBlood.getSelectedItem();
+         Object blood_group = comboDonor_ID.getSelectedItem();
         
 
         if (blood_group == null || blood_group.toString().equals("")) {
             valQty.setText("Please Select Blood Group");
-            ComboBlood.removeAllItems();
+            comboDonor_ID.removeAllItems();
             valQty.setText(null);
         } else {
-            ComboBlood.setSelectedItem("");
+            comboDonor_ID.setSelectedItem("");
         }
-    }//GEN-LAST:event_ComboBloodActionPerformed
+    }//GEN-LAST:event_comboDonor_IDActionPerformed
 
-    private void txtQtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtyKeyReleased
+    private void txtQty1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQty1KeyReleased
         // TODO add your handling code here:
-              if (!this.validations.ValidateQuantity(txtQty.getText()) ) {
-            valQty.setText("Phone Number is Invalid");
-        }
-        else {
-            valQty.setText(null);
-        }
-    }//GEN-LAST:event_txtQtyKeyReleased
+    }//GEN-LAST:event_txtQty1KeyReleased
+
+    private void ComboBlood1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBlood1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBlood1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -506,7 +527,7 @@ public class PCStockk extends javax.swing.JFrame {
      private void setTextNull() {
         
         
-        ComboBlood.setSelectedItem(null);
+        comboDonor_ID.setSelectedItem(null);
         txtQty.setText(null);
         
         
@@ -521,22 +542,56 @@ public class PCStockk extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBlood;
+    private javax.swing.JComboBox<String> ComboBlood1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> comboDonor_ID;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
+    private javax.swing.JLabel lblDonor_id;
+    private javax.swing.JLabel lblDonor_id1;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblStock;
-    private javax.swing.JTextField txtQty;
+    private javax.swing.JTextField txtQty1;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtStock;
     private javax.swing.JLabel valBlood;
     private javax.swing.JLabel valQty;
     // End of variables declaration//GEN-END:variables
+
+    private void updateComboxDonor() {
+        Connection conn = dbconn.getConnection();
+        
+        String SELECTSQL2 = "SELECT VDONOR_ID FROM vdonor";
+
+        PreparedStatement stmt2; 
+        try
+        {
+            
+            stmt2 = conn.prepareStatement(SELECTSQL2);
+            
+            resultSetx = stmt2.executeQuery(); 
+            
+            
+            
+            while(resultSetx.next())
+            {
+                ComboPlasmaCenter.addItem(resultSet2.getString(1));
+            }
+       
+             
+            
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(PCStockk.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
 }

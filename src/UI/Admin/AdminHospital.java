@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -28,6 +29,8 @@ public class AdminHospital extends javax.swing.JFrame {
      * Creates new form AdminHospital
      */
      Vector originalTableModel;
+     
+     Random rand = new Random();
    
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
@@ -118,7 +121,7 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 370, 70, 16);
+        jLabel1.setBounds(230, 370, 70, 25);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("HOSPITALS ");
@@ -127,11 +130,11 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 410, 80, 16);
+        jLabel2.setBounds(220, 410, 80, 25);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(250, 320, 11, 16);
+        lblSelectOrgType.setBounds(250, 320, 18, 25);
 
         jLabel5.setText("Zip Code");
         getContentPane().add(jLabel5);
@@ -180,7 +183,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(270, 530, 87, 23);
+        btnAdd.setBounds(270, 530, 87, 31);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +192,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(250, 240, 100, 23);
+        btnUpdate.setBounds(250, 240, 100, 31);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +201,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 240, 100, 23);
+        btnDelete.setBounds(370, 240, 100, 31);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +210,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 10, 100, 23);
+        btnBack.setBounds(550, 10, 100, 31);
 
         jLabel6.setText("Mobile");
         getContentPane().add(jLabel6);
@@ -237,7 +240,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
-        txtContact.setBounds(340, 490, 140, 22);
+        txtContact.setBounds(340, 490, 140, 31);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -275,6 +278,7 @@ public class AdminHospital extends javax.swing.JFrame {
         getContentPane().add(txtName);
         txtName.setBounds(340, 360, 140, 30);
 
+        txthos_id.setEditable(false);
         txthos_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txthos_idKeyReleased(evt);
@@ -313,7 +317,8 @@ public class AdminHospital extends javax.swing.JFrame {
             valid = false;
         }
         
-       int hos_id = Integer.valueOf(txthos_id.getText());
+       //int hos_id = Integer.valueOf(txthos_id.getText());
+       int hos_id = rand.nextInt(1, 100);
        String hospital_name = txtName.getText();
        String address = txtaddress.getText();
        Integer zipcode = Integer.valueOf(txtzipCode.getText());
