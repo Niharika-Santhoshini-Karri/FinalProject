@@ -92,7 +92,26 @@ public class DelPlasmaEmp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-    
+    Connection conn = dbconn.getConnection();
+        int emp_id=(int) Integer.valueOf(txtEmp_id.getText());
+
+        conn = dbconn.getConnection();
+        String selectSql = "Delete from emppc where emp_id=?";
+        PreparedStatement stmt;
+        try {
+
+            stmt=conn.prepareStatement(selectSql);
+
+            stmt.setInt(1, emp_id);
+
+            stmt.executeUpdate();
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DelPlasmaEmp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JOptionPane.showMessageDialog(this, "Employee Deleted");
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
