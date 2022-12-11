@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import MODEL.HOSPITAL;
+import java.util.Random;
 import java.util.Vector;
 
 /**
@@ -31,6 +32,7 @@ Validations validations;
     
     
     ResultSet resultSet = null;
+    Random rand = new Random();
     DBUTIL dbconn= new DBUTIL();
     Vector originalTableModel;
     public Doctor() {
@@ -171,7 +173,7 @@ Validations validations;
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(320, 320, 79, 23);
+        btnUpdate.setBounds(320, 320, 73, 23);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -180,19 +182,19 @@ Validations validations;
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(410, 320, 77, 23);
+        btnDelete.setBounds(410, 320, 72, 23);
 
         jLabel2.setText("Name");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(180, 410, 67, 17);
+        jLabel2.setBounds(180, 410, 67, 16);
 
         jLabel3.setText("Doctor ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(170, 370, 54, 17);
+        jLabel3.setBounds(170, 370, 50, 16);
 
         jLabel4.setText("Specialization");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(170, 460, 80, 17);
+        jLabel4.setBounds(170, 460, 72, 16);
 
         txtdoc_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,15 +207,16 @@ Validations validations;
             }
         });
         getContentPane().add(txtdoc_name);
-        txtdoc_name.setBounds(340, 410, 131, 23);
+        txtdoc_name.setBounds(340, 410, 131, 22);
 
+        txtdoc_id.setEditable(false);
         txtdoc_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtdoc_idActionPerformed(evt);
             }
         });
         getContentPane().add(txtdoc_id);
-        txtdoc_id.setBounds(340, 370, 131, 23);
+        txtdoc_id.setBounds(340, 370, 131, 22);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +229,7 @@ Validations validations;
 
         jLabel5.setText("Pager ID ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(170, 500, 53, 17);
+        jLabel5.setBounds(170, 500, 47, 16);
 
         txtpager_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -234,7 +237,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtpager_id);
-        txtpager_id.setBounds(330, 500, 131, 23);
+        txtpager_id.setBounds(330, 500, 131, 22);
 
         specCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cardiologist", "General Surgeon", "Orthopedician" }));
         specCombox.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +246,7 @@ Validations validations;
             }
         });
         getContentPane().add(specCombox);
-        specCombox.setBounds(330, 460, 131, 23);
+        specCombox.setBounds(330, 460, 121, 22);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -259,7 +262,7 @@ Validations validations;
 
         lblEmployeeName.setText("Username :");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(170, 530, 110, 17);
+        lblEmployeeName.setBounds(170, 530, 110, 16);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,13 +270,13 @@ Validations validations;
             }
         });
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(330, 540, 140, 23);
+        txtUsername.setBounds(330, 540, 140, 22);
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(170, 570, 100, 17);
+        lblEmployeeName1.setBounds(170, 570, 100, 16);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(330, 570, 140, 23);
+        txtPassword.setBounds(330, 570, 140, 22);
 
         valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valUsername);
@@ -422,7 +425,8 @@ Validations validations;
         }
          
        String doc_name = txtdoc_name.getText();
-       int doc_id = Integer.valueOf(txtdoc_id.getText());
+       //int doc_id = Integer.valueOf(txtdoc_id.getText());
+       int doc_id = rand.nextInt(1, 100);
        String spec = (String) specCombox.getSelectedItem(); 
        int pager_id = Integer.valueOf(txtpager_id.getText());
        int user_id = Integer.valueOf(txtUsername.getText()); 
