@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonModel;
@@ -25,11 +26,14 @@ public class VDonorRegForm extends javax.swing.JFrame {
      * Creates new form VDonorRegForm
      */
     Validations validations;
-    ResultSet resultSet1= null;
+    ResultSet resultSet1, resultSet2= null;
+     Random rand = new Random();
     DBUTIL dbconn= new DBUTIL();
     public VDonorRegForm() {
         initComponents();
         validations = new Validations();
+        updatecombox();
+        
     }
 
     /**
@@ -45,7 +49,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNGO = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtUser_ID = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
@@ -53,7 +57,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         txtAddress = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        ComboBlood = new javax.swing.JComboBox<>();
+        comboxNGO = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
@@ -70,6 +74,8 @@ public class VDonorRegForm extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
         valBlood = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        ComboBlood1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -91,9 +97,9 @@ public class VDonorRegForm extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(30, 250, 102, 25);
 
-        jLabel3.setText("Address");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 380, 65, 25);
+        lblNGO.setText("NGO");
+        getContentPane().add(lblNGO);
+        lblNGO.setBounds(50, 430, 65, 25);
 
         jLabel4.setText("PASSWORD");
         getContentPane().add(jLabel4);
@@ -159,14 +165,13 @@ public class VDonorRegForm extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(50, 120, 33, 25);
 
-        ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
-        ComboBlood.addActionListener(new java.awt.event.ActionListener() {
+        comboxNGO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBloodActionPerformed(evt);
+                comboxNGOActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBlood);
-        ComboBlood.setBounds(200, 240, 77, 31);
+        getContentPane().add(comboxNGO);
+        comboxNGO.setBounds(170, 430, 77, 31);
 
         jLabel7.setText("Contact");
         getContentPane().add(jLabel7);
@@ -264,6 +269,19 @@ public class VDonorRegForm extends javax.swing.JFrame {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(210, 20, 350, 25);
 
+        jLabel10.setText("Address");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(50, 380, 65, 25);
+
+        ComboBlood1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
+        ComboBlood1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBlood1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ComboBlood1);
+        ComboBlood1.setBounds(200, 240, 77, 31);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -292,7 +310,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         
         var valid = true;
         
-         if (ComboBlood.getSelectedItem() == null || ComboBlood.getSelectedItem().toString().isEmpty()) {
+         if (comboxNGO.getSelectedItem() == null || comboxNGO.getSelectedItem().toString().isEmpty()) {
             valBlood.setText("Please Select Blood Group");
             valid = false;
         }
@@ -351,7 +369,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         int age = Integer.valueOf(txtAge.getText()); 
         //String gender = btnGender.getSelection();
         
-        String bloodgroup = (String) ComboBlood.getSelectedItem(); 
+        String bloodgroup = (String) comboxNGO.getSelectedItem(); 
         System.out.println(bloodgroup);
         
         
@@ -360,22 +378,25 @@ public class VDonorRegForm extends javax.swing.JFrame {
         int user_id = Integer.valueOf(txtUser_ID.getText()); 
         //String pass_word = txtPassword.getText();
         
-        String countDonors = "select count(*) from vdonor";
+        
         
         String addDonor = "insert into vdonor(vdonor_id, user_id, vname, age, gender, "
                 + "contact, address, blood_group) values (?,?,?,?,?,?,?,?)";
         
         String adduser = "insert into logins(user_id, pass_word, role_id) values(?,?,?)";
         
+        String ngo_name = (String) comboxNGO.getSelectedItem();
+        
+        String getngo_name = "select ngo_id from ngo where ngo_name="+ngo_name ; 
+        
         Connection conn = dbconn.getConnection();
-        PreparedStatement stmt1, stmt2, stmt3 ; 
+        PreparedStatement stmt1 = null, stmt2, stmt3; 
         try
         {
-            stmt1 = conn.prepareStatement(countDonors);
-            resultSet1 = stmt1.executeQuery();
-            resultSet1.next(); 
-            int vdonor_id = Integer.valueOf(resultSet1.getString(1));
-            vdonor_id ++; 
+            resultSet1 = stmt1.executeQuery(); 
+            int ngo_id = resultSet1.getInt(0); 
+            int vdonor_id = rand.nextInt(0);
+            
             
             
             stmt3 = conn.prepareStatement(adduser);
@@ -424,19 +445,19 @@ public class VDonorRegForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void ComboBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBloodActionPerformed
+    private void comboxNGOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxNGOActionPerformed
         // TODO add your handling code here:
-        Object blood_group = ComboBlood.getSelectedItem();
+        Object blood_group = comboxNGO.getSelectedItem();
         
 
         if (blood_group == null || blood_group.toString().equals("")) {
             valBlood.setText("Please Select Blood Group");
-            ComboBlood.removeAllItems();
+            comboxNGO.removeAllItems();
             valBlood.setText(null);
         } else {
-            ComboBlood.setSelectedItem("");
+            comboxNGO.setSelectedItem("");
         }
-    }//GEN-LAST:event_ComboBloodActionPerformed
+    }//GEN-LAST:event_comboxNGOActionPerformed
 
     private void btnMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleActionPerformed
         valGender.setText(null);
@@ -515,6 +536,10 @@ public class VDonorRegForm extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void ComboBlood1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBlood1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBlood1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -576,21 +601,23 @@ public class VDonorRegForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBlood;
+    private javax.swing.JComboBox<String> ComboBlood1;
     private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton btnFemale;
     private javax.swing.ButtonGroup btnGender;
     private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JComboBox<String> comboxNGO;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblNGO;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
@@ -606,4 +633,25 @@ public class VDonorRegForm extends javax.swing.JFrame {
     private javax.swing.JLabel valPhone;
     private javax.swing.JLabel valUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void updatecombox() {
+        Connection conn = dbconn.getConnection();
+        String SELECTSQL1 = "select NGO_NAME from ngo";
+       
+        PreparedStatement stmt1; 
+        try
+        {
+            stmt1 = conn.prepareStatement(SELECTSQL1);
+             resultSet2 = stmt1.executeQuery();
+           
+            while(resultSet2.next())
+            {
+                comboxNGO.addItem(resultSet2.getString(1));
+            }
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(VDonorRegForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
 }

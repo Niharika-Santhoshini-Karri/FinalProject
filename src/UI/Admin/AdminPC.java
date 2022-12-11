@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ public class AdminPC extends javax.swing.JFrame {
     /**
      * Creates new form AdminPC
      */
+    Random rand = new Random();
     Validations validations;
     Vector originalTableModel;
     ResultSet resultSet = null;
@@ -69,6 +71,7 @@ public class AdminPC extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtaddress1 = new javax.swing.JTextField();
         txtmobile = new javax.swing.JTextField();
+        valZip = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -80,11 +83,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 23);
+        btnBack.setBounds(570, 30, 100, 31);
 
         jLabel1.setText("Name");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 370, 70, 17);
+        jLabel1.setBounds(50, 370, 70, 25);
 
         lblZipcode.setText("ZIP CODE");
         getContentPane().add(lblZipcode);
@@ -133,11 +136,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(130, 550, 87, 23);
+        btnAdd.setBounds(130, 550, 87, 31);
 
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(80, 330, 60, 17);
+        lblSelectOrgType.setBounds(80, 330, 60, 25);
 
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +149,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(400, 280, 100, 23);
+        btnDelete.setBounds(400, 280, 100, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
@@ -159,7 +162,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipcode);
-        txtZipcode.setBounds(180, 490, 100, 23);
+        txtZipcode.setBounds(180, 490, 100, 31);
 
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -168,19 +171,20 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(280, 280, 100, 23);
+        btnUpdate.setBounds(280, 280, 100, 31);
 
+        txtid.setEditable(false);
         txtid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtidActionPerformed(evt);
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(180, 320, 100, 23);
+        txtid.setBounds(180, 320, 100, 31);
 
         jLabel2.setText("Address");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 410, 80, 17);
+        jLabel2.setBounds(40, 410, 80, 25);
 
         txtpcname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -188,7 +192,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtpcname);
-        txtpcname.setBounds(180, 370, 100, 23);
+        txtpcname.setBounds(180, 370, 100, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -221,7 +225,7 @@ public class AdminPC extends javax.swing.JFrame {
 
         valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valContact);
-        valContact.setBounds(300, 450, 130, 20);
+        valContact.setBounds(290, 450, 130, 20);
 
         jLabel6.setText("Mobile");
         getContentPane().add(jLabel6);
@@ -233,7 +237,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtaddress1);
-        txtaddress1.setBounds(180, 410, 100, 23);
+        txtaddress1.setBounds(180, 410, 100, 31);
 
         txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -241,7 +245,11 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(180, 450, 100, 23);
+        txtmobile.setBounds(180, 450, 100, 31);
+
+        valZip.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valZip);
+        valZip.setBounds(300, 490, 130, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -271,10 +279,11 @@ public class AdminPC extends javax.swing.JFrame {
             valContact.setText("Phone Number is Invalid");
             valid = false;
         }
-        int pc_id = Integer.valueOf(txtid.getText());
+        //int pc_id = Integer.valueOf(txtid.getText());
+        int pc_id = rand.nextInt(1,100); 
        String pc_name = txtpcname.getText();
        //int hos_id = Integer.valueOf(txthos_id.getText());
-       String address = txtZipcode.getText();
+       String address = txtaddress1.getText();
       
        String mobile = txtmobile.getText();
        int  zipcode = Integer.valueOf(txtZipcode.getText());
@@ -288,7 +297,7 @@ public class AdminPC extends javax.swing.JFrame {
         }
      
 
-        if(txtZipcode.getText().isEmpty())
+        if(txtaddress1.getText().isEmpty())
         {
             JOptionPane.showMessageDialog(this, "Please enter address");
             return;
@@ -341,7 +350,7 @@ public class AdminPC extends javax.swing.JFrame {
         return;
         }
         DefaultTableModel model =(DefaultTableModel) tblPlasma.getModel();
-         int hos_id=(int) model.getValueAt(SelectedRowIndex, 0);
+         int pc_id=(int) model.getValueAt(SelectedRowIndex, 0);
        
          conn = dbconn.getConnection();
           String selectSql = "Delete from plasmaC where pc_id=?";
@@ -350,7 +359,7 @@ public class AdminPC extends javax.swing.JFrame {
              
              stmt=conn.prepareStatement(selectSql);
              
-                 stmt.setInt(1, hos_id);
+                 stmt.setInt(1, pc_id);
                                    
               stmt.executeUpdate();
           conn.close();
@@ -359,7 +368,7 @@ public class AdminPC extends javax.swing.JFrame {
           }
     
          
-        JOptionPane.showMessageDialog(this, "Hospital Deleted");
+        JOptionPane.showMessageDialog(this, "Plasma Center Deleted");
         populateTable();
 
     
@@ -377,7 +386,7 @@ public class AdminPC extends javax.swing.JFrame {
         }
         
         if (!this.validations.ValidateAddress(txtZipcode.getText()) ) {
-            valAddress.setText("Address is required");
+            valZip.setText("Address is required");
             valid = false;
         }
         
@@ -389,9 +398,10 @@ public class AdminPC extends javax.swing.JFrame {
         int pc_id = Integer.valueOf(txtid.getText());
        String pc_name = txtpcname.getText();
        //int hos_id = Integer.valueOf(txthos_id.getText());
-       String address = txtZipcode.getText();
+       String address = txtaddress1.getText();
       
        String mobile = txtmobile.getText();
+       int zipcode = Integer.valueOf(txtZipcode.getText()); 
        
     
        
@@ -400,7 +410,7 @@ public class AdminPC extends javax.swing.JFrame {
         Connection conn = dbconn.getConnection();
         //do validation here.
         //check if the id already exists
-                String SELECTHOSSQL = "update plasmaC set pc_name=? ,address=?,mobile=? where pc_id=? ";
+                String SELECTHOSSQL = "update plasmaC set pc_name=? ,address=?,mobile=?, zipcode=? where pc_id=? ";
                 PreparedStatement stmt; 
         try
         {
@@ -408,10 +418,12 @@ public class AdminPC extends javax.swing.JFrame {
        
              
             stmt.setString(1,pc_name); 
-           // stmt.setInt(2,hos_id);
             stmt.setString(2,address);
-            stmt.setString(3,mobile);
-            stmt.setInt(4,pc_id);
+               stmt.setString(3,mobile);
+           stmt.setInt(4,zipcode);
+            
+         
+            stmt.setInt(5,pc_id);
             stmt.executeUpdate();
         }
         catch (SQLException ex)
@@ -470,7 +482,7 @@ public class AdminPC extends javax.swing.JFrame {
         txtid.setText(String.valueOf(id));
         txtpcname.setText(pc_name);
         //txthos_id.setText(hos_id);
-        txtZipcode.setText(address);
+        txtaddress1.setText(address);
         txtmobile.setText(mobile);
         
         setValidationNull();
@@ -588,6 +600,7 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JLabel valAddress;
     private javax.swing.JLabel valContact;
     private javax.swing.JLabel valName;
+    private javax.swing.JLabel valZip;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
@@ -629,6 +642,7 @@ public class AdminPC extends javax.swing.JFrame {
          txtZipcode.setText(null);
          //txthos_id.setText(null);
           txtmobile.setText(null);
+          txtaddress1.setText(null);
     }
     private void setValidationNull() {
         valName.setText(null);

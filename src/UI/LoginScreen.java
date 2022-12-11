@@ -23,6 +23,7 @@ import UI.PlasmaCenter.PCWorkArea;
 import VDONOR.VDonorWA;
 import MODEL.HOSPITAL;
 import MODEL.PlasmaCenter;
+import MODEL.Doctor; 
 
 /**
  *
@@ -217,7 +218,7 @@ public class LoginScreen extends javax.swing.JFrame {
        boolean flag = false; 
        DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
-         ResultSet resultSet1, resultSethos, resultSetpc, resultSetvdonor = null;
+         ResultSet resultSet1, resultSethos, resultSetpc, resultSetdoc,resultSetvdonor = null;
        
 System.out.println("Connected to database !!");
   String selectSql = "SELECT * from logins";
@@ -226,6 +227,7 @@ System.out.println("Connected to database !!");
       PreparedStatement stmthos_id;
       PreparedStatement stmtpc_id;
        PreparedStatement stmtvdonor_id;
+       PreparedStatement stmtdoc_id;
         try {
             stmt = conn.createStatement();
        
@@ -264,7 +266,7 @@ System.out.println("Connected to database !!");
                  }
                    if(x==3)
                 {
-                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE plasma center  ADMIN PAGE");
                     String findpc_id = "select pc_id from emppc where user_id=?";
                     int user_id = Integer.valueOf(username);
                     stmtpc_id = conn.prepareStatement(findpc_id); 
@@ -288,9 +290,18 @@ System.out.println("Connected to database !!");
                  }
                    if(x==4)
                 {
-                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
-                    DoctorWorkArea NGO=new DoctorWorkArea();
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE DOCTOR PAGE");
+                    String finddoc_id = "select doc_id from doctors where user_id=?";
+                    int user_id = Integer.valueOf(username);
+                    stmtdoc_id = conn.prepareStatement(finddoc_id); 
+                    stmtdoc_id.setInt(1, user_id);
+                    resultSetdoc = stmtdoc_id.executeQuery();
+                    resultSetdoc.next();
+                    int thisdoc_id = Integer.valueOf(resultSetdoc.getInt(1));
+                    Doctor.setDoc_id(thisdoc_id); 
                     
+                    
+                    DoctorWorkArea NGO=new DoctorWorkArea();
                     this.dispose();
                     NGO.setVisible(true);
                  }
