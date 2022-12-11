@@ -71,7 +71,7 @@ public class VDonorWA extends javax.swing.JFrame {
 
         btnAppointment1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnAppointment1.setForeground(new java.awt.Color(255, 102, 51));
-        btnAppointment1.setText("BOOK APPOINTMENT");
+        btnAppointment1.setText("DONATIONS");
         btnAppointment1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAppointment1ActionPerformed(evt);

@@ -118,7 +118,7 @@ public class Plasmacenters extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblPlasmacenters);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(80, 230, 480, 146);
+        jScrollPane1.setBounds(80, 230, 710, 146);
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -127,12 +127,12 @@ public class Plasmacenters extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(540, 70, 72, 23);
+        btnBack.setBounds(540, 70, 72, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("List of Plasma Centers");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(236, 44, 199, 22);
+        lblTitle.setBounds(236, 44, 208, 22);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

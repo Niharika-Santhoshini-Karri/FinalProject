@@ -23,7 +23,8 @@ import UI.PlasmaCenter.PCWorkArea;
 import VDONOR.VDonorWA;
 import MODEL.HOSPITAL;
 import MODEL.PlasmaCenter;
-import MODEL.Doctor; 
+import MODEL.Doctor;
+import MODEL.NGO; 
 
 /**
  *
@@ -218,7 +219,7 @@ public class LoginScreen extends javax.swing.JFrame {
        boolean flag = false; 
        DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
-         ResultSet resultSet1, resultSethos, resultSetpc, resultSetdoc,resultSetvdonor = null;
+         ResultSet resultSet1, resultSethos, resultSetpc, resultSetdoc,resultSetvdonor, resultSetngo_id= null;
        
 System.out.println("Connected to database !!");
   String selectSql = "SELECT * from logins";
@@ -228,6 +229,7 @@ System.out.println("Connected to database !!");
       PreparedStatement stmtpc_id;
        PreparedStatement stmtvdonor_id;
        PreparedStatement stmtdoc_id;
+       PreparedStatement stmtngo_id;
         try {
             stmt = conn.createStatement();
        
@@ -282,11 +284,20 @@ System.out.println("Connected to database !!");
                    if(x==5)
                 {
                     //JOptionPane.showMessageDialog(this , "NOW OPEN THE hospital ADMIN PAGE");
-                    NGOWorkArea NGO=new NGOWorkArea();
+                    String findngo_id = "select ngo_id from ngo where user_id=?";
+                    int user_id = Integer.valueOf(username);
+                    stmtngo_id = conn.prepareStatement(findngo_id); 
+                    stmtngo_id.setInt(1, user_id);
+                    resultSetngo_id = stmtngo_id.executeQuery();
+                    resultSetngo_id.next();
+                    int thisngo_id = Integer.valueOf(resultSetngo_id.getInt(1));
+                    NGO.setNgo_id(thisngo_id); 
                     
+                    
+                    NGOWorkArea NGO=new NGOWorkArea();
                     this.dispose();
                     NGO.setVisible(true);
-                     JOptionPane.showMessageDialog(this , "NOW OPEN THE NGO ADMIN PAGE");
+                    //JOptionPane.showMessageDialog(this , "NOW OPEN THE NGO ADMIN PAGE");
                  }
                    if(x==4)
                 {

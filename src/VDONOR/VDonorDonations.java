@@ -3,9 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package VDONOR;
+import DBUTIL.DBUTIL;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import MODEL.Donor; 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author rishikagurram
@@ -15,10 +23,15 @@ public class VDonorDonations extends javax.swing.JPanel {
     /**
      * Creates new form VDonorDonations
      */
+    ResultSet resultSet = null;
+    DBUTIL dbconn= new DBUTIL();
+   
     Vector originalTableModel;
+    public static int thisdonor_id = Donor.getDonor_id();
     public VDonorDonations() {
         initComponents();
         originalTableModel = (Vector) ((DefaultTableModel) tblDonations.getModel()).getDataVector().clone();
+        populateTable(); 
     }
 
     /**
@@ -46,24 +59,24 @@ public class VDonorDonations extends javax.swing.JPanel {
             }
         });
         add(btnBack);
-        btnBack.setBounds(510, 60, 100, 23);
+        btnBack.setBounds(510, 60, 100, 31);
 
         tblDonations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Donation ID", "Plasma Center ID", "Donation Date", "Quantity Donated"
+                "Plasma Center", "Quantity Donated", "Donation Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -77,7 +90,7 @@ public class VDonorDonations extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblDonations);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(80, 240, 470, 200);
+        jScrollPane1.setBounds(80, 240, 760, 200);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("YOUR DONATIONS");
@@ -140,4 +153,40 @@ public class VDonorDonations extends javax.swing.JPanel {
     private javax.swing.JTable tblDonations;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblDonations.getModel();
+         Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+        
+         
+    String selectSql = "select p.pc_name, s.quantity, s.date_donation from plasmaC p join all_stock s on s.pc_id = p.pc_id where s.vdonor_id =?";
+
+      PreparedStatement stmt;
+      
+       try {
+            stmt = conn.prepareStatement(selectSql);
+            stmt.setInt(1,thisdonor_id); 
+            resultSet = stmt.executeQuery();
+
+             while (resultSet.next()) {
+            
+            Object[] row = new Object[3];
+            row[0]=resultSet.getString(1);
+            row[1] = resultSet.getInt(2);
+            row[2] = resultSet.getString(3);
+             
+            
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(VDonorDonations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -268,7 +268,7 @@ public class PCStockk extends javax.swing.JFrame {
        String strqty = (String) comboxqty.getSelectedItem();
        int qty = Integer.valueOf(strqty);
        
-       SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-YYYY");
+       SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
        String don_date = dateFormat.format(jDateChooser.getDate()); 
        
         Connection conn = dbconn.getConnection();
@@ -288,11 +288,16 @@ public class PCStockk extends javax.swing.JFrame {
            
             
             stmt.executeUpdate();
+            
+            
         }
         catch (SQLException ex)
         {
             Logger.getLogger(PCStockk.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(this,"Stock Details updated");
+
+       populateTable(); 
 
           
            
@@ -313,7 +318,7 @@ public class PCStockk extends javax.swing.JFrame {
          int stock_id=(int) model.getValueAt(SelectedRowIndex, 0);
        
          conn = dbconn.getConnection();
-          String selectSql = "Delete from stock where stock_id=?";
+          String selectSql = "delete from all_stock where stock_id=?";
      PreparedStatement stmt;
       try {
              

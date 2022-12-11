@@ -5,7 +5,9 @@
 package UI.NGO;
 
 import DBUTIL.DBUTIL;
+import MODEL.NGO;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,6 +26,7 @@ public class ViewDonors extends javax.swing.JFrame {
      * Creates new form ViewDonors
      */
     ResultSet resultSet = null;
+    public static int thisngo_id =NGO.getNgo_id();
     DBUTIL dbconn= new DBUTIL();
      Vector originalTableModel;
     public ViewDonors() {
@@ -38,20 +41,21 @@ public class ViewDonors extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-                  String selectSql = "SELECT VNAME,AGE,CONTACT,ADDRESS,BLOOD_GROUP FROM VDONOR";
+     String selectSql = "SELECT VNAME,AGE,CONTACT,ADDRESS,BLOOD_GROUP FROM VDONOR where ngo_id=?";
 
-      Statement stmt;
+      PreparedStatement stmt;
        try {
-            stmt = conn.createStatement();
+            stmt = conn.prepareStatement(selectSql);
+            stmt.setInt(1,thisngo_id);
        
-            resultSet = stmt.executeQuery(selectSql);
+            resultSet = stmt.executeQuery();
 
              while (resultSet.next()) {
             
             Object[] row = new Object[5];
             row[0] = resultSet.getString(1);
             row[1]=resultSet.getInt(2);
-            row[2] = resultSet.getInt(3);
+            row[2] = resultSet.getString(3);
             row[3]=resultSet.getString(4);
             row[4]=resultSet.getString(5);
             
@@ -94,7 +98,7 @@ public class ViewDonors extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnback);
-        btnback.setBounds(50, 35, 72, 23);
+        btnback.setBounds(50, 35, 72, 31);
 
         tblDonorsList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,10 +112,10 @@ public class ViewDonors extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -125,7 +129,7 @@ public class ViewDonors extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDonorsList);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 220, 546, 171);
+        jScrollPane1.setBounds(30, 220, 820, 171);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("DONORS LIST");

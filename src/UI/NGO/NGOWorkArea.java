@@ -43,7 +43,7 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDonorsList);
-        btnDonorsList.setBounds(220, 280, 190, 50);
+        btnDonorsList.setBounds(220, 280, 250, 50);
 
         btnPlasmaReq.setText("PLASMA REQUESTS");
         btnPlasmaReq.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +52,7 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPlasmaReq);
-        btnPlasmaReq.setBounds(220, 100, 181, 50);
+        btnPlasmaReq.setBounds(220, 100, 250, 50);
 
         btnPC.setText("PLASMA CENTERS");
         btnPC.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,7 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPC);
-        btnPC.setBounds(220, 190, 190, 50);
+        btnPC.setBounds(220, 190, 260, 50);
 
         btnLogout.setText("LOGOUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(480, 30, 100, 23);
+        btnLogout.setBounds(480, 30, 100, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

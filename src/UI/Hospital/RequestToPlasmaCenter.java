@@ -44,7 +44,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         System.out.println("plasma req hos_id="+myhos_id);
         populateCombox(); 
         originalTableModel = (Vector) ((DefaultTableModel) tblHPCRequest.getModel()).getDataVector().clone();
-        //populateTable(); 
+        populateTable(); 
     }
 
     /**
@@ -71,8 +71,6 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         comboxPatientID = new javax.swing.JComboBox<>();
         comboxStatus = new javax.swing.JComboBox<>();
         comboxBloodGroup = new javax.swing.JComboBox<>();
-        txtSearch = new javax.swing.JTextField();
-        lbSearch = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -90,11 +88,11 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Req ID", "Blood Group", "Patient ID", "Quantity", "Status"
+                "Req ID", "Patient ID", "Quantity", "Status", "Blood Group"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -116,7 +114,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblHPCRequest);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 190, 580, 133);
+        jScrollPane1.setBounds(70, 190, 700, 133);
 
         jLabel3.setText("Blood Group");
         getContentPane().add(jLabel3);
@@ -142,14 +140,14 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(250, 560, 50, 25);
 
-        btnAdd.setText("Add");
+        btnAdd.setText("Create Request ");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(310, 590, 72, 31);
+        btnAdd.setBounds(310, 590, 159, 31);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -199,27 +197,6 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         getContentPane().add(comboxBloodGroup);
         comboxBloodGroup.setBounds(370, 410, 78, 31);
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
-            }
-        });
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtSearchKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtSearch);
-        txtSearch.setBounds(180, 130, 430, 30);
-
-        lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
-        lbSearch.setText("SEARCH");
-        getContentPane().add(lbSearch);
-        lbSearch.setBounds(100, 130, 90, 30);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -259,13 +236,16 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             stmt1.setString(5,Blood_group);
             stmt1.executeQuery();
             
+            JOptionPane.showMessageDialog(this,"Registered Successfully");
+            
+            
             }
         catch (SQLException ex)
         {
             Logger.getLogger(RequestToPlasmaCenter.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        populateTable();
         
         
     }//GEN-LAST:event_btnAddActionPerformed
@@ -280,18 +260,49 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
      
         // TODO add your handling code here:
+        Connection conn = dbconn.getConnection();
+         int SelectedRowIndex=tblHPCRequest.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
+        DefaultTableModel model =(DefaultTableModel) tblHPCRequest.getModel();
+         int request_id=(int) model.getValueAt(SelectedRowIndex, 0);
+       
+         conn = dbconn.getConnection();
+          String selectSql = "Delete from HPCRequest where request_id=?";
+     PreparedStatement stmt;
+      try {
+             
+             stmt=conn.prepareStatement(selectSql);
+             
+                 stmt.setInt(1, request_id);
+                                   
+              stmt.executeUpdate();
+          conn.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    
+         
+        JOptionPane.showMessageDialog(this, "Request to Plasma Center Deleted");
+        populateTable();
+
+    
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tblHPCRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHPCRequestMouseClicked
         // TODO add your handling code here:
         DefaultTableModel tblModel = (DefaultTableModel) tblHPCRequest.getModel();
         String Req_id = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),0).toString();
-        String Blood_group = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),0).toString();
-        String patient_id = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),0).toString();
-        String quantity = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),0).toString();
-        String Status = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),0).toString();
+        String Blood_group = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),4).toString();
+        String patient_id = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),1).toString();
+        String quantity = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),2).toString();
+        String Status = tblModel.getValueAt(tblHPCRequest.getSelectedRow(),3).toString();
         
-        //txtRequestID.setText(Req_id); 
+        //txtreq_ID.setText(Req_id); 
         //txtPatientID.setText(patient_id); 
         txtQuantity.setText(quantity); 
         
@@ -305,34 +316,75 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboxBloodGroupActionPerformed
 
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchKeyPressed
-
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel)tblHPCRequest.getModel();
-
-        model.setRowCount(0);
-        for (Object rows : originalTableModel) {
-            Vector rowVector = (Vector) rows;
-            for (Object column : rowVector) {
-                if (column.toString().toLowerCase().contains(txtSearch.getText())) {
-                    //content found so adding to table
-                    model.addRow(rowVector);
-                    break;
-                }
-            }
-
-        }
-    }//GEN-LAST:event_txtSearchKeyReleased
-
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+       String strPat_id = (String) comboxPatientID.getSelectedItem();
+        int pat_id = Integer.valueOf(strPat_id);
+        
+         
+        
+        int quantity = Integer.parseInt(txtQuantity.getText());
+        String status = (String)comboxStatus.getSelectedItem();
+        // DO SOME VALIDATIONS HERE and if it doesnt match, return. 
+        // code for request ID to be autogenerated. 
+        
+        String Blood_group = (String) comboxBloodGroup.getSelectedItem();
+         int SelectedRowIndex=tblHPCRequest.getSelectedRow();
+       System.out.println("SelectedRowIndex "+SelectedRowIndex);
+                  if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to Update");
+            
+        return;
+        }
+           
+            // validate the text from text boxes 
+       //DBUTIL dbconn= new DBUTIL();
+        Connection conn = dbconn.getConnection();
+        //do validation here.
+        //check if the id already exists
+                String SELECTHOSSQL = "update HPCRequest set qty=? ,status=? where request_id=? ";
+                PreparedStatement stmt; 
+        try
+        {
+            stmt = conn.prepareStatement(SELECTHOSSQL);
+       int req_id = rand.nextInt(100);
+             
+            stmt.setInt(1,quantity); 
+            stmt.setString(2,status);
+              
+            
+         
+            stmt.setInt(3,req_id);
+            stmt.executeUpdate();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        // to display in the text boxes          
+        DefaultTableModel tblModel = (DefaultTableModel) tblHPCRequest.getModel();
+              
+       tblModel.setValueAt(quantity,tblHPCRequest.getSelectedRow(), 2);
+       tblModel.setValueAt(status,tblHPCRequest.getSelectedRow(), 3);
+      // tblModel.setValueAt(hos_id,tblPlasma.getSelectedRow(), 2);
+//       tblModel.setValueAt(address,tblPlasma.getSelectedRow(), 2);
+//       tblModel.setValueAt(mobile,tblPlasma.getSelectedRow(), 3);
+       
+        
+
+  JOptionPane.showMessageDialog(this,"Request to Plasma Center updated!!");
+
+       populateTable(); 
+    txtQuantity.setText("");
+   comboxStatus.setSelectedItem("");
+       
+   
+  //stop
+      
+        
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
@@ -384,13 +436,48 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblHPCRequest;
     private javax.swing.JTextField txtQuantity;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblHPCRequest.getModel();
+        Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+        
+         
+     String selectSql = "select h.request_id, h.pat_id,h.qty,h.status, h.blood_group from hpcrequest h join patients p on h.pat_id = p.pat_id join doctors d on p.doc_id = d.doc_id where hos_id=?";
+     
+
+      PreparedStatement stmt;
+       try {
+            stmt = conn.prepareStatement(selectSql);
+            stmt.setInt(1,myhos_id);
+       
+            resultSet1 = stmt.executeQuery();
+
+             while (resultSet1.next()) {
+            
+            Object[] row = new Object[5];
+            row[0] = resultSet1.getInt(1);
+            row[1]=resultSet1.getInt(2);
+            row[2] = resultSet1.getInt(3);
+            row[3]=resultSet1.getString(4);
+            row[4]=resultSet1.getString(5);
+            
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(RequestToPlasmaCenter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         
     }
 

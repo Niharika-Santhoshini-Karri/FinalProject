@@ -32,6 +32,7 @@ public class PCWorkArea extends javax.swing.JFrame {
         btnStock = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -43,7 +44,7 @@ public class PCWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDonorDetails);
-        btnDonorDetails.setBounds(141, 125, 150, 60);
+        btnDonorDetails.setBounds(141, 125, 200, 60);
 
         btnStock.setText("STOCK DETAILS");
         btnStock.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +53,7 @@ public class PCWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnStock);
-        btnStock.setBounds(140, 290, 150, 60);
+        btnStock.setBounds(450, 130, 230, 60);
 
         btnBack.setText("BACK TO LOGIN");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -63,14 +64,23 @@ public class PCWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnBack);
         btnBack.setBounds(570, 20, 140, 30);
 
-        jButton1.setText("Plasma Requests");
+        jButton1.setText("REQUESTS FROM HOSPITAL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(460, 120, 170, 70);
+        jButton1.setBounds(20, 320, 340, 70);
+
+        jButton2.setText("REQUESTS TO NGO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(430, 320, 340, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,6 +112,13 @@ public class PCWorkArea extends javax.swing.JFrame {
     this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    RequestToNGO RTN = new RequestToNGO();
+    RTN.setVisible(true);
+    this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,5 +161,6 @@ public class PCWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnDonorDetails;
     private javax.swing.JButton btnStock;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

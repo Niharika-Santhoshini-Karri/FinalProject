@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
+import MODEL.PlasmaCenter;
 
 /**
  *
@@ -25,13 +26,16 @@ public class PlasmaRequests extends javax.swing.JFrame {
      * Creates new form PlasmaRequests
      */
     Validations validations;
-    ResultSet resultSet, resultSet1, resultSet2 = null;
+    ResultSet resultSet, resultSet1, resultSet2, resultSetx = null;
     DBUTIL dbconn= new DBUTIL();
+    public static int thispc_id = PlasmaCenter.getPc_id(); 
+    
     
     
     public PlasmaRequests() {
         initComponents();
-        populateTable(); 
+        populateTable();
+        updateCombox(); 
     }
 
     /**
@@ -48,10 +52,13 @@ public class PlasmaRequests extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
         lblStatus = new javax.swing.JLabel();
-        cmbStatus = new javax.swing.JComboBox<>();
+        comboxStock_id = new javax.swing.JComboBox<>();
         btnBack = new javax.swing.JButton();
+        lblStockID = new javax.swing.JLabel();
+        cmbStatus1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         tblPlasmaRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,8 +88,13 @@ public class PlasmaRequests extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblPlasmaRequests);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(65, 119, 713, 162);
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("PLASMA REQUESTS");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(92, 48, 270, 25);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -90,10 +102,15 @@ public class PlasmaRequests extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
+        getContentPane().add(btnUpdate);
+        btnUpdate.setBounds(320, 410, 140, 31);
 
         lblStatus.setText("Status");
+        getContentPane().add(lblStatus);
+        lblStatus.setBounds(90, 310, 70, 25);
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Pending", " " }));
+        getContentPane().add(comboxStock_id);
+        comboxStock_id.setBounds(520, 310, 124, 31);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -101,52 +118,16 @@ public class PlasmaRequests extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(830, 24, 100, 31);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(lblStatus)
-                        .addGap(28, 28, 28)
-                        .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(btnUpdate)))
-                .addContainerGap(173, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnBack)))
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnUpdate)
-                .addGap(72, 72, 72))
-        );
+        lblStockID.setText("STOCK ID");
+        getContentPane().add(lblStockID);
+        lblStockID.setBounds(400, 310, 110, 25);
+
+        cmbStatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Pending", " " }));
+        getContentPane().add(cmbStatus1);
+        cmbStatus1.setBounds(161, 307, 127, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,26 +142,70 @@ public class PlasmaRequests extends javax.swing.JFrame {
         }
         DefaultTableModel model =(DefaultTableModel) tblPlasmaRequests.getModel();
         Connection conn = dbconn.getConnection();
+        
+        PreparedStatement stmt1, stmt2, stmt3; 
       
          String request_id = model.getValueAt(tblPlasmaRequests.getSelectedRow(),0).toString();
          int req_id = Integer.valueOf(request_id); 
-        String updateStatus = "update HPCRequest set status=? where request_id=? ";
+         
+         String sstock_id = (String) comboxStock_id.getSelectedItem(); 
+         int stock_id = Integer.valueOf(sstock_id);
+         
+         String stockavailable = "select s.quantity, d.blood_group from all_stock s join vdonor d on s.vdonor_id = d.vdonor_id where s.stock_id = ?";
+         
+         String findhosrequests = "select qty, blood_group from hpcrequest where request_id =?"; 
+         
+         
+        String updateStatus = "update HPCRequest set status=?, stock_id=? where request_id=? ";
         
-        String status = (String) cmbStatus.getSelectedItem(); 
+        String status = (String) comboxStock_id.getSelectedItem(); 
 
-        PreparedStatement stmt; 
+        
         try
         {
-            stmt = conn.prepareStatement(updateStatus);
-       
-             
             
-            stmt.setString(1,status);
-            stmt.setInt(2,req_id);
+            stmt3 = conn.prepareStatement(updateStatus);
+            stmt3.setString(1,status);
+            stmt3.setInt(2, stock_id);
+            stmt3.setInt(3,req_id);
             
-           
+            stmt1 = conn.prepareStatement(findhosrequests);
+            stmt1.setInt(1,req_id);
             
-            stmt.executeUpdate();
+            
+            int hosqty=2, stockqty = 1; 
+            String hosBlood="x", stockBlood="y"; 
+            
+            resultSet1 = stmt1.executeQuery();
+            while(resultSet1.next())
+            {
+                hosqty  = resultSet1.getInt(1); 
+                hosBlood = resultSet1.getString(2);
+            }
+            
+            
+            stmt2 = conn.prepareStatement(stockavailable);
+            stmt2.setInt(1,stock_id);
+            resultSet2 = stmt2.executeQuery();
+            
+            while(resultSet2.next())
+            {
+              stockqty  = resultSet2.getInt(1); 
+              stockBlood = resultSet2.getString(2);  
+            }
+            if(hosqty==stockqty && (hosBlood).equals(stockBlood))
+            {
+                stmt3.executeQuery();
+                JOptionPane.showMessageDialog(this,"Status Updated");
+            }
+            else
+            {
+               
+                JOptionPane.showMessageDialog(this,"This stock doesnt suit this request!");
+                return; 
+               
+            }
+            
             
         }
         catch (SQLException ex)
@@ -188,8 +213,9 @@ public class PlasmaRequests extends javax.swing.JFrame {
             Logger.getLogger(PlasmaRequests.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
       
-      JOptionPane.showMessageDialog(this,"Status Updated");
+      
       populateTable();
         
         // TODO add your handling code here:
@@ -239,10 +265,12 @@ public class PlasmaRequests extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JComboBox<String> cmbStatus;
+    private javax.swing.JComboBox<String> cmbStatus1;
+    private javax.swing.JComboBox<String> comboxStock_id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblStockID;
     private javax.swing.JTable tblPlasmaRequests;
     // End of variables declaration//GEN-END:variables
 
@@ -278,6 +306,36 @@ public class PlasmaRequests extends javax.swing.JFrame {
              
        }
        catch (SQLException ex) {
+            Logger.getLogger(PlasmaRequests.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateCombox() {
+        Connection conn = dbconn.getConnection();
+        
+        String SELECTSQL2 = "SELECT stock_id FROM all_stock where pc_id =?";
+
+        PreparedStatement stmt2; 
+        try
+        {
+            
+            stmt2 = conn.prepareStatement(SELECTSQL2);
+            stmt2.setInt(1,thispc_id); 
+            
+            resultSetx = stmt2.executeQuery(); 
+            
+            
+            
+            while(resultSetx.next())
+            {
+                comboxStock_id.addItem(resultSetx.getString(1));
+            }
+       
+             
+            
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(PlasmaRequests.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import MODEL.PlasmaCenter; 
 
 /**
  *
@@ -32,9 +33,10 @@ public class PCDonorr extends javax.swing.JFrame {
     Vector originalTableModel;
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
+    public static int thispc_id = PlasmaCenter.getPc_id();
     public PCDonorr() {
         initComponents();
-       // populateTable();
+       populateTable();
     originalTableModel = (Vector) ((DefaultTableModel) tblDonor.getModel()).getDataVector().clone();
     }
     private void populateTable(){
@@ -43,22 +45,24 @@ public class PCDonorr extends javax.swing.JFrame {
         model.setRowCount(0);
         
          
-                  String selectSql = "";
+    String selectSql = "select s.stock_id, d.vdonor_id , d.vname, d.blood_group,s.date_donation, s.quantity from all_stock s join vdonor d on s.vdonor_id = d.vdonor_id where s.pc_id=? ";
 
-      Statement stmt;
+      PreparedStatement stmt;
+      
        try {
-            stmt = conn.createStatement();
-       
-            resultSet = stmt.executeQuery(selectSql);
+            stmt = conn.prepareStatement(selectSql);
+            stmt.setInt(1,thispc_id); 
+            resultSet = stmt.executeQuery();
 
              while (resultSet.next()) {
             
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0]=resultSet.getInt(1);
-            row[1] = resultSet.getString(2);
+            row[1] = resultSet.getInt(2);
             row[2] = resultSet.getString(3);
-            row[3]=resultSet.getDate(4);
+            row[3]=resultSet.getString(4);
             row[4]=resultSet.getInt(5); 
+            row[5]=resultSet.getInt(6); 
             
             
             model.addRow(row);
@@ -69,7 +73,7 @@ public class PCDonorr extends javax.swing.JFrame {
              
        }
        catch (SQLException ex) {
-            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PCDonorr.class.getName()).log(Level.SEVERE, null, ex);
         }
                 }
 
@@ -126,7 +130,7 @@ public class PCDonorr extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDonor);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 180, 810, 210);
+        jScrollPane1.setBounds(40, 180, 860, 210);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitle.setText("DONORS");

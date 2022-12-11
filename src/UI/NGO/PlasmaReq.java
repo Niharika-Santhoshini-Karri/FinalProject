@@ -4,8 +4,17 @@
  */
 package UI.NGO;
 
+import DBUTIL.DBUTIL; 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import MODEL.NGO; 
 
 /**
  *
@@ -16,10 +25,15 @@ public class PlasmaReq extends javax.swing.JFrame {
     /**
      * Creates new form PatientReq
      */
+    DBUTIL dbconn= new DBUTIL();
+    ResultSet resultSet, resultSet2 = null;
     Vector originalTableModel;
+    public static int thisngo_id =NGO.getNgo_id();
     public PlasmaReq() {
         initComponents();
         originalTableModel = (Vector) ((DefaultTableModel) tblWorkRequests.getModel()).getDataVector().clone();
+        populateTable();
+        
     }
 
     /**
@@ -35,9 +49,6 @@ public class PlasmaReq extends javax.swing.JFrame {
         btnback = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblWorkRequests = new javax.swing.JTable();
-        cmbStatus = new javax.swing.JComboBox<>();
-        lblStatus = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
 
@@ -56,24 +67,24 @@ public class PlasmaReq extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnback);
-        btnback.setBounds(540, 50, 72, 23);
+        btnback.setBounds(540, 50, 72, 31);
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Request Id", "Blood Group", "Patient Name", "Quantity", "Request  Date", "Mobile"
+                "Plasma Center", "Blood Group", "Status", "Quantity", "Zipcode"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -87,24 +98,7 @@ public class PlasmaReq extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblWorkRequests);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(27, 147, 577, 171);
-
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Item 2", " " }));
-        getContentPane().add(cmbStatus);
-        cmbStatus.setBounds(110, 350, 88, 22);
-
-        lblStatus.setText("Status");
-        getContentPane().add(lblStatus);
-        lblStatus.setBounds(60, 350, 32, 16);
-
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(500, 350, 72, 23);
+        jScrollPane1.setBounds(27, 147, 870, 171);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -134,12 +128,6 @@ public class PlasmaReq extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnbackActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -200,14 +188,50 @@ public class PlasmaReq extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnback;
-    private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
-    private javax.swing.JLabel lblStatus;
     private javax.swing.JTable tblWorkRequests;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblWorkRequests.getModel();
+         Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+        
+ String selectSql ="select  p.pc_name, r.blood_group,r.status, r.qty, p.zipcode from pcngorequest r join plasmac p on r.pc_id = p.pc_id where ngo_id =?";
+    
+      PreparedStatement stmt;
+       try {
+            stmt = conn.prepareStatement(selectSql);
+            stmt.setInt(1,thisngo_id);
+       
+            resultSet = stmt.executeQuery();
+            resultSet.next();
+
+             while (resultSet.next()) {
+            
+            Object[] row = new Object[5];
+            row[0]=resultSet.getString(1);
+            row[1] = resultSet.getString(2);
+            row[2] = resultSet.getString(3);
+            row[3] = resultSet.getInt(4);
+            row[4]=resultSet.getInt(5);
+            
+            
+            
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(PlasmaReq.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

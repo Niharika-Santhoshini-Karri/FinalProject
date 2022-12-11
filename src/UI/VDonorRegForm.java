@@ -435,7 +435,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             
             
             
-            
+         JOptionPane.showMessageDialog(this,"Registered Successfully");   
             
         }
         catch (SQLException ex)
@@ -443,7 +443,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
             Logger.getLogger(VDonorRegForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        JOptionPane.showMessageDialog(this,"Registered Successfully");
+        
         
         
         
