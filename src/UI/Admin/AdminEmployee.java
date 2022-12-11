@@ -31,12 +31,13 @@ public class AdminEmployee extends javax.swing.JFrame {
       Validations validations;
     Vector originalTableModel;
     Random rand = new Random();
-    ResultSet resultSet1, resultSet2 = null;
+    ResultSet resultSet1, resultSet2,resultSet3 = null;
     DBUTIL dbconn= new DBUTIL();
     public AdminEmployee() {
         initComponents();
         validations = new Validations();
         UpdateComboxes();
+        populateTable();
                 
 
         
@@ -54,11 +55,8 @@ public class AdminEmployee extends javax.swing.JFrame {
     private void initComponents() {
 
         ComboPlasmaCenter = new javax.swing.JComboBox<>();
-        lblEmployeeName = new javax.swing.JLabel();
         lblbank = new javax.swing.JLabel();
-        txtUsername = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-        btndel = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         lblEmployeeName1 = new javax.swing.JLabel();
@@ -68,9 +66,11 @@ public class AdminEmployee extends javax.swing.JFrame {
         txtEmpName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         valName = new javax.swing.JLabel();
-        valUsername = new javax.swing.JLabel();
         valPassword = new javax.swing.JLabel();
         valPC = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmployee = new javax.swing.JTable();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -81,23 +81,11 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(300, 230, 140, 22);
-
-        lblEmployeeName.setText("Username :");
-        getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(120, 330, 110, 16);
+        ComboPlasmaCenter.setBounds(310, 410, 140, 23);
 
         lblbank.setText("Plasma Center");
         getContentPane().add(lblbank);
-        lblbank.setBounds(70, 220, 150, 16);
-
-        txtUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsernameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtUsername);
-        txtUsername.setBounds(290, 320, 140, 22);
+        lblbank.setBounds(150, 410, 100, 17);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -108,15 +96,6 @@ public class AdminEmployee extends javax.swing.JFrame {
         getContentPane().add(btnBack);
         btnBack.setBounds(490, 20, 100, 23);
 
-        btndel.setText("DELETE");
-        btndel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndelActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btndel);
-        btndel.setBounds(380, 440, 170, 23);
-
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +103,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(90, 440, 210, 23);
+        btnAdd.setBounds(100, 550, 210, 23);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER EMPLOYEES ");
@@ -133,39 +112,100 @@ public class AdminEmployee extends javax.swing.JFrame {
 
         lblEmployeeName1.setText("Password :");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(120, 380, 100, 16);
+        lblEmployeeName1.setBounds(180, 460, 100, 20);
 
         txtEmpID.setEditable(false);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(290, 130, 160, 22);
+        txtEmpID.setBounds(300, 310, 160, 23);
 
         lblEmployeeName2.setText("Employee ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(70, 140, 150, 16);
+        lblEmployeeName2.setBounds(150, 320, 150, 17);
 
         lblEmployeeName3.setText("Name:");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(70, 180, 110, 16);
+        lblEmployeeName3.setBounds(190, 370, 50, 17);
+
+        txtEmpName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmpNameKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(290, 180, 160, 22);
+        txtEmpName.setBounds(300, 360, 160, 23);
+
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(290, 380, 140, 22);
+        txtPassword.setBounds(310, 450, 140, 30);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(370, 230, 180, 20);
-
-        valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
-        getContentPane().add(valUsername);
-        valUsername.setBounds(450, 340, 180, 20);
+        valName.setBounds(490, 360, 180, 20);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(460, 380, 170, 20);
+        valPassword.setBounds(480, 460, 170, 20);
 
         valPC.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPC);
-        valPC.setBounds(390, 280, 180, 20);
+        valPC.setBounds(470, 410, 180, 20);
+
+        tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Employee ID", "Employee Name", "User ID", "Plasma Center "
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblEmployeeMouseClicked(evt);
+            }
+        });
+        tblEmployee.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblEmployeeKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblEmployee);
+        if (tblEmployee.getColumnModel().getColumnCount() > 0) {
+            tblEmployee.getColumnModel().getColumn(1).setHeaderValue("Employee Name");
+        }
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(110, 90, 452, 170);
+
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDelete);
+        btnDelete.setBounds(400, 550, 160, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,32 +216,6 @@ public class AdminEmployee extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btndelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndelActionPerformed
-        // TODO add your handling code here:
-        
-        Connection conn = dbconn.getConnection();
-         int emp_id=(int) Integer.valueOf(txtUsername.getText());
-         
-         conn = dbconn.getConnection();
-          String selectSql = "Delete from employees where emp_id=?";
-     PreparedStatement stmt;
-      try {
-             
-             stmt=conn.prepareStatement(selectSql);
-             
-                 stmt.setInt(1, emp_id);
-                                   
-              stmt.executeUpdate();
-          conn.close();
-          } catch (SQLException ex) {
-              Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
-          }
-    
-         
-        JOptionPane.showMessageDialog(this, "Employee Deleted");
-      
-    }//GEN-LAST:event_btndelActionPerformed
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         var valid = true;
         
@@ -211,10 +225,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             valid = false;
         }
 
-        if (!this.validations.ValidateUsername(txtUsername.getText()) ) {
-            valUsername.setText("Username is Invalid");
-            valid = false;
-        } 
+        
 
         String pass_word = String.valueOf(txtPassword.getPassword());
         if (!this.validations.ValidatePassword(pass_word) ) {
@@ -275,25 +286,21 @@ public class AdminEmployee extends javax.swing.JFrame {
 
 
         JOptionPane.showMessageDialog(this,"Employee Created");
-        JOptionPane.showMessageDialog(this,"USER_ID = "+user_id);
+        JOptionPane.showMessageDialog(this,"Your UserID is  "+user_id);
 
-    
+     populateTable();
    
   //stop
    txtEmpName.setText("");
    txtEmpID.setText("");
-   txtUsername.setText("");
+   //txtUsername.setText("");
    txtPassword.setText("");
         
-   
+  
             
             
             
     }//GEN-LAST:event_btnAddActionPerformed
-
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void ComboPlasmaCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboPlasmaCenterActionPerformed
         // TODO add your handling code here:
@@ -301,13 +308,91 @@ public class AdminEmployee extends javax.swing.JFrame {
         
 
         if (plasma  == null || plasma .toString().equals("")) {
-            valPC.setText("Please Select Blood Group");
+            valPC.setText("Please Select Plasma Center");
             ComboPlasmaCenter.removeAllItems();
            valPC.setText(null);
         } else {
             ComboPlasmaCenter.setSelectedItem("");
         }
     }//GEN-LAST:event_ComboPlasmaCenterActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        Connection conn = dbconn.getConnection();
+         int SelectedRowIndex=tblEmployee.getSelectedRow();
+        if(SelectedRowIndex<0)
+        {
+         JOptionPane.showMessageDialog(this, "Please select a row to delete");
+            
+        return;
+        }
+        DefaultTableModel model =(DefaultTableModel) tblEmployee.getModel();
+         int EMP_ID=(int) model.getValueAt(SelectedRowIndex, 0);
+       
+         conn = dbconn.getConnection();
+          String selectSql = "Delete from emppc  where EMP_ID=?";
+     PreparedStatement stmt;
+      try {
+             
+             stmt=conn.prepareStatement(selectSql);
+             
+                 stmt.setInt(1, EMP_ID);
+                                   
+              stmt.executeUpdate();
+          conn.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(AdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+          }
+    
+         
+        JOptionPane.showMessageDialog(this, "Plasma Center Employee Deleted");
+        populateTable();
+        setTextNull();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblEmployeeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblEmployeeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblEmployeeKeyPressed
+
+    private void tblEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEmployeeMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblModel = (DefaultTableModel) tblEmployee.getModel();
+
+        // set data to textfield when raw is selected
+
+        String emp_id = tblModel.getValueAt(tblEmployee.getSelectedRow(),0).toString();
+        String emp_name = tblModel.getValueAt(tblEmployee.getSelectedRow(),1).toString();
+        //String hos_id = tblModel.getValueAt(tblPlasma.getSelectedRow(),2).toString();
+        String pc_id = tblModel.getValueAt(tblEmployee.getSelectedRow(),2).toString();
+        
+        
+
+        txtEmpID.setText(String.valueOf(emp_id));
+        txtEmpName.setText(emp_name);
+         ComboPlasmaCenter.getSelectedItem();
+       
+        setValidationNull();
+    }//GEN-LAST:event_tblEmployeeMouseClicked
+
+    private void txtEmpNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpNameKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateName(txtEmpName.getText()) ) {
+            valName.setText("Name is required");
+        }
+        else {
+            valName.setText(null);
+        }
+    }//GEN-LAST:event_txtEmpNameKeyReleased
+
+    private void txtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyReleased
+        // TODO add your handling code here:
+        String password = String.valueOf(txtPassword.getPassword());
+        if (!this.validations.ValidatePassword(password) ) {
+            valPassword.setText("Should be 4-12 character long");
+        } else {
+            valPassword.setText(null);
+        }
+    }//GEN-LAST:event_txtPasswordKeyReleased
 
     /**
      * @param args the command line arguments
@@ -377,25 +462,69 @@ public class AdminEmployee extends javax.swing.JFrame {
         
         
 }
+     private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
+         Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
+        
+         
+                  String selectSql = "select emp_id,  employee_name,user_id,pc_id from emppc ";
+
+      Statement stmt;
+       try {
+            stmt = conn.createStatement();
+       
+            resultSet3 = stmt.executeQuery(selectSql);
+
+             while (resultSet3.next()) {
+            
+            Object[] row = new Object[4];
+            row[0]=resultSet3.getInt(1);
+            row[1] = resultSet3.getString(2);
+            row[2]=resultSet3.getInt(3);
+            row[3]=resultSet3.getInt(4);
+            
+            model.addRow(row);
+             }
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void setTextNull() {
+    txtEmpID.setText(null);
+        txtEmpName.setText(null);
+//         ComboPlasmaCenter.setSelection(null);
+         
+    }
+    private void setValidationNull() {
+        valName.setText(null);
+         valPC.setText(null);
+        valPassword.setText(null);
+       
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboPlasmaCenter;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btndel;
-    private javax.swing.JLabel lblEmployeeName;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JLabel lblEmployeeName2;
     private javax.swing.JLabel lblEmployeeName3;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblbank;
+    private javax.swing.JTable tblEmployee;
     private javax.swing.JTextField txtEmpID;
     private javax.swing.JTextField txtEmpName;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsername;
     private javax.swing.JLabel valName;
     private javax.swing.JLabel valPC;
     private javax.swing.JLabel valPassword;
-    private javax.swing.JLabel valUsername;
     // End of variables declaration//GEN-END:variables
 }

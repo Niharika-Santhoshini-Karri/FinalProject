@@ -317,8 +317,8 @@ Validations validations;
             valSpecialisation.setText("Please Select Doctor Specialisation");
             valid = false;
         }
-          if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
-            valPagerID.setText("Phone Number is Invalid");
+          if (!this.validations.ValidatePagerID(txtpager_id.getText()) ) {
+            valPagerID.setText("Pager ID is Invalid");
             valid = false;
         }
           if (!this.validations.ValidateUsername(txtUsername.getText()) ) {
@@ -409,8 +409,8 @@ Validations validations;
             valSpecialisation.setText("Please Select Doctor Specialisation");
             valid = false;
         }
-          if (!this.validations.ValidatePhoneNumber(txtpager_id.getText()) ) {
-            valPagerID.setText("Phone Number is Invalid");
+          if (!this.validations.ValidatePagerID(txtpager_id.getText()) ) {
+            valPagerID.setText("Pager ID is Invalid");
             valid = false;
         }
           if (!this.validations.ValidateUsername(txtUsername.getText()) ) {
@@ -437,22 +437,7 @@ Validations validations;
        //DBUTIL dbconn= new DBUTIL();
         Connection conn = dbconn.getConnection();
         //do validation here.
-        if(txtdoc_name.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter doctor name");
-           return;
-        }
-        if(txtdoc_id.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter valid doctor id");
-            return;
-        }
-
-        if(txtpager_id.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Please enter pager id");
-            return;
-        }
+        
         //check if the id already exists
         String INSERTLOGIN = "insert into logins(user_id, pass_word, role_id) values (?,?,?)";
         String INSERTDOCSQL = "insert into doctors(doc_id, hos_id, doc_name, spec, pager_id, user_id) values (?,?,?,?,?,?)";
@@ -656,6 +641,9 @@ Validations validations;
      private void setTextNull() {
      
          txtdoc_name.setText(null);
+         txtdoc_id.setText(null);
+         txtUsername.setText(null);
+         txtPassword.setText(null);
          txtpager_id.setText(null);
          specCombox.setSelectedItem(null);
   

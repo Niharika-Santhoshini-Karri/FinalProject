@@ -35,8 +35,6 @@ public class AdminWorkArea extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         btnPCEmployee = new javax.swing.JButton();
         btnHosEmployee = new javax.swing.JButton();
-        btnDelPCEmp = new javax.swing.JButton();
-        btnDelHosEmp = new javax.swing.JButton();
 
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -52,7 +50,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnBack);
         btnBack.setBounds(580, 30, 100, 23);
 
-        btnHospital.setText("MANAGE HOSPITALS");
+        btnHospital.setText("HOSPITALS");
         btnHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHospitalActionPerformed(evt);
@@ -61,7 +59,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnHospital);
         btnHospital.setBounds(500, 130, 180, 40);
 
-        btnPlasmaCenter.setText("MANAGE PLASMA CENTERS");
+        btnPlasmaCenter.setText("PLASMA CENTERS");
         btnPlasmaCenter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlasmaCenterActionPerformed(evt);
@@ -75,41 +73,23 @@ public class AdminWorkArea extends javax.swing.JFrame {
         getContentPane().add(lblTitle);
         lblTitle.setBounds(20, 10, 350, 50);
 
-        btnPCEmployee.setText("CREATE PLASMA CENTER EMPLOYEES");
+        btnPCEmployee.setText("PLASMA CENTER EMPLOYEES");
         btnPCEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPCEmployeeActionPerformed(evt);
             }
         });
         getContentPane().add(btnPCEmployee);
-        btnPCEmployee.setBounds(60, 270, 290, 40);
+        btnPCEmployee.setBounds(60, 270, 290, 80);
 
-        btnHosEmployee.setText(" CREATE HOSPITAL EMPLOYEES");
+        btnHosEmployee.setText("HOSPITAL EMPLOYEES");
         btnHosEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHosEmployeeActionPerformed(evt);
             }
         });
         getContentPane().add(btnHosEmployee);
-        btnHosEmployee.setBounds(470, 270, 270, 40);
-
-        btnDelPCEmp.setText("DELETE PLASMA CENTER EMPLOYEES");
-        btnDelPCEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelPCEmpActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnDelPCEmp);
-        btnDelPCEmp.setBounds(60, 360, 290, 60);
-
-        btnDelHosEmp.setText("DELETE HOSPITAL EMPLOYEES");
-        btnDelHosEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelHosEmpActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnDelHosEmp);
-        btnDelHosEmp.setBounds(530, 353, 200, 50);
+        btnHosEmployee.setBounds(470, 270, 270, 70);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,21 +125,6 @@ public class AdminWorkArea extends javax.swing.JFrame {
       AHE.setVisible(true);
       this.dispose();
     }//GEN-LAST:event_btnHosEmployeeActionPerformed
-
-    private void btnDelPCEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelPCEmpActionPerformed
-    DelPlasmaEmp DPE=new DelPlasmaEmp();
-    DPE.setVisible(true);
-     this.dispose();    
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDelPCEmpActionPerformed
-
-    private void btnDelHosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelHosEmpActionPerformed
-    DelHosEmployee DHE=new DelHosEmployee();
-    DHE.setVisible(true);
-     this.dispose();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDelHosEmpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,8 +163,6 @@ public class AdminWorkArea extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDelHosEmp;
-    private javax.swing.JButton btnDelPCEmp;
     private javax.swing.JButton btnHosEmployee;
     private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnPCEmployee;

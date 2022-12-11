@@ -196,7 +196,9 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+ AdminStock AS= new AdminStock();
+        this.dispose();
+        AS.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstatusActionPerformed
