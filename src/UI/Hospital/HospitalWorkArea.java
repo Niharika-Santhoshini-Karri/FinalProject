@@ -51,6 +51,7 @@ public class HospitalWorkArea extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jButton1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
@@ -96,7 +97,7 @@ public class HospitalWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(620, 50, 100, 23);
+        btnBack.setBounds(620, 50, 100, 24);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Hospital/hospital.png"))); // NOI18N
         getContentPane().add(jLabel2);

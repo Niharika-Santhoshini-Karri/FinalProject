@@ -59,6 +59,7 @@ public class UpdateTest extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(null);
 
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
@@ -100,12 +101,12 @@ public class UpdateTest extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel1.setText("REQ ID");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(210, 80, 70, 17);
+        jLabel1.setBounds(210, 80, 70, 18);
 
         jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel3.setText("PLATELET RICH PLASMA");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 420, 180, 17);
+        jLabel3.setBounds(90, 420, 180, 18);
 
         btnCreate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnCreate.setText("CREATE TEST ");
@@ -124,7 +125,7 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxStatus);
-        comboxStatus.setBounds(340, 420, 110, 23);
+        comboxStatus.setBounds(340, 420, 110, 31);
 
         jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel4.setText("LABORATORY");
@@ -139,10 +140,10 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(620, 40, 130, 23);
+        jButton2.setBounds(620, 40, 130, 24);
 
         getContentPane().add(comboxReq_id);
-        comboxReq_id.setBounds(390, 80, 72, 23);
+        comboxReq_id.setBounds(390, 80, 72, 31);
 
         btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
@@ -157,7 +158,7 @@ public class UpdateTest extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel2.setText("TEST ID");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(210, 370, 55, 17);
+        jLabel2.setBounds(210, 370, 55, 18);
 
         txttest_id.setEditable(false);
         txttest_id.addActionListener(new java.awt.event.ActionListener() {
@@ -166,7 +167,7 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txttest_id);
-        txttest_id.setBounds(340, 370, 98, 23);
+        txttest_id.setBounds(340, 370, 98, 31);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Laboratory/labtests.png"))); // NOI18N
         jLabel5.setText("jLabel5");

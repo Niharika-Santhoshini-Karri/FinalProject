@@ -118,6 +118,7 @@ public class AdminHospital extends javax.swing.JFrame {
         txtid.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
@@ -308,6 +309,7 @@ public class AdminHospital extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 740, 570);
 

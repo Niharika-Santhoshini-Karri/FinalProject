@@ -41,6 +41,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         btnBack.setText("BACK");
@@ -104,6 +105,7 @@ public class AdminWorkArea extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/admin workarea.jpeg"))); // NOI18N
         jLabel2.setText("jLabel2");
+        jLabel2.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 800, 550);
 

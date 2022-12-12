@@ -115,6 +115,7 @@ Validations validations;
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
@@ -166,7 +167,7 @@ Validations validations;
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(222, 570, 90, 23);
+        btnAdd.setBounds(222, 570, 90, 24);
 
         btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
@@ -176,7 +177,7 @@ Validations validations;
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(330, 270, 90, 23);
+        btnUpdate.setBounds(330, 270, 90, 24);
 
         btnDelete.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDelete.setText("DELETE");
@@ -186,22 +187,22 @@ Validations validations;
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(450, 270, 90, 23);
+        btnDelete.setBounds(450, 270, 90, 24);
 
         jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel2.setText("NAME");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(190, 370, 120, 17);
+        jLabel2.setBounds(190, 370, 120, 18);
 
         jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel3.setText("DOCTOR ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(190, 330, 100, 17);
+        jLabel3.setBounds(190, 330, 100, 18);
 
         jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel4.setText("SPECIALIZATION");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(190, 410, 130, 17);
+        jLabel4.setBounds(190, 410, 130, 18);
 
         txtdoc_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +215,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtdoc_name);
-        txtdoc_name.setBounds(330, 370, 131, 23);
+        txtdoc_name.setBounds(330, 370, 131, 31);
 
         txtdoc_id.setEditable(false);
         txtdoc_id.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +224,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtdoc_id);
-        txtdoc_id.setBounds(330, 330, 131, 23);
+        txtdoc_id.setBounds(330, 330, 131, 31);
 
         btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
@@ -233,12 +234,12 @@ Validations validations;
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(710, 10, 90, 23);
+        btnBack.setBounds(710, 10, 90, 24);
 
         jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel5.setText("PAGER ID");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(190, 450, 100, 17);
+        jLabel5.setBounds(190, 450, 100, 18);
 
         txtpager_id.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -246,7 +247,7 @@ Validations validations;
             }
         });
         getContentPane().add(txtpager_id);
-        txtpager_id.setBounds(330, 450, 131, 23);
+        txtpager_id.setBounds(330, 450, 131, 31);
 
         specCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cardiologist", "General Surgeon", "Orthopedician" }));
         specCombox.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +256,7 @@ Validations validations;
             }
         });
         getContentPane().add(specCombox);
-        specCombox.setBounds(330, 410, 131, 23);
+        specCombox.setBounds(330, 410, 179, 31);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -272,7 +273,7 @@ Validations validations;
         lblEmployeeName.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblEmployeeName.setText("USER ID");
         getContentPane().add(lblEmployeeName);
-        lblEmployeeName.setBounds(190, 490, 160, 17);
+        lblEmployeeName.setBounds(190, 490, 160, 18);
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,14 +281,14 @@ Validations validations;
             }
         });
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(330, 490, 130, 23);
+        txtUsername.setBounds(330, 490, 130, 31);
 
         lblEmployeeName1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblEmployeeName1.setText("PASSWORD ");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(190, 530, 150, 17);
+        lblEmployeeName1.setBounds(190, 530, 150, 18);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(330, 530, 130, 23);
+        txtPassword.setBounds(330, 530, 130, 31);
 
         valUsername.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valUsername);

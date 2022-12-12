@@ -90,6 +90,7 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(788, 600));
         getContentPane().setLayout(null);
 
         tblViewPatients.setModel(new javax.swing.table.DefaultTableModel(
@@ -121,7 +122,7 @@ public class DoctorWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(620, 30, 110, 23);
+        btnLogout.setBounds(620, 30, 110, 24);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");

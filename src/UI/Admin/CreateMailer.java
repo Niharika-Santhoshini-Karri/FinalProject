@@ -50,6 +50,7 @@ public class CreateMailer extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jButton1.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
@@ -95,6 +96,7 @@ public class CreateMailer extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 

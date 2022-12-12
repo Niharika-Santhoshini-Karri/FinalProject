@@ -71,39 +71,40 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
+        setPreferredSize(new java.awt.Dimension(581, 562));
         getContentPane().setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(51, 102, 255));
         jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("NGO REGISTRATION");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 20, 226, 30);
+        jLabel1.setBounds(140, 20, 226, 32);
 
         jLabel2.setBackground(new java.awt.Color(51, 51, 255));
         jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel2.setText("NGO NAME");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(27, 90, 100, 17);
+        jLabel2.setBounds(27, 90, 100, 18);
 
         jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel3.setText("ADDRESS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(39, 130, 80, 17);
+        jLabel3.setBounds(39, 130, 80, 18);
 
         jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel4.setText("CONTACT");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(39, 210, 80, 17);
+        jLabel4.setBounds(39, 210, 80, 18);
 
         jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel5.setText("USER ID");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(60, 320, 70, 17);
+        jLabel5.setBounds(60, 320, 70, 18);
 
         jLabel6.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel6.setText("PASSWORD");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 360, 90, 17);
+        jLabel6.setBounds(40, 360, 90, 18);
 
         btnRegister.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnRegister.setText("REGISTER");
@@ -128,7 +129,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel7.setText("ZIPCODE");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(45, 170, 70, 17);
+        jLabel7.setBounds(45, 170, 70, 18);
 
         valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPhone);
@@ -165,7 +166,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(160, 90, 120, 23);
+        txtName.setBounds(160, 90, 120, 31);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +192,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(160, 130, 120, 23);
+        txtAddress.setBounds(160, 130, 120, 31);
 
         txtZipCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +205,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipCode);
-        txtZipCode.setBounds(160, 170, 120, 23);
+        txtZipCode.setBounds(160, 170, 120, 31);
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -212,7 +213,7 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(170, 360, 110, 23);
+        txtPassword.setBounds(170, 360, 110, 31);
 
         txtUser_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,13 +226,13 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUser_ID);
-        txtUser_ID.setBounds(170, 320, 110, 23);
+        txtUser_ID.setBounds(170, 320, 110, 31);
 
         jLabel9.setBackground(new java.awt.Color(51, 102, 255));
         jLabel9.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel9.setText("SETUP ACCOUNT ");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 280, 410, 30);
+        jLabel9.setBounds(20, 280, 410, 32);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/DONATE NGO.png"))); // NOI18N
         getContentPane().add(jLabel8);

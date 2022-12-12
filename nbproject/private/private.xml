@@ -3,7 +3,44 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Aish/OneDrive/Desktop/FP3/FinalProject/src/UI/Hospital/RequestToPlasmaCenter.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/VDONOR/VDonorDonations.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Hospital/Doctor.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/VDONOR/VDonorDetails.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/NgoRegisterJFrame.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/AdminPC.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/PlasmaCenter/RequestToNGO.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/PlasmaCenter/PCDonorr.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/AdminEmployee.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/NGO/PlasmaReq.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/NGO/NGOWorkArea.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/VDonorRegForm.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Hospital/Patient.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Hospital/RequestToPlasmaCenter.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/AdminHospital.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Laboratory/labtests.png</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/PlasmaCenter/PlasmaRequests.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/admin%20workarea.jpeg</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/CreateMailer.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/AdminWorkArea.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/LoginScreen.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/DOC/DoctorWorkArea.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/ADMIN%20BG.png</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/PlasmaCenter/PCWorkArea.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Laboratory/UpdateTest.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/MODEL/JavaEmailSender.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/NGO/ViewDonors.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/DONATE%20NGO.png</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/VDONOR.png</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/VDONOR/VDONOR.png</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/AdminStock.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/MODEL/Login.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/NGO/Plasmacenters.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/PlasmaCenter/PCStockk.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/PlasmaCenter/PLASMAA%20.png</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Admin/AdminHosEmployee.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/UI/Hospital/HospitalWorkArea.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/VDONOR/VDonorWA.java</file>
+            <file>file:/C:/Users/Aish/OneDrive/Desktop/plasmaclone/FinalProject/src/MAILER/MailerWorkArea.java</file>
         </group>
     </open-files>
 </project-private>

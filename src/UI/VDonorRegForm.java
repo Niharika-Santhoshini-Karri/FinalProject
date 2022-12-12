@@ -83,6 +83,7 @@ public class VDonorRegForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(null);
 
         btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N

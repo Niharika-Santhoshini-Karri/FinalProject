@@ -45,8 +45,12 @@ public class MailerWorkArea extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btnSendMail = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 500));
+        getContentPane().setLayout(null);
 
         tblDonors.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,13 +85,21 @@ public class MailerWorkArea extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblDonors);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(120, 71, 629, 167);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Email Address");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(150, 280, 138, 25);
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(310, 280, 190, 31);
 
         btnSendMail.setText("SEND EMAIL");
         btnSendMail.addActionListener(new java.awt.event.ActionListener() {
@@ -95,39 +107,18 @@ public class MailerWorkArea extends javax.swing.JFrame {
                 btnSendMailActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSendMail);
+        btnSendMail.setBounds(302, 348, 170, 31);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(342, 342, 342)
-                        .addComponent(btnSendMail)))
-                .addContainerGap(188, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(btnSendMail)
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
+        lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 36)); // NOI18N
+        lblTitle.setText("MAILER PORTAL");
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(20, 10, 350, 50);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MAILER/MAILER.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 790, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,7 +186,9 @@ public class MailerWorkArea extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSendMail;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblDonors;
     private javax.swing.JTextField txtEmail;
     // End of variables declaration//GEN-END:variables

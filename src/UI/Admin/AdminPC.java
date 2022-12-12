@@ -75,6 +75,7 @@ public class AdminPC extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         btnBack.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
@@ -269,6 +270,7 @@ public class AdminPC extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
         jLabel3.setText("jLabel3");
+        jLabel3.setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 800, 600);
 
