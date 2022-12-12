@@ -32,10 +32,13 @@ public class NGOWorkArea extends javax.swing.JFrame {
         btnPlasmaReq = new javax.swing.JButton();
         btnPC = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        btnDonorsList.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDonorsList.setText("DONORS LIST");
         btnDonorsList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -43,8 +46,9 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDonorsList);
-        btnDonorsList.setBounds(220, 280, 250, 50);
+        btnDonorsList.setBounds(260, 430, 250, 50);
 
+        btnPlasmaReq.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnPlasmaReq.setText("PLASMA REQUESTS");
         btnPlasmaReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,8 +56,9 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPlasmaReq);
-        btnPlasmaReq.setBounds(220, 100, 250, 50);
+        btnPlasmaReq.setBounds(240, 130, 250, 50);
 
+        btnPC.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnPC.setText("PLASMA CENTERS");
         btnPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,8 +66,9 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPC);
-        btnPC.setBounds(220, 190, 260, 50);
+        btnPC.setBounds(240, 260, 250, 50);
 
+        btnLogout.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnLogout.setText("LOGOUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +76,17 @@ public class NGOWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(480, 30, 100, 31);
+        btnLogout.setBounds(630, 60, 100, 23);
+
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
+        jLabel4.setText("NGO WORK AREA");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(230, 10, 330, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/NGO/NGOOO.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -142,5 +158,7 @@ public class NGOWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPC;
     private javax.swing.JButton btnPlasmaReq;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

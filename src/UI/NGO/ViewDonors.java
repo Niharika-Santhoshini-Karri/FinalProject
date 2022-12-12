@@ -87,18 +87,20 @@ public class ViewDonors extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        btnback.setText("Back");
+        btnback.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbackActionPerformed(evt);
             }
         });
         getContentPane().add(btnback);
-        btnback.setBounds(50, 35, 72, 31);
+        btnback.setBounds(670, 50, 72, 23);
 
         tblDonorsList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,12 +131,12 @@ public class ViewDonors extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDonorsList);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 220, 820, 171);
+        jScrollPane1.setBounds(40, 220, 670, 171);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("DONORS LIST");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(210, 53, 151, 37);
+        jLabel1.setBounds(210, 20, 210, 37);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +155,11 @@ public class ViewDonors extends javax.swing.JFrame {
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
         lbSearch.setBounds(70, 140, 90, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/NGO/NGOOO.jpeg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 800, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -225,6 +232,7 @@ public class ViewDonors extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblDonorsList;

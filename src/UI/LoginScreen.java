@@ -71,9 +71,7 @@ public class LoginScreen extends javax.swing.JFrame {
         valUsername = new javax.swing.JLabel();
         btndonar = new javax.swing.JButton();
         btnngo = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         btnstatus = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         txtUserName = new javax.swing.JTextField();
         pwdField = new javax.swing.JPasswordField();
         lblPassword = new javax.swing.JLabel();
@@ -85,54 +83,39 @@ public class LoginScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(valPassword);
-        valPassword.setBounds(490, 230, 230, 20);
+        valPassword.setBounds(490, 230, 270, 20);
         getContentPane().add(valUsername);
-        valUsername.setBounds(500, 150, 230, 20);
+        valUsername.setBounds(500, 150, 260, 20);
 
-        btndonar.setText("Donor Registration");
+        btndonar.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btndonar.setText("DONOR REGISTRATION");
         btndonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndonarActionPerformed(evt);
             }
         });
         getContentPane().add(btndonar);
-        btndonar.setBounds(20, 110, 150, 40);
+        btndonar.setBounds(20, 110, 210, 40);
 
-        btnngo.setText("NGO Registration");
+        btnngo.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnngo.setText("NGO REGISTRATION");
         btnngo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnngoActionPerformed(evt);
             }
         });
         getContentPane().add(btnngo);
-        btnngo.setBounds(20, 200, 160, 40);
+        btnngo.setBounds(20, 220, 210, 40);
 
-        jButton2.setText("Request For Plasma");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(20, 280, 170, 40);
-
-        btnstatus.setText("Availability Status");
+        btnstatus.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnstatus.setText("AVAILABILITY STATUS");
         btnstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnstatusActionPerformed(evt);
             }
         });
         getContentPane().add(btnstatus);
-        btnstatus.setBounds(20, 360, 160, 40);
-
-        jButton1.setText("Analyse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(20, 440, 160, 40);
+        btnstatus.setBounds(20, 330, 220, 40);
 
         txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -140,7 +123,7 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUserName);
-        txtUserName.setBounds(560, 100, 118, 30);
+        txtUserName.setBounds(560, 100, 160, 30);
 
         pwdField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -148,23 +131,26 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pwdField);
-        pwdField.setBounds(560, 180, 120, 30);
+        pwdField.setBounds(560, 180, 170, 30);
 
+        lblPassword.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPassword.setText("PASSWORD :");
+        lblPassword.setText("PASSWORD ");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(460, 190, 80, 17);
+        lblPassword.setBounds(450, 190, 90, 17);
 
+        lblUser.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblUser.setText("USERNAME :");
+        lblUser.setText("USERNAME ");
         getContentPane().add(lblUser);
-        lblUser.setBounds(443, 97, 100, 30);
+        lblUser.setBounds(433, 97, 110, 30);
 
         lblTitle.setFont(new java.awt.Font("American Typewriter", 0, 24)); // NOI18N
         lblTitle.setText("PlasMain - The Plasma Managery");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(200, 0, 439, 57);
 
+        btnLogin.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,8 +158,9 @@ public class LoginScreen extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(580, 260, 72, 23);
+        btnLogin.setBounds(520, 410, 130, 40);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/plasma login (1).jpeg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 599));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
@@ -195,22 +182,12 @@ public class LoginScreen extends javax.swing.JFrame {
         NGO.setVisible(true);
     }//GEN-LAST:event_btnngoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnstatusActionPerformed
         // TODO add your handling code here:
  AdminStock AS= new AdminStock();
         this.dispose();
         AS.setVisible(true);
     }//GEN-LAST:event_btnstatusActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         
@@ -443,8 +420,6 @@ System.out.println("Connected to database !!");
     private javax.swing.JButton btndonar;
     private javax.swing.JButton btnngo;
     private javax.swing.JButton btnstatus;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblTitle;

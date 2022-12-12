@@ -1,32 +1,32 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VDONOR;
+
 import DBUTIL.DBUTIL;
-import java.text.SimpleDateFormat;
-import java.util.Vector;
-import javax.swing.table.DefaultTableModel;
-import MODEL.Donor; 
+import MODEL.Donor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rishikagurram
  */
-public class VDonorDonations extends javax.swing.JPanel {
+public class VDonorDonations extends javax.swing.JFrame {
 
     /**
      * Creates new form VDonorDonations
      */
     ResultSet resultSet = null;
     DBUTIL dbconn= new DBUTIL();
-   
-    Vector originalTableModel;
+     Vector originalTableModel;
     public static int thisdonor_id = Donor.getDonor_id();
     public VDonorDonations() {
         initComponents();
@@ -43,23 +43,20 @@ public class VDonorDonations extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDonations = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
 
-        setLayout(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        btnBack.setText("BACK");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack);
-        btnBack.setBounds(510, 60, 100, 31);
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("YOUR DONATIONS");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(150, 30, 260, 39);
 
         tblDonations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,17 +86,12 @@ public class VDonorDonations extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblDonations);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(80, 240, 760, 200);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel4.setText("YOUR DONATIONS");
-        add(jLabel4);
-        jLabel4.setBounds(150, 30, 260, 39);
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(30, 240, 760, 200);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
-        add(lbSearch);
+        getContentPane().add(lbSearch);
         lbSearch.setBounds(70, 140, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -112,15 +104,20 @@ public class VDonorDonations extends javax.swing.JPanel {
                 txtSearchKeyReleased(evt);
             }
         });
-        add(txtSearch);
+        getContentPane().add(txtSearch);
         txtSearch.setBounds(150, 140, 430, 30);
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        this.hide();
-        VDonorWA frame = new  VDonorWA();
-        frame.setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
+        btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(510, 60, 100, 23);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
@@ -144,16 +141,46 @@ public class VDonorDonations extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.hide();
+        VDonorWA frame = new  VDonorWA();
+        frame.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbSearch;
-    private javax.swing.JTable tblDonations;
-    private javax.swing.JTextField txtSearch;
-    // End of variables declaration//GEN-END:variables
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VDonorDonations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VDonorDonations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VDonorDonations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VDonorDonations.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VDonorDonations().setVisible(true);
+            }
+        });
+    }
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tblDonations.getModel();
          Connection conn = dbconn.getConnection();
@@ -189,4 +216,15 @@ public class VDonorDonations extends javax.swing.JPanel {
             Logger.getLogger(VDonorDonations.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbSearch;
+    private javax.swing.JTable tblDonations;
+    private javax.swing.JTextField txtSearch;
+    // End of variables declaration//GEN-END:variables
 }

@@ -94,7 +94,7 @@ public class PlasmaRequests extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("PLASMA REQUESTS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(92, 48, 270, 25);
+        jLabel1.setBounds(92, 48, 270, 22);
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -103,14 +103,14 @@ public class PlasmaRequests extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(320, 410, 140, 31);
+        btnUpdate.setBounds(320, 410, 140, 23);
 
         lblStatus.setText("Status");
         getContentPane().add(lblStatus);
-        lblStatus.setBounds(90, 310, 70, 25);
+        lblStatus.setBounds(90, 310, 70, 17);
 
         getContentPane().add(comboxStock_id);
-        comboxStock_id.setBounds(520, 310, 124, 31);
+        comboxStock_id.setBounds(520, 310, 124, 23);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -119,15 +119,15 @@ public class PlasmaRequests extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(830, 24, 100, 31);
+        btnBack.setBounds(830, 24, 100, 23);
 
         lblStockID.setText("STOCK ID");
         getContentPane().add(lblStockID);
-        lblStockID.setBounds(400, 310, 110, 25);
+        lblStockID.setBounds(400, 310, 110, 17);
 
         cmbStatus1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On Transit", "Pending", " " }));
         getContentPane().add(cmbStatus1);
-        cmbStatus1.setBounds(161, 307, 127, 31);
+        cmbStatus1.setBounds(161, 307, 95, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

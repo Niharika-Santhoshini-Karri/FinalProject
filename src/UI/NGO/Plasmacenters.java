@@ -85,6 +85,7 @@ public class Plasmacenters extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -118,21 +119,22 @@ public class Plasmacenters extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblPlasmacenters);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(80, 230, 710, 146);
+        jScrollPane1.setBounds(80, 240, 580, 146);
 
-        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(540, 70, 72, 31);
+        btnBack.setBounds(650, 70, 72, 23);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblTitle.setText("List of Plasma Centers");
+        lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
+        lblTitle.setText("LIST OF PLASMA CENTERS");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(236, 44, 208, 22);
+        lblTitle.setBounds(70, 20, 370, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +153,11 @@ public class Plasmacenters extends javax.swing.JFrame {
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
         lbSearch.setBounds(80, 150, 90, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/NGO/NGOOO.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(2, 0, 800, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,6 +229,7 @@ public class Plasmacenters extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblTitle;

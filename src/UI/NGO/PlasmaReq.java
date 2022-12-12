@@ -51,15 +51,17 @@ public class PlasmaReq extends javax.swing.JFrame {
         tblWorkRequests = new javax.swing.JTable();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("PLASMA REQUESTS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 30, 280, 25);
+        jLabel1.setBounds(190, 30, 280, 30);
 
+        btnback.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnback.setText("Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +69,7 @@ public class PlasmaReq extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnback);
-        btnback.setBounds(540, 50, 72, 31);
+        btnback.setBounds(670, 50, 72, 23);
 
         tblWorkRequests.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,12 +100,12 @@ public class PlasmaReq extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblWorkRequests);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(27, 147, 870, 171);
+        jScrollPane1.setBounds(40, 230, 700, 171);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
-        lbSearch.setBounds(80, 90, 90, 30);
+        lbSearch.setBounds(80, 130, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +118,11 @@ public class PlasmaReq extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(160, 90, 430, 30);
+        txtSearch.setBounds(160, 130, 430, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/NGO/NGOOO.jpeg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 800, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -190,6 +196,7 @@ public class PlasmaReq extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblWorkRequests;

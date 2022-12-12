@@ -87,6 +87,7 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -105,13 +106,14 @@ public class DoctorWorkArea extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblViewPatients);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(80, 210, 490, 163);
+        jScrollPane1.setBounds(260, 220, 490, 163);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("              PATIENT DETAILS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(150, 70, 303, 55);
+        jLabel1.setBounds(163, 20, 360, 55);
 
+        btnLogout.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnLogout.setText("LOGOUT");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,12 +121,12 @@ public class DoctorWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogout);
-        btnLogout.setBounds(52, 29, 83, 23);
+        btnLogout.setBounds(620, 30, 110, 23);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
-        lbSearch.setBounds(70, 140, 90, 30);
+        lbSearch.setBounds(220, 130, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +139,11 @@ public class DoctorWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(150, 140, 430, 30);
+        txtSearch.setBounds(300, 130, 430, 30);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/DOC/DOCTOR LOGIN PAGE (2).png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 790, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,6 +215,7 @@ public class DoctorWorkArea extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogout;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblViewPatients;

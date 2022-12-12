@@ -40,6 +40,7 @@ public class AdminStock extends javax.swing.JFrame {
         txtSearch = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -73,12 +74,12 @@ public class AdminStock extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblStock);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(21, 207, 623, 227);
+        jScrollPane1.setBounds(30, 200, 420, 227);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
-        lbSearch.setBounds(80, 120, 90, 30);
+        lbSearch.setBounds(40, 120, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,13 +92,14 @@ public class AdminStock extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(160, 120, 430, 30);
+        txtSearch.setBounds(120, 120, 430, 30);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         lblTitle.setText("ANALYSE STOCK");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(80, 30, 310, 29);
+        lblTitle.setBounds(60, 10, 310, 30);
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +107,11 @@ public class AdminStock extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(580, 30, 100, 23);
+        btnBack.setBounds(580, 33, 110, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/plasma login (1).jpeg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +182,7 @@ public class AdminStock extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblTitle;

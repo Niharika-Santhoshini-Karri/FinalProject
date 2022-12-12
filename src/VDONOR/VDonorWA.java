@@ -4,13 +4,12 @@
  */
 package VDONOR;
 
-import UI.Admin.AdminWorkArea;
+import MODEL.Donor;
 import UI.LoginScreen;
-import MODEL.Donor; 
 
 /**
  *
- * @author Aish
+ * @author rishikagurram
  */
 public class VDonorWA extends javax.swing.JFrame {
 
@@ -20,8 +19,9 @@ public class VDonorWA extends javax.swing.JFrame {
     public static int donor_id = Donor.getDonor_id();
     public VDonorWA() {
         initComponents();
-        VDonorDetails donorView= new VDonorDetails();
-        splitPane.setRightComponent(donorView);
+        
+       
+        
 
         String don = String.valueOf(donor_id); 
         txtdonor_id.setText(don);
@@ -37,28 +37,24 @@ public class VDonorWA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        splitPane = new javax.swing.JSplitPane();
-        controlPanel = new javax.swing.JPanel();
-        btn_back_admin1 = new javax.swing.JButton();
+        btnDonations = new javax.swing.JButton();
         btnDetails1 = new javax.swing.JButton();
-        btnAppointment1 = new javax.swing.JButton();
+        btn_back_admin1 = new javax.swing.JButton();
         txtdonor_id = new javax.swing.JTextField();
-        workArea = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        controlPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        btn_back_admin1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btn_back_admin1.setForeground(new java.awt.Color(255, 102, 51));
-        btn_back_admin1.setText(" LOGOUT");
-        btn_back_admin1.addActionListener(new java.awt.event.ActionListener() {
+        btnDonations.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnDonations.setForeground(new java.awt.Color(255, 102, 51));
+        btnDonations.setText("DONATIONS");
+        btnDonations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_back_admin1ActionPerformed(evt);
+                btnDonationsActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDonations);
+        btnDonations.setBounds(230, 280, 116, 51);
 
         btnDetails1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnDetails1.setForeground(new java.awt.Color(255, 102, 51));
@@ -68,95 +64,44 @@ public class VDonorWA extends javax.swing.JFrame {
                 btnDetails1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDetails1);
+        btnDetails1.setBounds(230, 170, 116, 39);
 
-        btnAppointment1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btnAppointment1.setForeground(new java.awt.Color(255, 102, 51));
-        btnAppointment1.setText("DONATIONS");
-        btnAppointment1.addActionListener(new java.awt.event.ActionListener() {
+        btn_back_admin1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btn_back_admin1.setForeground(new java.awt.Color(255, 102, 51));
+        btn_back_admin1.setText(" LOGOUT");
+        btn_back_admin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAppointment1ActionPerformed(evt);
+                btn_back_admin1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_back_admin1);
+        btn_back_admin1.setBounds(450, 70, 89, 42);
 
         txtdonor_id.setEditable(false);
-
-        javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
-        controlPanel.setLayout(controlPanelLayout);
-        controlPanelLayout.setHorizontalGroup(
-            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAppointment1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(btn_back_admin1))
-                            .addComponent(btnDetails1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(txtdonor_id, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        controlPanelLayout.setVerticalGroup(
-            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(btn_back_admin1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
-                .addComponent(btnDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnAppointment1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(txtdonor_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
-        );
-
-        splitPane.setLeftComponent(controlPanel);
-
-        workArea.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
-        workArea.setLayout(workAreaLayout);
-        workAreaLayout.setHorizontalGroup(
-            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(workAreaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        workAreaLayout.setVerticalGroup(
-            workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, workAreaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        splitPane.setRightComponent(workArea);
-
-        getContentPane().add(splitPane);
-        splitPane.setBounds(0, 0, 740, 612);
+        getContentPane().add(txtdonor_id);
+        txtdonor_id.setBounds(440, 30, 121, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDonationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonationsActionPerformed
+         VDonorDonations VD= new  VDonorDonations();
+      VD.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_btnDonationsActionPerformed
+
+    private void btnDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetails1ActionPerformed
+        VDonorDetails VDD= new VDonorDetails();
+      VDD.setVisible(true);
+      this.dispose();
+    }//GEN-LAST:event_btnDetails1ActionPerformed
+
     private void btn_back_admin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_admin1ActionPerformed
-       this.hide();
+        this.hide();
         LoginScreen frame = new LoginScreen();
         frame.setVisible(true);
     }//GEN-LAST:event_btn_back_admin1ActionPerformed
-
-    private void btnDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetails1ActionPerformed
-        VDonorDetails VD = new VDonorDetails();
-        splitPane.setRightComponent(VD);
-    }//GEN-LAST:event_btnDetails1ActionPerformed
-
-    private void btnAppointment1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointment1ActionPerformed
-        VDonorDonations VDD = new VDonorDonations();
-        splitPane.setRightComponent(VDD);
-    }//GEN-LAST:event_btnAppointment1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,13 +139,9 @@ public class VDonorWA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAppointment1;
     private javax.swing.JButton btnDetails1;
+    private javax.swing.JButton btnDonations;
     private javax.swing.JButton btn_back_admin1;
-    private javax.swing.JPanel controlPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JSplitPane splitPane;
     private javax.swing.JTextField txtdonor_id;
-    private javax.swing.JPanel workArea;
     // End of variables declaration//GEN-END:variables
 }

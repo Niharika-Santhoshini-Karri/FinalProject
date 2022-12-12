@@ -115,14 +115,15 @@ public class Patient extends javax.swing.JFrame {
         valDoc = new javax.swing.JLabel();
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("    ADD PATIENT");
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
+        jLabel1.setText("    MANAGE PATIENT");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(255, 21, 175, 39);
+        jLabel1.setBounds(190, 0, 310, 39);
 
         tblPatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,72 +164,87 @@ public class Patient extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 150, 580, 180);
+        jScrollPane1.setBounds(50, 110, 650, 180);
 
-        jLabel2.setText("Name");
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel2.setText("NAME");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(120, 460, 80, 17);
+        jLabel2.setBounds(140, 380, 120, 17);
 
-        jLabel3.setText("Patient ID");
+        jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel3.setText("PATIENT ID");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 430, 56, 17);
+        jLabel3.setBounds(140, 340, 90, 17);
 
-        jLabel4.setText("Age ");
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel4.setText("AGE");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(120, 490, 26, 17);
+        jLabel4.setBounds(140, 410, 60, 17);
         getContentPane().add(txtpat_id);
-        txtpat_id.setBounds(230, 420, 100, 23);
+        txtpat_id.setBounds(230, 340, 100, 23);
 
-        btnAdd.setText("Add");
+        btnAdd.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(120, 660, 72, 23);
+        btnAdd.setBounds(260, 560, 80, 23);
 
-        btnUpdate.setText("Update");
+        btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(360, 340, 73, 23);
+        btnUpdate.setBounds(333, 300, 110, 23);
 
-        btnDelete.setText("Delete");
+        btnDelete.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(480, 340, 72, 23);
+        btnDelete.setBounds(480, 300, 90, 23);
 
-        btnBack.setText("Back");
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(85, 31, 72, 23);
+        btnBack.setBounds(720, 90, 80, 23);
 
-        Gender.setText("Address");
+        Gender.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        Gender.setText("ADDRESS");
         getContentPane().add(Gender);
-        Gender.setBounds(100, 590, 84, 17);
+        Gender.setBounds(140, 510, 120, 17);
 
+        comboxdoc_id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboxdoc_idActionPerformed(evt);
+            }
+        });
         getContentPane().add(comboxdoc_id);
-        comboxdoc_id.setBounds(230, 560, 100, 23);
+        comboxdoc_id.setBounds(230, 480, 100, 23);
 
-        jLabel5.setText("Gender");
+        jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel5.setText("GENDER");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(100, 520, 43, 17);
+        jLabel5.setBounds(140, 450, 80, 17);
 
-        Gender1.setText("Doctor");
+        Gender1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        Gender1.setText("DOCTOR");
         getContentPane().add(Gender1);
-        Gender1.setBounds(100, 550, 38, 17);
+        Gender1.setBounds(140, 480, 80, 17);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +257,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(230, 460, 100, 23);
+        txtName.setBounds(230, 380, 100, 23);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,7 +270,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAge);
-        txtAge.setBounds(230, 490, 100, 23);
+        txtAge.setBounds(230, 410, 100, 23);
 
         btnGender.add(btnMale);
         btnMale.setText("Male");
@@ -264,7 +280,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMale);
-        btnMale.setBounds(220, 530, 51, 21);
+        btnMale.setBounds(220, 450, 51, 21);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -274,7 +290,7 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnFemale);
-        btnFemale.setBounds(290, 530, 65, 21);
+        btnFemale.setBounds(290, 450, 65, 21);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,32 +303,32 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(230, 590, 100, 23);
+        txtAddress.setBounds(230, 510, 100, 23);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAddress);
-        valAddress.setBounds(360, 590, 190, 20);
+        valAddress.setBounds(360, 510, 370, 20);
 
         valGender.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valGender);
-        valGender.setBounds(390, 530, 170, 20);
+        valGender.setBounds(390, 450, 360, 20);
 
         valAge.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAge);
-        valAge.setBounds(370, 490, 160, 20);
+        valAge.setBounds(350, 410, 360, 20);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(370, 460, 180, 20);
+        valName.setBounds(350, 380, 350, 20);
 
         valDoc.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valDoc);
-        valDoc.setBounds(390, 560, 170, 20);
+        valDoc.setBounds(390, 480, 340, 20);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
-        lbSearch.setBounds(80, 90, 90, 30);
+        lbSearch.setBounds(80, 50, 90, 30);
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,7 +341,11 @@ public class Patient extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(160, 90, 430, 30);
+        txtSearch.setBounds(160, 50, 430, 30);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Hospital/hospital.png"))); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -658,6 +678,20 @@ public class Patient extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void comboxdoc_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxdoc_idActionPerformed
+        // TODO add your handling code here:
+       Object plasma = comboxdoc_id.getSelectedItem();
+        
+
+        if (plasma  == null || plasma .toString().equals("")) {
+            valDoc.setText("Please Select Doctor");
+            comboxdoc_id.removeAllItems();
+           valDoc.setText(null);
+        } else {
+            comboxdoc_id.setSelectedItem("");
+        }
+    }//GEN-LAST:event_comboxdoc_idActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -728,6 +762,7 @@ public class Patient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JTable tblPatient;

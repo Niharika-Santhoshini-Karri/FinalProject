@@ -7,6 +7,7 @@ package UI.Hospital;
 
 import DBUTIL.DBUTIL;
 import MODEL.HOSPITAL;
+import MODEL.Validations;
 import UI.Admin.AdminHospital;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,7 +36,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     ResultSet resultSet1, resultSet2 = null;
     Random rand = new Random();
     public static int myhos_id = HOSPITAL.getHos_id();
-  
+  Validations validations;
 
     Vector originalTableModel;
 
@@ -43,6 +44,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         initComponents();
         System.out.println("plasma req hos_id="+myhos_id);
         populateCombox(); 
+        validations = new Validations();
         originalTableModel = (Vector) ((DefaultTableModel) tblHPCRequest.getModel()).getDataVector().clone();
         populateTable(); 
     }
@@ -71,14 +73,18 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         comboxPatientID = new javax.swing.JComboBox<>();
         comboxStatus = new javax.swing.JComboBox<>();
         comboxBloodGroup = new javax.swing.JComboBox<>();
+        valBlood = new javax.swing.JLabel();
+        valPat = new javax.swing.JLabel();
+        valStatus = new javax.swing.JLabel();
+        valQty = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("REQUEST TO PLASMA CENTER");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(213, 49, 310, 55);
+        jLabel1.setBounds(170, 10, 420, 55);
 
         tblHPCRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,59 +120,72 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblHPCRequest);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 190, 700, 133);
+        jScrollPane1.setBounds(60, 100, 700, 133);
 
-        jLabel3.setText("Blood Group");
+        jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel3.setText("BLOOD GROUP");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(220, 410, 103, 25);
+        jLabel3.setBounds(175, 360, 130, 17);
 
-        jLabel4.setText("Patient ID");
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel4.setText("PATIENT ID");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(240, 470, 80, 25);
+        jLabel4.setBounds(196, 410, 100, 17);
 
-        jLabel5.setText("Quantity");
+        jLabel5.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel5.setText("QUANTITY");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(250, 520, 70, 25);
+        jLabel5.setBounds(201, 460, 100, 17);
 
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtQuantityActionPerformed(evt);
             }
         });
+        txtQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtQuantityKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtQuantity);
-        txtQuantity.setBounds(340, 510, 199, 31);
+        txtQuantity.setBounds(340, 460, 90, 23);
 
-        jLabel6.setText("Status");
+        jLabel6.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        jLabel6.setText("STATUS");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(250, 560, 50, 25);
+        jLabel6.setBounds(217, 510, 80, 17);
 
-        btnAdd.setText("Create Request ");
+        btnAdd.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnAdd.setText("CREATE REQUEST");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(310, 590, 159, 31);
+        btnAdd.setBounds(272, 570, 180, 23);
 
-        btnUpdate.setText("Update");
+        btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(370, 340, 91, 31);
+        btnUpdate.setBounds(353, 260, 90, 23);
 
-        btnDelete.setText("Delete");
+        btnDelete.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
+        btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(480, 340, 83, 31);
+        btnDelete.setBounds(480, 260, 90, 23);
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +193,7 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(80, 32, 74, 31);
+        btnBack.setBounds(680, 20, 72, 23);
 
         comboxPatientID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,11 +201,16 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxPatientID);
-        comboxPatientID.setBounds(370, 460, 72, 31);
+        comboxPatientID.setBounds(340, 410, 90, 23);
 
         comboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Requested", "Recieved" }));
+        comboxStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboxStatusActionPerformed(evt);
+            }
+        });
         getContentPane().add(comboxStatus);
-        comboxStatus.setBounds(340, 550, 130, 31);
+        comboxStatus.setBounds(340, 510, 99, 23);
 
         comboxBloodGroup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         comboxBloodGroup.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +219,23 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxBloodGroup);
-        comboxBloodGroup.setBounds(370, 410, 78, 31);
+        comboxBloodGroup.setBounds(340, 350, 80, 23);
+
+        valBlood.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valBlood);
+        valBlood.setBounds(470, 350, 210, 20);
+
+        valPat.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valPat);
+        valPat.setBounds(480, 410, 210, 20);
+
+        valStatus.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valStatus);
+        valStatus.setBounds(460, 510, 210, 20);
+
+        valQty.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valQty);
+        valQty.setBounds(460, 460, 210, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -310,10 +350,30 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
 
     private void comboxPatientIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxPatientIDActionPerformed
         // TODO add your handling code here:
+        Object plasma = comboxPatientID.getSelectedItem();
+        
+
+        if (plasma  == null || plasma .toString().equals("")) {
+            valPat.setText("Please Select Patient");
+            comboxPatientID.removeAllItems();
+           valPat.setText(null);
+        } else {
+           comboxPatientID.setSelectedItem("");
+        }
     }//GEN-LAST:event_comboxPatientIDActionPerformed
 
     private void comboxBloodGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxBloodGroupActionPerformed
         // TODO add your handling code here:
+       Object plasma = comboxBloodGroup.getSelectedItem();
+        
+
+        if (plasma  == null || plasma .toString().equals("")) {
+            valBlood.setText("Please Select Blood Group");
+            comboxBloodGroup.removeAllItems();
+           valBlood.setText(null);
+        } else {
+            comboxBloodGroup.setSelectedItem("");
+        }
     }//GEN-LAST:event_comboxBloodGroupActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -387,6 +447,30 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
+    private void txtQuantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantityKeyReleased
+        // TODO add your handling code here:
+        if (!this.validations.ValidateName(txtQuantity.getText()) ) {
+            valQty.setText("Quantity is Invalid");
+        }
+        else {
+            valQty.setText(null);
+        }
+    }//GEN-LAST:event_txtQuantityKeyReleased
+
+    private void comboxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxStatusActionPerformed
+        // TODO add your handling code here:
+         Object plasma = comboxStatus.getSelectedItem();
+        
+
+        if (plasma  == null || plasma .toString().equals("")) {
+            valStatus.setText("Please Select Patient");
+            comboxStatus.removeAllItems();
+           valStatus.setText(null);
+        } else {
+           comboxStatus.setSelectedItem("");
+        }
+    }//GEN-LAST:event_comboxStatusActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -438,6 +522,10 @@ public class RequestToPlasmaCenter extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHPCRequest;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JLabel valBlood;
+    private javax.swing.JLabel valPat;
+    private javax.swing.JLabel valQty;
+    private javax.swing.JLabel valStatus;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {

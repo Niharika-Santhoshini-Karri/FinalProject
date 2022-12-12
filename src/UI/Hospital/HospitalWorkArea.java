@@ -48,10 +48,12 @@ public class HospitalWorkArea extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jButton1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jButton1.setText(" DOCTOR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +63,7 @@ public class HospitalWorkArea extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(240, 160, 220, 50);
 
+        jButton2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jButton2.setText("PATIENT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +73,7 @@ public class HospitalWorkArea extends javax.swing.JFrame {
         getContentPane().add(jButton2);
         jButton2.setBounds(240, 250, 220, 50);
 
+        jButton3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jButton3.setText("REQUEST TO PLASMA CENTER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,13 +81,14 @@ public class HospitalWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(243, 330, 220, 60);
+        jButton3.setBounds(220, 330, 270, 60);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel1.setText("HOSPITAL ADMIN PORTAL");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(183, 27, 239, 46);
+        jLabel1.setBounds(160, 20, 370, 46);
 
+        btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +96,11 @@ public class HospitalWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(630, 60, 100, 23);
+        btnBack.setBounds(620, 50, 100, 23);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Hospital/hospital.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,5 +174,6 @@ public class HospitalWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

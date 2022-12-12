@@ -56,6 +56,7 @@ public class UpdateTest extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txttest_id = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -94,16 +95,19 @@ public class UpdateTest extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblLab);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(60, 200, 830, 150);
+        jScrollPane1.setBounds(20, 190, 690, 150);
 
+        jLabel1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel1.setText("REQ ID");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(270, 100, 70, 25);
+        jLabel1.setBounds(210, 80, 70, 17);
 
+        jLabel3.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel3.setText("PLATELET RICH PLASMA");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(190, 420, 130, 25);
+        jLabel3.setBounds(90, 420, 180, 17);
 
+        btnCreate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnCreate.setText("CREATE TEST ");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +115,7 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCreate);
-        btnCreate.setBounds(330, 150, 170, 30);
+        btnCreate.setBounds(270, 130, 170, 30);
 
         comboxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES", "NO" }));
         comboxStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -120,13 +124,14 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboxStatus);
-        comboxStatus.setBounds(450, 420, 110, 31);
+        comboxStatus.setBounds(340, 420, 110, 23);
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         jLabel4.setText("LABORATORY");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(320, 30, 330, 40);
+        jLabel4.setBounds(250, 10, 330, 40);
 
+        jButton2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jButton2.setText("LOGOUT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,11 +139,12 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(730, 40, 130, 31);
+        jButton2.setBounds(620, 40, 130, 23);
 
         getContentPane().add(comboxReq_id);
-        comboxReq_id.setBounds(450, 100, 72, 31);
+        comboxReq_id.setBounds(390, 80, 72, 23);
 
+        btnUpdate.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,11 +152,12 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(340, 460, 120, 30);
+        btnUpdate.setBounds(300, 470, 120, 30);
 
+        jLabel2.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         jLabel2.setText("TEST ID");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 370, 55, 25);
+        jLabel2.setBounds(210, 370, 55, 17);
 
         txttest_id.setEditable(false);
         txttest_id.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +166,12 @@ public class UpdateTest extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txttest_id);
-        txttest_id.setBounds(450, 370, 98, 31);
+        txttest_id.setBounds(340, 370, 98, 23);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Laboratory/labtests.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 1000, 1080);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -329,6 +341,7 @@ public class UpdateTest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLab;
     private javax.swing.JTextField txttest_id;
