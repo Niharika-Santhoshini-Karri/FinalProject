@@ -67,13 +67,15 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHosEmployee = new javax.swing.JTable();
         btnDel = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        lblhos.setText("Hospital");
+        lblhos.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblhos.setText("HOSPITAL");
         getContentPane().add(lblhos);
-        lblhos.setBounds(60, 420, 110, 17);
+        lblhos.setBounds(180, 370, 110, 21);
 
         ComboHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,8 +83,9 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboHospital);
-        ComboHospital.setBounds(290, 420, 140, 23);
+        ComboHospital.setBounds(300, 360, 140, 31);
 
+        btnAdd.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,23 +93,25 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(70, 640, 210, 23);
+        btnAdd.setBounds(80, 520, 210, 27);
 
-        lblEmployeeName1.setText("Password :");
+        lblEmployeeName1.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblEmployeeName1.setText("PASSWORD");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(70, 530, 100, 17);
+        lblEmployeeName1.setBounds(170, 480, 120, 21);
 
-        lblEmployeeName2.setText("Employee ID: ");
+        lblEmployeeName2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblEmployeeName2.setText("EMPLOYEE ID");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(60, 300, 150, 17);
+        lblEmployeeName2.setBounds(140, 240, 150, 21);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(500, 530, 170, 20);
+        valPassword.setBounds(510, 470, 170, 20);
 
         txtEmpID.setEditable(false);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(280, 290, 160, 23);
+        txtEmpID.setBounds(290, 230, 160, 31);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("HOSPITAL EMPLOYEES ");
@@ -115,8 +120,9 @@ public class AdminHosEmployee extends javax.swing.JFrame {
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(480, 350, 180, 20);
+        valName.setBounds(490, 290, 180, 20);
 
+        btnBack.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,19 +130,21 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(480, 10, 100, 23);
+        btnBack.setBounds(480, 10, 100, 27);
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(290, 350, 160, 23);
+        txtEmpName.setBounds(300, 290, 160, 31);
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(300, 530, 140, 23);
+        txtPassword.setBounds(310, 470, 140, 31);
 
-        lblEmployeeName3.setText("Name:");
+        lblEmployeeName3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblEmployeeName3.setText("NAME");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(60, 360, 110, 17);
+        lblEmployeeName3.setBounds(200, 300, 110, 21);
 
-        lblhos1.setText("Department");
+        lblhos1.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblhos1.setText("DEPARTMENT");
         getContentPane().add(lblhos1);
-        lblhos1.setBounds(40, 470, 110, 17);
+        lblhos1.setBounds(140, 420, 150, 21);
 
         ComboDepts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrator", "Laboratory", "Accountant" }));
         ComboDepts.addActionListener(new java.awt.event.ActionListener() {
@@ -145,15 +153,15 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboDepts);
-        ComboDepts.setBounds(300, 470, 140, 23);
+        ComboDepts.setBounds(310, 410, 140, 31);
 
         valDept.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valDept);
-        valDept.setBounds(460, 470, 180, 20);
+        valDept.setBounds(480, 420, 180, 20);
 
         valHosp.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valHosp);
-        valHosp.setBounds(450, 420, 180, 20);
+        valHosp.setBounds(460, 360, 180, 20);
 
         tblHosEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,8 +202,9 @@ public class AdminHosEmployee extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblHosEmployee);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 90, 452, 170);
+        jScrollPane1.setBounds(120, 50, 452, 170);
 
+        btnDel.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         btnDel.setText("DELETE");
         btnDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +212,12 @@ public class AdminHosEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDel);
-        btnDel.setBounds(390, 640, 180, 23);
+        btnDel.setBounds(440, 530, 180, 27);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 690, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -483,6 +497,7 @@ public class AdminHosEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JLabel lblEmployeeName2;

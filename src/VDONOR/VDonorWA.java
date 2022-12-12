@@ -37,16 +37,24 @@ public class VDonorWA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         btnDonations = new javax.swing.JButton();
         btnDetails1 = new javax.swing.JButton();
         btn_back_admin1 = new javax.swing.JButton();
         txtdonor_id = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel4.setText("HELLO DONOR");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(170, 30, 260, 39);
+
         btnDonations.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btnDonations.setForeground(new java.awt.Color(255, 102, 51));
+        btnDonations.setForeground(new java.awt.Color(204, 0, 0));
         btnDonations.setText("DONATIONS");
         btnDonations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +65,7 @@ public class VDonorWA extends javax.swing.JFrame {
         btnDonations.setBounds(230, 280, 116, 51);
 
         btnDetails1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btnDetails1.setForeground(new java.awt.Color(255, 102, 51));
+        btnDetails1.setForeground(new java.awt.Color(204, 0, 0));
         btnDetails1.setText("DETAILS");
         btnDetails1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +76,7 @@ public class VDonorWA extends javax.swing.JFrame {
         btnDetails1.setBounds(230, 170, 116, 39);
 
         btn_back_admin1.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
-        btn_back_admin1.setForeground(new java.awt.Color(255, 102, 51));
+        btn_back_admin1.setForeground(new java.awt.Color(204, 0, 0));
         btn_back_admin1.setText(" LOGOUT");
         btn_back_admin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,11 +84,16 @@ public class VDonorWA extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_back_admin1);
-        btn_back_admin1.setBounds(450, 70, 89, 42);
+        btn_back_admin1.setBounds(450, 70, 88, 42);
 
         txtdonor_id.setEditable(false);
         getContentPane().add(txtdonor_id);
-        txtdonor_id.setBounds(440, 30, 121, 23);
+        txtdonor_id.setBounds(440, 30, 121, 31);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VDONOR/VDONOR.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 590, 590);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -142,6 +155,8 @@ public class VDonorWA extends javax.swing.JFrame {
     private javax.swing.JButton btnDetails1;
     private javax.swing.JButton btnDonations;
     private javax.swing.JButton btn_back_admin1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtdonor_id;
     // End of variables declaration//GEN-END:variables
 }

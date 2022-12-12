@@ -27,6 +27,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BACK"/>
       </Properties>
       <Events>
@@ -40,7 +43,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Name"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="NAME"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -50,6 +56,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblZipcode">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ZIP CODE"/>
       </Properties>
       <Constraints>
@@ -122,6 +131,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnAdd">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ADD"/>
       </Properties>
       <Events>
@@ -135,6 +147,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblSelectOrgType">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
       <Constraints>
@@ -145,6 +160,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="DELETE"/>
       </Properties>
       <Events>
@@ -159,13 +177,13 @@
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="24" style="1"/>
+          <Font name="Bell MT" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="PLASMA CENTER"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="190" y="30" width="220" height="-1"/>
+          <AbsoluteConstraints x="80" y="-2" width="330" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -181,6 +199,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUpdate">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="UPDATE"/>
       </Properties>
       <Events>
@@ -207,7 +228,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Address"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="ADDRESS"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -221,7 +245,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="180" y="370" width="100" height="-1"/>
+          <AbsoluteConstraints x="180" y="370" width="100" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -288,7 +312,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mobile"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="MOBILE"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -302,7 +329,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="180" y="410" width="100" height="-1"/>
+          <AbsoluteConstraints x="180" y="410" width="100" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -325,6 +352,22 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="300" y="490" width="130" height="20"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Berlin Sans FB Demi" size="18" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/UI/Admin/ADMIN BG.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel3"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="800" height="600"/>
         </Constraint>
       </Constraints>
     </Component>

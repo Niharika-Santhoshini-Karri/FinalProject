@@ -71,6 +71,7 @@ public class AdminEmployee extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmployee = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -81,12 +82,14 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboPlasmaCenter);
-        ComboPlasmaCenter.setBounds(310, 410, 140, 23);
+        ComboPlasmaCenter.setBounds(270, 380, 140, 31);
 
-        lblbank.setText("Plasma Center");
+        lblbank.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblbank.setText("PLASMA CENTER");
         getContentPane().add(lblbank);
-        lblbank.setBounds(150, 410, 100, 17);
+        lblbank.setBounds(70, 380, 160, 21);
 
+        btnBack.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,8 +97,9 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(490, 20, 100, 23);
+        btnBack.setBounds(480, 20, 110, 27);
 
+        btnAdd.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         btnAdd.setText("CREATE EMPLOYEE");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,28 +107,31 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(100, 550, 210, 23);
+        btnAdd.setBounds(50, 520, 220, 27);
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER EMPLOYEES ");
         getContentPane().add(lblTitle);
         lblTitle.setBounds(50, 20, 410, 29);
 
-        lblEmployeeName1.setText("Password :");
+        lblEmployeeName1.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblEmployeeName1.setText("PASSWORD");
         getContentPane().add(lblEmployeeName1);
-        lblEmployeeName1.setBounds(180, 460, 100, 20);
+        lblEmployeeName1.setBounds(110, 430, 110, 20);
 
         txtEmpID.setEditable(false);
         getContentPane().add(txtEmpID);
-        txtEmpID.setBounds(300, 310, 160, 23);
+        txtEmpID.setBounds(260, 280, 160, 31);
 
-        lblEmployeeName2.setText("Employee ID: ");
+        lblEmployeeName2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblEmployeeName2.setText("EMPLOYEE ID: ");
         getContentPane().add(lblEmployeeName2);
-        lblEmployeeName2.setBounds(150, 320, 150, 17);
+        lblEmployeeName2.setBounds(100, 290, 160, 21);
 
-        lblEmployeeName3.setText("Name:");
+        lblEmployeeName3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
+        lblEmployeeName3.setText("NAME");
         getContentPane().add(lblEmployeeName3);
-        lblEmployeeName3.setBounds(190, 370, 50, 17);
+        lblEmployeeName3.setBounds(160, 340, 90, 21);
 
         txtEmpName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -132,7 +139,7 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmpName);
-        txtEmpName.setBounds(300, 360, 160, 23);
+        txtEmpName.setBounds(260, 330, 160, 31);
 
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -140,19 +147,19 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassword);
-        txtPassword.setBounds(310, 450, 140, 30);
+        txtPassword.setBounds(270, 420, 140, 30);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
-        valName.setBounds(490, 360, 180, 20);
+        valName.setBounds(450, 330, 180, 20);
 
         valPassword.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPassword);
-        valPassword.setBounds(480, 460, 170, 20);
+        valPassword.setBounds(440, 430, 170, 20);
 
         valPC.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPC);
-        valPC.setBounds(470, 410, 180, 20);
+        valPC.setBounds(430, 380, 180, 20);
 
         tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,8 +203,9 @@ public class AdminEmployee extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(110, 90, 452, 170);
+        jScrollPane1.setBounds(70, 60, 452, 170);
 
+        btnDelete.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +213,12 @@ public class AdminEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(400, 550, 160, 23);
+        btnDelete.setBounds(350, 520, 170, 27);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-5, 0, 690, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -513,6 +526,7 @@ public class AdminEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEmployeeName1;
     private javax.swing.JLabel lblEmployeeName2;

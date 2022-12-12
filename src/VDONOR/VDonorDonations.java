@@ -49,6 +49,7 @@ public class VDonorDonations extends javax.swing.JFrame {
         lbSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -87,7 +88,7 @@ public class VDonorDonations extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDonations);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 240, 760, 200);
+        jScrollPane1.setBounds(40, 210, 540, 200);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -114,7 +115,12 @@ public class VDonorDonations extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(510, 60, 100, 23);
+        btnBack.setBounds(480, 60, 100, 31);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VDONOR/VDONOR.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 600, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -221,6 +227,7 @@ public class VDonorDonations extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;

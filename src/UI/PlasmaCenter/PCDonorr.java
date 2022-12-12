@@ -92,6 +92,7 @@ public class PCDonorr extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         lbSearch = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -130,12 +131,12 @@ public class PCDonorr extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblDonor);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 180, 860, 210);
+        jScrollPane1.setBounds(40, 180, 590, 210);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
         lblTitle.setText("DONORS");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(40, 20, 150, 50);
+        lblTitle.setBounds(40, 20, 200, 50);
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +164,11 @@ public class PCDonorr extends javax.swing.JFrame {
         lbSearch.setText("SEARCH");
         getContentPane().add(lbSearch);
         lbSearch.setBounds(90, 100, 90, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/PlasmaCenter/PLASMAA .png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 790, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,6 +256,7 @@ public class PCDonorr extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;
     private javax.swing.JLabel lblTitle;

@@ -33,10 +33,13 @@ public class PCWorkArea extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        btnDonorDetails.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         btnDonorDetails.setText("DONOR DETAILS");
         btnDonorDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +49,7 @@ public class PCWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnDonorDetails);
         btnDonorDetails.setBounds(141, 125, 200, 60);
 
+        btnStock.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         btnStock.setText("STOCK DETAILS");
         btnStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +59,7 @@ public class PCWorkArea extends javax.swing.JFrame {
         getContentPane().add(btnStock);
         btnStock.setBounds(450, 130, 230, 60);
 
+        btnBack.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         btnBack.setText("BACK TO LOGIN");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,8 +67,9 @@ public class PCWorkArea extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 20, 140, 30);
+        btnBack.setBounds(540, 20, 170, 30);
 
+        jButton1.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jButton1.setText("REQUESTS FROM HOSPITAL");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +79,7 @@ public class PCWorkArea extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(20, 320, 340, 70);
 
+        jButton2.setFont(new java.awt.Font("Berlin Sans FB", 1, 18)); // NOI18N
         jButton2.setText("REQUESTS TO NGO");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +88,16 @@ public class PCWorkArea extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(430, 320, 340, 70);
+
+        lblTitle.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        lblTitle.setText("PLASMA PORTAL");
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(70, 20, 370, 70);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/PlasmaCenter/PLASMAA .png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 800, 530);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,5 +179,7 @@ public class PCWorkArea extends javax.swing.JFrame {
     private javax.swing.JButton btnStock;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

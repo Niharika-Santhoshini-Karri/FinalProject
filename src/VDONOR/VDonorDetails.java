@@ -49,6 +49,9 @@ public class VDonorDetails extends javax.swing.JFrame {
         btnGender = new javax.swing.ButtonGroup();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        valEmail = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -69,6 +72,7 @@ public class VDonorDetails extends javax.swing.JFrame {
         valBlood = new javax.swing.JLabel();
         valPhone = new javax.swing.JLabel();
         valAddress = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -78,9 +82,32 @@ public class VDonorDetails extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(190, 10, 220, 39);
 
-        jLabel1.setText("Name");
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel1.setText("NAME");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(110, 120, 80, 17);
+        jLabel1.setBounds(110, 120, 80, 18);
+
+        jLabel12.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel12.setText("EMAIL");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(130, 330, 70, 18);
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(250, 320, 130, 30);
+
+        valEmail.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
+        getContentPane().add(valEmail);
+        valEmail.setBounds(410, 310, 200, 20);
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +120,7 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtName);
-        txtName.setBounds(270, 120, 112, 23);
+        txtName.setBounds(270, 120, 112, 31);
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,15 +133,17 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAge);
-        txtAge.setBounds(270, 160, 112, 23);
+        txtAge.setBounds(270, 160, 112, 31);
 
-        jLabel6.setText("Age");
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel6.setText("AGE");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(110, 170, 90, 17);
+        jLabel6.setBounds(110, 170, 90, 18);
 
-        jLabel5.setText("Gender");
+        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel5.setText("GENDER");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(110, 210, 90, 17);
+        jLabel5.setBounds(110, 210, 90, 18);
 
         btnGender.add(btnMale);
         btnMale.setText("Male");
@@ -124,7 +153,7 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnMale);
-        btnMale.setBounds(260, 210, 100, 21);
+        btnMale.setBounds(260, 210, 100, 29);
 
         btnGender.add(btnFemale);
         btnFemale.setText("Female");
@@ -134,11 +163,12 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnFemale);
-        btnFemale.setBounds(320, 210, 150, 21);
+        btnFemale.setBounds(320, 210, 150, 29);
 
-        jLabel2.setText("Blood Group");
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel2.setText("BLOOD GROUP");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(110, 270, 120, 17);
+        jLabel2.setBounds(110, 270, 120, 18);
 
         ComboBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
         ComboBlood.addActionListener(new java.awt.event.ActionListener() {
@@ -147,11 +177,12 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboBlood);
-        ComboBlood.setBounds(290, 270, 77, 23);
+        ComboBlood.setBounds(290, 270, 77, 31);
 
-        jLabel7.setText("Contact");
+        jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel7.setText("CONTACT");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(140, 330, 130, 17);
+        jLabel7.setBounds(100, 380, 130, 18);
 
         txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +195,7 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
-        txtContact.setBounds(270, 320, 100, 23);
+        txtContact.setBounds(230, 370, 100, 31);
 
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,12 +208,14 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtAddress);
-        txtAddress.setBounds(270, 360, 110, 30);
+        txtAddress.setBounds(230, 410, 110, 30);
 
-        jLabel3.setText("Address");
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel3.setText("ADDRESS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(140, 360, 100, 17);
+        jLabel3.setBounds(100, 410, 100, 18);
 
+        btnUpdate.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,8 +223,9 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(220, 420, 200, 23);
+        btnUpdate.setBounds(200, 490, 200, 24);
 
+        btnBack.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +233,7 @@ public class VDonorDetails extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(490, 20, 100, 23);
+        btnBack.setBounds(490, 20, 100, 24);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -219,11 +253,17 @@ public class VDonorDetails extends javax.swing.JFrame {
 
         valPhone.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valPhone);
-        valPhone.setBounds(400, 320, 160, 20);
+        valPhone.setBounds(360, 370, 160, 20);
 
         valAddress.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valAddress);
-        valAddress.setBounds(410, 360, 190, 20);
+        valAddress.setBounds(370, 410, 190, 20);
+
+        jLabel8.setFont(new java.awt.Font("Berlin Sans FB", 1, 14)); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VDONOR/VDONOR.png"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 0, 600, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -401,6 +441,22 @@ public class VDonorDetails extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
+        // TODO add your handling code here:
+
+        if (!this.validations.ValidateEmail(txtEmail.getText()) ) {
+            valEmail.setText("Email is Invalid");
+        }
+
+        else {
+            valEmail.setText(null);
+        }
+    }//GEN-LAST:event_txtEmailKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -500,19 +556,23 @@ public class VDonorDetails extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnMale;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JLabel valAddress;
     private javax.swing.JLabel valAge;
     private javax.swing.JLabel valBlood;
+    private javax.swing.JLabel valEmail;
     private javax.swing.JLabel valGender;
     private javax.swing.JLabel valName;
     private javax.swing.JLabel valPhone;

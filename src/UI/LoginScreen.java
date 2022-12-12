@@ -7,6 +7,7 @@ package UI;
 import DBUTIL.DBUTIL;
 import MODEL.Donor;
 import MODEL.Login;
+import MAILER.MailerWorkArea;
 import MODEL.Validations;
 import UI.Admin.AdminWorkArea;
 import UI.Hospital.HospitalWorkArea;
@@ -137,7 +138,7 @@ public class LoginScreen extends javax.swing.JFrame {
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("PASSWORD ");
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(450, 190, 90, 17);
+        lblPassword.setBounds(450, 190, 90, 18);
 
         lblUser.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -160,8 +161,7 @@ public class LoginScreen extends javax.swing.JFrame {
         getContentPane().add(btnLogin);
         btnLogin.setBounds(520, 410, 130, 40);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/plasma login (1).jpeg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(800, 599));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/plasma login1.jpeg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
@@ -335,6 +335,14 @@ System.out.println("Connected to database !!");
                     this.dispose();
                     UT.setVisible(true);
                      
+                   }
+                   if(x==10)
+                   {
+                       MailerWorkArea MA=new MailerWorkArea();
+                    
+                    this.dispose();
+                    MA.setVisible(true);
+                       JOptionPane.showMessageDialog(this , "NOW OPEN THE MAILER WORKAREA");
                    }
                 }
             }

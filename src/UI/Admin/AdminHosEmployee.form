@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -18,7 +18,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-59,0,0,2,-73"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,67,0,0,2,-73"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -27,11 +27,14 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblhos">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hospital"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="HOSPITAL"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="420" width="110" height="-1"/>
+          <AbsoluteConstraints x="180" y="370" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -44,12 +47,15 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="290" y="420" width="140" height="-1"/>
+          <AbsoluteConstraints x="300" y="360" width="140" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnAdd">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CREATE EMPLOYEE"/>
       </Properties>
       <Events>
@@ -57,27 +63,33 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="70" y="640" width="210" height="-1"/>
+          <AbsoluteConstraints x="80" y="520" width="210" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmployeeName1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Password :"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PASSWORD"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="70" y="530" width="100" height="-1"/>
+          <AbsoluteConstraints x="170" y="480" width="120" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmployeeName2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Employee ID: "/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="EMPLOYEE ID"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="300" width="150" height="-1"/>
+          <AbsoluteConstraints x="140" y="240" width="150" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -89,7 +101,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="500" y="530" width="170" height="20"/>
+          <AbsoluteConstraints x="510" y="470" width="170" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -99,7 +111,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="280" y="290" width="160" height="-1"/>
+          <AbsoluteConstraints x="290" y="230" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -124,12 +136,15 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="480" y="350" width="180" height="20"/>
+          <AbsoluteConstraints x="490" y="290" width="180" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnBack">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BACK"/>
       </Properties>
       <Events>
@@ -144,34 +159,40 @@
     <Component class="javax.swing.JTextField" name="txtEmpName">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="290" y="350" width="160" height="-1"/>
+          <AbsoluteConstraints x="300" y="290" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtPassword">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="300" y="530" width="140" height="-1"/>
+          <AbsoluteConstraints x="310" y="470" width="140" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmployeeName3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Name:"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="NAME"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="360" width="110" height="-1"/>
+          <AbsoluteConstraints x="200" y="300" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lblhos1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Department"/>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="DEPARTMENT"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="40" y="470" width="110" height="-1"/>
+          <AbsoluteConstraints x="140" y="420" width="150" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -193,7 +214,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="300" y="470" width="140" height="-1"/>
+          <AbsoluteConstraints x="310" y="410" width="140" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -205,7 +226,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="460" y="470" width="180" height="20"/>
+          <AbsoluteConstraints x="480" y="420" width="180" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -217,7 +238,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="450" y="420" width="180" height="20"/>
+          <AbsoluteConstraints x="460" y="360" width="180" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -227,7 +248,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="110" y="90" width="-1" height="170"/>
+          <AbsoluteConstraints x="120" y="50" width="-1" height="170"/>
         </Constraint>
       </Constraints>
 
@@ -286,6 +307,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnDel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Bell MT" size="18" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="DELETE"/>
       </Properties>
       <Events>
@@ -293,7 +317,20 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="640" width="180" height="-1"/>
+          <AbsoluteConstraints x="440" y="530" width="180" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/UI/Admin/ADMIN BG.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="690" height="580"/>
         </Constraint>
       </Constraints>
     </Component>

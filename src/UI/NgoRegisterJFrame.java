@@ -330,7 +330,8 @@ public class NgoRegisterJFrame extends javax.swing.JFrame {
             }
         catch (SQLException ex)
         {
-            Logger.getLogger(NgoRegisterJFrame.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(NgoRegisterJFrame.class.getName()).log(Level.SEVERE, null, ex);
+           // JOptionPane.showMessageDialog(this,"There seems to be some issue try again !");
         }
         //
         //

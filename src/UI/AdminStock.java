@@ -4,8 +4,15 @@
  */
 package UI;
 
-import UI.Admin.AdminWorkArea;
+
+import DBUTIL.DBUTIL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +25,8 @@ public class AdminStock extends javax.swing.JFrame {
      * Creates new form AdminStock
      */
      Vector originalTableModel;
+     DBUTIL dbconn= new DBUTIL();
+      ResultSet resultSet1, resultSet2,resultSet3 = null;
      
     public AdminStock() {
         initComponents();
@@ -53,7 +62,7 @@ public class AdminStock extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Plasma Center", "Blood Group", "Quantity"
+                "Plasma Center", "Blood Group", "Quantity Units"
             }
         ) {
             Class[] types = new Class [] {
@@ -97,7 +106,7 @@ public class AdminStock extends javax.swing.JFrame {
         lblTitle.setFont(new java.awt.Font("American Typewriter", 1, 24)); // NOI18N
         lblTitle.setText("ANALYSE STOCK");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(60, 10, 310, 30);
+        lblTitle.setBounds(60, 10, 310, 32);
 
         btnBack.setFont(new java.awt.Font("American Typewriter", 1, 13)); // NOI18N
         btnBack.setText("BACK");
@@ -109,7 +118,7 @@ public class AdminStock extends javax.swing.JFrame {
         getContentPane().add(btnBack);
         btnBack.setBounds(580, 33, 110, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/plasma login (1).jpeg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/plasma login1.jpeg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 800, 600);
 
@@ -191,6 +200,40 @@ public class AdminStock extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblStock.getModel();
+        Connection conn = dbconn.getConnection();
+        model.setRowCount(0);
         
+         
+     String selectSql = "select s.pc_id, v.blood_group, s.quantity from all_stock s join vdonor v on s.vdonor_id = v.vdonor_id";
+
+      PreparedStatement stmt;
+       try {
+            stmt = conn.prepareStatement(selectSql);
+            
+       
+            resultSet1=stmt.executeQuery();
+
+             while (resultSet1.next()) {
+            
+            Object[] row = new Object[3];
+            row[0] = resultSet1.getInt(1);
+            row[1]=resultSet1.getString(2);
+            row[2] = resultSet1.getInt(3);
+            
+            
+            
+            model.addRow(row);
+             }
+             
+             
+             
+            
+             conn.close();
+             
+       }
+       catch (SQLException ex) {
+            Logger.getLogger(AdminStock.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

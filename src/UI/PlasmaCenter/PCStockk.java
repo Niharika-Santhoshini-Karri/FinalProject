@@ -110,15 +110,17 @@ public class PCStockk extends javax.swing.JFrame {
         lblDonor_id1 = new javax.swing.JLabel();
         comboxqty = new javax.swing.JComboBox<>();
         jDateChooser = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
         lblTitle.setText("STOCK");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(140, 10, 150, 50);
+        lblTitle.setBounds(20, 10, 150, 50);
 
+        btnBack.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +128,9 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 30, 100, 31);
+        btnBack.setBounds(530, 30, 120, 29);
 
+        btnUpdate.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,8 +138,9 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(190, 240, 100, 31);
+        btnUpdate.setBounds(170, 240, 120, 29);
 
+        btnDelete.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,12 +148,14 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 240, 100, 31);
+        btnDelete.setBounds(350, 240, 120, 29);
 
+        lblDonor_id.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         lblDonor_id.setText("Date of Donation");
         getContentPane().add(lblDonor_id);
-        lblDonor_id.setBounds(140, 460, 160, 40);
+        lblDonor_id.setBounds(120, 410, 180, 40);
 
+        btnAdd.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +163,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(280, 560, 87, 31);
+        btnAdd.setBounds(287, 470, 100, 29);
 
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -193,7 +199,7 @@ public class PCStockk extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblStock);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 120, 810, 92);
+        jScrollPane1.setBounds(40, 120, 580, 92);
 
         comboDonor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +207,7 @@ public class PCStockk extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboDonor);
-        comboDonor.setBounds(390, 400, 77, 31);
+        comboDonor.setBounds(390, 350, 77, 31);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -229,19 +235,26 @@ public class PCStockk extends javax.swing.JFrame {
         getContentPane().add(valBlood);
         valBlood.setBounds(460, 420, 160, 20);
 
+        jLabel7.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         jLabel7.setText("Quantity Donated");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(160, 330, 160, 40);
+        jLabel7.setBounds(140, 280, 180, 40);
 
+        lblDonor_id1.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         lblDonor_id1.setText("Donor ID");
         getContentPane().add(lblDonor_id1);
-        lblDonor_id1.setBounds(160, 400, 160, 40);
+        lblDonor_id1.setBounds(140, 350, 180, 40);
 
         comboxqty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         getContentPane().add(comboxqty);
-        comboxqty.setBounds(390, 340, 72, 31);
+        comboxqty.setBounds(390, 290, 72, 31);
         getContentPane().add(jDateChooser);
-        jDateChooser.setBounds(380, 460, 126, 31);
+        jDateChooser.setBounds(380, 410, 126, 31);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/PlasmaCenter/PLASMAA .png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 900, 530);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -521,6 +534,7 @@ public class PCStockk extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboDonor;
     private javax.swing.JComboBox<String> comboxqty;
     private com.toedter.calendar.JDateChooser jDateChooser;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;

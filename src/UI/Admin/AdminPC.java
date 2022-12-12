@@ -72,10 +72,12 @@ public class AdminPC extends javax.swing.JFrame {
         txtaddress1 = new javax.swing.JTextField();
         txtmobile = new javax.swing.JTextField();
         valZip = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        btnBack.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,12 +85,14 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(570, 30, 100, 23);
+        btnBack.setBounds(570, 30, 100, 27);
 
-        jLabel1.setText("Name");
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        jLabel1.setText("NAME");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 370, 70, 17);
+        jLabel1.setBounds(50, 370, 70, 21);
 
+        lblZipcode.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         lblZipcode.setText("ZIP CODE");
         getContentPane().add(lblZipcode);
         lblZipcode.setBounds(40, 490, 90, 30);
@@ -134,6 +138,7 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(50, 140, 680, 130);
 
+        btnAdd.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,12 +146,14 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(130, 550, 87, 23);
+        btnAdd.setBounds(130, 550, 87, 27);
 
+        lblSelectOrgType.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(80, 330, 60, 17);
+        lblSelectOrgType.setBounds(80, 330, 60, 21);
 
+        btnDelete.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,12 +161,12 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(400, 280, 100, 23);
+        btnDelete.setBounds(400, 280, 100, 27);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         lblTitle.setText("PLASMA CENTER");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(190, 30, 220, 29);
+        lblTitle.setBounds(80, -2, 330, 60);
 
         txtZipcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -167,8 +174,9 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtZipcode);
-        txtZipcode.setBounds(180, 490, 100, 23);
+        txtZipcode.setBounds(180, 490, 100, 31);
 
+        btnUpdate.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +184,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(280, 280, 100, 23);
+        btnUpdate.setBounds(280, 280, 100, 27);
 
         txtid.setEditable(false);
         txtid.addActionListener(new java.awt.event.ActionListener() {
@@ -185,11 +193,12 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtid);
-        txtid.setBounds(180, 320, 100, 23);
+        txtid.setBounds(180, 320, 100, 31);
 
-        jLabel2.setText("Address");
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        jLabel2.setText("ADDRESS");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 410, 80, 17);
+        jLabel2.setBounds(40, 410, 80, 21);
 
         txtpcname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -197,7 +206,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtpcname);
-        txtpcname.setBounds(180, 370, 100, 23);
+        txtpcname.setBounds(180, 370, 100, 40);
 
         lbSearch.setFont(new java.awt.Font("American Typewriter", 1, 14)); // NOI18N
         lbSearch.setText("SEARCH");
@@ -232,7 +241,8 @@ public class AdminPC extends javax.swing.JFrame {
         getContentPane().add(valContact);
         valContact.setBounds(290, 450, 130, 20);
 
-        jLabel6.setText("Mobile");
+        jLabel6.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        jLabel6.setText("MOBILE");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(40, 450, 90, 30);
 
@@ -242,7 +252,7 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtaddress1);
-        txtaddress1.setBounds(180, 410, 100, 23);
+        txtaddress1.setBounds(180, 410, 100, 40);
 
         txtmobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -250,11 +260,17 @@ public class AdminPC extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtmobile);
-        txtmobile.setBounds(180, 450, 100, 23);
+        txtmobile.setBounds(180, 450, 100, 31);
 
         valZip.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valZip);
         valZip.setBounds(300, 490, 130, 20);
+
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 800, 600);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -584,6 +600,7 @@ public class AdminPC extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSearch;

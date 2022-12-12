@@ -113,30 +113,35 @@ public class AdminHospital extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         txthos_id = new javax.swing.JTextField();
         valContact = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         txtid.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Name");
+        jLabel1.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
+        jLabel1.setText("NAME");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 370, 70, 17);
+        jLabel1.setBounds(230, 370, 70, 15);
 
-        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Bell MT", 1, 24)); // NOI18N
         lblTitle.setText("HOSPITALS ");
         getContentPane().add(lblTitle);
-        lblTitle.setBounds(40, 20, 150, 50);
+        lblTitle.setBounds(220, 0, 210, 50);
 
-        jLabel2.setText("Address");
+        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
+        jLabel2.setText("ADDRESS");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(220, 410, 80, 17);
+        jLabel2.setBounds(220, 410, 80, 15);
 
+        lblSelectOrgType.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         lblSelectOrgType.setText("ID");
         getContentPane().add(lblSelectOrgType);
-        lblSelectOrgType.setBounds(250, 320, 12, 17);
+        lblSelectOrgType.setBounds(250, 320, 15, 15);
 
-        jLabel5.setText("Zip Code");
+        jLabel5.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
+        jLabel5.setText("ZIP CODE");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(220, 440, 100, 40);
 
@@ -181,6 +186,7 @@ public class AdminHospital extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 120, 650, 92);
 
+        btnAdd.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         btnAdd.setText("ADD");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,8 +194,9 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAdd);
-        btnAdd.setBounds(270, 530, 87, 23);
+        btnAdd.setBounds(270, 530, 87, 21);
 
+        btnUpdate.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         btnUpdate.setText("UPDATE");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,8 +204,9 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(250, 240, 100, 23);
+        btnUpdate.setBounds(250, 240, 100, 21);
 
+        btnDelete.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         btnDelete.setText("DELETE");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,8 +214,9 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(370, 240, 100, 23);
+        btnDelete.setBounds(370, 240, 100, 21);
 
+        btnBack.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,9 +224,10 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBack);
-        btnBack.setBounds(550, 10, 100, 23);
+        btnBack.setBounds(550, 10, 100, 21);
 
-        jLabel6.setText("Mobile");
+        jLabel6.setFont(new java.awt.Font("Bell MT", 1, 13)); // NOI18N
+        jLabel6.setText("MOBILE");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(230, 480, 100, 40);
 
@@ -245,7 +255,7 @@ public class AdminHospital extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtContact);
-        txtContact.setBounds(340, 490, 140, 23);
+        txtContact.setBounds(340, 490, 140, 31);
 
         valName.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valName);
@@ -295,6 +305,11 @@ public class AdminHospital extends javax.swing.JFrame {
         valContact.setFont(new java.awt.Font("Helvetica Neue", 2, 13)); // NOI18N
         getContentPane().add(valContact);
         valContact.setBounds(510, 490, 130, 30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Admin/ADMIN BG.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 740, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -639,6 +654,7 @@ public class AdminHospital extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;

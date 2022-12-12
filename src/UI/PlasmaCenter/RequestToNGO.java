@@ -48,6 +48,7 @@ public class RequestToNGO extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         comboxQty = new javax.swing.JComboBox<>();
@@ -57,16 +58,33 @@ public class RequestToNGO extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         comboxNGO = new javax.swing.JComboBox<>();
         btnRaise = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
+        lblTitle.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        lblTitle.setText("REQUESTS TO NGO");
+        getContentPane().add(lblTitle);
+        lblTitle.setBounds(20, 10, 450, 50);
+
+        jLabel1.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel1.setText("NGO ID");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(198, 224, 90, 21);
 
+        jLabel2.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel2.setText("Blood Group");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(171, 81, 130, 21);
 
         comboxQty.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        getContentPane().add(comboxQty);
+        comboxQty.setBounds(463, 144, 72, 31);
 
         comboxBlood.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "O+", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-" }));
+        getContentPane().add(comboxBlood);
+        comboxBlood.setBounds(463, 78, 78, 31);
 
         comboxstatuscode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "URGENT REQUEST ", "SERIOUS REQUEST" }));
         comboxstatuscode.addActionListener(new java.awt.event.ActionListener() {
@@ -74,10 +92,21 @@ public class RequestToNGO extends javax.swing.JFrame {
                 comboxstatuscodeActionPerformed(evt);
             }
         });
+        getContentPane().add(comboxstatuscode);
+        comboxstatuscode.setBounds(391, 288, 198, 31);
 
+        jLabel3.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel3.setText("Quantity");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(186, 147, 100, 21);
 
+        jLabel4.setFont(new java.awt.Font("Bell MT", 1, 18)); // NOI18N
         jLabel4.setText("Status");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(207, 291, 80, 21);
+
+        getContentPane().add(comboxNGO);
+        comboxNGO.setBounds(463, 218, 72, 31);
 
         btnRaise.setText("RAISE REQUEST");
         btnRaise.addActionListener(new java.awt.event.ActionListener() {
@@ -85,61 +114,13 @@ public class RequestToNGO extends javax.swing.JFrame {
                 btnRaiseActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRaise);
+        btnRaise.setBounds(337, 369, 170, 31);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel2)
-                        .addGap(161, 161, 161)
-                        .addComponent(comboxBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addComponent(comboxstatuscode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(175, 175, 175)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboxNGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboxQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(btnRaise)))
-                .addContainerGap(259, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboxBlood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboxQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(comboxNGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(comboxstatuscode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addComponent(btnRaise)
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/PlasmaCenter/PLASMAA .png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 800, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -235,6 +216,8 @@ public class RequestToNGO extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 
     private void updateCombox() {

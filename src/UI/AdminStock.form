@@ -43,7 +43,7 @@
               <Table columnCount="3" rowCount="4">
                 <Column editable="false" title="Plasma Center" type="java.lang.Object"/>
                 <Column editable="false" title="Blood Group" type="java.lang.Object"/>
-                <Column editable="false" title="Quantity" type="java.lang.String"/>
+                <Column editable="false" title="Quantity Units" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -128,7 +128,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/UI/plasma login (1).jpeg"/>
+          <Image iconType="3" name="/UI/plasma login1.jpeg"/>
         </Property>
       </Properties>
       <Constraints>
